@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 6 – Le pardon est la première étape de la révolution</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 6 : Le pardon est la première étape de la révolution</h1>
+
+    <p>
+      Nous sommes nés dans une ignorance que nous n’avons pas choisie. Mais
+      l’éveil ne commence pas par le blâme — il commence par le pardon. Surtout
+      envers ceux qui nous ont élevés dans l’obscurité, sans connaître la
+      lumière qu’ils n’avaient pas.
+    </p>
+
+    <h2>Références coraniques</h2>
+    <ul>
+      <li>
+        Sourate Al-Baqara (2:134) : *« Voilà une nation qui a disparu. À elle ce
+        qu’elle a acquis, et à vous ce que vous avez acquis. »*
+      </li>
+      <li>
+        Sourate At-Tur (52:21) : *« Chaque âme est responsable de ce qu’elle a
+        acquis. »*
+      </li>
+      <li>
+        Sourate Al-Ahqaf (46:15) : *« Et Nous avons enjoint à l’homme [la bonté]
+        envers ses parents… »* — même s’ils s’opposent à la vérité.
+      </li>
+    </ul>
+
+    <h2>Perspective éthique</h2>
+    <ul>
+      <li>
+        Dieu n’ordonne jamais aux parents d’être bons envers leurs enfants —
+        mais toujours aux enfants d’honorer leurs parents. Pourquoi ? Parce que
+        l’avenir doit pardonner au passé pour le transcender.
+      </li>
+      <li>
+        La colère envers l’ignorance est naturelle — mais la transformation
+        exige la compassion. Il faut briser le cycle, non le reproduire.
+      </li>
+    </ul>
+
+    <h2>Réflexion philosophique</h2>
+    <p>
+      Le pardon n’est pas une faiblesse — c’est une lucidité. Il nous permet de
+      voir le passé sans y être prisonnier. Il transforme le ressentiment en
+      responsabilité.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      La génération éveillée doit pardonner, sans oublier. Elle doit se souvenir
+      pour reconstruire — avec miséricorde, avec courage, et avec vérité.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. Pourquoi l’avenir doit-il pardonner au passé ?</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> Pour préserver la
+            tradition</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Pour éviter les
+            conflits</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Pour transcender
+            l’ignorance héritée</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Pour maintenir l’honneur
+            familial</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. Que permet le pardon selon la réflexion philosophique ?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Oublier le passé</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Éviter la
+            responsabilité</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Voir avec clarté et
+            transformer le ressentiment</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Justifier
+            l’injustice</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "c",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The future must forgive the past to transcend inherited ignorance and break the cycle of blame.",
+            fr: "Le futur doit pardonner au passé pour transcender l’ignorance héritée et briser le cycle du blâme.",
+            ar: "يجب على المستقبل أن يسامح الماضي لتجاوز الجهل الموروث وكسر دائرة اللوم.",
+          },
+          q2: {
+            en: "Forgiveness brings clarity — it transforms resentment into responsibility and frees us from being trapped by the past.",
+            fr: "Le pardon apporte de la clarté — il transforme le ressentiment en responsabilité et nous libère du passé.",
+            ar: "المغفرة تمنح الوضوح — فهي تحول الاستياء إلى مسؤولية وتحررنا من أسر الماضي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)} :</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )} :</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section6.html">🇬🇧 English</a>
+      <a href="../ar/section6.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section6.html">Next Section →</a>
+    </div>
+  </body>
+</html>

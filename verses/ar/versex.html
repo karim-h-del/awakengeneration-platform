@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>امتداد بيان الآيات</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f9f9f9;
+        color: #222;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.6;
+        text-align: right;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #005f73;
+        margin-bottom: 1rem;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        background-color: #e0f2f1;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+      }
+      li:hover {
+        background-color: #b2dfdb;
+      }
+      a {
+        text-decoration: none;
+        color: #00796b;
+        font-weight: 500;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📜 استكشاف امتداد بيان الآيات</h1>
+    <ul id="verse-list">
+      <li>
+        <a href="/verses/ar/verse1.html">الآية ١ – الخلق والوعي</a> |
+        <a href="/quizzes/verse1-quiz-ar.html">اختبار</a>
+      </li>
+      <li>
+        <a href="/verses/ar/verse2.html">الآية ٢ – الوحي الخلوي</a> |
+        <a href="/quizzes/verse2-quiz-ar.html">اختبار</a>
+      </li>
+      <li>
+        <a href="/verses/ar/verse3.html">الآية ٣ – النظام الكوني</a> |
+        <a href="/quizzes/verse3-quiz-ar.html">اختبار</a>
+      </li>
+      <li>
+        <a href="/verses/ar/verse4.html">الآية ٤ – اقرأ بتبصر</a> |
+        <a href="/quizzes/verse4-quiz-ar.html">اختبار</a>
+      </li>
+      <li>
+        <a href="/verses/ar/verse5.html">الآية ٥ – القلم والنقل</a> |
+        <a href="/quizzes/verse5-quiz-ar.html">اختبار</a>
+      </li>
+      <li>
+        <a href="/verses/ar/verse6.html">الآية ٦ – الصحوة الأخلاقية</a> |
+        <a href="/quizzes/verse6-quiz-ar.html">اختبار</a>
+      </li>
+      <li>
+        <a href="/verses/ar/verse7.html">الآية ٧ – الإرث والرعاية</a> |
+        <a href="/quizzes/verse7-quiz-ar.html">اختبار</a>
+      </li>
+    </ul>
+
+    <button
+      id="reset-progress"
+      style="
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      "
+    >
+      🔄 إعادة تعيين التقدم
+    </button>
+
+    <script>
+      const verseLinks = document.querySelectorAll("#verse-list a");
+
+      verseLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (localStorage.getItem(href) === "visited") {
+          link.style.fontWeight = "bold";
+          link.style.color = "#388e3c";
+        }
+        link.addEventListener("click", () => {
+          localStorage.setItem(href, "visited");
+        });
+        if (href.includes("quiz")) {
+          const key = href.split("/").pop().split(".")[0];
+          const score = localStorage.getItem(`score_${key}`);
+          if (score !== null) {
+            link.insertAdjacentHTML(
+              "afterend",
+              ` <span style="color:#388e3c;">✅ (${score})</span>`
+            );
+          }
+        }
+      });
+
+      document
+        .getElementById("reset-progress")
+        .addEventListener("click", () => {
+          if (confirm("هل أنت متأكد أنك تريد إعادة تعيين كل التقدم؟")) {
+            verseLinks.forEach((link) => {
+              const href = link.getAttribute("href");
+              localStorage.removeItem(href);
+              const key = href.split("/").pop().split(".")[0];
+              localStorage.removeItem(`score_${key}`);
+            });
+            location.reload();
+          }
+        });
+    </script>
+  </body>
+</html>

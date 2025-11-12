@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verset 2",
+    "language": "FR",
+    "date": "2025-11-12",
+    "theme": "Parabole de la Lumière"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "Quel est le thème central du verset 2 ?",
+      "options": ["Foi", "Lumière", "Richesse", "Pouvoir"],
+      "answer": [1],
+      "explanation": "Le verset met en avant la Lumière divine comme force directrice et soutenante de l’univers."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quelle métaphore est utilisée pour décrire la Lumière divine ?",
+      "options": ["Une montagne", "Une niche avec une lampe", "Une rivière", "Une étoile brillante"],
+      "answer": [1],
+      "explanation": "Le verset compare la Lumière divine à une niche contenant une lampe, symbole de guidance."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Comment la Lumière divine agit-elle selon le verset ?",
+      "options": ["Elle soutient la vie", "Elle guide la création", "Elle impose des lois", "Elle crée la richesse"],
+      "answer": [1],
+      "explanation": "La Lumière divine est décrite comme une guidance illuminant le chemin de la création."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quelle leçon éthique peut-on tirer de la parabole de la Lumière ?",
+      "options": ["Chercher l’équilibre", "Suivre la guidance divine", "Éviter la science", "Rejeter les rituels"],
+      "answer": [1],
+      "explanation": "La parabole enseigne à l’humanité de suivre la guidance divine symbolisée par la Lumière."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quel concept scientifique résonne avec la métaphore de la Lumière ?",
+      "options": ["Photosynthèse", "Rayonnement électromagnétique", "Ondes gravitationnelles", "Effet tunnel quantique"],
+      "answer": [1],
+      "explanation": "Le rayonnement électromagnétique résonne avec la métaphore de la Lumière comme force soutenante."
+    }
+  ]
+}

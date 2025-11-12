@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 1 – La révélation est un code</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 1 : La révélation est un code, pas un costume</h1>
+
+    <p>
+      Le Coran n’est pas un manuel de rituels — c’est un algorithme cosmique.
+      Ses versets codent les lois de la physique, la logique de l’éthique et
+      l’architecture de la conscience.
+    </p>
+
+    <h2>Parallèles scientifiques</h2>
+    <ul>
+      <li>
+        La sourate Al-Anbiya (21:104) décrit le pliement des cieux — une
+        métaphore qui rejoint la courbure de l’espace-temps et l’entropie
+        cosmique.
+      </li>
+      <li>
+        La sourate Al-Mu’minun (23:112–114) effondre la perception du temps
+        après la mort — en écho à la dilatation temporelle relativiste près des
+        trous noirs.
+      </li>
+      <li>
+        La sourate Al-‘Alaq (96:1) : *« Lis au nom de ton Seigneur… »* — un
+        appel à décoder, pas seulement à réciter.
+      </li>
+    </ul>
+
+    <h2>Contexte historique</h2>
+    <ul>
+      <li>
+        Les premiers musulmans étaient mathématiciens, astronomes et philosophes
+        — ils considéraient la révélation comme un tremplin vers la
+        connaissance.
+      </li>
+      <li>
+        La Maison de la Sagesse à Bagdad a préservé et enrichi les savoirs
+        grecs, perses et indiens — guidée par l’épistémologie coranique.
+      </li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      Traiter la révélation comme une chorégraphie, c’est manquer son code. La
+      génération éveillée doit lire le Coran comme un système — pas comme un
+      slogan.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. Que nous commande le Coran ?</p>
+          <label><input type="radio" name="q1" value="a" /> Le décorer</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Le réciter sans
+            réfléchir</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Lire, réfléchir et
+            décoder</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Le mémoriser
+            uniquement</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. Comment le Coran est-il décrit ?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Un manuel de
+            chorégraphie</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Un programme
+            cosmique</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Une archive
+            historique</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Une anthologie
+            poétique</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The Qur’an commands us to read, reflect, and decode — not merely recite.",
+            fr: "Le Coran nous commande de lire, réfléchir et décoder — pas seulement réciter.",
+            ar: "القرآن يأمرنا أن نقرأ ونتدبر ونفك الشيفرة — لا أن نردد فقط.",
+          },
+          q2: {
+            en: "The Qur’an is described as a cosmic syllabus — not a book of choreography.",
+            fr: "Le Coran est décrit comme un programme cosmique — pas un manuel de chorégraphie.",
+            ar: "القرآن وُصف بأنه منهج كوني — لا كتاب حركات.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        // Store score for this section
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section1.html">🇬🇧 English</a>
+      <a href="../ar/section1.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section1.html">Next Section →</a>
+    </div>
+  </body>
+</html>

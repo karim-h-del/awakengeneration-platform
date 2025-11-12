@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 3 – Les mosquées doivent éveiller ou être désertées</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 3 : Les mosquées doivent éveiller ou être désertées</h1>
+
+    <p>
+      La mosquée fut autrefois le noyau de la pensée, de la justice et de la
+      communauté. Aujourd’hui, beaucoup sont devenues des chambres d’écho de
+      rituels hérités, étouffant la réflexion que le Coran exige. Un sanctuaire
+      qui interdit la pensée n’est plus sacré — il est stagnant.
+    </p>
+
+    <h2>Contexte historique</h2>
+    <ul>
+      <li>
+        À Médine, la mosquée du Prophète était un centre de gouvernance, de
+        débat et d’éducation — pas seulement de prière. Elle accueillait des
+        délégations, réglait des conflits et enseignait le Coran comme code
+        vivant.
+      </li>
+      <li>
+        À l’époque abbasside, les mosquées étaient liées aux bibliothèques et
+        aux madrasas. Des penseurs comme Al-Farabi, Ibn Sina et Al-Kindi y
+        enseignaient la philosophie, la médecine et l’astronomie.
+      </li>
+      <li>
+        Le déclin a commencé lorsque les mosquées furent politisées, ritualisées
+        et déconnectées de la pensée. Les sermons sont devenus mécaniques. La
+        réflexion est devenue taboue.
+      </li>
+    </ul>
+
+    <h2>Analyse sociologique</h2>
+    <ul>
+      <li>
+        Beaucoup de mosquées aujourd’hui valorisent la conformité plutôt que la
+        conscience. Les jeunes apprennent à mémoriser, non à comprendre. Les
+        femmes sont marginalisées. Les questions sont découragées.
+      </li>
+      <li>
+        Les imams manquent souvent de formation en sciences, en éthique ou en
+        affaires mondiales — pourtant ils parlent avec autorité sur tous les
+        sujets. Cela engendre une stagnation épistémique.
+      </li>
+      <li>
+        Les communautés souffrent lorsque les mosquées deviennent passives —
+        incapables de répondre à l’injustice, à la pauvreté ou à la manipulation
+        idéologique.
+      </li>
+    </ul>
+
+    <h2>Réflexion philosophique</h2>
+    <p>
+      Une mosquée qui craint la pensée n’est pas une maison de Dieu — c’est une
+      maison d’hommes. Le Coran n’est pas menacé par les questions. Il les
+      invite. Il répète : *« Ne réfléchissent-ils pas ? », « Ne raisonnent-ils
+      pas ? », « N’ont-ils pas considéré ? »*
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      Nous ne rejetons pas les mosquées. Nous rejetons leur détournement. Nous
+      construirons des sanctuaires de pensée — où le Coran est déchiffré, non
+      récité ; où les jeunes sont valorisés, non réduits au silence ; où le
+      divin n’est pas ritualisé, mais réalisé.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>
+            1. Quel était le rôle initial de la mosquée du Prophète à Médine ?
+          </p>
+          <label
+            ><input type="radio" name="q1" value="a" /> Un lieu de prière
+            uniquement</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Un centre de
+            gouvernance, d’éducation et de débat</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Un sanctuaire pour les
+            pèlerinages</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Un site d’allégeance
+            politique</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. Que recommande le Coran concernant la pensée ?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Le silence et
+            l’obéissance</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> La mémorisation sans
+            réflexion</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> La répétition
+            rituelle</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> La réflexion, le
+            raisonnement et l’interrogation</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "b",
+          q2: "d",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The Prophet’s mosque was a hub for governance, education, and debate — not just prayer.",
+            fr: "La mosquée du Prophète était un centre de gouvernance, d’éducation et de débat — pas seulement de prière.",
+            ar: "كانت مسجد النبي مركزًا للحكم والتعليم والنقاش — وليس للصلاة فقط.",
+          },
+          q2: {
+            en: "The Qur’an repeatedly calls for inquiry, reasoning, and reflection — not blind obedience.",
+            fr: "Le Coran appelle constamment à la réflexion, au raisonnement et à l’interrogation — pas à l’obéissance aveugle.",
+            ar: "القرآن يدعو باستمرار إلى التفكر والتعقل والتساؤل — لا إلى الطاعة العمياء.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)} :</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )} :</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section1=3.html">🇬🇧 English</a>
+      <a href="../ar/section1=3.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section3.html">Next Section →</a>
+    </div>
+  </body>
+</html>

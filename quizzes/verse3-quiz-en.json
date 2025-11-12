@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verse 3",
+    "language": "EN",
+    "date": "2025-11-12",
+    "theme": "Balance of the Cosmos"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "What principle does 'the balance' in Surah Ar-Rahman 55:7–9 reflect?",
+      "options": ["Thermodynamics", "Gravitational balance", "Electromagnetic radiation", "Nuclear fusion"],
+      "answer": [1],
+      "explanation": "The verse reflects gravitational balance as part of the cosmic order."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What does the verse warn humanity not to do?",
+      "options": ["Transgress the balance", "Ignore the stars", "Forget history", "Reject prophets"],
+      "answer": [0],
+      "explanation": "It warns not to transgress the balance, respecting divine order."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which unseen force helps maintain cosmic structure?",
+      "options": ["Solar wind", "Magnetic fields", "Dark matter", "Ultraviolet rays"],
+      "answer": [2],
+      "explanation": "Dark matter is an unseen force that helps maintain cosmic structure."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What ethical lesson is implied by the balance?",
+      "options": ["Seek wealth", "Respect limits", "Avoid science", "Follow rituals only"],
+      "answer": [1],
+      "explanation": "The balance implies respecting limits and living ethically within divine order."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which scientific theorem aligns with the idea of symmetry?",
+      "options": ["Quantum tunneling", "Noether's theorem", "Doppler effect", "Entropy increase"],
+      "answer": [1],
+      "explanation": "Noether's theorem aligns with symmetry and conservation laws."
+    }
+  ]
+}

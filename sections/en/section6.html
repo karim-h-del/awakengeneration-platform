@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      Section 6 Expansion – Forgiveness Is the First Step of Revolution
+    </title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 6: Forgiveness Is the First Step of Revolution</h1>
+
+    <p>
+      We were born into ignorance not of our choosing. But awakening does not
+      begin with blame — it begins with forgiveness. Especially toward those who
+      raised us in darkness, unaware of the light they lacked.
+    </p>
+
+    <h2>Qur’anic Anchors</h2>
+    <ul>
+      <li>
+        Surah Al-Baqara (2:134): *“That was a nation who has passed away. Theirs
+        is what they earned, and yours is what you earn.”*
+      </li>
+      <li>
+        Surah At-Tur (52:21): *“Every soul is accountable for what it has
+        earned.”*
+      </li>
+      <li>
+        Surah Al-Ahqaf (46:15): *“And We have enjoined upon man [care] for his
+        parents…”* — even if they strive against the truth.
+      </li>
+    </ul>
+
+    <h2>Ethical Insight</h2>
+    <ul>
+      <li>
+        God never commands parents to be kind to children — but always commands
+        children to honor parents. Why? Because the future must forgive the past
+        to transcend it.
+      </li>
+      <li>
+        Anger toward the ignorant is natural — but transformation requires
+        compassion. We must break the cycle, not perpetuate it.
+      </li>
+    </ul>
+
+    <h2>Philosophical Reflection</h2>
+    <p>
+      Forgiveness is not weakness — it is clarity. It allows us to see the past
+      without being trapped by it. It turns resentment into responsibility.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The awakened generation must forgive, not forget. We must remember in
+      order to rebuild — with mercy, with courage, and with truth.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz: Test Your Understanding</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>
+            1. According to this section, why must the future forgive the past?
+          </p>
+          <label
+            ><input type="radio" name="q1" value="a" /> To preserve
+            tradition</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> To avoid conflict</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> To transcend inherited
+            ignorance</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> To maintain family
+            honor</label
+          >
+        </div>
+
+        <div class="question">
+          <p>
+            2. What does forgiveness enable, according to the philosophical
+            reflection?
+          </p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Forgetting the
+            past</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Avoiding
+            responsibility</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Seeing clearly and
+            transforming resentment</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Justifying
+            injustice</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">Submit Answers</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "c",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The future must forgive the past to transcend inherited ignorance and break the cycle of blame.",
+            fr: "Le futur doit pardonner au passé pour transcender l’ignorance héritée et briser le cycle du blâme.",
+            ar: "يجب على المستقبل أن يسامح الماضي لتجاوز الجهل الموروث وكسر دائرة اللوم.",
+          },
+          q2: {
+            en: "Forgiveness brings clarity — it transforms resentment into responsibility and frees us from being trapped by the past.",
+            fr: "Le pardon apporte de la clarté — il transforme le ressentiment en responsabilité et nous libère du passé.",
+            ar: "المغفرة تمنح الوضوح — فهي تحول الاستياء إلى مسؤولية وتحررنا من أسر الماضي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../fr/section6.html">🇫🇷 Français</a>
+      <a href="../ar/section6.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section7.html">Next Section →</a>
+    </div>
+  </body>
+</html>

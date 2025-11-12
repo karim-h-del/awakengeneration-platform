@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>القسم ٤ – هامان هو مهندس القهر</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>القسم ٤: هامان هو مهندس القهر</h1>
+
+    <p>
+      فرعون حكم. قارون موّل. لكن هامان بنى النظام. إنه النموذج القرآني للهندسة
+      الأيديولوجية — من يصمم برج الوهم، وبنية السيطرة، ومعمار التضليل.
+    </p>
+
+    <h2>النموذج القرآني</h2>
+    <ul>
+      <li>
+        سورة القصص (٣٨:٢٨): فرعون يأمر هامان ببناء برج ليصل إلى إله موسى — فعل
+        رمزي للتحدي والتزييف.
+      </li>
+      <li>
+        هامان ليس مجرد وزير — بل <strong>تقني الاستبداد</strong>، من يحوّل
+        السلطة إلى أنظمة وسياسات ودعاية.
+      </li>
+    </ul>
+
+    <h2>نظائر معاصرة</h2>
+    <ul>
+      <li>
+        هامانات اليوم يصممون السرديات الإعلامية، والمناهج التعليمية، وأنظمة
+        المراقبة التي تطبّع الظلم وتروّج الحرية الزائفة.
+      </li>
+      <li>
+        يعملون في الوزارات، ومراكز التفكير، والمنصات الرقمية — يشكلون الإدراك
+        كما يشكلون السياسات.
+      </li>
+      <li>
+        لا يُرَون دائمًا، لكن معمارهم حاضر في كل مكان: في الخوارزميات، والكتب
+        المدرسية، والخطب المتلفزة.
+      </li>
+    </ul>
+
+    <h2>تأمل فلسفي</h2>
+    <p>
+      هامان ليس شخصًا — بل نمطًا. إنه تجسيد لتسليح المعرفة في خدمة السلطة.
+      ولتفكيك الاستبداد، يجب أن نفكك الأنظمة التي يبنيها هامان.
+    </p>
+
+    <h2>خاتمة</h2>
+    <p>
+      يجب أن يصبح الجيل المستيقظ مهندسًا للحق. علينا أن نكشف الأبراج الزائفة،
+      ونبني محاريب للوضوح، حيث المعرفة تحرر ولا تستعبد.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 اختبار: تحقق من فهمك</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>١. ما دور هامان في نظام فرعون؟</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> يمول الإمبراطورية</label
+          ><br />
+          <label><input type="radio" name="q1" value="b" /> يحكم كملك</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> يبني أنظمة السيطرة
+            والتضليل</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> يقود الطقوس
+            الدينية</label
+          >
+        </div>
+
+        <div class="question">
+          <p>٢. ماذا يرمز له هامان في السياقات المعاصرة؟</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> شخصية تاريخية
+            منسية</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> نمط من الهندسة
+            الأيديولوجية</label
+          ><br />
+          <label><input type="radio" name="q2" value="c" /> رفيق نبي</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> رمز للفساد المالي</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">إرسال الإجابات</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "Haman is the architect of oppression — he builds the systems, policies, and illusions that enforce Pharaoh’s rule.",
+            fr: "Haman est l’architecte de l’oppression — il construit les systèmes, les politiques et les illusions qui soutiennent le règne de Pharaon.",
+            ar: "هامان هو مهندس القهر — يبني الأنظمة والسياسات والأوهام التي تدعم حكم فرعون.",
+          },
+          q2: {
+            en: "Haman symbolizes a recurring pattern of ideological engineering — shaping perception and control through systems.",
+            fr: "Haman symbolise un schéma récurrent d’ingénierie idéologique — façonnant la perception et le contrôle par les systèmes.",
+            ar: "هامان يرمز إلى نمط متكرر من الهندسة الأيديولوجية — تشكيل الإدراك والسيطرة عبر الأنظمة.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>السؤال ${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>السؤال ${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section4.html">🇬🇧 English</a>
+      <a href="../fr/section4.html">🇫🇷 Français</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.ar.html">العودة إلى البيان ←</a>
+      <a href="section5.html">→ القسم التالي</a>
+    </div>
+  </body>
+</html>

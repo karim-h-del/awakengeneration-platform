@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 4 – Haman est l’architecte de l’oppression</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 4 : Haman est l’architecte de l’oppression</h1>
+
+    <p>
+      Pharaon gouvernait. Qaroun finançait. Mais Haman construisait le système.
+      Il est l’archétype de l’ingénierie idéologique — celui qui érige la tour
+      de l’illusion, l’infrastructure du contrôle, l’architecture du mensonge.
+    </p>
+
+    <h2>Archétype coranique</h2>
+    <ul>
+      <li>
+        Sourate Al-Qasas (28:38) : Pharaon ordonne à Haman de lui bâtir une tour
+        pour atteindre le Dieu de Moïse — un acte symbolique de défi et de
+        supercherie.
+      </li>
+      <li>
+        Haman n’est pas qu’un vizir — il est le
+        <strong>technocrate de la tyrannie</strong>, celui qui transforme le
+        pouvoir en systèmes, en politiques et en propagande.
+      </li>
+    </ul>
+
+    <h2>Parallèles modernes</h2>
+    <ul>
+      <li>
+        Les Hamans d’aujourd’hui conçoivent les récits médiatiques, les
+        programmes éducatifs et les systèmes de surveillance qui normalisent
+        l’injustice tout en prônant la liberté.
+      </li>
+      <li>
+        Ils opèrent dans les ministères, les think tanks et les plateformes
+        numériques — façonnant la perception autant que la politique.
+      </li>
+      <li>
+        Ils ne sont pas toujours visibles, mais leur architecture est
+        omniprésente : dans les algorithmes, les manuels scolaires et les
+        prêches télévisés.
+      </li>
+    </ul>
+
+    <h2>Réflexion philosophique</h2>
+    <p>
+      Haman n’est pas une personne — c’est un schéma. Il incarne
+      l’instrumentalisation du savoir au service du pouvoir. Pour démanteler la
+      tyrannie, il faut décoder et déconstruire les systèmes qu’il bâtit.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      La génération éveillée doit devenir architecte de vérité. Nous devons
+      exposer les tours illusoires et construire des sanctuaires de clarté, où
+      le savoir libère au lieu d’asservir.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. Quel rôle joue Haman dans le régime de Pharaon ?</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> Il finance
+            l’empire</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Il gouverne en tant que
+            roi</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Il construit des
+            systèmes de contrôle</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Il dirige les rituels
+            religieux</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. Que symbolise Haman dans les contextes modernes ?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Un personnage historique
+            oublié</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Un schéma d’ingénierie
+            idéologique</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Un compagnon de
+            prophète</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Un symbole de corruption
+            financière</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "Haman is the architect of oppression — he builds the systems, policies, and illusions that enforce Pharaoh’s rule.",
+            fr: "Haman est l’architecte de l’oppression — il construit les systèmes, les politiques et les illusions qui soutiennent le règne de Pharaon.",
+            ar: "هامان هو مهندس القهر — يبني الأنظمة والسياسات والأوهام التي تدعم حكم فرعون.",
+          },
+          q2: {
+            en: "Haman symbolizes a recurring pattern of ideological engineering — shaping perception and control through systems.",
+            fr: "Haman symbolise un schéma récurrent d’ingénierie idéologique — façonnant la perception et le contrôle par les systèmes.",
+            ar: "هامان يرمز إلى نمط متكرر من الهندسة الأيديولوجية — تشكيل الإدراك والسيطرة عبر الأنظمة.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)} :</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )} :</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section4.html">🇬🇧 English</a>
+      <a href="../ar/section4.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section4.html">Next Section →</a>
+    </div>
+  </body>
+</html>

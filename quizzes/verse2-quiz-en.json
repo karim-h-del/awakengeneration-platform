@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verse 2",
+    "language": "EN",
+    "date": "2025-11-12",
+    "theme": "Parable of Light"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "What is the central theme of Verse 2?",
+      "options": ["Faith", "Light", "Wealth", "Power"],
+      "answer": [1],
+      "explanation": "The verse emphasizes divine Light as the guiding and sustaining force of the cosmos."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What metaphor is used to describe divine Light?",
+      "options": ["A mountain", "A niche with a lamp", "A flowing river", "A shining star"],
+      "answer": [1],
+      "explanation": "The verse compares divine Light to a niche containing a lamp, symbolizing guidance."
+    },
+    {
+      "type": "singleSelect",
+      "question": "How does divine Light function according to the verse?",
+      "options": ["It sustains life", "It guides creation", "It enforces laws", "It creates wealth"],
+      "answer": [1],
+      "explanation": "Divine Light is portrayed as guidance illuminating the path of creation."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What ethical lesson can be drawn from the parable of Light?",
+      "options": ["Seek balance", "Follow divine guidance", "Avoid science", "Reject rituals"],
+      "answer": [1],
+      "explanation": "The parable teaches humanity to follow divine guidance symbolized by Light."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which scientific concept resonates with the metaphor of Light?",
+      "options": ["Photosynthesis", "Electromagnetic radiation", "Gravitational waves", "Quantum tunneling"],
+      "answer": [1],
+      "explanation": "Electromagnetic radiation resonates with the metaphor of Light as a sustaining force."
+    }
+  ]
+}

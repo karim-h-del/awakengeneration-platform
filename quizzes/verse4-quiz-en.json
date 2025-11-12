@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verse 4",
+    "language": "EN",
+    "date": "2025-11-12",
+    "theme": "Al-‘Alaq: Origin of Humanity and the Pen"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "What does 'Read in the name of your Lord' signify?",
+      "options": ["Reading only the Qur'an", "Seeking truth with faithful awareness", "Memorizing ancient texts", "Reading to become a prophet"],
+      "answer": [1],
+      "explanation": "It symbolizes seeking truth with awareness rooted in faith in God."
+    },
+    {
+      "type": "singleSelect",
+      "question": "From what was man created according to the verse?",
+      "options": ["Light", "Dust", "A biological clot (‘alaq)", "A heavenly breath"],
+      "answer": [2],
+      "explanation": "The verse states that man was created from ‘alaq, a biological substance linked to life."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which tool is highlighted as a means of teaching?",
+      "options": ["The pen", "The sword", "The book", "The tablet"],
+      "answer": [0],
+      "explanation": "The pen is emphasized as the instrument of teaching and revelation."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What does divine teaching symbolize in this passage?",
+      "options": ["Political authority", "Moral and intellectual awakening", "Military dominance", "Ritual recitation"],
+      "answer": [1],
+      "explanation": "Divine teaching symbolizes moral and intellectual awakening guiding humanity."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What ethical call do these verses present?",
+      "options": ["Reject modern science", "Withdraw from society", "Preserve scriptures only", "Learn with humility and responsibility"],
+      "answer": [3],
+      "explanation": "The verses call for learning with humility and responsibility, mindful of human origin."
+    }
+  ]
+}

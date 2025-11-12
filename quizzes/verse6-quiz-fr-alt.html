@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz du Verset 6 – Français (Dynamique)</title>
+    <link rel="stylesheet" href="/assets/css/quiz-style.css" />
+  </head>
+  <body>
+    <h1>🧪 Quiz du Verset 6 – Français</h1>
+    <div id="quiz-container"
+     data-json="./verse6-quiz-fr.json"
+     data-submit-label="Envoyer les réponses"></div>
+    
+    <footer>
+      <p><a href="/verses/fr/verse6.html">← Retour au Verset</a></p>
+      <p><a href="/verses/fr/versex.html">↩️ Back to Verse Index</a></p>
+    </footer>
+    <section id="subscribe">
+      <h2>📬 Restez informé</h2>
+      <p>
+        Recevez une notification à chaque ajout d’un nouveau verset ou quiz.
+      </p>
+      <form id="subscription-form">
+        <input
+          type="email"
+          placeholder="Entrez votre adresse e-mail"
+          required
+        />
+        <button type="submit">S’abonner</button>
+      </form>
+      <p id="subscription-message"></p>
+    </section>
+    <script type="module" src="/assets/js/render-quiz.js"></script>
+  </body>
+</html>

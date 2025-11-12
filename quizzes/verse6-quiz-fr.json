@@ -1,0 +1,57 @@
+[
+  {
+    "type": "singleSelect",
+    "question": "À quoi la sourate Adh-Dhaariyat 51:23 compare-t-elle la vérité divine ?",
+    "options": [
+      "Au mouvement des étoiles",
+      "À la clarté de la parole humaine",
+      "Au silence de la nuit",
+      "À l’orbite de la lune"
+    ],
+    "answer": [1],
+    "explanation": "Le verset affirme que la vérité divine est aussi certaine et claire que la parole humaine."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quel concept informatique reflète la nature binaire du vrai et du faux ?",
+    "options": [
+      "Le chiffrement des données",
+      "L’intrication quantique",
+      "Les réseaux neuronaux",
+      "Les portes logiques"
+    ],
+    "answer": [3],
+    "explanation": "Les portes logiques fonctionnent selon des principes binaires — vrai/faux, 1/0 — reflétant la structure de la vérité."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quelle est la signification des termes « Nazzala » et « Anzala » dans la révélation coranique ?",
+    "options": [
+      "Ils décrivent la hiérarchie angélique",
+      "Ils désignent différents prophètes",
+      "Ils reflètent une révélation graduelle ou soudaine",
+      "Ils distinguent les versets mecquois et médinois"
+    ],
+    "answer": [2],
+    "explanation": "« Nazzala » implique une descente graduelle, tandis que « Anzala » suggère une révélation soudaine — toutes deux nécessitent une compréhension stratifiée."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Comment le Coran reflète-t-il un système de logique divine ?",
+    "options": [
+      "Par des thèmes cohérents et une vision probabiliste",
+      "Par des récits historiques",
+      "Par des règles juridiques",
+      "Par des métaphores poétiques"
+    ],
+    "answer": [0],
+    "explanation": "Le Coran utilise des thèmes récurrents, des motifs et des significations stratifiées — formant un système de logique divine."
+  },
+  {
+    "type": "singleSelect",
+    "question": "À quoi le verset nous invite-t-il à étudier la révélation ?",
+    "options": ["L’astronomie", "Les mathématiques", "La poésie", "L’histoire"],
+    "answer": [1],
+    "explanation": "La révélation est présentée comme un système — à étudier avec la rigueur, l’humilité et l’émerveillement que nous appliquons aux mathématiques."
+  }
+]

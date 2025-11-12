@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <!-- <meta name="csrf-token" content="{{ csrf_token }}" /> -->
+    <meta charset="UTF-8" />
+    <title>Verse Quiz Index</title>
+    <link rel="stylesheet" href="../assets/css/quiz-style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🧪 Verse Quiz Index</h1>
+      <p>Select a verse and language to begin your reflection.</p>
+    </header>
+
+    <section>
+      <h2>Verse 5 – Surah Al-Isra 17:78–80</h2>
+      <ul>
+        
+        <li>
+          <a href="/quizzes/verse5-quiz-en-alt.html">English (Dynamic)</a>
+        </li>
+        <li>
+          <a href="/quizzes/verse5-quiz-fr-alt.html">Français (Dynamique)</a>
+        </li>
+        <li>
+          <a href="/quizzes/verse5-quiz-ar-alt.html">العربية (ديناميكي)</a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Verse 6 – Surah Adh-Dhaariyat 51:23</h2>
+      <ul>
+        <li>
+          <a href="/quizzes/verse6-quiz-en-alt.html">English (Dynamic)</a>
+        </li>
+        <li>
+          <a href="/quizzes/verse6-quiz-fr-alt.html">Français (Dynamique)</a>
+        </li>
+        <li>
+          <a href="/quizzes/verse6-quiz-ar-alt.html">العربية (ديناميكي)</a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Verse 7 – Cosmic Justice & Accountability</h2>
+      <ul>
+        <li>
+          <a href="/quizzes/verse7-quiz-en-alt.html">English (Dynamic)</a>
+        </li>
+        <li>
+          <a href="/quizzes/verse7-quiz-fr-alt.html">Français (Dynamique)</a>
+        </li>
+        <li>
+          <a href="/quizzes/verse7-quiz-ar-alt.html">العربية (ديناميكي)</a>
+        </li>
+      </ul>
+    </section>
+    <section id="subscribe">
+      <form id="subscription-form">
+        <input
+          type="email"
+          id="subscriber-email"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Subscribe</button>
+      </form>
+      <p id="subscription-message"></p>
+    </section>
+
+    <footer>
+      <p><a href="/index.html">↩️ Back to Verse Index</a></p>
+    </footer>
+    <script type="module" src="../assets/js/render-quiz.js"></script>
+    <script src="{% static 'js/subscribe.js' %}"></script>
+
+  </body>
+</html>

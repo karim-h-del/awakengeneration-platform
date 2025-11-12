@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>القسم ١ – الوحي شيفرة، وليس زينة</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>القسم ١: الوحي شيفرة، وليس زينة</h1>
+
+    <p>
+      القرآن ليس كتاب طقوس، بل خوارزمية كونية. آياته تشفّر قوانين الفيزياء،
+      ومنطق الأخلاق، وهندسة الوعي.
+    </p>
+
+    <h2>مقارنات علمية</h2>
+    <ul>
+      <li>
+        سورة الأنبياء (١٠٤:٢١) تصف طيّ السماوات — وهي استعارة تتماشى مع انحناء
+        الزمكان وانهيار الإنتروبيا الكونية.
+      </li>
+      <li>
+        سورة المؤمنون (١١٢–١١٤:٢٣) تختزل إدراك الزمن بعد الموت — بما يشبه تمدد
+        الزمن في النسبية قرب الثقوب السوداء.
+      </li>
+      <li>
+        سورة العلق (١:٩٦):
+        <strong>«اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ»</strong> — أمرٌ
+        بالتفكيك، لا بالترديد فقط.
+      </li>
+    </ul>
+
+    <h2>سياق تاريخي</h2>
+    <ul>
+      <li>
+        المسلمون الأوائل كانوا رياضيين وفلكيين وفلاسفة — تعاملوا مع الوحي كمنصة
+        للبحث، لا كزينة للتكرار.
+      </li>
+      <li>
+        بيت الحكمة في بغداد حفظ ووسّع المعارف اليونانية والفارسية والهندية —
+        مسترشدًا بمنهجية قرآنية في المعرفة.
+      </li>
+    </ul>
+
+    <h2>خاتمة</h2>
+    <p>
+      من يعامل الوحي كرقصة، يغفل عن شيفرته. الجيل المستيقظ يجب أن يقرأ القرآن
+      كنظام — لا كشعار.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 اختبار: اختبر فهمك</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>١. ماذا يأمرنا القرآن؟</p>
+          <label><input type="radio" name="q1" value="a" /> أن نزينه</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> أن نردده دون تدبر</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> أن نقرأ ونتدبر ونفك
+            الشيفرة</label
+          ><br />
+          <label><input type="radio" name="q1" value="d" /> أن نحفظه فقط</label>
+        </div>
+
+        <div class="question">
+          <p>٢. كيف وُصف القرآن؟</p>
+          <label><input type="radio" name="q2" value="a" /> كتاب حركات</label
+          ><br />
+          <label><input type="radio" name="q2" value="b" /> منهج كوني</label
+          ><br />
+          <label><input type="radio" name="q2" value="c" /> أرشيف تاريخي</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> مختارات شعرية</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">إرسال الإجابات</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The Qur’an commands us to read, reflect, and decode — not merely recite.",
+            fr: "Le Coran nous commande de lire, réfléchir et décoder — pas seulement réciter.",
+            ar: "القرآن يأمرنا أن نقرأ ونتدبر ونفك الشيفرة — لا أن نردد فقط.",
+          },
+          q2: {
+            en: "The Qur’an is described as a cosmic syllabus — not a book of choreography.",
+            fr: "Le Coran est décrit comme un programme cosmique — pas un manuel de chorégraphie.",
+            ar: "القرآن وُصف بأنه منهج كوني — لا كتاب حركات.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        // Store score for this section
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section1.html">🇬🇧 English</a>
+      <a href="../fr/section1.html">🇫🇷 Français</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.ar.html">العودة إلى البيان ←</a>
+      <a href="section2.html">→ القسم التالي</a>
+    </div>
+  </body>
+</html>

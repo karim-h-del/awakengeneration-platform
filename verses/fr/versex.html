@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Extension du Manifeste des Versets</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f9f9f9;
+        color: #222;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #005f73;
+        margin-bottom: 1rem;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        background-color: #e0f2f1;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+      }
+      li:hover {
+        background-color: #b2dfdb;
+      }
+      a {
+        text-decoration: none;
+        color: #00796b;
+        font-weight: 500;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📜 Explorer l’extension du Manifeste des Versets</h1>
+    <ul id="verse-list">
+      <li>
+        <a href="/verses/fr/verse1.html">Verset 1 – Création et conscience</a> |
+        <a href="/quizzes/verse1-quiz-fr.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/fr/verse2.html">Verset 2 – Révélation cellulaire</a> |
+        <a href="/quizzes/verse2-quiz-fr.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/fr/verse3.html">Verset 3 – Ordre cosmique</a> |
+        <a href="/quizzes/verse3-quiz-fr.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/fr/verse4.html">Verset 4 – Lire avec discernement</a> |
+        <a href="/quizzes/verse4-quiz-fr.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/fr/verse5.html"
+          >Verset 5 – Le calame et la transmission</a
+        >
+        | <a href="/quizzes/verse5-quiz-fr.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/fr/verse6.html">Verset 6 – Éveil éthique</a> |
+        <a href="/quizzes/verse6-quiz-fr.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/fr/verse7.html">Verset 7 – Héritage et intendance</a> |
+        <a href="/quizzes/verse7-quiz-fr.html">Quiz</a>
+      </li>
+    </ul>
+
+    <button
+      id="reset-progress"
+      style="
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      "
+    >
+      🔄 Réinitialiser le progrès
+    </button>
+
+    <script>
+      const verseLinks = document.querySelectorAll("#verse-list a");
+
+      verseLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (localStorage.getItem(href) === "visited") {
+          link.style.fontWeight = "bold";
+          link.style.color = "#388e3c";
+        }
+        link.addEventListener("click", () => {
+          localStorage.setItem(href, "visited");
+        });
+        if (href.includes("quiz")) {
+          const key = href.split("/").pop().split(".")[0];
+          const score = localStorage.getItem(`score_${key}`);
+          if (score !== null) {
+            link.insertAdjacentHTML(
+              "afterend",
+              ` <span style="color:#388e3c;">✅ (${score})</span>`
+            );
+          }
+        }
+      });
+
+      document
+        .getElementById("reset-progress")
+        .addEventListener("click", () => {
+          if (
+            confirm("Êtes-vous sûr de vouloir réinitialiser tout le progrès ?")
+          ) {
+            verseLinks.forEach((link) => {
+              const href = link.getAttribute("href");
+              localStorage.removeItem(href);
+              const key = href.split("/").pop().split(".")[0];
+              localStorage.removeItem(`score_${key}`);
+            });
+            location.reload();
+          }
+        });
+    </script>
+  </body>
+</html>

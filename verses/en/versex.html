@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Verse Manifesto Extension</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f9f9f9;
+        color: #222;
+        margin: 0;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      h1 {
+        font-size: 2rem;
+        color: #005f73;
+        margin-bottom: 1rem;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        background-color: #e0f2f1;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+      }
+      li:hover {
+        background-color: #b2dfdb;
+      }
+      a {
+        text-decoration: none;
+        color: #00796b;
+        font-weight: 500;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📜 Explore the Verse Manifesto Extension</h1>
+    <ul id="verse-list">
+      <li>
+        <a href="/verses/en/verse1.html">Verse 1 – Creation & Consciousness</a>
+        | <a href="/quizzes/verse1-quiz-en.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/en/verse2.html">Verse 2 – Cellular Revelation</a> |
+        <a href="/quizzes/verse2-quiz-en.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/en/verse3.html">Verse 3 – Cosmic Order</a> |
+        <a href="/quizzes/verse3-quiz-en.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/en/verse4.html">Verse 4 – Read with Discernment</a> |
+        <a href="/quizzes/verse4-quiz-en.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/en/verse5.html">Verse 5 – The Pen & Transmission</a> |
+        <a href="/quizzes/verse5-quiz-en.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/en/verse6.html">Verse 6 – Ethical Awakening</a> |
+        <a href="/quizzes/verse6-quiz-en.html">Quiz</a>
+      </li>
+      <li>
+        <a href="/verses/en/verse7.html">Verse 7 – Legacy & Stewardship</a> |
+        <a href="/quizzes/verse7-quiz-en.html">Quiz</a>
+      </li>
+    </ul>
+
+    <button
+      id="reset-progress"
+      style="
+        margin-top: 2rem;
+        padding: 0.5rem 1rem;
+        background-color: #d32f2f;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      "
+    >
+      🔄 Reset Progress
+    </button>
+
+    <script>
+      const verseLinks = document.querySelectorAll("#verse-list a");
+
+      verseLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (localStorage.getItem(href) === "visited") {
+          link.style.fontWeight = "bold";
+          link.style.color = "#388e3c";
+        }
+        link.addEventListener("click", () => {
+          localStorage.setItem(href, "visited");
+        });
+        if (href.includes("quiz")) {
+          const key = href.split("/").pop().split(".")[0];
+          const score = localStorage.getItem(`score_${key}`);
+          if (score !== null) {
+            link.insertAdjacentHTML(
+              "afterend",
+              ` <span style="color:#388e3c;">✅ (${score})</span>`
+            );
+          }
+        }
+      });
+
+      document
+        .getElementById("reset-progress")
+        .addEventListener("click", () => {
+          if (confirm("Are you sure you want to reset all progress?")) {
+            verseLinks.forEach((link) => {
+              const href = link.getAttribute("href");
+              localStorage.removeItem(href);
+              const key = href.split("/").pop().split(".")[0];
+              localStorage.removeItem(`score_${key}`);
+            });
+            location.reload();
+          }
+        });
+    </script>
+  </body>
+</html>

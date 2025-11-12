@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      Section 5 Expansion – Consciousness Is the Journey Beyond Light
+    </title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 5: Consciousness Is the Journey Beyond Light</h1>
+
+    <p>
+      We are not merely bodies — we are data-bearing souls. At death, our
+      consciousness detaches from spacetime and traverses dimensions beyond
+      light, beyond decay, beyond entropy.
+    </p>
+
+    <h2>Scientific Parallels</h2>
+    <ul>
+      <li>
+        Einstein’s equations allow for wormholes — bridges between distant
+        points in spacetime. Some models suggest they could transmit information
+        faster than light.
+      </li>
+      <li>
+        Quantum entanglement shows that particles can be linked across vast
+        distances — hinting at non-local consciousness.
+      </li>
+      <li>
+        Black holes compress matter and time. The Qur’an speaks of the heavens
+        folding like a scroll (21:104) — a cosmic reset.
+      </li>
+    </ul>
+
+    <h2>Qur’anic Anchors</h2>
+    <ul>
+      <li>
+        Surah Al-Mu’minun (23:112–114): Time collapses after death — a day or
+        less is remembered.
+      </li>
+      <li>
+        Surah Al-Anbiya (21:104): The universe folds and is recreated — a
+        cyclical cosmology.
+      </li>
+    </ul>
+
+    <h2>Philosophical Reflection</h2>
+    <p>
+      Consciousness is not extinguished — it is transferred. Death is not an end
+      — it is a transition. The soul is not bound by the speed of light — it is
+      summoned by the speed of truth.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      The awakened generation must prepare not just for life, but for the
+      journey beyond it. We are not passengers of time — we are witnesses of
+      eternity.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz: Test Your Understanding</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. What does quantum entanglement suggest about consciousness?</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> It is limited by
+            gravity</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> It is extinguished at
+            death</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> It may operate
+            non-locally across space</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> It depends on physical
+            memory</label
+          >
+        </div>
+
+        <div class="question">
+          <p>
+            2. What does Surah Al-Mu’minun (23:112–114) imply about time after
+            death?
+          </p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Time expands
+            infinitely</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Time collapses and feels
+            brief</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Time becomes
+            cyclical</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Time is erased
+            completely</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">Submit Answers</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "Quantum entanglement suggests that consciousness may operate non-locally — beyond spatial constraints.",
+            fr: "L’intrication quantique suggère que la conscience peut fonctionner de manière non locale — au-delà des contraintes spatiales.",
+            ar: "التشابك الكمي يشير إلى أن الوعي قد يعمل بشكل غير محلي — خارج حدود المكان.",
+          },
+          q2: {
+            en: "Surah Al-Mu’minun shows that time after death collapses — it feels like a day or less.",
+            fr: "La sourate Al-Mu’minun montre que le temps après la mort s’effondre — il semble durer un jour ou moins.",
+            ar: "سورة المؤمنون تشير إلى أن الزمن بعد الموت ينهار — ويبدو وكأنه يوم أو أقل.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../fr/section5.html">🇫🇷 Français</a>
+      <a href="../ar/section5.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section6.html">Next Section →</a>
+    </div>
+  </body>
+</html>

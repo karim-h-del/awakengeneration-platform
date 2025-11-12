@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 5 – La conscience est le voyage au-delà de la lumière</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 5 : La conscience est le voyage au-delà de la lumière</h1>
+
+    <p>
+      Nous ne sommes pas simplement des corps — nous sommes des âmes porteuses
+      de données. À la mort, notre conscience se détache de l’espace-temps et
+      traverse des dimensions au-delà de la lumière, au-delà de la
+      décomposition, au-delà de l’entropie.
+    </p>
+
+    <h2>Parallèles scientifiques</h2>
+    <ul>
+      <li>
+        Les équations d’Einstein permettent l’existence de trous de ver — des
+        ponts entre des points distants de l’espace-temps. Certains modèles
+        suggèrent qu’ils pourraient transmettre l’information plus vite que la
+        lumière.
+      </li>
+      <li>
+        L’intrication quantique montre que des particules peuvent être liées à
+        travers de vastes distances — suggérant une conscience non locale.
+      </li>
+      <li>
+        Les trous noirs compriment la matière et le temps. Le Coran parle des
+        cieux qui se plient comme un parchemin (21:104) — une réinitialisation
+        cosmique.
+      </li>
+    </ul>
+
+    <h2>Références coraniques</h2>
+    <ul>
+      <li>
+        Sourate Al-Mu’minun (23:112–114) : Le temps s’effondre après la mort —
+        un jour ou moins est retenu.
+      </li>
+      <li>
+        Sourate Al-Anbiya (21:104) : L’univers se replie et est recréé — une
+        cosmologie cyclique.
+      </li>
+    </ul>
+
+    <h2>Réflexion philosophique</h2>
+    <p>
+      La conscience n’est pas éteinte — elle est transférée. La mort n’est pas
+      une fin — c’est une transition. L’âme n’est pas limitée par la vitesse de
+      la lumière — elle est convoquée par la vitesse de la vérité.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      La génération éveillée doit se préparer non seulement à la vie, mais au
+      voyage qui la dépasse. Nous ne sommes pas des passagers du temps — nous
+      sommes des témoins de l’éternité.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>
+            1. Que suggère l’intrication quantique à propos de la conscience ?
+          </p>
+          <label
+            ><input type="radio" name="q1" value="a" /> Qu’elle est limitée par
+            la gravité</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Qu’elle s’éteint à la
+            mort</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Qu’elle peut fonctionner
+            de manière non locale</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Qu’elle dépend de la
+            mémoire physique</label
+          >
+        </div>
+
+        <div class="question">
+          <p>
+            2. Que révèle la sourate Al-Mu’minun (23:112–114) sur le temps après
+            la mort ?
+          </p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Le temps s’étend à
+            l’infini</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Le temps s’effondre et
+            semble bref</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Le temps devient
+            cyclique</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Le temps est
+            complètement effacé</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "Quantum entanglement suggests that consciousness may operate non-locally — beyond spatial constraints.",
+            fr: "L’intrication quantique suggère que la conscience peut fonctionner de manière non locale — au-delà des contraintes spatiales.",
+            ar: "التشابك الكمي يشير إلى أن الوعي قد يعمل بشكل غير محلي — خارج حدود المكان.",
+          },
+          q2: {
+            en: "Surah Al-Mu’minun shows that time after death collapses — it feels like a day or less.",
+            fr: "La sourate Al-Mu’minun montre que le temps après la mort s’effondre — il semble durer un jour ou moins.",
+            ar: "سورة المؤمنون تشير إلى أن الزمن بعد الموت ينهار — ويبدو وكأنه يوم أو أقل.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)} :</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )} :</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section5.html">🇬🇧 English</a>
+      <a href="../ar/section5.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section5.html">Next Section →</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verset 4",
+    "language": "FR",
+    "date": "2025-11-12",
+    "theme": "Al-‘Alaq : Origine de l’humanité et rôle du calame"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "Que signifie « Lis au nom de ton Seigneur » ?",
+      "options": ["Lire uniquement le Coran", "Chercher la vérité avec une conscience croyante", "Mémoriser les textes anciens", "Lire pour devenir prophète"],
+      "answer": [1],
+      "explanation": "Cela symbolise la recherche de la vérité avec une conscience enracinée dans la foi en Dieu."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Selon le verset, de quoi l’homme a-t-il été créé ?",
+      "options": ["De lumière", "De poussière", "D’un caillot biologique (‘alaq)", "D’un souffle céleste"],
+      "answer": [2],
+      "explanation": "Le verset affirme que l’homme a été créé d’un ‘alaq, une substance biologique liée à la vie."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quel outil est mis en avant comme moyen d’enseignement ?",
+      "options": ["Le calame (plume)", "L’épée", "Le livre", "La tablette"],
+      "answer": [0],
+      "explanation": "Le calame est mis en avant comme instrument de l’enseignement et de la révélation."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Que symbolise l’enseignement divin dans ce passage ?",
+      "options": ["L’autorité politique", "L’éveil moral et intellectuel", "La domination militaire", "La récitation rituelle"],
+      "answer": [1],
+      "explanation": "L’enseignement divin symbolise l’éveil moral et intellectuel qui guide l’humanité."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quel appel éthique ces versets présentent-ils ?",
+      "options": ["Rejeter la science moderne", "Se retirer de la société", "Préserver uniquement les Écritures", "Apprendre avec humilité et responsabilité"],
+      "answer": [3],
+      "explanation": "Les versets appellent à apprendre avec humilité et responsabilité, conscients de l’origine humaine."
+    }
+  ]
+}

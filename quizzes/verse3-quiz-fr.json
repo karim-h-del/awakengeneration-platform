@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verset 3",
+    "language": "FR",
+    "date": "2025-11-12",
+    "theme": "Équilibre du cosmos"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "Quel principe physique ce verset reflète-t-il ?",
+      "options": ["Thermodynamique", "Équilibre gravitationnel", "Rayonnement électromagnétique", "Fusion nucléaire"],
+      "answer": [1],
+      "explanation": "Le verset reflète l’équilibre gravitationnel comme partie de l’ordre cosmique."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Que signifie l’avertissement du verset ?",
+      "options": ["Ne pas transgresser le balance", "Ignorer les étoiles", "Oublier l’histoire", "Rejeter les prophètes"],
+      "answer": [0],
+      "explanation": "Le verset avertit de ne pas transgresser le balance, en respectant l’ordre divin."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quelle force invisible aide à maintenir la structure de l’univers ?",
+      "options": ["Vent solaire", "Champs magnétiques", "Matière noire", "Rayons ultraviolets"],
+      "answer": [2],
+      "explanation": "La matière noire est une force invisible qui aide à maintenir la structure cosmique."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quelle leçon éthique est impliquée par le balance ?",
+      "options": ["Chercher la richesse", "Respecter les limites", "Éviter la science", "Suivre seulement les rituels"],
+      "answer": [1],
+      "explanation": "Le balance implique de respecter les limites et de vivre éthiquement dans l’ordre divin."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quel théorème scientifique correspond à l’idée de symétrie ?",
+      "options": ["Effet tunnel quantique", "Théorème de Noether", "Effet Doppler", "Augmentation de l’entropie"],
+      "answer": [1],
+      "explanation": "Le théorème de Noether correspond à la symétrie et aux lois de conservation."
+    }
+  ]
+}

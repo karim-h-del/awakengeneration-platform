@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Awakened Generation: A multilingual platform for inquiry, reflection, and revival."
+    />
+    <meta
+      name="keywords"
+      content="awakening, curriculum, multilingual, Quran, reflection, science, ethics"
+    />
+    <meta name="author" content="Karim" />
+    <meta property="og:title" content="Awakened Generation" />
+    <meta
+      property="og:description"
+      content="Explore the manifesto, decode the curriculum, and join the journey beyond ritual."
+    />
+    <meta
+      property="og:image"
+      content="https://awakenedgeneration.netlify.app/assets/og-image.jpg"
+    />
+    <meta property="og:url" content="https://awakenedgeneration.netlify.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>The Manifesto of the Awakened Generation</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="stylesheet" href="assets/css/index-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://awakenedgeneration.netlify.app/index.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="fr"
+      href="https://awakenedgeneration.netlify.app/index.fr.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="ar"
+      href="https://awakenedgeneration.netlify.app/index.ar.html"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 🌙 Apply dark mode if enabled
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+
+        // 🌗 Toggle dark mode
+        window.toggleDarkMode = function () {
+          const isDark = document.body.classList.toggle("dark-mode");
+          localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+        };
+
+        // ❌ Dismiss banner
+        window.dismissBanner = function () {
+          const banner = document.getElementById("launchBanner");
+          if (banner) banner.style.display = "none";
+        };
+
+        // 📊 Render progress
+        const lang = document.documentElement.lang;
+        const progressList = document.getElementById("progress-list");
+
+        const labels = {
+          en: { score: "Score", incomplete: "Not completed" },
+          fr: { score: "Score", incomplete: "Non complété" },
+          ar: { score: "النتيجة", incomplete: "غير مكتمل" },
+        };
+
+        const { score, incomplete } = labels[lang] || labels.en;
+
+        const sections = [
+          "section1",
+          "section2",
+          "section3",
+          "section4",
+          "section5",
+          "section6",
+          "section7",
+        ];
+
+        const verses = ["verse1", "verse2", "verse3"];
+
+        if (progressList) {
+          [...sections, ...verses].forEach((id) => {
+            const value = localStorage.getItem(`score_${id}`);
+            const item = document.createElement("li");
+
+            if (value !== null) {
+              item.innerHTML = `${id.toUpperCase()}: ✅ ${score}: ${value}`;
+              item.style.color = id.startsWith("verse") ? "teal" : "green";
+            } else {
+              item.innerHTML = `${id.toUpperCase()}: ❌ ${score}: ${incomplete}`;
+              item.style.color = "gray";
+            }
+
+            progressList.appendChild(item);
+          });
+        }
+
+        // ✅ Language toggle logic — now inside DOMContentLoaded
+        window.showLang = function (lang) {
+          document
+            .querySelectorAll(".lang-block")
+            .forEach((div) => (div.style.display = "none"));
+          document.getElementById("lang-" + lang).style.display = "block";
+        };
+      });
+    </script>
+    <style>
+      .dark-mode {
+        background-color: #121212;
+        color: #eee;
+      }
+      .dark-mode a {
+        color: #66ccff;
+      }
+      .dark-mode .nav-buttons a {
+        background-color: #444;
+        color: #eee;
+      }
+      .dark-mode .nav-buttons a:hover {
+        background-color: #666;
+      }
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="launch-banner" id="launchBanner">
+      <img
+        src="assets/images/banner.jpg"
+        alt="Awakened Generation banner showing multilingual curriculum and cosmic awakening"
+      />
+      <p>
+        <strong>🚀 Welcome to Awakened Generation:</strong> A platform for
+        inquiry, reflection, and revival. Explore the manifesto, decode the
+        curriculum, and join the journey beyond ritual.
+      </p>
+      <button
+        onclick="dismissBanner()"
+        class="banner-button"
+        aria-label="Start reading the curriculum"
+      >
+        Start Reading
+      </button>
+      <span
+        class="close-banner"
+        onclick="dismissBanner()"
+        aria-label="Dismiss launch banner"
+        >✖</span
+      >
+    </div>
+
+    <header>
+      <h1>The Manifesto of the Awakened Generation</h1>
+    </header>
+
+    <p>
+      <em
+        >In the name of the Creator of Existence, who encoded the cosmos with
+        law, the soul with trust, and the intellect with light:</em
+      >
+    </p>
+
+    <p>
+      We were born into dust, but not into blindness.<br />
+      We inherited ritual, but not revelation.<br />
+      We were handed slogans, but we seek signs.
+    </p>
+
+    <p><strong>We declare that:</strong></p>
+
+    <h2 id="section1">1. Revelation Is a Code, Not a Costume</h2>
+    <p>
+      The Qur’an is not a book of choreography. It is a cosmic syllabus.<br />
+      It speaks of hydrogen, gravity, entropy, and emergence.<br />
+      It commands us to read — not just recite. To reflect — not just repeat. To
+      decode — not just decorate.
+    </p>
+    <p>
+      <a href="sections/en/section1.html"
+        >[Read more: Scientific and historical context]</a
+      >
+    </p>
+
+    <h2 id="section2">2. Sunna Is Memory, Not Revelation</h2>
+    <p>
+      We honor the Prophet ﷺ as the transmitter of divine light.<br />
+      But we do not confuse biography with divine speech.<br />
+      Ibn Ishaq compiled, Al-Shafi‘i codified — but only God legislates.<br />
+      We reclaim the Qur’an as the sole source of revelation.
+    </p>
+    <p>
+      <a href="sections/en/section2.html"
+        >[Read more: Historical evolution of Sunna]</a
+      >
+    </p>
+
+    <h2 id="section3">3. Mosques Must Awaken or Be Emptied</h2>
+    <p>
+      We do not reject prayer — we reject stagnation.<br />
+      We do not abandon community — we abandon conformity.<br />
+      If a mosque teaches ritual without reason, it is a shell. If it silences
+      inquiry, it is a tomb.<br />
+      We will build sanctuaries of thought, not just walls of stone.
+    </p>
+    <p>
+      <a href="sections/en/section3.html"
+        >[Read more: Institutional critique and reform]</a
+      >
+    </p>
+
+    <h2 id="section4">4. Haman Is the Architect of Oppression</h2>
+    <p>
+      Pharaoh is the tyrant. Qarun is the financier.<br />
+      But Haman is the most dangerous — the builder of false doctrine.<br />
+      He hides in ministries, media, and curricula. He designs systems that
+      enslave minds while praising freedom.<br />
+      We will expose him. We will dismantle his architecture.
+    </p>
+    <p>
+      <a href="sections/en/section4.html"
+        >[Read more: Qur’anic archetypes and modern systems]</a
+      >
+    </p>
+
+    <h2 id="section5">5. Consciousness Is the Journey Beyond Light</h2>
+    <p>
+      We are not flesh — we are data-bearing souls.<br />
+      At death, our consciousness travels faster than light, through wormholes
+      of divine design.<br />
+      We will be folded into the scroll of existence, as promised in Surah
+      Al-Anbiya.<br />
+      Time will collapse. Truth will unfold. Judgment will be just.
+    </p>
+    <p>
+      <a href="sections/en/section5.html"
+        >[Read more: Physics, resurrection, and eschatology]</a
+      >
+    </p>
+
+    <h2 id="section6">6. Forgiveness Is the First Step of Revolution</h2>
+    <p>
+      We do not blame our parents. We do not curse the ignorant.<br />
+      We forgive — and we rebuild.<br />
+      We honor the verse: “And We have enjoined upon man [care] for his
+      parents…”<br />
+      Even when they strive against truth, we respond with kindness — and
+      correction.
+    </p>
+    <p>
+      <a href="sections/en/section6.html"
+        >[Read more: Ethics of intergenerational awakening]</a
+      >
+    </p>
+
+    <h2 id="section7">7. We Are the Generation of Awakening</h2>
+    <p>
+      We will not be pacified by aid, distracted by slogans, or divided by
+      sects.<br />
+      We are not Sunni, Shia, Salafi, or Sufi — we are seekers.<br />
+      We are not Arab, Amazigh, African, or European — we are human.<br />
+      We are not followers of ritual — we are followers of revelation.
+    </p>
+    <p>
+      <a href="sections/en/section7.html"
+        >[Read more: Global solidarity and epistemic sovereignty]</a
+      >
+    </p>
+    <p>
+      <a href="/verses/en/versex.html"
+        >📜 Explore the Verse Manifesto Extension</a
+      >
+    </p>
+
+    <section id="beyond-labels">
+      <h2>🕊️ Beyond Labels: The Religion of Submission</h2>
+      <p>
+        <strong>True religion is not a label.</strong><br />It is not
+        “Christian,” “Jewish,” or “Muslim.”<br />It is the original way of
+        obedience — revealed when the heavens and the earth responded,
+        <em>“We came willingly.”</em>
+      </p>
+
+      <h3>📖 Qur’anic Foundation</h3>
+      <blockquote>
+        “Indeed, those who believed and those who were Jews and the Christians
+        and the Sabians — those who believed in Allah and the Last Day and did
+        righteousness — will have their reward with their Lord…”<br /><em
+          >(Surah Al-Baqara 2:62)</em
+        >
+      </blockquote>
+      <p>
+        The phrase <em>“those who believed”</em> refers to a subset from each
+        group — those who truly submitted. They form the real Muslim community:
+        those who believe in God, the Last Day, and do good.
+      </p>
+
+      <h3>🧠 Belief as Inquiry</h3>
+      <p>
+        To believe in the unseen is not to accept blindly — it is to seek,
+        decode, and transform. The unseen is <em>Anbaa’</em> — news — and must
+        be interpreted into objective truth that uplifts humanity.
+      </p>
+
+      <h3>🌟 Eternal Reward</h3>
+      <blockquote>
+        “Indeed, those for whom the best [reward] has preceded from Us — they
+        will be far removed from it. They will not hear its faintest sound,
+        while they are, in that which their souls desire, abiding eternally.”<br /><em
+          >(Surah Al-Anbiya 21:101–102)</em
+        >
+      </blockquote>
+
+      <h3>🧬 Identity Is Obedience</h3>
+      <p>
+        We are not sects. We are not slogans. We are the generation that submits
+        — willingly, consciously, universally.
+      </p>
+    </section>
+    <section id="sleep-of-learned">
+      <div class="language-toggle">
+        <button onclick="showLang('en')">🇬🇧 English</button>
+        <button onclick="showLang('fr')">🇫🇷 Français</button>
+        <button onclick="showLang('ar')">🇦🇪 العربية</button>
+      </div>
+
+      <div id="lang-en" class="lang-block">
+        <h2>The Sleep of a Learned Man</h2>
+        <p>
+          <em
+            >“The sleep of a learned man is better than the standing of an
+            ignorant man.”</em
+          >
+        </p>
+        <p>
+          This is not a metaphor for laziness. It is a rebuke of ritualism
+          without understanding.<br />
+          Motion without meaning is not worship. Silence filled with insight
+          outweighs noise devoid of reflection.
+        </p>
+        <p>
+          For 1445 years, the message of Muhammad ﷺ has echoed. Yet many nations
+          — especially Arab ones — remain shackled by inherited forms.<br />
+          They recite:
+          <em
+            >“Indeed, Allah does not change the condition of a people until they
+            change what is in themselves.”</em
+          >
+          (Qur’an 13:11)<br />
+          But they have not changed.
+        </p>
+        <p>
+          Their mosques remain static. Their sermons repeat inherited scripts.
+          Their institutions cling to the four madhhabs as if they were
+          divine.<br />
+          Echoing the cry of the enemies of Noah:
+          <em>“Never abandon your gods: Wadd, Suwa’, Ya’uq, and Nasr.”</em>
+          (Qur’an 71:23)
+        </p>
+        <p>
+          Behind every Pharaoh is a Haman — the builder of towers, the enforcer
+          of orthodoxy.<br />
+          Today’s Haman is not a minister of bricks, but a guardian of inherited
+          jurisprudence.<br />
+          He silences inquiry, institutionalizes stagnation, and calls it
+          tradition.
+        </p>
+        <p>
+          We reject inherited ritualism.<br />
+          We reclaim revelation as a living code — one that evolves, provokes,
+          and awakens.<br />
+          We honor the sleep of the learned man, because his stillness is filled
+          with light.<br />
+          We challenge the standing of the ignorant man, because his motion is
+          hollow.
+        </p>
+      </div>
+
+      <div id="lang-fr" class="lang-block" style="display: none">
+        <h2>Le Sommeil du Savant</h2>
+        <p>
+          <em
+            >« Le sommeil d’un homme savant vaut mieux que la station d’un
+            ignorant. »</em
+          >
+        </p>
+        <p>
+          Ce n’est pas une métaphore de paresse, mais une critique du ritualisme
+          sans compréhension.<br />
+          Le mouvement sans sens n’est pas adoration. Le silence nourri de
+          sagesse vaut mieux que le bruit vide de réflexion.
+        </p>
+        <p>
+          Depuis 1445 ans, le message de Muhammad ﷺ résonne. Et pourtant, de
+          nombreuses nations — surtout arabes — restent prisonnières des formes
+          héritées.<br />
+          Elles récitent :
+          <em
+            >« En vérité, Allah ne change pas l’état d’un peuple tant qu’ils ne
+            changent pas ce qui est en eux. »</em
+          >
+          (Coran 13:11)<br />
+          Mais elles n’ont pas changé.
+        </p>
+        <p>
+          Leurs mosquées restent figées. Leurs sermons répètent des scripts
+          anciens. Leurs institutions s’accrochent aux quatre écoles comme si
+          elles étaient divines.<br />
+          Reprenant le cri des ennemis de Noé :
+          <em
+            >« N’abandonnez jamais vos dieux : Wadd, Suwâ’, Ya’uq et Nasr. »</em
+          >
+          (Coran 71:23)
+        </p>
+        <p>
+          Derrière chaque Pharaon se cache un Hâmân — bâtisseur de tours,
+          gardien de l’orthodoxie.<br />
+          Le Hâmân d’aujourd’hui n’est pas ministre de briques, mais gardien de
+          jurisprudence figée.<br />
+          Il étouffe la réflexion, institutionnalise la stagnation, et appelle
+          cela tradition.
+        </p>
+        <p>
+          Nous rejetons le ritualisme hérité.<br />
+          Nous revendiquons la révélation comme un code vivant — qui évolue,
+          provoque et réveille.<br />
+          Nous honorons le sommeil du savant, car son calme est lumière.<br />
+          Nous défions la station de l’ignorant, car son agitation est vide.
+        </p>
+      </div>
+
+      <div id="lang-ar" class="lang-block" style="display: none" dir="rtl">
+        <h2>نوم العالم</h2>
+        <p><em>« نوم العالم خير من قيام الجاهل »</em></p>
+        <p>
+          ليست هذه استعارة للكسل، بل نقد للطقوس بلا فهم.<br />
+          الحركة بلا معنى ليست عبادة. والصمت المملوء بالبصيرة خير من الضجيج
+          الخالي من التأمل.
+        </p>
+        <p>
+          منذ ١٤٤٥ سنة، ورسالة محمد ﷺ تتردد. ومع ذلك، لا تزال كثير من الأمم —
+          وخاصة العربية — مقيدة بالأشكال الموروثة.<br />
+          يرددون:
+          <em
+            >« إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا مَا
+            بِأَنْفُسِهِمْ »</em
+          >
+          (الرعد: ١١)<br />
+          لكنهم لم يغيروا شيئًا.
+        </p>
+        <p>
+          مساجدهم جامدة. خطبهم تكرر نصوصًا موروثة. مؤسساتهم تتمسك بالمذاهب
+          الأربعة وكأنها وحي.<br />
+          يرددون صرخة أعداء نوح:
+          <em
+            >« وَقَالُوا لَا تَذَرُنَّ آلِهَتَكُمْ وَلَا تَذَرُنَّ وَدًّا وَلَا
+            سُوَاعًا وَلَا يَغُوثَ وَيَعُوقَ وَنَسْرًا »</em
+          >
+          (نوح: ٢٣)
+        </p>
+        <p>
+          وراء كل فرعون هامان — باني الأبراج، حارس الجمود.<br />
+          هامان اليوم ليس وزير الطوب، بل حارس الفقه الموروث.<br />
+          يخنق التساؤل، ويؤسس للركود، ويسميه تقليدًا.
+        </p>
+        <p>
+          نحن نرفض الطقوس الموروثة.<br />
+          ونستعيد الوحي كرمز حي — يتطور، ويستفز، ويوقظ.<br />
+          نكرم نوم العالم، لأن سكونه نور.<br />
+          ونتحدى قيام الجاهل، لأن حركته خواء.
+        </p>
+      </div>
+    </section>
+    <hr />
+    <p>
+      <strong
+        >This is our oath. This is our awakening. This is our legacy.</strong
+      >
+    </p>
+
+    <section id="verse-index">
+      <h2>📜 Explore the Verses</h2>
+      <ul>
+        <li>
+          Verse 1: <a href="/verses/en/verse1.html">EN</a> |
+          <a href="/verses/fr/verse1.html">FR</a> |
+          <a href="/verses/ar/verse1.html">AR</a>
+        </li>
+        <li>
+          Verse 2: <a href="/verses/en/verse2.html">EN</a> |
+          <a href="/verses/fr/verse2.html">FR</a> |
+          <a href="/verses/ar/verse2.html">AR</a>
+        </li>
+        <li>
+          Verse 3: <a href="/verses/en/verse3.html">EN</a> |
+          <a href="/verses/fr/verse3.html">FR</a> |
+          <a href="/verses/ar/verse3.html">AR</a>
+        </li>
+        <li>
+          Verse 4: <a href="/verses/en/verse4.html">EN</a> |
+          <a href="/verses/fr/verse4.html">FR</a> |
+          <a href="/verses/ar/verse4.html">AR</a>
+        </li>
+        <li>
+          Verse 5: <a href="/verses/en/verse5.html">EN</a> |
+          <a href="/verses/fr/verse5.html">FR</a> |
+          <a href="/verses/ar/verse5.html">AR</a>
+        </li>
+        <li>
+          Verse 6: <a href="/verses/en/verse6.html">EN</a> |
+          <a href="/verses/fr/verse6.html">FR</a> |
+          <a href="/verses/ar/verse6.html">AR</a>
+        </li>
+        <li>
+          Verse 7: <a href="/verses/en/verse7.html">EN</a> |
+          <a href="/verses/fr/verse7.html">FR</a> |
+          <a href="/verses/ar/verse7.html">AR</a>
+        </li>
+        <li>
+          Verse X: <a href="/verses/en/versex.html">EN</a> |
+          <a href="/verses/fr/versex.html">FR</a> |
+          <a href="/verses/ar/versex.html">AR</a>
+        </li>
+      </ul>
+    </section>
+    <p><a href="/quizzes/quiz-index.html">🧪 Go to Quiz Index</a></p>
+
+    <section id="progress-section">
+      <h2>📊 Your Progress</h2>
+      <ul id="progress-list"></ul>
+    </section>
+
+    <!-- Controls -->
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()" aria-label="Toggle dark mode">
+        🌙 Toggle Dark Mode
+      </button>
+    </div>
+
+    <nav class="nav-buttons" role="navigation" aria-label="Language switcher">
+      <a href="index.html" aria-label="English version">English</a>
+      <a href="index.fr.html" aria-label="French version">Français</a>
+      <a href="index.ar.html" aria-label="Arabic version">العربية</a>
+    </nav>
+    <form
+      name="reflection"
+      method="POST"
+      data-netlify="true"
+      action="/thank-you.html"
+    >
+      <input type="hidden" name="form-name" value="reflection" />
+      <input type="hidden" name="form-name" value="reflection" />
+      <input type="hidden" name="verse" value="verse1" />
+      <label>Your thoughts:</label>
+      <textarea name="message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </body>
+</html>

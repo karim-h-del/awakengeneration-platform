@@ -1,0 +1,57 @@
+[
+  {
+    "type": "singleSelect",
+    "question": "What does Surah Adh-Dhaariyat 51:23 compare divine truth to?",
+    "options": [
+      "The movement of stars",
+      "The clarity of human speech",
+      "The silence of night",
+      "The orbit of the moon"
+    ],
+    "answer": [1],
+    "explanation": "The verse affirms that divine truth is as certain and clear as human speech."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Which concept in computing mirrors the binary nature of truth and falsehood?",
+    "options": [
+      "Data encryption",
+      "Quantum entanglement",
+      "Neural networks",
+      "Logic gates"
+    ],
+    "answer": [3],
+    "explanation": "Logic gates operate on binary principles — true/false, 1/0 — reflecting the structure of truth."
+  },
+  {
+    "type": "singleSelect",
+    "question": "What is the significance of the terms 'Nazzala' and 'Anzala' in Qur’anic revelation?",
+    "options": [
+      "They describe angelic hierarchy",
+      "They refer to different prophets",
+      "They reflect gradual vs. sudden revelation",
+      "They distinguish between Meccan and Medinan verses"
+    ],
+    "answer": [2],
+    "explanation": "‘Nazzala’ implies gradual descent, while ‘Anzala’ suggests sudden revelation — both requiring layered understanding."
+  },
+  {
+    "type": "singleSelect",
+    "question": "How does the Qur’an reflect a system of divine logic?",
+    "options": [
+      "Through consistent themes and probabilistic insight",
+      "Through historical narratives",
+      "Through legal rulings",
+      "Through poetic metaphors"
+    ],
+    "answer": [0],
+    "explanation": "The Qur’an uses recurring themes, patterns, and layered meanings — forming a system of divine logic."
+  },
+  {
+    "type": "singleSelect",
+    "question": "What does the verse invite us to study revelation like?",
+    "options": ["Astronomy", "Mathematics", "Poetry", "History"],
+    "answer": [1],
+    "explanation": "Revelation is presented as a system — to be studied with the rigor, humility, and awe we apply to mathematics."
+  }
+]

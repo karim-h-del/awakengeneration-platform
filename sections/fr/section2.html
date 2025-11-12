@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 2 – La Sunna est mémoire, non révélation</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 2 : La Sunna est mémoire, non révélation</h1>
+
+    <p>
+      La Sunna prophétique est un enregistrement des actes, paroles et
+      approbations du Prophète Muhammad ﷺ — préservée par la narration, la
+      compilation et la codification. C’est une mémoire, non une révélation. La
+      révélation est le Coran seul : direct, inaltéré et divinement protégé.
+    </p>
+
+    <h2>Contexte historique</h2>
+    <ul>
+      <li>
+        <strong>Ibn Ishaq</strong> (mort en 767) : a compilé la première
+        biographie connue du Prophète, basée sur des traditions orales et des
+        récits tribaux. Son œuvre fut ensuite éditée par Ibn Hisham, qui en a
+        retiré les éléments jugés controversés.
+      </li>
+      <li>
+        <strong>Al-Shafi‘i</strong> (mort en 820) : a formalisé la Sunna comme
+        seconde source législative, affirmant que les actes du Prophète étaient
+        guidés par Dieu et donc juridiquement contraignants. Ce fut un tournant
+        : la mémoire devint norme.
+      </li>
+      <li>
+        Les premiers juristes ont débattu de la fiabilité des chaînes de
+        transmission, du rôle de la raison (*ʿaql*) et de la suprématie du
+        Coran. L’élévation de la Sunna n’était pas prophétique — elle était
+        institutionnelle.
+      </li>
+    </ul>
+
+    <h2>Fondements théologiques</h2>
+    <ul>
+      <li>
+        Le Coran ne qualifie jamais la Sunna de révélation. Il ordonne
+        l’obéissance au Prophète, mais toujours dans le cadre de la guidance
+        coranique.
+      </li>
+      <li>
+        Sourate Al-Haqqah (69:44–46) : *« S’il avait inventé quelque parole en
+        Notre nom, Nous l’aurions saisi par la main droite, puis Nous lui
+        aurions tranché l’aorte. »* — un avertissement clair contre
+        l’attribution de fausse révélation.
+      </li>
+      <li>
+        Sourate Al-Furqan (25:30) : *« Et le Messager dira : ‘Ô mon Seigneur,
+        mon peuple a pris ce Coran pour une chose délaissée.’ »* — c’est le
+        Coran, non la Sunna, qui est le critère d’abandon.
+      </li>
+    </ul>
+
+    <h2>Réflexion philosophique</h2>
+    <p>
+      Élever la Sunna au rang de révélation brouille la frontière entre parole
+      divine et mémoire humaine. Cela risque de transformer la jurisprudence en
+      dogme, et la biographie en législation. La génération éveillée doit
+      distinguer ce que Dieu a dit — et ce qui fut retenu de Son Messager.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      Nous honorons le Prophète ﷺ en préservant sa mémoire, non en la confondant
+      avec la révélation. Le Coran est la seule source divine protégée,
+      universelle et inaltérable. La Sunna est précieuse — mais elle n’est pas
+      un code sacré.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. Qu’est-ce que la Sunna selon cette section ?</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> Une seconde
+            révélation</label
+          ><br />
+          <label><input type="radio" name="q1" value="b" /> Un code sacré</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Un enregistrement
+            mémoriel</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Un commandement
+            divin</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. Que met en garde la sourate Al-Haqqah (69:44–46) ?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> L’abandon de la
+            Sunna</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> L’attribution de fausse
+            révélation</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> L’oubli de la biographie
+            prophétique</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> La mauvaise
+            interprétation des chaînes de transmission</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The Sunna is a record of the Prophet’s actions and sayings — preserved memory, not revelation.",
+            fr: "La Sunna est un enregistrement des actes et paroles du Prophète — une mémoire préservée, pas une révélation.",
+            ar: "السنة هي سجل لأفعال وأقوال النبي — ذاكرة محفوظة وليست وحياً.",
+          },
+          q2: {
+            en: "Surah Al-Haqqah warns against attributing false revelation to the Prophet.",
+            fr: "La sourate Al-Haqqah met en garde contre l’attribution de fausse révélation au Prophète.",
+            ar: "سورة الحاقة تحذر من نسبة الوحي الكاذب إلى النبي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)} :</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )} :</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section2.html">🇬🇧 English</a>
+      <a href="../ar/section2.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section2.html">Next Section →</a>
+    </div>
+  </body>
+</html>

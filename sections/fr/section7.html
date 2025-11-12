@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 7 – Nous sommes la génération de l’éveil</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 7 : Nous sommes la génération de l’éveil</h1>
+
+    <p>
+      Nous ne sommes pas définis par une secte, une ethnie ou une géographie.
+      Nous sommes définis par notre volonté de nous éveiller — de questionner,
+      de décoder, de reconstruire. Nous sommes la génération qui refuse
+      d’hériter l’aveuglement.
+    </p>
+
+    <h2>Perspective mondiale</h2>
+    <ul>
+      <li>
+        Partout dans le monde, les jeunes rejettent les dogmes hérités — qu’ils
+        soient religieux, politiques ou culturels. Ils cherchent du sens, pas de
+        la répétition.
+      </li>
+      <li>
+        Les outils numériques nous permettent de nous connecter, d’apprendre et
+        de nous organiser — mais aussi d’être manipulés. L’éveil exige du
+        discernement.
+      </li>
+      <li>
+        Nous ne sommes pas divisés par la langue ou la race — nous sommes unis
+        par la quête de vérité.
+      </li>
+    </ul>
+
+    <h2>Références coraniques</h2>
+    <ul>
+      <li>
+        Sourate Al-Hujurat (49:13) : *« Ô hommes ! Nous vous avons créés d’un
+        mâle et d’une femelle, et Nous avons fait de vous des peuples et des
+        tribus, pour que vous vous connaissiez… »*
+      </li>
+      <li>
+        Sourate Al-Isra (17:36) : *« Et ne poursuis pas ce dont tu n’as aucune
+        connaissance… »*
+      </li>
+    </ul>
+
+    <h2>Réflexion philosophique</h2>
+    <p>
+      S’éveiller, c’est retrouver son pouvoir. Penser, c’est adorer. S’unir,
+      c’est résister. Nous ne sommes pas les adeptes du rituel — nous sommes les
+      chercheurs de révélation.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      Ceci est notre serment. Ceci est notre éveil. Ceci est notre héritage.
+      Qu’il résonne à travers les langues, les terres et les générations.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz : Testez votre compréhension</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. Qu’est-ce qui définit la génération de l’éveil ?</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> L’ethnie et la
+            géographie</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Le rituel et la
+            tradition</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> La volonté de
+            questionner et reconstruire</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> L’allégeance
+            politique</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. Que commande la sourate Al-Isra (17:36) ?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> De suivre les coutumes
+            héritées</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> D’obéir aux leaders sans
+            question</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> D’éviter la connaissance
+            et la réflexion</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> De ne suivre que ce que
+            l’on connaît vraiment</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+          Soumettre les réponses
+        </button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "d",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The generation of awakening is defined by its willingness to question, decode, and rebuild — not by inherited identity.",
+            fr: "La génération de l’éveil se définit par sa volonté de questionner, décoder et reconstruire — non par l’identité héritée.",
+            ar: "جيل اليقظة يتميز باستعداده للتساؤل والتفكيك وإعادة البناء — لا بالهوية الموروثة.",
+          },
+          q2: {
+            en: "Surah Al-Isra commands us to follow only what we truly know — not what we blindly inherit.",
+            fr: "La sourate Al-Isra nous ordonne de suivre uniquement ce que nous connaissons vraiment — et non ce que nous héritons aveuglément.",
+            ar: "سورة الإسراء تأمرنا باتباع ما نعلمه حقًا — لا ما نرثه دون وعي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)} :</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )} :</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section7.html">🇬🇧 English</a>
+      <a href="../ar/section7.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+    </div>
+  </body>
+</html>

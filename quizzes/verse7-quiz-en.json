@@ -1,0 +1,62 @@
+[
+  {
+    "type": "singleSelect",
+    "question": "What central theme is emphasized in Verse 7?",
+    "options": [
+      "Divine mercy and forgiveness",
+      "Cosmic expansion and entropy",
+      "Prophetic lineage and succession",
+      "Justice, balance, and ethical consequence"
+    ],
+    "answer": [3],
+    "explanation": "Verse 7 emphasizes divine justice and the balance of consequences — linking cosmic order to ethical accountability."
+  },
+  {
+    "type": "singleSelect",
+    "question": "How does the Qur’an describe the relationship between human actions and cosmic order?",
+    "options": [
+      "Human actions disrupt cosmic order",
+      "They are unrelated",
+      "Human actions are mirrored in cosmic balance",
+      "Cosmic order punishes all actions equally"
+    ],
+    "answer": [2],
+    "explanation": "The Qur’an often links human ethics to cosmic symmetry — actions are reflected in divine balance."
+  },
+  {
+    "type": "singleSelect",
+    "question": "What is the significance of the phrase 'whoever does an atom’s weight of good or evil shall see it'?",
+    "options": [
+      "It warns against scientific arrogance",
+      "It emphasizes divine surveillance",
+      "It refers to atomic physics",
+      "It affirms moral precision and accountability"
+    ],
+    "answer": [3],
+    "explanation": "This phrase affirms that even the smallest ethical actions are recorded and consequential — a principle of moral precision."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Which scientific principle resonates with the ethical symmetry described in Verse 7?",
+    "options": [
+      "The Doppler effect",
+      "The law of entropy",
+      "Heisenberg’s uncertainty principle",
+      "Newton’s third law"
+    ],
+    "answer": [3],
+    "explanation": "Newton’s third law — every action has an equal and opposite reaction — mirrors the Qur’anic theme of ethical consequence."
+  },
+  {
+    "type": "singleSelect",
+    "question": "What ethical lesson can be drawn from the cosmic framing of justice in Verse 7?",
+    "options": [
+      "Seek power to control outcomes",
+      "Act with awareness and integrity",
+      "Ignore small deeds",
+      "Avoid all risk"
+    ],
+    "answer": [1],
+    "explanation": "The verse teaches that every action matters — ethical awareness and integrity are essential in a balanced universe."
+  }
+]

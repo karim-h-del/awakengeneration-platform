@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 7 Expansion – We Are the Generation of Awakening</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 7: We Are the Generation of Awakening</h1>
+
+    <p>
+      We are not defined by sect, ethnicity, or geography. We are defined by our
+      willingness to awaken — to question, to decode, to rebuild. We are the
+      generation that refuses to inherit blindness.
+    </p>
+
+    <h2>Global Insight</h2>
+    <ul>
+      <li>
+        Across the world, youth are rejecting inherited dogma — whether
+        religious, political, or cultural. They seek meaning, not mimicry.
+      </li>
+      <li>
+        Digital tools allow us to connect, learn, and organize — but also to be
+        manipulated. Awakening requires discernment.
+      </li>
+      <li>
+        We are not divided by language or race — we are united by the search for
+        truth.
+      </li>
+    </ul>
+
+    <h2>Qur’anic Anchors</h2>
+    <ul>
+      <li>
+        Surah Al-Hujurat (49:13): *“O mankind, We created you from male and
+        female and made you peoples and tribes that you may know one another…”*
+      </li>
+      <li>
+        Surah Al-Isra (17:36): *“Do not follow that of which you have no
+        knowledge…”*
+      </li>
+    </ul>
+
+    <h2>Philosophical Reflection</h2>
+    <p>
+      To awaken is to reclaim agency. To think is to worship. To unite is to
+      resist. We are not the followers of ritual — we are the seekers of
+      revelation.
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      This is our oath. This is our awakening. This is our legacy. Let it echo
+      across languages, across lands, across generations.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz: Test Your Understanding</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. What defines the generation of awakening?</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> Ethnicity and
+            geography</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> Ritual and
+            tradition</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> Willingness to question
+            and rebuild</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> Political
+            allegiance</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. What does Surah Al-Isra (17:36) command?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> To follow inherited
+            customs</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> To obey leaders without
+            question</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> To avoid knowledge and
+            inquiry</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> To follow only what we
+            truly know</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">Submit Answers</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "d",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The generation of awakening is defined by its willingness to question, decode, and rebuild — not by inherited identity.",
+            fr: "La génération de l’éveil se définit par sa volonté de questionner, décoder et reconstruire — non par l’identité héritée.",
+            ar: "جيل اليقظة يتميز باستعداده للتساؤل والتفكيك وإعادة البناء — لا بالهوية الموروثة.",
+          },
+          q2: {
+            en: "Surah Al-Isra commands us to follow only what we truly know — not what we blindly inherit.",
+            fr: "La sourate Al-Isra nous ordonne de suivre uniquement ce que nous connaissons vraiment — et non ce que nous héritons aveuglément.",
+            ar: "سورة الإسراء تأمرنا باتباع ما نعلمه حقًا — لا ما نرثه دون وعي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../fr/section7.html">🇫🇷 Français</a>
+      <a href="../ar/section7.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons" style="justify-content: center">
+      <a href="../../index.html">← Back to Manifesto</a>
+    </div>
+  </body>
+</html>

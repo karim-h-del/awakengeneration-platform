@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>القسم ٥ – الوعي هو الرحلة ما بعد الضوء</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>القسم ٥: الوعي هو الرحلة ما بعد الضوء</h1>
+
+    <p>
+      لسنا مجرد أجساد — نحن أرواح تحمل بيانات. عند الموت، ينفصل وعينا عن الزمكان
+      ويعبر إلى أبعاد تتجاوز الضوء، والتحلل، والإنتروبيا.
+    </p>
+
+    <h2>مقارنات علمية</h2>
+    <ul>
+      <li>
+        معادلات أينشتاين تسمح بوجود الثقوب الدودية — جسور بين نقاط متباعدة في
+        الزمكان. بعض النماذج تشير إلى إمكانية نقل المعلومات أسرع من الضوء.
+      </li>
+      <li>
+        التشابك الكمي يُظهر أن الجسيمات يمكن أن ترتبط عبر مسافات شاسعة — مما
+        يلمّح إلى وعي غير محلي.
+      </li>
+      <li>
+        الثقوب السوداء تضغط المادة والزمن. والقرآن يتحدث عن طيّ السماوات كطيّ
+        السجل (٢١:١٠٤) — إعادة كونية.
+      </li>
+    </ul>
+
+    <h2>مرتكزات قرآنية</h2>
+    <ul>
+      <li>
+        سورة المؤمنون (١١٢–١١٤:٢٣): الزمن ينهار بعد الموت — لا يُذكر إلا كيوم أو
+        بعض يوم.
+      </li>
+      <li>سورة الأنبياء (١٠٤:٢١): يُطوى الكون ويُعاد خلقه — تصور كوني دوري.</li>
+    </ul>
+
+    <h2>تأمل فلسفي</h2>
+    <p>
+      الوعي لا يُطفأ — بل يُنقل. الموت ليس نهاية — بل انتقال. الروح لا تُقيد
+      بسرعة الضوء — بل تُستدعى بسرعة الحق.
+    </p>
+
+    <h2>خاتمة</h2>
+    <p>
+      على الجيل المستيقظ أن يستعد ليس فقط للحياة، بل للرحلة التي تتجاوزها. لسنا
+      ركّاب الزمن — نحن شهود الأبدية.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 اختبار: تحقق من فهمك</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>١. ماذا يلمّح إليه التشابك الكمي فيما يخص الوعي؟</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> أنه محدود
+            بالجاذبية</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> أنه ينطفئ عند
+            الموت</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> أنه قد يعمل بشكل غير
+            محلي</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> أنه يعتمد على الذاكرة
+            الجسدية</label
+          >
+        </div>
+
+        <div class="question">
+          <p>٢. ماذا تكشف سورة المؤمنون (٢٣:١١٢–١١٤) عن الزمن بعد الموت؟</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> أن الزمن يتمدد إلى ما لا
+            نهاية</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> أن الزمن ينهار ويبدو
+            قصيرًا</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> أن الزمن يصبح
+            دوريًا</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> أن الزمن يُمحى
+            تمامًا</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">إرسال الإجابات</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "b",
+        };
+
+        const explanations = {
+          q1: {
+            en: "Quantum entanglement suggests that consciousness may operate non-locally — beyond spatial constraints.",
+            fr: "L’intrication quantique suggère que la conscience peut fonctionner de manière non locale — au-delà des contraintes spatiales.",
+            ar: "التشابك الكمي يشير إلى أن الوعي قد يعمل بشكل غير محلي — خارج حدود المكان.",
+          },
+          q2: {
+            en: "Surah Al-Mu’minun shows that time after death collapses — it feels like a day or less.",
+            fr: "La sourate Al-Mu’minun montre que le temps après la mort s’effondre — il semble durer un jour ou moins.",
+            ar: "سورة المؤمنون تشير إلى أن الزمن بعد الموت ينهار — ويبدو وكأنه يوم أو أقل.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>السؤال ${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>السؤال ${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section5.html">🇬🇧 English</a>
+      <a href="../fr/section5.html">🇫🇷 Français</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.ar.html">العودة إلى البيان ←</a>
+      <a href="section6.html">→ القسم التالي</a>
+    </div>
+  </body>
+</html>

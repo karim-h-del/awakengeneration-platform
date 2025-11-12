@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verset 1",
+    "language": "FR",
+    "date": "2025-11-12",
+    "theme": "Expansion de l’univers"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "Quelle théorie scientifique correspond le mieux au verset décrivant les cieux et la terre unis ?",
+      "options": ["Tectonique des plaques", "Théorie du Big Bang", "Activité solaire", "Formation des trous noirs"],
+      "answer": [1],
+      "explanation": "Le verset évoque la théorie du Big Bang en décrivant la séparation cosmique."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Selon le verset, quelle est l’origine de la vie ?",
+      "options": ["Le feu", "La poussière", "L’eau", "L’air"],
+      "answer": [2],
+      "explanation": "Le verset affirme que toute vie provient de l’eau."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quel instrument de la NASA a mesuré l’expansion de l’univers ?",
+      "options": ["Télescope James Webb", "Rover martien", "Télescope spatial Hubble", "Sonde Voyager"],
+      "answer": [2],
+      "explanation": "Le télescope spatial Hubble a fourni des preuves de l’expansion cosmique."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Comment ce verset encourage-t-il la réflexion au-delà du rituel ?",
+      "options": ["Il décrit les mouvements de prière", "Il invite à une réflexion scientifique sur la création", "Il impose le jeûne lors d’événements cosmiques", "Il interdit de questionner les actes divins"],
+      "answer": [1],
+      "explanation": "Il invite l’humanité à réfléchir scientifiquement sur la création."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Quelle question philosophique découle de l’expansion de l’univers ?",
+      "options": ["La Terre est-elle plate ?", "Qu’y a-t-il au-delà de l’univers ?", "Peut-on toucher les étoiles ?", "Les planètes orbitent-elles au hasard ?"],
+      "answer": [1],
+      "explanation": "L’expansion soulève la question de ce qui existe au-delà de l’univers."
+    }
+  ]
+}

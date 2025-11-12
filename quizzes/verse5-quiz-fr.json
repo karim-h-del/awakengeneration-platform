@@ -1,0 +1,62 @@
+[
+  {
+    "type": "singleSelect",
+    "question": "Que symbolise le terme « dulūk » dans le contexte du verset 5 ?",
+    "options": [
+      "Une purification rituelle",
+      "Un frottement cosmique et une transition",
+      "Une éclipse lunaire",
+      "Une lignée prophétique"
+    ],
+    "answer": [1],
+    "explanation": "« Dulūk » désigne le moment où les noyaux d’hélium commencent à fusionner pour produire des éléments plus lourds comme le béryllium, le carbone et l’oxygène. C’est une transition cosmique marquant le début de l’effondrement stellaire."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quelle est la dernière phase du cycle de vie du Soleil ?",
+    "options": [
+      "Géante rouge",
+      "Supernova",
+      "Naine blanche",
+      "Étoile à neutrons"
+    ],
+    "answer": [2],
+    "explanation": "Le Soleil deviendra une naine blanche — un vestige dense et froid après avoir épuisé son carburant nucléaire. Il ne deviendra pas supernova car sa masse est insuffisante."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Comment le « Coran de l’aube » est-il lié à la création cosmique ?",
+    "options": [
+      "Il marque la fin des temps",
+      "Il symbolise la naissance d’un système solaire",
+      "Il fait référence aux phases lunaires",
+      "C’est une métaphore du silence"
+    ],
+    "answer": [1],
+    "explanation": "Le Coran de l’aube évoque l’émergence de la lumière, de l’eau et de la vie — une métaphore de la naissance d’un nouveau système solaire et de l’éveil de la conscience."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Pourquoi le Prophète est-il interpellé au singulier dans ce verset ?",
+    "options": [
+      "Pour souligner sa solitude",
+      "Pour mettre en valeur son rôle de messager cosmique",
+      "Pour le distinguer des autres prophètes",
+      "Pour refléter son autorité politique"
+    ],
+    "answer": [1],
+    "explanation": "Il est interpellé au singulier car il est le seul récepteur des Anbā’ cosmiques — des nouvelles invisibles qui relient les événements astrophysiques à la conscience humaine."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quel impératif éthique est implicite dans l’expression « entrée et sortie saine » ?",
+    "options": [
+      "Prier en silence",
+      "Migrer avec sagesse et préserver la vie",
+      "Éviter les conflits",
+      "Mémoriser le Coran"
+    ],
+    "answer": [1],
+    "explanation": "L’expression appelle à une migration éthique — entrer et sortir des phases de la vie, des mondes ou des missions avec intégrité, sagesse et conscience cosmique."
+  }
+]

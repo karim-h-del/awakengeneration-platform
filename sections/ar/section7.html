@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>القسم ٧ – نحن جيل اليقظة</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>القسم ٧: نحن جيل اليقظة</h1>
+
+    <p>
+      لسنا مُعرّفين بمذهب أو عِرق أو جغرافيا. نحن مُعرّفون بإرادتنا أن نستيقظ —
+      أن نسأل، أن نفكك، أن نعيد البناء. نحن الجيل الذي يرفض أن يرث العمى.
+    </p>
+
+    <h2>رؤية عالمية</h2>
+    <ul>
+      <li>
+        في كل أنحاء العالم، يرفض الشباب الموروثات الجامدة — سواء كانت دينية أو
+        سياسية أو ثقافية. إنهم يبحثون عن المعنى، لا عن التكرار.
+      </li>
+      <li>
+        الأدوات الرقمية تتيح لنا التواصل والتعلم والتنظيم — لكنها أيضًا تفتح
+        بابًا للتضليل. اليقظة تتطلب بصيرة.
+      </li>
+      <li>لسنا منقسمين باللسان أو اللون — نحن متحدون بالسعي نحو الحقيقة.</li>
+    </ul>
+
+    <h2>مرتكزات قرآنية</h2>
+    <ul>
+      <li>
+        سورة الحجرات (١٣:٤٩):
+        <strong
+          >«يا أيها الناس إنا خلقناكم من ذكر وأنثى وجعلناكم شعوبًا وقبائل
+          لتعارفوا…»</strong
+        >
+      </li>
+      <li>
+        سورة الإسراء (٣٦:١٧): <strong>«ولا تقف ما ليس لك به علم…»</strong>
+      </li>
+    </ul>
+
+    <h2>تأمل فلسفي</h2>
+    <p>
+      أن تستيقظ يعني أن تستعيد إرادتك. أن تفكر هو نوع من العبادة. أن تتوحد هو
+      شكل من المقاومة. لسنا أتباع الطقوس — نحن طلاب الوحي.
+    </p>
+
+    <h2>خاتمة</h2>
+    <p>
+      هذا عهدنا. هذه يقظتنا. هذا إرثنا. فليتردد صداه عبر اللغات، والأوطان،
+      والأجيال.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 اختبار: تحقق من فهمك</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>١. ما الذي يعرّف جيل اليقظة؟</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> المذهب والجغرافيا</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> الطقوس والتقاليد</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> الإرادة في التساؤل
+            وإعادة البناء</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> الولاء السياسي</label
+          >
+        </div>
+
+        <div class="question">
+          <p>٢. ماذا تأمر سورة الإسراء (١٧:٣٦)؟</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> باتباع العادات
+            الموروثة</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> بطاعة القادة دون
+            سؤال</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> بتجنب المعرفة
+            والتفكر</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> بعدم اتباع ما لا نعلمه
+            حقًا</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">إرسال الإجابات</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "d",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The generation of awakening is defined by its willingness to question, decode, and rebuild — not by inherited identity.",
+            fr: "La génération de l’éveil se définit par sa volonté de questionner, décoder et reconstruire — non par l’identité héritée.",
+            ar: "جيل اليقظة يتميز باستعداده للتساؤل والتفكيك وإعادة البناء — لا بالهوية الموروثة.",
+          },
+          q2: {
+            en: "Surah Al-Isra commands us to follow only what we truly know — not what we blindly inherit.",
+            fr: "La sourate Al-Isra nous ordonne de suivre uniquement ce que nous connaissons vraiment — et non ce que nous héritons aveuglément.",
+            ar: "سورة الإسراء تأمرنا بألا نتبع ما ليس لنا به علم — لا ما نرثه دون وعي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>السؤال ${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>السؤال ${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 تبديل الوضع المظلم</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section7 .html">🇬🇧 English</a>
+      <a href="../fr/section7 .html">🇫🇷 Français</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.ar.html">← العودة إلى البيان</a>
+    </div>
+  </body>
+</html>

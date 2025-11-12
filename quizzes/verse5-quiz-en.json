@@ -1,0 +1,57 @@
+[
+  {
+    "type": "singleSelect",
+    "question": "What does the term 'dulūk' symbolically represent in the context of Verse 5?",
+    "options": [
+      "A ritual purification",
+      "A cosmic friction and transition point",
+      "A lunar eclipse",
+      "A prophetic lineage"
+    ],
+    "answer": [1],
+    "explanation": "Dulūk refers to the stellar ignition point when helium nuclei begin fusing into heavier elements like beryllium, carbon, and oxygen. It marks a cosmic transition — the beginning of the Sun’s irreversible collapse."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Which phase marks the final stage of the Sun’s lifecycle?",
+    "options": ["Red giant", "Supernova", "White dwarf", "Neutron star"],
+    "answer": [2],
+    "explanation": "The Sun will eventually become a white dwarf — a dense, dim remnant after exhausting its nuclear fuel. It won’t go supernova due to its insufficient mass."
+  },
+  {
+    "type": "singleSelect",
+    "question": "How does the Qur’an of dawn relate to cosmic creation?",
+    "options": [
+      "It marks the end of time",
+      "It symbolizes the birth of a solar system",
+      "It refers to lunar phases",
+      "It is a metaphor for silence"
+    ],
+    "answer": [1],
+    "explanation": "The Qur’an of dawn evokes the emergence of light, water, and life — a metaphor for the birth of a new solar system and the awakening of consciousness."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Why is the Prophet addressed in the singular in this verse?",
+    "options": [
+      "To emphasize his solitude",
+      "To highlight his role as a cosmic messenger",
+      "To distinguish him from other prophets",
+      "To reflect his political authority"
+    ],
+    "answer": [1],
+    "explanation": "He is addressed in the singular because he is the sole receiver of cosmic Anbaa’ — unseen news that links astrophysical events to human consciousness."
+  },
+  {
+    "type": "singleSelect",
+    "question": "What ethical imperative is implied in the phrase 'sound entrance and sound exit'?",
+    "options": [
+      "To pray silently",
+      "To migrate wisely and sustain life",
+      "To avoid conflict",
+      "To memorize the Qur’an"
+    ],
+    "answer": [1],
+    "explanation": "The phrase calls for ethical migration — entering and exiting phases of life, worlds, or missions with integrity, wisdom, and cosmic awareness."
+  }
+]

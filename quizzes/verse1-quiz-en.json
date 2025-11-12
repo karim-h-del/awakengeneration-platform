@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "verse": "Verse 1",
+    "language": "EN",
+    "date": "2025-11-12",
+    "theme": "Expansion of the Universe"
+  },
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "Which scientific theory is closest to the verse describing the heavens and earth once joined?",
+      "options": ["Plate tectonics", "Big Bang theory", "Solar activity", "Black hole formation"],
+      "answer": [1],
+      "explanation": "The verse resonates with the Big Bang theory, describing cosmic separation."
+    },
+    {
+      "type": "singleSelect",
+      "question": "According to the verse, what is the origin of life?",
+      "options": ["Fire", "Dust", "Water", "Air"],
+      "answer": [2],
+      "explanation": "The verse states that all living things were made from water."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which NASA instrument measured the expansion of the universe?",
+      "options": ["James Webb Telescope", "Mars Rover", "Hubble Space Telescope", "Voyager Probe"],
+      "answer": [2],
+      "explanation": "The Hubble Space Telescope provided evidence of cosmic expansion."
+    },
+    {
+      "type": "singleSelect",
+      "question": "How does the verse encourage reflection beyond ritual?",
+      "options": ["Describes prayer movements", "Invites scientific reflection on creation", "Mandates fasting during cosmic events", "Forbids questioning divine acts"],
+      "answer": [1],
+      "explanation": "It invites humanity to reflect scientifically on creation."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What philosophical question arises from cosmic expansion?",
+      "options": ["Is Earth flat?", "What lies beyond the universe?", "Can stars be touched?", "Do planets orbit randomly?"],
+      "answer": [1],
+      "explanation": "Expansion raises the question of what exists beyond the universe."
+    }
+  ]
+}

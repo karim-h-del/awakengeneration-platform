@@ -1,0 +1,62 @@
+[
+  {
+    "type": "singleSelect",
+    "question": "Quel thème central est mis en avant dans le verset 7 ?",
+    "options": [
+      "Miséricorde et pardon divins",
+      "Expansion cosmique et entropie",
+      "Lignée prophétique et succession",
+      "Justice, équilibre et conséquence éthique"
+    ],
+    "answer": [3],
+    "explanation": "Le verset 7 souligne la justice divine et l’équilibre des conséquences — reliant l’ordre cosmique à la responsabilité éthique."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Comment le Coran décrit-il la relation entre les actions humaines et l’ordre cosmique ?",
+    "options": [
+      "Les actions humaines perturbent l’ordre cosmique",
+      "Elles sont sans rapport",
+      "Les actions humaines se reflètent dans l’équilibre cosmique",
+      "L’ordre cosmique punit toutes les actions de manière égale"
+    ],
+    "answer": [2],
+    "explanation": "Le Coran relie souvent l’éthique humaine à la symétrie cosmique — les actions sont reflétées dans l’équilibre divin."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quelle est la signification de la phrase « quiconque fait le poids d’un atome de bien ou de mal le verra » ?",
+    "options": [
+      "Elle met en garde contre l’arrogance scientifique",
+      "Elle souligne la surveillance divine",
+      "Elle fait référence à la physique atomique",
+      "Elle affirme la précision morale et la responsabilité"
+    ],
+    "answer": [3],
+    "explanation": "Cette phrase affirme que même les plus petites actions éthiques sont enregistrées et ont des conséquences — un principe de précision morale."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quel principe scientifique résonne avec la symétrie éthique décrite dans le verset 7 ?",
+    "options": [
+      "L’effet Doppler",
+      "La loi de l’entropie",
+      "Le principe d’incertitude d’Heisenberg",
+      "La troisième loi de Newton"
+    ],
+    "answer": [3],
+    "explanation": "La troisième loi de Newton — toute action a une réaction égale et opposée — reflète le thème coranique de la conséquence éthique."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Quelle leçon éthique peut-on tirer du cadrage cosmique de la justice dans le verset 7 ?",
+    "options": [
+      "Chercher le pouvoir pour contrôler les résultats",
+      "Agir avec conscience et intégrité",
+      "Ignorer les petites actions",
+      "Éviter tout risque"
+    ],
+    "answer": [1],
+    "explanation": "Le verset enseigne que chaque action compte — la conscience éthique et l’intégrité sont essentielles dans un univers équilibré."
+  }
+]

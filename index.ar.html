@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Awakened Generation: A multilingual platform for inquiry, reflection, and revival."
+    />
+    <meta
+      name="keywords"
+      content="awakening, curriculum, multilingual, Quran, reflection, science, ethics"
+    />
+    <meta name="author" content="Karim" />
+    <meta property="og:title" content="Awakened Generation" />
+    <meta
+      property="og:description"
+      content="Explore the manifesto, decode the curriculum, and join the journey beyond ritual."
+    />
+    <meta
+      property="og:image"
+      content="https://awakenedgeneration.netlify.app/assets/og-image.jpg"
+    />
+    <meta property="og:url" content="https://awakenedgeneration.netlify.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>بيان الجيل المستيقظ</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="stylesheet" href="assets/css/index-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link
+      rel="alternate"
+      hreflang="ar"
+      href="https://awakenedgeneration.netlify.app/index.ar.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://awakenedgeneration.netlify.app/index.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="fr"
+      href="https://awakenedgeneration.netlify.app/index.fr.html"
+    />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // 🌙 Apply dark mode if enabled
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+
+        // 🌗 Toggle dark mode
+        window.toggleDarkMode = function () {
+          const isDark = document.body.classList.toggle("dark-mode");
+          localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+        };
+
+        // ❌ Dismiss banner
+        window.dismissBanner = function () {
+          const banner = document.getElementById("launchBanner");
+          if (banner) banner.style.display = "none";
+        };
+
+        // 📊 Render progress
+        const lang = document.documentElement.lang;
+        const progressList = document.getElementById("progress-list");
+
+        const labels = {
+          en: { score: "Score", incomplete: "Not completed" },
+          fr: { score: "Score", incomplete: "Non complété" },
+          ar: { score: "النتيجة", incomplete: "غير مكتمل" },
+        };
+
+        const { score, incomplete } = labels[lang] || labels.en;
+
+        const sections = [
+          "section1",
+          "section2",
+          "section3",
+          "section4",
+          "section5",
+          "section6",
+          "section7",
+        ];
+
+        const verses = ["verse1", "verse2", "verse3"];
+
+        if (progressList) {
+          [...sections, ...verses].forEach((id) => {
+            const value = localStorage.getItem(`score_${id}`);
+            const item = document.createElement("li");
+
+            if (value !== null) {
+              item.innerHTML = `${id.toUpperCase()}: ✅ ${score}: ${value}`;
+              item.style.color = id.startsWith("verse") ? "teal" : "green";
+            } else {
+              item.innerHTML = `${id.toUpperCase()}: ❌ ${score}: ${incomplete}`;
+              item.style.color = "gray";
+            }
+
+            progressList.appendChild(item);
+          });
+        }
+
+        // ✅ Language toggle logic — now inside DOMContentLoaded
+        window.showLang = function (lang) {
+          document
+            .querySelectorAll(".lang-block")
+            .forEach((div) => (div.style.display = "none"));
+          document.getElementById("lang-" + lang).style.display = "block";
+        };
+      });
+    </script>
+    <style>
+      .dark-mode {
+        background-color: #121212;
+        color: #eee;
+      }
+      .dark-mode a {
+        color: #66ccff;
+      }
+      .dark-mode .nav-buttons a {
+        background-color: #444;
+        color: #eee;
+      }
+      .dark-mode .nav-buttons a:hover {
+        background-color: #666;
+      }
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="launch-banner" id="launchBanner">
+      <img
+        src="assets/images/banner.jpg"
+        alt="رسم منهج كوني مع نص متعدد اللغات"
+      />
+      <p>
+        <strong>🚀 مرحبًا بكم في جيل اليقظة:</strong> منصة للتفكر، والتساؤل،
+        والنهوض. استكشف البيان، وافكك المنهج، وانضم إلى الرحلة ما بعد الطقوس.
+      </p>
+      <button
+        onclick="dismissBanner()"
+        class="banner-button"
+        aria-label="ابدأ القراءة"
+      >
+        ابدأ القراءة
+      </button>
+      <span
+        class="close-banner"
+        onclick="dismissBanner()"
+        aria-label="إغلاق الشريط الترحيبي"
+        >✖</span
+      >
+    </div>
+
+    <header>
+      <h1>بيان الجيل المستيقظ</h1>
+    </header>
+
+    <h2 id="section1">١. الوحي شيفرة، وليس زينة</h2>
+    <p>
+      القرآن ليس كتاب حركات، بل منهج كوني.<br />
+      يتحدث عن الهيدروجين، والجاذبية، والاضمحلال، والنشوء.<br />
+      يأمرنا أن نقرأ — لا أن نردد فقط. أن نتدبر — لا أن نكرر. أن نفك الشيفرة —
+      لا أن نزين.
+    </p>
+    <p>
+      <a href="sections/ar/section1.html"
+        >[اقرأ المزيد: السياق العلمي والتاريخي]</a
+      >
+    </p>
+
+    <h2 id="section2">٢. السنة ذاكرة، وليست وحيًا</h2>
+    <p>
+      نُجلّ النبي ﷺ كمُبلغ للنور الإلهي.<br />
+      لكن لا نخلط بين السيرة والكلام الإلهي.<br />
+      ابن إسحاق جمع، والشافعي قنّن — لكن الله وحده يُشرّع.<br />
+      نُعيد القرآن كمصدر وحيد للوحي.
+    </p>
+    <p>
+      <a href="sections/ar/section2.html">[اقرأ المزيد: تطور السنة تاريخيًا]</a>
+    </p>
+
+    <h2 id="section3">٣. المساجد يجب أن تستيقظ أو تُهجر</h2>
+    <p>
+      نحن لا نرفض الصلاة — بل نرفض الركود.<br />
+      لا نهجر الجماعة — بل نهجر الامتثال الأعمى.<br />
+      المسجد الذي يمنع السؤال هو قبر.<br />
+      سنبني محاريب للتفكر، لا جدرانًا للحجر.
+    </p>
+    <p>
+      <a href="sections/ar/section3.html"
+        >[اقرأ المزيد: نقد المؤسسات وإصلاحها]</a
+      >
+    </p>
+
+    <h2 id="section4">٤. هامان هو مهندس القهر</h2>
+    <p>
+      فرعون طاغية. قارون ممول. لكن هامان هو الأخطر — يبني العقيدة الزائفة.<br />
+      يختبئ في الوزارات، والإعلام، والمناهج.<br />
+      يصمم أنظمة تستعبد العقول وتُشيد الحرية.<br />
+      سنكشفه. وسنفكك هندسته.
+    </p>
+    <p>
+      <a href="sections/ar/section4.html"
+        >[اقرأ المزيد: نماذج قرآنية وأنظمة معاصرة]</a
+      >
+    </p>
+
+    <h2 id="section5">٥. الوعي هو الرحلة ما بعد الضوء</h2>
+    <p>
+      لسنا مجرد أجساد — نحن أرواح تحمل بيانات.<br />
+      عند الموت، يعبر وعينا أبعادًا تتجاوز الضوء.<br />
+      يُطوى الزمن. وتُكشف الحقيقة. ويكون الحساب عادلًا.
+    </p>
+    <p>
+      <a href="sections/ar/section5.html"
+        >[اقرأ المزيد: الفيزياء والبعث والآخرة]</a
+      >
+    </p>
+
+    <h2 id="section6">٦. الغفران هو أول خطوة في الثورة</h2>
+    <p>
+      لا نلوم آباءنا. لا نلعن الجهلاء.<br />
+      نغفر — ثم نعيد البناء.<br />
+      حتى حين يُعارضون الحق، نرد بالرحمة — وبالوضوح.
+    </p>
+    <p>
+      <a href="sections/ar/section6.html"
+        >[اقرأ المزيد: أخلاقيات اليقظة بين الأجيال]</a
+      >
+    </p>
+
+    <h2 id="section7">٧. نحن جيل اليقظة</h2>
+    <p>
+      لن نخدع بالمساعدات، أو نُشتت بالشعارات، أو ننقسم بالمذاهب.<br />
+      لسنا سنة، ولا شيعة، ولا سلفية، ولا صوفية — نحن طلاب الحقيقة.<br />
+      لسنا عربًا، ولا أمازيغ، ولا أفارقة، ولا أوروبيين — نحن بشر.<br />
+      لا نتبع الطقوس — بل نتبع الوحي.
+    </p>
+    <p>
+      <a href="sections/ar/section7.html"
+        >[اقرأ المزيد: التضامن العالمي والسيادة المعرفية]</a
+      >
+    </p>
+    <p>
+      <a href="/verses/ar/versex.html">📜 استكشاف امتداد بيان الآيات</a>
+    </p>
+    <section id="beyond-labels">
+      <h2>🕊️ ما وراء التسميات: دين الاستسلام</h2>
+      <p>
+        <strong>الدين الحق ليس تسمية.</strong><br />
+        ليس “مسيحيًا” أو “يهوديًا” أو “مسلمًا”.<br />
+        إنه طريق الطاعة الأصلية — حين استجابت السماوات والأرض بقولها:
+        <em>“أتينا طائعين.”</em>
+      </p>
+
+      <h3>📖 الأساس القرآني</h3>
+      <blockquote>
+        « إن الذين آمنوا والذين هادوا والنصارى والصابئين — من آمن بالله واليوم
+        الآخر وعمل صالحًا — فلهم أجرهم عند ربهم… »<br />
+        <em>(سورة البقرة ٢:٦٢)</em>
+      </blockquote>
+      <p>
+        عبارة <em>“الذين آمنوا”</em> تشير إلى فئة من كل جماعة — الذين استسلموا
+        حقًا. هؤلاء هم الأمة المسلمة الحقيقية: الذين آمنوا بالله واليوم الآخر
+        وعملوا الخير.
+      </p>
+
+      <h3>🧠 الإيمان كبحث</h3>
+      <p>
+        الإيمان بالغيب لا يعني القبول الأعمى — بل يعني السعي، والتحليل، والتحول.
+        الغيب هو <em>أنباء</em> — أخبار — ويجب تفسيره إلى حقيقة موضوعية ترفع
+        البشرية.
+      </p>
+
+      <h3>🌟 الجزاء الأبدي</h3>
+      <blockquote>
+        « إن الذين سبقت لهم منا الحسنى أولئك عنها مبعدون. لا يسمعون حسيسها وهم
+        فيما اشتهت أنفسهم خالدون. »<br />
+        <em>(سورة الأنبياء ٢١:١٠١–١٠٢)</em>
+      </blockquote>
+
+      <h3>🧬 الهوية هي الطاعة</h3>
+      <p>
+        لسنا طوائف. لسنا شعارات. نحن الجيل الذي يستسلم — طوعًا، ووعيًا، وكونيًا.
+      </p>
+    </section>
+    <section id="sleep-of-learned">
+      <div class="language-toggle">
+        <button onclick="showLang('en')">🇬🇧 English</button>
+        <button onclick="showLang('fr')">🇫🇷 Français</button>
+        <button onclick="showLang('ar')">🇦🇪 العربية</button>
+      </div>
+
+      <div id="lang-en" class="lang-block" style="display: none">
+        <h2>The Sleep of a Learned Man</h2>
+        <p>
+          <em
+            >“The sleep of a learned man is better than the standing of an
+            ignorant man.”</em
+          >
+        </p>
+        <p>
+          This is not a metaphor for laziness. It is a rebuke of ritualism
+          without understanding.<br />
+          Motion without meaning is not worship. Silence filled with insight
+          outweighs noise devoid of reflection.
+        </p>
+        <p>
+          For 1445 years, the message of Muhammad ﷺ has echoed. Yet many nations
+          — especially Arab ones — remain shackled by inherited forms.<br />
+          They recite:
+          <em
+            >“Indeed, Allah does not change the condition of a people until they
+            change what is in themselves.”</em
+          >
+          (Qur’an 13:11)<br />
+          But they have not changed.
+        </p>
+        <p>
+          Their mosques remain static. Their sermons repeat inherited scripts.
+          Their institutions cling to the four madhhabs as if they were
+          divine.<br />
+          Echoing the cry of the enemies of Noah:
+          <em>“Never abandon your gods: Wadd, Suwa’, Ya’uq, and Nasr.”</em>
+          (Qur’an 71:23)
+        </p>
+        <p>
+          Behind every Pharaoh is a Haman — the builder of towers, the enforcer
+          of orthodoxy.<br />
+          Today’s Haman is not a minister of bricks, but a guardian of inherited
+          jurisprudence.<br />
+          He silences inquiry, institutionalizes stagnation, and calls it
+          tradition.
+        </p>
+        <p>
+          We reject inherited ritualism.<br />
+          We reclaim revelation as a living code — one that evolves, provokes,
+          and awakens.<br />
+          We honor the sleep of the learned man, because his stillness is filled
+          with light.<br />
+          We challenge the standing of the ignorant man, because his motion is
+          hollow.
+        </p>
+      </div>
+
+      <div id="lang-fr" class="lang-block" style="display: none">
+        <h2>Le Sommeil du Savant</h2>
+        <p>
+          <em
+            >« Le sommeil d’un homme savant vaut mieux que la station d’un
+            ignorant. »</em
+          >
+        </p>
+        <p>
+          Ce n’est pas une métaphore de paresse, mais une critique du ritualisme
+          sans compréhension.<br />
+          Le mouvement sans sens n’est pas adoration. Le silence nourri de
+          sagesse vaut mieux que le bruit vide de réflexion.
+        </p>
+        <p>
+          Depuis 1445 ans, le message de Muhammad ﷺ résonne. Et pourtant, de
+          nombreuses nations — surtout arabes — restent prisonnières des formes
+          héritées.<br />
+          Elles récitent :
+          <em
+            >« En vérité, Allah ne change pas l’état d’un peuple tant qu’ils ne
+            changent pas ce qui est en eux. »</em
+          >
+          (Coran 13:11)<br />
+          Mais elles n’ont pas changé.
+        </p>
+        <p>
+          Leurs mosquées restent figées. Leurs sermons répètent des scripts
+          anciens. Leurs institutions s’accrochent aux quatre écoles comme si
+          elles étaient divines.<br />
+          Reprenant le cri des ennemis de Noé :
+          <em
+            >« N’abandonnez jamais vos dieux : Wadd, Suwâ’, Ya’uq et Nasr. »</em
+          >
+          (Coran 71:23)
+        </p>
+        <p>
+          Derrière chaque Pharaon se cache un Hâmân — bâtisseur de tours,
+          gardien de l’orthodoxie.<br />
+          Le Hâmân d’aujourd’hui n’est pas ministre de briques, mais gardien de
+          jurisprudence figée.<br />
+          Il étouffe la réflexion, institutionnalise la stagnation, et appelle
+          cela tradition.
+        </p>
+        <p>
+          Nous rejetons le ritualisme hérité.<br />
+          Nous revendiquons la révélation comme un code vivant — qui évolue,
+          provoque et réveille.<br />
+          Nous honorons le sommeil du savant, car son calme est lumière.<br />
+          Nous défions la station de l’ignorant, car son agitation est vide.
+        </p>
+      </div>
+
+      <div id="lang-ar" class="lang-block" dir="rtl">
+        <h2>نوم العالم</h2>
+        <p><em>« نوم العالم خير من قيام الجاهل »</em></p>
+        <p>
+          ليست هذه استعارة للكسل، بل نقد للطقوس بلا فهم.<br />
+          الحركة بلا معنى ليست عبادة. والصمت المملوء بالبصيرة خير من الضجيج
+          الخالي من التأمل.
+        </p>
+        <p>
+          منذ ١٤٤٥ سنة، ورسالة محمد ﷺ تتردد. ومع ذلك، لا تزال كثير من الأمم —
+          وخاصة العربية — مقيدة بالأشكال الموروثة.<br />
+          يرددون:
+          <em
+            >« إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّى يُغَيِّرُوا مَا
+            بِأَنْفُسِهِمْ »</em
+          >
+          (الرعد: ١١)<br />
+          لكنهم لم يغيروا شيئًا.
+        </p>
+        <p>
+          مساجدهم جامدة. خطبهم تكرر نصوصًا موروثة. مؤسساتهم تتمسك بالمذاهب
+          الأربعة وكأنها وحي.<br />
+          يرددون صرخة أعداء نوح:
+          <em
+            >« وَقَالُوا لَا تَذَرُنَّ آلِهَتَكُمْ وَلَا تَذَرُنَّ وَدًّا وَلَا
+            سُوَاعًا وَلَا يَغُوثَ وَيَعُوقَ وَنَسْرًا »</em
+          >
+          (نوح: ٢٣)
+        </p>
+        <p>
+          وراء كل فرعون هامان — باني الأبراج، حارس الجمود.<br />
+          هامان اليوم ليس وزير الطوب، بل حارس الفقه الموروث.<br />
+          يخنق التساؤل، ويؤسس للركود، ويسميه تقليدًا.
+        </p>
+        <p>
+          نحن نرفض الطقوس الموروثة.<br />
+          ونستعيد الوحي كرمز حي — يتطور، ويستفز، ويوقظ.<br />
+          نكرم نوم العالم، لأن سكونه نور.<br />
+          ونتحدى قيام الجاهل، لأن حركته خواء.
+        </p>
+      </div>
+    </section>
+    <hr />
+    <p><strong>هذا عهدنا. هذا يقظتنا. هذا إرثنا.</strong></p>
+
+    <section id="progress-section">
+      <h2>📊 تقدمك</h2>
+      <ul id="progress-list"></ul>
+    </section>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()" aria-label="تبديل الوضع الليلي">
+        🌙 الوضع الليلي
+      </button>
+    </div>
+
+    <nav class="nav-buttons" role="navigation" aria-label="تبديل اللغة">
+      <a href="index.html" aria-label="النسخة الإنجليزية">English</a>
+      <a href="index.fr.html" aria-label="النسخة الفرنسية">Français</a>
+      <a href="index.ar.html" aria-label="النسخة العربية">العربية</a>
+    </nav>
+    <form
+      name="reflection"
+      method="POST"
+      data-netlify="true"
+      action="/thank-you.ar.html"
+    >
+      <input type="hidden" name="form-name" value="reflection" />
+      <input type="hidden" name="form-name" value="reflection" />
+      <input type="hidden" name="verse" value="البيان" />
+      <label>تأملاتك:</label>
+      <textarea name="message" required></textarea>
+      <button type="submit">إرسال</button>
+    </form>
+  </body>
+</html>

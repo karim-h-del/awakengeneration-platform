@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Section 3 Expansion – Mosques Must Awaken or Be Emptied</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Section 3: Mosques Must Awaken or Be Emptied</h1>
+
+    <p>
+      The mosque was once the nucleus of inquiry, justice, and community. Today,
+      many have become echo chambers of inherited ritual, silencing the very
+      questioning that the Qur’an demands. A sanctuary that forbids thought is
+      no longer sacred — it is stagnant.
+    </p>
+
+    <h2>Historical Context</h2>
+    <ul>
+      <li>
+        In Medina, the Prophet’s mosque was a hub of governance, debate, and
+        education — not just prayer. It hosted delegations, resolved disputes,
+        and taught revelation as a living code.
+      </li>
+      <li>
+        During the Abbasid era, mosques were linked to libraries and madrasas.
+        Scholars like Al-Farabi, Ibn Sina, and Al-Kindi taught philosophy,
+        medicine, and astronomy within Islamic institutions.
+      </li>
+      <li>
+        The decline began when mosques were politicized, ritualized, and
+        disconnected from inquiry. Sermons became formulaic. Thought became
+        taboo.
+      </li>
+    </ul>
+
+    <h2>Sociological Insight</h2>
+    <ul>
+      <li>
+        Many mosques today reinforce conformity over consciousness. Youth are
+        taught to memorize, not to understand. Women are marginalized. Questions
+        are discouraged.
+      </li>
+      <li>
+        Imams often lack training in science, ethics, or global affairs — yet
+        they speak authoritatively on all topics. This breeds epistemic
+        stagnation.
+      </li>
+      <li>
+        Communities suffer when mosques become passive — unable to address
+        injustice, poverty, or ideological manipulation.
+      </li>
+    </ul>
+
+    <h2>Philosophical Reflection</h2>
+    <p>
+      A mosque that fears inquiry is not a house of God — it is a house of men.
+      Revelation is not threatened by questions. It invites them. The Qur’an
+      repeatedly asks: *“Do they not reflect?”*, *“Do they not reason?”*, *“Have
+      they not considered?”*
+    </p>
+
+    <h2>Conclusion</h2>
+    <p>
+      We do not reject mosques. We reject their misuse. We will build
+      sanctuaries of thought — where revelation is decoded, not recited; where
+      youth are empowered, not silenced; where the divine is not ritualized, but
+      realized.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 Quiz: Test Your Understanding</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>
+            1. What was the original role of the Prophet’s mosque in Medina?
+          </p>
+          <label
+            ><input type="radio" name="q1" value="a" /> A place for ritual
+            prayer only</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> A center for governance,
+            education, and debate</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> A shrine for
+            pilgrimage</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> A site for political
+            allegiance</label
+          >
+        </div>
+
+        <div class="question">
+          <p>2. What does the Qur’an encourage in relation to thought?</p>
+          <label
+            ><input type="radio" name="q2" value="a" /> Silence and
+            obedience</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> Memorization without
+            reflection</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> Ritual repetition</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="d" /> Inquiry, reasoning, and
+            reflection</label
+          >
+        </div>
+
+        <button type="button" onclick="checkQuiz()">Submit Answers</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "b",
+          q2: "d",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The Prophet’s mosque was a hub for governance, education, and debate — not just prayer.",
+            fr: "La mosquée du Prophète était un centre de gouvernance, d’éducation et de débat — pas seulement de prière.",
+            ar: "كانت مسجد النبي مركزًا للحكم والتعليم والنقاش — وليس للصلاة فقط.",
+          },
+          q2: {
+            en: "The Qur’an repeatedly calls for inquiry, reasoning, and reflection — not blind obedience.",
+            fr: "Le Coran appelle constamment à la réflexion, au raisonnement et à l’interrogation — pas à l’obéissance aveugle.",
+            ar: "القرآن يدعو باستمرار إلى التفكر والتعقل والتساؤل — لا إلى الطاعة العمياء.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>Q${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>Q${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../fr/section3.html">🇫🇷 Français</a>
+      <a href="../ar/section3.html">🇸🇦 العربية</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.html">← Back to Manifesto</a>
+      <a href="section4.html">Next Section →</a>
+    </div>
+  </body>
+</html>

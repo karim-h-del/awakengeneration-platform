@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>القسم ٦ – الغفران هو أول خطوة في الثورة</title>
+    <link rel="stylesheet" href="../../assets/css/section-style.css" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("darkMode") === "enabled") {
+          document.body.classList.add("dark-mode");
+        }
+      });
+
+      function toggleDarkMode() {
+        const isDark = document.body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+      }
+    </script>
+    <style>
+      .toggle-button {
+        margin-top: 1em;
+        text-align: center;
+      }
+      .toggle-button button {
+        padding: 0.5em 1em;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>القسم ٦: الغفران هو أول خطوة في الثورة</h1>
+
+    <p>
+      وُلدنا في جهل لم نختره. لكن الاستيقاظ لا يبدأ باللوم — بل بالغفران. خصوصًا
+      لمن ربّونا في الظلمة، دون أن يدركوا النور الذي افتقدوه.
+    </p>
+
+    <h2>مرتكزات قرآنية</h2>
+    <ul>
+      <li>
+        سورة البقرة (١٣٤:٢):
+        <strong>«تلك أمة قد خلت، لها ما كسبت ولكم ما كسبتم»</strong>
+      </li>
+      <li>سورة الطور (٢١:٥٢): <strong>«كل امرئ بما كسب رهين»</strong></li>
+      <li>
+        سورة الأحقاف (١٥:٤٦):
+        <strong>«ووصينا الإنسان بوالديه إحسانًا…»</strong> — حتى لو جاهدوه ضد
+        الحق.
+      </li>
+    </ul>
+
+    <h2>رؤية أخلاقية</h2>
+    <ul>
+      <li>
+        الله لم يأمر الوالدين بالإحسان إلى الأبناء — لكنه أمر الأبناء بالإحسان
+        إلى الوالدين. لماذا؟ لأن المستقبل يجب أن يغفر للماضي كي يتجاوزه.
+      </li>
+      <li>
+        الغضب تجاه الجهل طبيعي — لكن التحول يتطلب الرحمة. علينا أن نكسر الحلقة،
+        لا أن نكررها.
+      </li>
+    </ul>
+
+    <h2>تأمل فلسفي</h2>
+    <p>
+      الغفران ليس ضعفًا — بل بصيرة. يسمح لنا برؤية الماضي دون أن نُسجن فيه.
+      يحوّل الغضب إلى مسؤولية.
+    </p>
+
+    <h2>خاتمة</h2>
+    <p>
+      على الجيل المستيقظ أن يغفر، لا أن ينسى. يجب أن نتذكر لنُعيد البناء —
+      برحمة، بشجاعة، وبحق.
+    </p>
+    <section id="quiz-section">
+      <h2>🧪 اختبار: تحقق من فهمك</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>١. لماذا يجب على المستقبل أن يغفر للماضي؟</p>
+          <label
+            ><input type="radio" name="q1" value="a" /> للحفاظ على
+            التقاليد</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="b" /> لتجنب الصراعات</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="c" /> لتجاوز الجهل
+            الموروث</label
+          ><br />
+          <label
+            ><input type="radio" name="q1" value="d" /> للحفاظ على شرف
+            العائلة</label
+          >
+        </div>
+
+        <div class="question">
+          <p>٢. ماذا يتيح الغفران وفقًا للتأمل الفلسفي؟</p>
+          <label><input type="radio" name="q2" value="a" /> نسيان الماضي</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="b" /> التهرب من
+            المسؤولية</label
+          ><br />
+          <label
+            ><input type="radio" name="q2" value="c" /> رؤية واضحة وتحويل الغضب
+            إلى مسؤولية</label
+          ><br />
+          <label><input type="radio" name="q2" value="d" /> تبرير الظلم</label>
+        </div>
+
+        <button type="button" onclick="checkQuiz()">إرسال الإجابات</button>
+        <div id="quiz-feedback"></div>
+      </form>
+    </section>
+
+    <script>
+      function checkQuiz() {
+        const answers = {
+          q1: "c",
+          q2: "c",
+        };
+
+        const explanations = {
+          q1: {
+            en: "The future must forgive the past to transcend inherited ignorance and break the cycle of blame.",
+            fr: "Le futur doit pardonner au passé pour transcender l’ignorance héritée et briser le cycle du blâme.",
+            ar: "يجب على المستقبل أن يسامح الماضي لتجاوز الجهل الموروث وكسر دائرة اللوم.",
+          },
+          q2: {
+            en: "Forgiveness brings clarity — it transforms resentment into responsibility and frees us from being trapped by the past.",
+            fr: "Le pardon apporte de la clarté — il transforme le ressentiment en responsabilité et nous libère du passé.",
+            ar: "المغفرة تمنح الوضوح — فهي تحول الاستياء إلى مسؤولية وتحررنا من أسر الماضي.",
+          },
+        };
+
+        let score = 0;
+        let total = Object.keys(answers).length;
+        const lang = document.documentElement.lang;
+        let feedbackHTML = "";
+
+        for (let key in answers) {
+          const selected = document.querySelector(
+            `input[name="${key}"]:checked`
+          );
+          const correct = answers[key];
+          const explanation =
+            explanations[key][lang] || explanations[key]["en"];
+
+          if (selected) {
+            const isCorrect = selected.value === correct;
+            if (isCorrect) score++;
+            selected.parentElement.style.color = isCorrect ? "green" : "red";
+            feedbackHTML += `<p><strong>السؤال ${key.slice(1)}:</strong> ${
+              isCorrect ? "✅" : "❌"
+            } ${explanation}</p>`;
+          } else {
+            feedbackHTML += `<p><strong>السؤال ${key.slice(
+              1
+            )}:</strong> ❌ ${explanation}</p>`;
+          }
+        }
+
+        let message = "";
+        if (lang === "fr") {
+          message = `Vous avez obtenu ${score} sur ${total}.`;
+        } else if (lang === "ar") {
+          message = `لقد حصلت على ${score} من ${total}.`;
+        } else {
+          message = `You scored ${score} out of ${total}.`;
+        }
+
+        feedbackHTML = `<p><strong>${message}</strong></p>` + feedbackHTML;
+        document.getElementById("quiz-feedback").innerHTML = feedbackHTML;
+
+        const sectionId = document.location.pathname
+          .split("/")
+          .pop()
+          .split(".")[0];
+        localStorage.setItem(`score_${sectionId}`, score);
+      }
+    </script>
+
+    <div class="toggle-button">
+      <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    </div>
+    <div class="nav-buttons">
+      <a href="../en/section6.html">🇬🇧 English</a>
+      <a href="../fr/section6.html">🇫🇷 Français</a>
+    </div>
+    <div class="nav-buttons">
+      <a href="../../index.ar.html">العودة إلى البيان ←</a>
+      <a href="section7.html">→ القسم التالي</a>
+    </div>
+  </body>
+</html>
