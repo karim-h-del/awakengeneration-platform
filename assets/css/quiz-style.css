@@ -142,3 +142,14 @@ footer a:hover {
 #subscribe button:hover {
   background-color: #005fa3;
 }
+
+@media (max-width: 600px) {
+  .quiz-container {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .explanation {
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+}
