@@ -1,145 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Awakened Generation: A multilingual platform for inquiry, reflection, and revival."
-    />
-    <meta
-      name="keywords"
-      content="awakening, curriculum, multilingual, Quran, reflection, science, ethics"
-    />
-    <meta name="author" content="Karim" />
-    <meta property="og:title" content="Awakened Generation" />
-    <meta
-      property="og:description"
-      content="Explore the manifesto, decode the curriculum, and join the journey beyond ritual."
-    />
-    <meta
-      property="og:image"
-      content="https://awakenedgeneration.netlify.app/assets/og-image.jpg"
-    />
-    <meta property="og:url" content="https://awakenedgeneration.netlify.app" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <title>Awaken Generation ✨ Test Deploy</title>
-    <link rel="stylesheet" href="quiz-style.css?v=1.0.1">
-    <link rel="stylesheet" href="../../assets/css/section-style.css" />
-    <link rel="stylesheet" href="assets/css/index-style.css" />
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="alternate"
-      hreflang="en"
-      href="https://awakenedgeneration.netlify.app/index.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="fr"
-      href="https://awakenedgeneration.netlify.app/index.fr.html"
-    />
-    <link
-      rel="alternate"
-      hreflang="ar"
-      href="https://awakenedgeneration.netlify.app/index.ar.html"
-    />
+   <meta charset="UTF-8" />
+  <meta
+    name="description"
+    content="Awakened Generation: A multilingual platform for inquiry, reflection, and revival."
+  />
+  <meta
+    name="keywords"
+    content="awakening, curriculum, multilingual, Quran, reflection, science, ethics"
+  />
+  <meta name="author" content="Karim" />
+  <meta property="og:title" content="Awakened Generation" />
+  <meta
+    property="og:description"
+    content="Explore the manifesto, decode the curriculum, and join the journey beyond ritual."
+  />
+  <meta
+    property="og:image"
+    content="https://awakenedgeneration.netlify.app/assets/og-image.jpg"
+  />
+  <meta property="og:url" content="https://awakenedgeneration.netlify.app" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Awaken Generation ✨ Test Deploy</title>
+
+  <link rel="stylesheet" href="../../assets/css/section-style.css" />
+  <link rel="stylesheet" href="assets/css/index-style.css" />
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <link
+    rel="alternate"
+    hreflang="en"
+    href="https://awakenedgeneration.netlify.app/index.html"
+  />
+  <link
+    rel="alternate"
+    hreflang="fr"
+    href="https://awakenedgeneration.netlify.app/index.fr.html"
+  />
+  <link
+    rel="alternate"
+    hreflang="ar"
+    href="https://awakenedgeneration.netlify.app/index.ar.html"
+  />
+
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // 🌙 Apply dark mode if enabled
-        if (localStorage.getItem("darkMode") === "enabled") {
-          document.body.classList.add("dark-mode");
-        }
+  document.addEventListener("DOMContentLoaded", () => {
+    // 🌙 Apply dark mode if enabled
+    if (localStorage.getItem("darkMode") === "enabled") {
+      document.body.classList.add("dark-mode");
+    }
 
-        // 🌗 Toggle dark mode
-        window.toggleDarkMode = function () {
-          const isDark = document.body.classList.toggle("dark-mode");
-          localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
-        };
+    window.toggleDarkMode = function () {
+      const isDark = document.body.classList.toggle("dark-mode");
+      localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
+    };
 
-        // ❌ Dismiss banner
-        window.dismissBanner = function () {
-          const banner = document.getElementById("launchBanner");
-          if (banner) banner.style.display = "none";
-        };
+    window.dismissBanner = function () {
+      const banner = document.getElementById("launchBanner");
+      if (banner) banner.style.display = "none";
+    };
 
-        // 📊 Render progress
-        const lang = document.documentElement.lang;
-        const progressList = document.getElementById("progress-list");
+    // 📊 Update progress safely
+    function updateProgress() {
+      // Verse 8 quiz scores
+      const enScore = localStorage.getItem("score_verse8-quiz-en");
+      const frScore = localStorage.getItem("score_verse8-quiz-fr");
+      const arScore = localStorage.getItem("score_verse8-quiz-ar");
 
-        const labels = {
-          en: { score: "Score", incomplete: "Not completed" },
-          fr: { score: "Score", incomplete: "Non complété" },
-          ar: { score: "النتيجة", incomplete: "غير مكتمل" },
-        };
+      const enSpan = document.getElementById("progress-en");
+      const frSpan = document.getElementById("progress-fr");
+      const arSpan = document.getElementById("progress-ar");
 
-        const { score, incomplete } = labels[lang] || labels.en;
+      if (enSpan) enSpan.textContent = enScore || "not attempted";
+      if (frSpan) frSpan.textContent = frScore || "non tenté";
+      if (arSpan) arSpan.textContent = arScore || "لم تتم المحاولة";
 
-        const sections = [
-          "section1",
-          "section2",
-          "section3",
-          "section4",
-          "section5",
-          "section6",
-          "section7",
-        ];
-
-        const verses = ["verse1", "verse2", "verse3"];
-
-        if (progressList) {
-          [...sections, ...verses].forEach((id) => {
-            const value = localStorage.getItem(`score_${id}`);
-            const item = document.createElement("li");
-
-            if (value !== null) {
-              item.innerHTML = `${id.toUpperCase()}: ✅ ${score}: ${value}`;
-              item.style.color = id.startsWith("verse") ? "teal" : "green";
-            } else {
-              item.innerHTML = `${id.toUpperCase()}: ❌ ${score}: ${incomplete}`;
-              item.style.color = "gray";
-            }
-
-            progressList.appendChild(item);
-          });
-        }
-
-        // ✅ Language toggle logic — now inside DOMContentLoaded
-        window.showLang = function (lang) {
-          document
-            .querySelectorAll(".lang-block")
-            .forEach((div) => (div.style.display = "none"));
-          document.getElementById("lang-" + lang).style.display = "block";
-        };
+      // Sections
+      const sections = ["section1", "section2", "section3"];
+      sections.forEach(id => {
+        const value = localStorage.getItem(`score_${id}`);
+        const span = document.getElementById(`${id}-score`);
+        if (span) span.textContent = value || "Not completed";
       });
-    </script>
-    <style>
-      .dark-mode {
-        background-color: #121212;
-        color: #eee;
-      }
-      .dark-mode a {
-        color: #66ccff;
-      }
-      .dark-mode .nav-buttons a {
-        background-color: #444;
-        color: #eee;
-      }
-      .dark-mode .nav-buttons a:hover {
-        background-color: #666;
-      }
-      .toggle-button {
-        margin-top: 1em;
-        text-align: center;
-      }
-      .toggle-button button {
-        padding: 0.5em 1em;
-        font-weight: bold;
-        cursor: pointer;
-      }
-    </style>
+
+      // Verses
+      const verses = ["verse1", "verse2", "verse3"];
+      verses.forEach(id => {
+        const value = localStorage.getItem(`score_${id}`);
+        const span = document.getElementById(`${id}-score`);
+        if (span) span.textContent = value || "Not completed";
+      });
+    }
+
+    // Run after DOM is ready
+    updateProgress();
+
+    // ✅ Language toggle
+    window.showLang = function (lang) {
+      document.querySelectorAll(".lang-block").forEach(div => div.style.display = "none");
+      const block = document.getElementById("lang-" + lang);
+      if (block) block.style.display = "block";
+    };
+  });
+</script>
+
+   <style>
+  .dark-mode {
+    background-color: #121212;
+    color: #eee;
+  }
+  .dark-mode a {
+    color: #66ccff;
+  }
+  .dark-mode .nav-buttons a {
+    background-color: #444;
+    color: #eee;
+  }
+  .dark-mode .nav-buttons a:hover {
+    background-color: #666;
+  }
+  .toggle-button {
+    margin-top: 1em;
+    text-align: center;
+  }
+  .toggle-button button {
+    padding: 0.5em 1em;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>
   </head>
   <body>
     <div class="launch-banner" id="launchBanner">
@@ -534,6 +524,11 @@
           <a href="/verses/ar/verse7.html">AR</a>
         </li>
         <li>
+          Verse 8: <a href="/verses/en/verse8.html">EN</a> |
+          <a href="/verses/fr/verse8.html">FR</a> |
+          <a href="/verses/ar/verse8.html">AR</a>
+        </li>
+        <li>
           Verse X: <a href="/verses/en/versex.html">EN</a> |
           <a href="/verses/fr/versex.html">FR</a> |
           <a href="/verses/ar/versex.html">AR</a>
@@ -541,10 +536,30 @@
       </ul>
     </section>
     <p><a href="/quizzes/quiz-index.html">🧪 Go to Quiz Index</a></p>
-
+    
     <section id="progress-section">
       <h2>📊 Your Progress</h2>
-      <ul id="progress-list"></ul>
+
+      <h3>Verse 8</h3>
+      <p>
+        EN — <span id="progress-en">not attempted</span> |
+        FR — <span id="progress-fr">non tenté</span> |
+        AR — <span id="progress-ar">لم تتم المحاولة</span>
+      </p>
+
+      <h3>Sections</h3>
+      <ul id="section-progress">
+        <li>SECTION1: <span id="section1-score">Not completed</span></li>
+        <li>SECTION2: <span id="section2-score">Not completed</span></li>
+        <li>SECTION3: <span id="section3-score">Not completed</span></li>
+      </ul>
+
+      <h3>Verses</h3>
+      <ul id="verse-progress">
+        <li>VERSE1: <span id="verse1-score">Not completed</span></li>
+        <li>VERSE2: <span id="verse2-score">Not completed</span></li>
+        <li>VERSE3: <span id="verse3-score">Not completed</span></li>
+      </ul>
     </section>
 
     <!-- Controls -->
@@ -572,6 +587,6 @@
       <textarea name="message" required></textarea>
       <button type="submit">Send</button>
     </form>
-    <script src="quiz.js?v=1.0.1"></script>
+    
   </body>
 </html>
