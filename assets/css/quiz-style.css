@@ -1,3 +1,6 @@
+/* quiz-style.css (merged version) */
+
+/* General page styling */
 body {
   font-family: "Segoe UI", "Helvetica Neue", sans-serif;
   margin: 2em;
@@ -25,13 +28,14 @@ header p {
 }
 
 /* Quiz container */
-#quiz-container, #quiz-form {
+#quiz-container, #quiz-form, .quiz-container {
   max-width: 700px;
   margin: 2rem auto;
   padding: 1.5rem;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* Questions */
@@ -41,16 +45,28 @@ header p {
   border-bottom: 1px solid #eee;
   background-color: #f4f4f4;
   border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+.quiz-question:hover {
+  background-color: #e0f2f1;
 }
 .quiz-question-text {
   font-weight: bold;
   margin-bottom: 0.5rem;
   color: #333;
 }
-.quiz-options label {
+
+/* Options */
+.quiz-options label, .options li {
   display: block;
   margin: 0.3rem 0;
+  padding: 0.5rem;
   cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+.quiz-options label:hover, .options li:hover {
+  background-color: #b2dfdb;
 }
 .quiz-option input[type="radio"] {
   margin-right: 0.5rem;
@@ -143,12 +159,19 @@ footer a:hover {
   background-color: #005fa3;
 }
 
+/* RTL support for Arabic */
+html[lang="ar"] body {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
-  .quiz-container {
+  .quiz-container, #quiz-container {
     font-size: 0.9rem;
     line-height: 1.4;
   }
-  .explanation {
+  .quiz-explanation {
     margin-top: 8px;
     font-size: 0.85rem;
   }

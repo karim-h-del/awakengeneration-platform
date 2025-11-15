@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>اختبار – الآية ٨</title>
+  <link rel="stylesheet" href="/assets/css/quiz-style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧪 اختبار التأمل – الآية ٨</h1>
+    <p>اختبر فهمك لموضوع: الفرار إلى الله بالعلم.</p>
+  </header>
+
+  <div id="quiz-container"></div>
+
+  <!-- Feedback + Submit -->
+  <div id="quiz-form" class="quiz-container">
+    <div id="quiz-feedback"></div>
+    <button id="submit-answers">إرسال الإجابات</button>
+  </div>
+
+  <footer>
+    <p><a href="/index.html">← العودة إلى البيان</a></p>
+  </footer>
+
+  <script type="module">
+  import { quizData, checkAnswer } from '/assets/js/quiz.js';
+
+  // Filter only Verse 8 Arabic questions
+  const container = document.getElementById("quiz-container");
+  const filtered = quizData.filter(q => q.id.startsWith("verse8-ar"));
+
+  // Render questions
+  filtered.forEach((q, i) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "quiz-question unanswered";
+    qDiv.dataset.index = i;
+
+    const qText = document.createElement("div");
+    qText.className = "quiz-question-text";
+    qText.textContent = `${i + 1}. ${q.question}`;
+    qDiv.appendChild(qText);
+
+    const optionsDiv = document.createElement("div");
+    optionsDiv.className = "quiz-options";
+
+    q.options.forEach((opt, idx) => {
+      const label = document.createElement("label");
+      label.className = "quiz-option";
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = `q${i}`;
+      input.value = idx;
+
+      input.addEventListener("change", () => {
+        qDiv.classList.remove("unanswered");
+      });
+
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(opt));
+      optionsDiv.appendChild(label);
+    });
+
+    qDiv.appendChild(optionsDiv);
+    container.appendChild(qDiv);
+  });
+
+  // Submit handling
+  const submitBtn = document.getElementById("submit-answers");
+  const feedbackBox = document.getElementById("quiz-feedback");
+
+  submitBtn.addEventListener("click", () => {
+    let score = 0;
+
+    document.querySelectorAll(".quiz-question").forEach((qDiv, i) => {
+      const selected = document.querySelector(`input[name="q${i}"]:checked`);
+      const correctIndex = filtered[i].answer;
+
+      qDiv.classList.remove("correct", "wrong", "unanswered");
+
+      if (!selected) {
+        qDiv.classList.add("unanswered");
+      } else if (checkAnswer(i, Number(selected.value))) {
+        qDiv.classList.add("correct");
+        score += 1;
+      } else {
+        qDiv.classList.add("wrong");
+      }
+
+      let expl = qDiv.querySelector(".quiz-explanation");
+      if (!expl) {
+        expl = document.createElement("div");
+        expl.className = "quiz-explanation";
+        qDiv.appendChild(expl);
+      }
+      expl.textContent = filtered[i].explanation;
+    });
+
+    const total = filtered.length;
+    feedbackBox.textContent = `نتيجتك: ${score} / ${total}`;
+    try {
+      localStorage.setItem("score_verse8-quiz-ar", `${score}/${total}`);
+    } catch(e) {}
+  });
+</script>
+</body>
+</html>

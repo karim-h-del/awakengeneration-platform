@@ -1,5 +1,7 @@
 // render-quiz.js
+
 console.log("render-quiz.js loaded");
+
 
 async function renderQuiz(containerId) {
   const container = document.getElementById(containerId);
