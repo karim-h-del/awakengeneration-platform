@@ -482,6 +482,29 @@
       <h2>📊 Votre progression</h2>
       <ul id="progress-list"></ul>
     </section>
+  <section id="engagement-section">
+  <h2>Partagez & Abonnez-vous</h2> <!-- localized heading -->
+  <div class="form-container">
+    
+    <!-- Reflection Form -->
+    <form class="form-block" name="reflection-fr" method="POST" data-netlify="true" action="/thank-you.fr.html">
+      <input type="hidden" name="form-name" value="reflection-fr" />
+      <input type="hidden" name="verse" value="verse8" />
+      <label>Vos pensées :</label>
+      <textarea name="message" required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <!-- Subscription Form -->
+    <form class="form-block" name="subscription-fr" method="POST" data-netlify="true" action="/thank-you.fr.html">
+      <input type="hidden" name="form-name" value="subscription-fr" />
+      <label for="email-fr">Abonnez-vous :</label>
+      <input type="email" id="email-fr" name="email" placeholder="Entrez votre email" required />
+      <button type="submit">S’abonner</button>
+    </form>
+
+  </div>
+</section>
 
     <div class="toggle-button">
       <button
@@ -497,18 +520,6 @@
       <a href="index.fr.html" aria-label="Version française">Français</a>
       <a href="index.ar.html" aria-label="Version arabe">العربية</a>
     </nav>
-    <form
-      name="reflection"
-      method="POST"
-      data-netlify="true"
-      action="/thank-you.fr.html"
-    >
-      <input type="hidden" name="form-name" value="reflection" />
-      <input type="hidden" name="form-name" value="reflection" />
-      <input type="hidden" name="verse" value="manifeste" />
-      <label>Vos réflexions :</label>
-      <textarea name="message" required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
+  
   </body>
 </html>

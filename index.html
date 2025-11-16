@@ -25,6 +25,7 @@
   <title>Awaken Generation ✨ Test Deploy</title>
 
   <link rel="stylesheet" href="../../assets/css/section-style.css" />
+  
   <link rel="stylesheet" href="assets/css/index-style.css" />
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
 
@@ -561,6 +562,29 @@
         <li>VERSE3: <span id="verse3-score">Not completed</span></li>
       </ul>
     </section>
+   <section id="engagement-section">
+  <h2>Share & Subscribe</h2> <!-- English heading -->
+  <div class="form-container">
+    
+    <!-- Reflection Form -->
+    <form class="form-block" name="reflection-en" method="POST" data-netlify="true" action="/thank-you.en.html">
+      <input type="hidden" name="form-name" value="reflection-en" />
+      <input type="hidden" name="verse" value="verse8" />
+      <label>Your thoughts:</label>
+      <textarea name="message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+    <!-- Subscription Form -->
+    <form class="form-block" name="subscription-en" method="POST" data-netlify="true" action="/thank-you.en.html">
+      <input type="hidden" name="form-name" value="subscription-en" />
+      <label for="email-en">Subscribe to updates:</label>
+      <input type="email" id="email-en" name="email" placeholder="Enter your email" required />
+      <button type="submit">Subscribe</button>
+    </form>
+
+  </div>
+</section>
 
     <!-- Controls -->
     <div class="toggle-button">
@@ -574,19 +598,6 @@
       <a href="index.fr.html" aria-label="French version">Français</a>
       <a href="index.ar.html" aria-label="Arabic version">العربية</a>
     </nav>
-    <form
-      name="reflection"
-      method="POST"
-      data-netlify="true"
-      action="/thank-you.html"
-    >
-      <input type="hidden" name="form-name" value="reflection" />
-      <input type="hidden" name="form-name" value="reflection" />
-      <input type="hidden" name="verse" value="verse1" />
-      <label>Your thoughts:</label>
-      <textarea name="message" required></textarea>
-      <button type="submit">Send</button>
-    </form>
     
   </body>
 </html>

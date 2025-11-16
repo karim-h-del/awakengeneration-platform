@@ -455,6 +455,29 @@
       <h2>📊 تقدمك</h2>
       <ul id="progress-list"></ul>
     </section>
+  <section id="engagement-section">
+  <h2>شارك و اشترك</h2> <!-- localized heading -->
+  <div class="form-container" dir="rtl">
+    
+    <!-- Reflection Form -->
+    <form class="form-block" name="reflection-ar" method="POST" data-netlify="true" action="/thank-you.ar.html">
+      <input type="hidden" name="form-name" value="reflection-ar" />
+      <input type="hidden" name="verse" value="verse8" />
+      <label>أفكارك:</label>
+      <textarea name="message" required></textarea>
+      <button type="submit">إرسال</button>
+    </form>
+
+    <!-- Subscription Form -->
+    <form class="form-block" name="subscription-ar" method="POST" data-netlify="true" action="/thank-you.ar.html">
+      <input type="hidden" name="form-name" value="subscription-ar" />
+      <label for="email-ar">اشترك لتصلك التحديثات:</label>
+      <input type="email" id="email-ar" name="email" placeholder="أدخل بريدك الإلكتروني" required />
+      <button type="submit">اشترك</button>
+    </form>
+
+  </div>
+</section>
 
     <div class="toggle-button">
       <button onclick="toggleDarkMode()" aria-label="تبديل الوضع الليلي">
@@ -467,18 +490,6 @@
       <a href="index.fr.html" aria-label="النسخة الفرنسية">Français</a>
       <a href="index.ar.html" aria-label="النسخة العربية">العربية</a>
     </nav>
-    <form
-      name="reflection"
-      method="POST"
-      data-netlify="true"
-      action="/thank-you.ar.html"
-    >
-      <input type="hidden" name="form-name" value="reflection" />
-      <input type="hidden" name="form-name" value="reflection" />
-      <input type="hidden" name="verse" value="البيان" />
-      <label>تأملاتك:</label>
-      <textarea name="message" required></textarea>
-      <button type="submit">إرسال</button>
-    </form>
+    
   </body>
 </html>
