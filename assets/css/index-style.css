@@ -146,6 +146,12 @@ html[lang="ar"] body { text-align: right; }
   color: #444;
 }
 .dark-mode .close-banner { color: #ddd; }
+ .cta-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }

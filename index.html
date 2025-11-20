@@ -45,63 +45,94 @@
     href="https://awakenedgeneration.netlify.app/index.ar.html"
   />
 
-    <script>
+   <script>
   document.addEventListener("DOMContentLoaded", () => {
     // 🌙 Apply dark mode if enabled
     if (localStorage.getItem("darkMode") === "enabled") {
       document.body.classList.add("dark-mode");
     }
 
+    // 🌗 Toggle dark mode
     window.toggleDarkMode = function () {
       const isDark = document.body.classList.toggle("dark-mode");
       localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
     };
 
+    // ❌ Dismiss banner
     window.dismissBanner = function () {
       const banner = document.getElementById("launchBanner");
       if (banner) banner.style.display = "none";
     };
 
-    // 📊 Update progress safely
-    function updateProgress() {
-      // Verse 8 quiz scores
-      const enScore = localStorage.getItem("score_verse8-quiz-en");
-      const frScore = localStorage.getItem("score_verse8-quiz-fr");
-      const arScore = localStorage.getItem("score_verse8-quiz-ar");
+    // 📊 Render progress
+    const lang = document.documentElement.lang;
+    const progressList = document.getElementById("progress-list");
 
-      const enSpan = document.getElementById("progress-en");
-      const frSpan = document.getElementById("progress-fr");
-      const arSpan = document.getElementById("progress-ar");
+    const labels = {
+      en: { score: "Score", incomplete: "Not completed" },
+      fr: { score: "Score", incomplete: "Non complété" },
+      ar: { score: "النتيجة", incomplete: "غير مكتمل" },
+    };
 
-      if (enSpan) enSpan.textContent = enScore || "not attempted";
-      if (frSpan) frSpan.textContent = frScore || "non tenté";
-      if (arSpan) arSpan.textContent = arScore || "لم تتم المحاولة";
+    const { score, incomplete } = labels[lang] || labels.en;
 
-      // Sections
-      const sections = ["section1", "section2", "section3"];
-      sections.forEach(id => {
-        const value = localStorage.getItem(`score_${id}`);
-        const span = document.getElementById(`${id}-score`);
-        if (span) span.textContent = value || "Not completed";
-      });
+    const sections = [
+      "section1",
+      "section2",
+      "section3",
+      "section4",
+      "section5",
+      "section6",
+      "section7",
+    ];
 
-      // Verses
-      const verses = ["verse1", "verse2", "verse3"];
-      verses.forEach(id => {
-        const value = localStorage.getItem(`score_${id}`);
-        const span = document.getElementById(`${id}-score`);
-        if (span) span.textContent = value || "Not completed";
+    const verses = ["verse1", "verse2", "verse3"];
+
+    // Helper: get score from localStorage or page element
+    function getScore(id) {
+      let value = localStorage.getItem(`score_${id}`);
+      if (!value) {
+        const el = document.getElementById(`${id}-score`);
+        if (el) {
+          value = el.textContent.trim();
+          localStorage.setItem(`score_${id}`, value);
+        }
+      }
+      return value;
+    }
+
+    if (progressList) {
+      [...sections, ...verses].forEach((id) => {
+        const value = getScore(id);
+        const item = document.createElement("li");
+
+        if (value && value !== "Not completed") {
+          item.innerHTML = `${id.toUpperCase()}: ✅ ${score}: ${value}`;
+          item.style.color = id.startsWith("verse") ? "teal" : "green";
+        } else {
+          item.innerHTML = `${id.toUpperCase()}: ❌ ${score}: ${incomplete}`;
+          item.style.color = "gray";
+        }
+
+        progressList.appendChild(item);
       });
     }
 
-    // Run after DOM is ready
-    updateProgress();
+    // ✅ Update inline verse scores if spans exist
+    verses.forEach(id => {
+      const value = getScore(id);
+      const span = document.getElementById(`${id}-score`);
+      if (span) {
+        span.textContent = value || incomplete;
+      }
+    });
 
-    // ✅ Language toggle
+    // ✅ Language toggle logic — now inside DOMContentLoaded
     window.showLang = function (lang) {
-      document.querySelectorAll(".lang-block").forEach(div => div.style.display = "none");
-      const block = document.getElementById("lang-" + lang);
-      if (block) block.style.display = "block";
+      document
+        .querySelectorAll(".lang-block")
+        .forEach((div) => (div.style.display = "none"));
+      document.getElementById("lang-" + lang).style.display = "block";
     };
   });
 </script>
@@ -157,11 +188,27 @@
         >✖</span
       >
     </div>
+    <div class="cta-group">
+  <a href="main.html" class="cta-btn">English</a>
+  <a href="main.fr.html" class="cta-btn">Français</a>
+  <a href="main.ar.html" class="cta-btn">العربية</a>
+</div>
 
     <header>
       <h1>The Manifesto of the Awakened Generation</h1>
     </header>
-
+    <nav class="navbar">
+      <div class="logo">Awaken Generation</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="main.html">English Curriculum</a></li>
+        <li><a href="main.fr.html">Curriculum Français</a></li>
+        <li><a href="main.ar.html">المنهج بالعربية</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+    
     <p>
       <em
         >In the name of the Creator of Existence, who encoded the cosmos with

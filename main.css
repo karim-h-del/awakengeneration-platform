@@ -1,0 +1,262 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(to bottom, #0b0c10, #1f2833);
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #66fcf1;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #66fcf1;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  margin: 4px;
+  border-radius: 5px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.95);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #66fcf1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #c5c6c7;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #66fcf1;
+  color: #0b0c10;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.cta-btn:hover {
+  background: #45a29e;
+  transform: scale(1.05);
+}
+
+/* Manifesto Block */
+.manifesto-block {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(150, 100, 255, 0.3);
+}
+
+.manifesto-block h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #66fcf1;
+}
+
+/* Curriculum Section */
+.curriculum-block {
+  padding: 4rem 2rem;
+}
+
+.curriculum-block h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #66fcf1;
+}
+
+.curriculum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.module-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(150, 100, 255, 0.2);
+  transition: transform 0.2s;
+}
+
+.module-card:hover {
+  transform: translateY(-5px);
+}
+
+.module-card h3 {
+  margin-bottom: 1rem;
+  color: #45a29e;
+}
+
+.module-card p {
+  margin-bottom: 1rem;
+  color: #c5c6c7;
+}
+
+.module-card a {
+  text-decoration: none;
+  color: #66fcf1;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.module-card a:hover {
+  color: #fff;
+}
+
+/* Resources Section */
+.resources-block {
+  padding: 4rem 2rem;
+}
+
+.resources-block h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #66fcf1;
+}
+
+.resource-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(150, 100, 255, 0.2);
+}
+
+.resource-card h3 {
+  margin-bottom: 1rem;
+  color: #45a29e;
+}
+
+.resource-card h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #66fcf1;
+}
+
+.resource-card ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #c5c6c7;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255,255,255,0.05);
+  font-size: 0.9rem;
+  color: #c5c6c7;
+}
+.back-home {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0078d7;
+  text-decoration: none;
+  font-weight: bold;
+}
+.back-home:hover {
+  text-decoration: underline;
+}
+
+/* Navigation buttons */
+.nav-buttons {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.nav-buttons:has(a:only-child) { justify-content: center; }
+.nav-buttons a {
+  background-color: transparent;
+  color: white;
+  padding: 0.6em 1em;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.nav-buttons a:hover { background-color: #005fa3; }
