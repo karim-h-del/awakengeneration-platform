@@ -1,0 +1,26 @@
+{
+  "title": "🌙 Quiz: Ramadan Basics (Test Version)",
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "In which month of the Islamic calendar does Ramadan occur?",
+      "options": ["First", "Ninth", "Twelfth", "Fourth"],
+      "answer": [1],
+      "explanation": "Ramadan is the ninth month of the Islamic lunar calendar."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What is the primary act of worship during Ramadan?",
+      "options": ["Pilgrimage", "Charity", "Fasting", "Prayer only"],
+      "answer": [2],
+      "explanation": "Fasting from dawn to sunset is the central act of worship during Ramadan."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which night is described as 'better than a thousand shahr (ألف شهر)' in the Qur’an?",
+      "options": ["Laylat al-Qadr", "Laylat al-Miraj", "Laylat al-Bara’ah", "Laylat al-Isra"],
+      "answer": [0],
+      "explanation": "Qur’an: 'لَيْلَةُ الْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ'. While often rendered 'month', shahr relates to public manifestation (إشهار). The verse affirms Laylat al-Qadr’s qualitative transcendence over extensive spans of visibility/duration."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title": "Qur'anic Verses and Astrophysical Events Timeline",
+  "subtitle": "الدلوك كحدث كوني — Mapping revelation to stellar physics with NASA timestamps",
+  "theme": {
+    "background": "#0b1a3a",
+    "timestampColor": "#ff4d4d",
+    "eventColor": "#ffffff",
+    "arabicColor": "#d4af37",
+    "dividers": "#22406f",
+    "fonts": {
+      "latin": "Inter, Arial, sans-serif",
+      "arabic": "Amiri, Scheherazade, Noto Naskh Arabic, serif"
+    }
+  },
+  "rows": [
+    {
+      "timestamp": "~41:00",
+      "event": "Helium accumulation and ignition (helium flash) — الدلوك",
+      "arabic": "الدلوك",
+      "reference": null,
+      "video": null
+    },
+    {
+      "timestamp": "~41:00",
+      "event": "Sun’s collapse, density increase, helium ignition",
+      "arabic": "إِذَا الشَّمْسُ كُوِّرَتْ",
+      "reference": "81:1",
+      "video": "https://www.youtube.com/watch?v=kWsmzybW-Sg"
+    },
+    {
+      "timestamp": "45:00–55:00",
+      "event": "Red giant expansion; Earth scorched",
+      "arabic": "يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا",
+      "reference": "66:6",
+      "video": "https://youtu.be/eMoTcAbI35c"
+    },
+    {
+      "timestamp": "~50:00",
+      "event": "Collapse of celestial order; destabilized orbits",
+      "arabic": "وَجُمِعَ الشَّمْسُ وَالْقَمَرُ",
+      "reference": "75:9",
+      "video": null
+    },
+    {
+      "timestamp": "1:00:00+",
+      "event": "Planetary scattering as gravitational bindings shift",
+      "arabic": "إِذَا السَّمَاءُ انفَطَرَتْ وَإِذَا الْكَوَاكِبُ انتَثَرَتْ",
+      "reference": "82:1–2",
+      "video": null
+    },
+    {
+      "timestamp": "~56:29",
+      "event": "What NASA Saw At the Edge of the Solar System",
+      "reference": "NASA Full Documentary",
+      "video": "https://youtu.be/tqqPyqj5Ohw"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "title": "📊 Quiz: Quantity, Mathematics, and Diachronic History in the Qur’an",
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "According to Qur’an 13:8, how does God describe everything?",
+      "options": ["By philosophy", "By imagination", "By measure", "By destiny"],
+      "answer": [2],
+      "explanation": "Qur’an 13:8 says: 'وَكُلُّ شَيْءٍ عِندَهُ بِمِقْدَارٍ' — everything is with Him in measure."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What does Qur’an 72:28 emphasize about all things?",
+      "options": ["They are numbered", "They are timeless", "They are subjective", "They are infinite"],
+      "answer": [0],
+      "explanation": "The verse states: 'وَأَحْصَىٰ كُلَّ شَيْءٍ عَدَدًا' — He has numbered all things."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Which of the following are the four elements of science?",
+      "options": [
+        "Matter, Dimension, Position, Motion",
+        "Logic, Ethics, Metaphysics, Aesthetics",
+        "Atoms, Molecules, Cells, Organs",
+        "Space, Time, Energy, Force"
+      ],
+      "answer": [0],
+      "explanation": "Science functions through matter, dimension, position, and motion (time-related)."
+    },
+    {
+    "type": "singleSelect",
+    "question": "What percentage of the universe is dark energy?",
+    "options": ["27%", "70%", "3%", "1%"],
+    "answer": [1],
+    "hint": "It drives cosmic expansion.",
+    "explanation": "Dark energy makes up about 70% of the universe."
+  },
+  {
+    "type": "singleSelect",
+    "question": "Which verse aligns with the collapse of spacetime?",
+    "options": ["66:6", "28:88", "81:1", "75:9"],
+    "answer": [1],
+    "hint": "It says 'Everything will perish except His face.'",
+    "explanation": "Qur’an 28:88 confirms the ultimate perishing of all creation."
+  }
+  ]
+}

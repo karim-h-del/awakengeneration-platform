@@ -197,13 +197,13 @@ body {
 }
 
 .resource-card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0);
   border: 1px solid rgba(255,255,255,0.2);
   padding: 2rem;
   margin: 2rem auto;
   max-width: 900px;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(150, 100, 255, 0.2);
+  box-shadow: 0 0 15px rgb(100, 255, 208);
 }
 
 .resource-card h3 {
@@ -232,6 +232,15 @@ footer {
   font-size: 0.9rem;
   color: #c5c6c7;
 }
+
+.dialogue {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0078d7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .back-home {
   display: inline-block;
   margin-top: 1rem;

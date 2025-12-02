@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diálogo y Quiz: Identidad Humana y Civilización</title>
+  <style>
+  body {
+    font-family: Inter, "Amiri", serif;
+    margin: 40px;
+    background: #f9f9f9;
+    color: #222;
+    line-height: 1.7;
+  }
+  h1, h2 {
+    color: #004d40;
+    margin-bottom: 12px;
+  }
+  .lang-switcher {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    background-color: #f59e0b;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .lang-switcher a {
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #004d40;
+  }
+  .lang-switcher a.active {
+    color: #22c55e;
+  }
+  .dialogue, .quiz {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .quiz {
+    background: #e8f5e9;
+  }
+  .question {
+    margin-bottom: 20px;
+  }
+  .options label {
+    display: block;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  button {
+    border: none;
+    background: #004d40;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  button:hover {
+    background: #00695c;
+  }
+  .feedback {
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  .feedback.correct { color: #22c55e; }
+  .feedback.incorrect { color: #ef4444; }
+  .feedback.warning { color: #f59e0b; }
+</style>
+</head>
+<body>
+  <h1>Diálogo sobre la Identidad Humana y la Civilización</h1>
+  <div class="lang-switcher">
+    <a href="index1.html">EN</a>
+    <a href="index1.fr.html">FR</a>
+    <a href="index1.ar.html">AR</a>
+    <a href="index1.es.html" class="active">ES</a>
+  </div>
+
+  <div class="dialogue">
+  <h2>Texto principal</h2>
+  <p><strong>Pregunta:</strong> ¿Qué significa ser humano en la era global? ¿Cómo se transforma la identidad cuando las civilizaciones se entrelazan y las culturas se digitalizan?</p>
+
+  <h3>🌍 Civilización y herencia</h3>
+  <p>Las civilizaciones no son solo estructuras políticas; son portadoras de sentido, transmisoras de valores, lenguas y símbolos que moldean la identidad colectiva. Desde las tablillas de arcilla de Mesopotamia hasta las redes digitales actuales, cada época redefine la pertenencia. La herencia nunca es estática — es una transmisión viva, un diálogo entre pasado y presente que forma la conciencia de las generaciones.</p>
+
+  <h3>🕊️ Globalización cultural</h3>
+  <p>En la era global, la migración, los medios digitales y el comercio mundial entrelazan culturas en un tejido complejo. Este entrelazamiento crea identidades híbridas que no son fijas ni únicas. Una persona puede sentirse arraigada en tradiciones locales mientras participa al mismo tiempo en comunidades digitales globales. La identidad se vuelve dinámica, estratificada y en constante evolución.</p>
+
+  <h3>⚖️ Ética y diversidad</h3>
+  <p>La convivencia en sociedades diversas exige más que tolerancia; requiere el reconocimiento de la dignidad universal y el valor de equilibrar tradición con innovación. Los derechos humanos y la diversidad cultural son pilares de la civilización contemporánea, asegurando que el progreso no borre las diferencias sino que las celebre. La ética se convierte en la brújula que guía a las sociedades en medio del cambio acelerado.</p>
+
+  <h3>📚 Memoria y narrativa</h3>
+  <p>La identidad también se construye a través de relatos compartidos — historia, literatura, religión y ciencia. Estas narrativas forman la memoria colectiva que une a las comunidades. Cuando la memoria se pierde o se distorsiona, la cohesión social se debilita, dejando a los individuos desconectados de sus raíces y de su futuro. Preservar la identidad significa proteger los relatos para que las voces del pasado sigan inspirando el presente e iluminando el futuro.</p>
+
+  <h3>👶 Generaciones futuras</h3>
+  <p>Los jóvenes heredan múltiples identidades: locales, digitales y globales. Su reto es integrarlas de manera auténtica sin perder su sentido de sí mismos. Al transformar la herencia en acción ética y creativa, se convierten en arquitectos de una civilización que honra el pasado mientras construye un futuro justo. La responsabilidad de la juventud es renovar la memoria y tejer tradición e innovación en un tejido vivo de humanidad.</p>
+</div>
+
+  <div class="quiz">
+  <h2>Quiz interactivo</h2>
+
+  <div class="question">
+    <p>1. ¿Qué transmiten las civilizaciones que forman la identidad colectiva?</p>
+    <div class="options">
+      <label><input type="radio" name="q1" value="values"> Valores, lenguas y símbolos</label>
+      <label><input type="radio" name="q1" value="economy"> Solo sistemas económicos</label>
+      <label><input type="radio" name="q1" value="none"> Nada significativo</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>2. ¿Cómo ha cambiado el significado de pertenencia a lo largo de las épocas?</p>
+    <div class="options">
+      <label><input type="radio" name="q2" value="era"> Cada época redefine la pertenencia</label>
+      <label><input type="radio" name="q2" value="unchanged"> Permanece sin cambios</label>
+      <label><input type="radio" name="q2" value="disappeared"> Ha desaparecido</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>3. ¿Qué factores entrelazan culturas en la era global?</p>
+    <div class="options">
+      <label><input type="radio" name="q3" value="mix"> Migración, medios digitales y comercio</label>
+      <label><input type="radio" name="q3" value="wars"> Solo guerras</label>
+      <label><input type="radio" name="q3" value="none"> Ninguno</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>4. ¿Cómo se describe la identidad hoy?</p>
+    <div class="options">
+      <label><input type="radio" name="q4" value="dynamic"> Dinámica y múltiple</label>
+      <label><input type="radio" name="q4" value="fixed"> Fija y singular</label>
+      <label><input type="radio" name="q4" value="nonexistent"> Inexistente</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>5. ¿Qué se requiere para la convivencia en sociedades diversas?</p>
+    <div class="options">
+      <label><input type="radio" name="q5" value="dignity"> Reconocer la dignidad universal</label>
+      <label><input type="radio" name="q5" value="ignore"> Ignorar las diferencias</label>
+      <label><input type="radio" name="q5" value="impose"> Imponer una tradición</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>6. ¿Cuáles son pilares de la civilización contemporánea?</p>
+    <div class="options">
+      <label><input type="radio" name="q6" value="rights"> Los derechos humanos y la diversidad cultural</label>
+      <label><input type="radio" name="q6" value="military"> El poder militar</label>
+      <label><input type="radio" name="q6" value="economy"> La dominación económica</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>7. ¿Qué construye la identidad además de valores y cultura?</p>
+    <div class="options">
+      <label><input type="radio" name="q7" value="stories"> Relatos compartidos (historia, literatura, religión, ciencia)</label>
+      <label><input type="radio" name="q7" value="tech"> Solo tecnología</label>
+      <label><input type="radio" name="q7" value="none"> Nada más</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>8. ¿Qué ocurre cuando se pierde la memoria colectiva?</p>
+    <div class="options">
+      <label><input type="radio" name="q8" value="weakens"> La cohesión social se debilita</label>
+      <label><input type="radio" name="q8" value="unchanged"> Nada cambia</label>
+      <label><input type="radio" name="q8" value="stronger"> La sociedad se fortalece</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>9. ¿Qué identidades heredan los jóvenes hoy?</p>
+    <div class="options">
+      <label><input type="radio" name="q9" value="multiple"> Locales, digitales y globales</label>
+      <label><input type="radio" name="q9" value="local"> Solo locales</label>
+      <label><input type="radio" name="q9" value="none"> Ninguna</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>10. ¿Qué desafío enfrentan los jóvenes con múltiples identidades?</p>
+    <div class="options">
+      <label><input type="radio" name="q10" value="integrate"> Integrarlas con autenticidad</label>
+      <label><input type="radio" name="q10" value="reject"> Rechazarlas</label>
+      <label><input type="radio" name="q10" value="ignore"> Ignorarlas</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>11. ¿Cómo puede transformarse la herencia por los jóvenes?</p>
+    <div class="options">
+      <label><input type="radio" name="q11" value="action"> En acción ética y creativa</label>
+      <label><input type="radio" name="q11" value="tradition"> En tradición pasiva</label>
+      <label><input type="radio" name="q11" value="conflict"> En conflicto</label>
+    </div>
+  </div>
+
+  <div class="question">
+    <p>12. ¿Cuál es el riesgo si los jóvenes no integran sus identidades?</p>
+    <div class="options">
+      <label><input type="radio" name="q12" value="authenticity"> Pérdida de autenticidad</label>
+      <label><input type="radio" name="q12" value="innovation"> Mayor innovación</label>
+      <label><input type="radio" name="q12" value="norisk"> Ningún riesgo</label>
+    </div>
+  </div>
+
+  <button onclick="checkAnswers()">Comprobar respuestas</button>
+  <h3 id="quiz-result"></h3>
+</div>
+
+<div class="videos">
+  <h2>🎥 Videos relacionados</h2>
+  <h3>Diálogo sobre la identidad humana y la civilización</h3>
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/113fcqJp8mY" frameborder="0" allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/y07bCcYegGM" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<script>
+  const correctAnswers = {
+    q1: "values", q2: "era", q3: "mix", q4: "dynamic",
+    q5: "dignity", q6: "rights", q7: "stories", q8: "weakens",
+    q9: "multiple", q10: "integrate", q11: "action", q12: "authenticity"
+  };
+
+  function checkAnswers() {
+    let score = 0;
+    const total = Object.keys(correctAnswers).length;
+
+    for (const q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      const block = document.querySelector(`input[name="${q}"]`).closest('.question');
+      let feedback = block.querySelector('.feedback');
+      if (!feedback) {
+        feedback = document.createElement('p');
+        feedback.className = 'feedback';
+        block.appendChild(feedback);
+      }
+
+      if (selected) {
+        if (selected.value === correctAnswers[q]) {
+          feedback.textContent = "✅ ¡Correcto!";
+          feedback.className = "feedback correct";
+          score++;
+        } else {
+          feedback.textContent = "❌ Incorrecto";
+          feedback.className = "feedback incorrect";
+        }
+      } else {
+        feedback.textContent = "⚠️ No se seleccionó ninguna respuesta";
+        feedback.className = "feedback warning";
+      }
+    }
+
+    document.getElementById('quiz-result').textContent = `Tu puntuación: ${score}/${total}`;
+  }
+</script>
+<p><a href="main.html" class="logo">⬅ Volver a: Manifiesto para el Currículum de la Existencia</a></p>
+<p><a href="index.html" class="back-home">⬅ Volver al inicio</a></p>
+</body>
+</html>

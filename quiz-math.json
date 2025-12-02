@@ -1,0 +1,26 @@
+{
+  "title": "➗ Quiz: Mathematics Basics (Test Version)",
+  "questions": [
+    {
+      "type": "singleSelect",
+      "question": "Who is often called the 'Father of Geometry'?",
+      "options": ["Euclid", "Pythagoras", "Archimedes", "Al-Khwarizmi"],
+      "answer": [0],
+      "explanation": "Euclid is known as the Father of Geometry for his foundational work 'Elements'."
+    },
+    {
+      "type": "singleSelect",
+      "question": "What is the value of π (pi) approximately?",
+      "options": ["2.14", "3.14", "1.41", "4.44"],
+      "answer": [1],
+      "explanation": "Pi (π) is approximately 3.14159, the ratio of a circle’s circumference to its diameter."
+    },
+    {
+      "type": "singleSelect",
+      "question": "Matrices are primarily used in which branch of mathematics?",
+      "options": ["Calculus", "Linear Algebra", "Number Theory", "Statistics"],
+      "answer": [1],
+      "explanation": "Matrices are central to linear algebra, used to represent and solve systems of equations."
+    }
+  ]
+}

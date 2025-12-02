@@ -1,1 +1,1 @@
-Sitemap: https://awakenedgeneration.netlify.app/sitemap.xml
+Sitemap: https://awakenedgeneration-platform.netlify.app/sitemap.xml
