@@ -157,3 +157,22 @@ html[lang="ar"] body { text-align: right; }
   from { opacity: 0; transform: translateY(-10px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+.comment-box {
+  background-color: #f9f9f9;       /* soft background */
+  border: 1px solid #ddd;          /* light border */
+  border-radius: 6px;              /* rounded corners */
+  padding: 12px 16px;              /* inner spacing */
+  margin-bottom: 12px;             /* space between comments */
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #333;                     /* readable text color */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* subtle shadow */
+}
+
+.comment-box strong {
+  display: block;                  /* verse label on its own line */
+  color: #006699;                  /* highlight verse text */
+  margin-bottom: 6px;
+}

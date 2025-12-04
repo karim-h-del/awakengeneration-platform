@@ -606,7 +606,8 @@
       <input type="email" id="email-en" name="email" placeholder="Enter your email" required />
       <button type="submit">Subscribe</button>
     </form>
-
+    <h3>Community Reflections</h3>
+    <div id="comments"></div>
   </div>
 </section>
 
@@ -628,7 +629,38 @@
       <a href="index.fr.html" aria-label="French version">Français</a>
       <a href="index.ar.html" aria-label="Arabic version">العربية</a>
     </nav>
+<script>
+  async function loadComments() {
+    // Detect language from <html lang="..."> attribute
+    const pageLang = document.documentElement.lang || "en";
 
+    // Map language codes to Netlify form names
+    const formMap = {
+      en: "reflection-en",
+      fr: "reflection-fr",
+      es: "reflection-es",
+      ar: "reflection-ar"
+    };
+
+    // Pick the correct form name
+    const formName = formMap[pageLang] || "reflection-en";
+
+    // Fetch submissions for that form
+    const response = await fetch(`/.netlify/functions/get-comments?form=${formName}`);
+    const comments = await response.json();
+
+    // Render comments
+    const container = document.getElementById("comments");
+    comments.forEach(c => {
+      const div = document.createElement("div");
+      div.className = "comment-box";
+      div.innerHTML = `<strong>${c.verse}</strong>: ${c.message}`;
+      container.appendChild(div);
+    });
+  }
+
+  loadComments();
+</script>
     
   </body>
 </html>
