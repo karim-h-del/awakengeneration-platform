@@ -158,21 +158,45 @@ html[lang="ar"] body { text-align: right; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.comment-box {
-  background-color: #f9f9f9;       /* soft background */
-  border: 1px solid #ddd;          /* light border */
-  border-radius: 6px;              /* rounded corners */
-  padding: 12px 16px;              /* inner spacing */
-  margin-bottom: 12px;             /* space between comments */
-  font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #333;                     /* readable text color */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* subtle shadow */
+/* Container styling */
+#comments {
+  margin-top: 1em;
+  padding: 0.5em;
+  background-color: #f9f9f9;
+  border-radius: 6px;
 }
 
+/* Each comment box */
+.comment-box {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+/* Last comment: no border */
+.comment-box:last-child {
+  border-bottom: none;
+}
+
+/* Verse label */
 .comment-box strong {
-  display: block;                  /* verse label on its own line */
-  color: #006699;                  /* highlight verse text */
-  margin-bottom: 6px;
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+/* Message text */
+.comment-box p {
+  margin: 0;
+  line-height: 1.4;
+  color: #555;
+  font-size: 0.95em;
+}
+
+/* Empty state or error messages */
+#comments p {
+  font-style: italic;
+  color: #777;
+  text-align: center;
+  margin: 1em 0;
 }

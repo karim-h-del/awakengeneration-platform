@@ -1,3 +1,6 @@
+// netlify/functions/get-comments.js
+const fetch = require("node-fetch"); // Needed in Node <18
+
 exports.handler = async function(event) {
   try {
     const formName = event.queryStringParameters.form || "reflection-en";
@@ -9,6 +12,7 @@ exports.handler = async function(event) {
     if (!response.ok) {
       return {
         statusCode: response.status,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ error: `Netlify API error: ${response.statusText}` })
       };
     }
@@ -18,6 +22,7 @@ exports.handler = async function(event) {
     if (!form) {
       return {
         statusCode: 404,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ error: "Form not found" })
       };
     }
@@ -32,6 +37,7 @@ exports.handler = async function(event) {
     if (!submissionsResponse.ok) {
       return {
         statusCode: submissionsResponse.status,
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ error: `Netlify API error: ${submissionsResponse.statusText}` })
       };
     }
@@ -40,6 +46,7 @@ exports.handler = async function(event) {
 
     return {
       statusCode: 200,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(
         submissions.map(s => ({
           verse: s.data.verse || "",
@@ -51,6 +58,7 @@ exports.handler = async function(event) {
   } catch (error) {
     return {
       statusCode: 500,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ error: error.message })
     };
   }

@@ -591,7 +591,7 @@
   <div class="form-container">
     
     <!-- Reflection Form -->
-    <form class="form-block" name="reflection-en" method="POST" data-netlify="true" action="/thank-you.en.html">
+    <form class="form-block" name="reflection-en" method="POST" data-netlify="true" action="/thank-you.html">
       <input type="hidden" name="form-name" value="reflection-en" />
       <input type="hidden" name="verse" value="verse8" />
       <label>Your thoughts:</label>
@@ -600,7 +600,7 @@
     </form>
 
     <!-- Subscription Form -->
-    <form class="form-block" name="subscription-en" method="POST" data-netlify="true" action="/thank-you.en.html">
+    <form class="form-block" name="subscription-en" method="POST" data-netlify="true" action="/thank-you.html">
       <input type="hidden" name="form-name" value="subscription-en" />
       <label for="email-en">Subscribe to updates:</label>
       <input type="email" id="email-en" name="email" placeholder="Enter your email" required />
@@ -629,37 +629,99 @@
       <a href="index.fr.html" aria-label="French version">Français</a>
       <a href="index.ar.html" aria-label="Arabic version">العربية</a>
     </nav>
-<script>
-  async function loadComments() {
-    // Detect language from <html lang="..."> attribute
-    const pageLang = document.documentElement.lang || "en";
+  <script>
+async function loadComments() {
+  // Normalize language code (handles fr-FR, ar-MA, etc.)
+  const pageLang = (document.documentElement.lang || "en").substring(0,2);
 
-    // Map language codes to Netlify form names
-    const formMap = {
-      en: "reflection-en",
-      fr: "reflection-fr",
-      es: "reflection-es",
-      ar: "reflection-ar"
-    };
+  const formMap = {
+    en: "reflection-en",
+    fr: "reflection-fr",
+    es: "reflection-es",
+    ar: "reflection-ar"
+  };
 
-    // Pick the correct form name
-    const formName = formMap[pageLang] || "reflection-en";
+  const messages = {
+    empty: {
+      en: "No reflections yet. Be the first to share!",
+      fr: "Aucune réflexion pour l'instant. Soyez le premier à partager !",
+      es: "Todavía no hay reflexiones. ¡Sé el primero en compartir!",
+      ar: "لا توجد تأملات بعد. كن أول من يشارك!"
+    },
+    error: {
+      en: "Unable to load reflections right now.",
+      fr: "Impossible de charger les réflexions pour le moment.",
+      es: "No se pueden cargar las reflexiones en este momento.",
+      ar: "تعذر تحميل التأملات الآن."
+    }
+  };
 
-    // Fetch submissions for that form
-    const response = await fetch(`/.netlify/functions/get-comments?form=${formName}`);
-    const comments = await response.json();
+  // Realistic multilingual mock reflections (restricted to verses 6, 7, 8)
+  const mockData = {
+    en: [
+      { verse: "Verse 6", message: "This verse reminds me that patience is the bridge between thought and action." },
+      { verse: "Verse 7", message: "Together we rise, each reflection adding light to the collective flame." },
+      { verse: "Verse 8", message: "Me too, our minds combine and form one conscious being agent." }
+    ],
+    fr: [
+      { verse: "Verset 6", message: "Ce verset me rappelle que la patience est le pont entre pensée et action." },
+      { verse: "Verset 7", message: "Ensemble nous nous élevons, chaque réflexion ajoutant de la lumière à la flamme collective." },
+      { verse: "Verset 8", message: "Moi aussi, nos esprits se combinent et forment un seul être conscient." }
+    ],
+    es: [
+      { verse: "Verso 6", message: "Este verso me recuerda que la paciencia es el puente entre el pensamiento y la acción." },
+      { verse: "Verso 7", message: "Juntos nos elevamos, cada reflexión añade luz a la llama colectiva." },
+      { verse: "Verso 8", message: "Yo también, nuestras mentes se combinan y forman un solo ser consciente." }
+    ],
+    ar: [
+      { verse: "الآية 6", message: "هذه الآية تذكرني أن الصبر هو الجسر بين الفكر والعمل." },
+      { verse: "الآية 7", message: "معًا نرتقي، كل تأمل يضيف نورًا إلى الشعلة الجماعية." },
+      { verse: "الآية 8", message: "أنا أيضًا، عقولنا تتحد وتشكل كيانًا واعيًا واحدًا." }
+    ]
+  };
 
-    // Render comments
-    const container = document.getElementById("comments");
-    comments.forEach(c => {
+  const formName = formMap[pageLang] || "reflection-en";
+  const container = document.getElementById("comments");
+  if (!container) return;
+  container.innerHTML = "";
+
+  // Detect environment: skip fetch if running on Live Server
+  const isLiveServer = location.hostname === "127.0.0.1" || location.hostname === "localhost";
+
+  if (isLiveServer) {
+    const comments = mockData[pageLang] ?? mockData.en;
+    comments.forEach(entry => {
       const div = document.createElement("div");
       div.className = "comment-box";
-      div.innerHTML = `<strong>${c.verse}</strong>: ${c.message}`;
+      div.innerHTML = `<p><strong>${entry.verse}</strong></p><p>${entry.message}</p>`;
       container.appendChild(div);
     });
+    return;
   }
 
-  loadComments();
+  // Otherwise, try Netlify Function
+  try {
+    const response = await fetch(`/.netlify/functions/get-comments?form=${formName}`);
+    if (!response.ok) throw new Error("Function not available");
+
+    const comments = await response.json();
+    if (!comments || comments.length === 0) {
+      container.innerHTML = `<p>${messages.empty[pageLang] || messages.empty.en}</p>`;
+      return;
+    }
+
+    comments.forEach(entry => {
+      const div = document.createElement("div");
+      div.className = "comment-box";
+      div.innerHTML = `<p><strong>Verse:</strong> ${entry.verse || "N/A"}</p><p>${entry.message}</p>`;
+      container.appendChild(div);
+    });
+  } catch {
+    container.innerHTML = `<p>${messages.error[pageLang] || messages.error.en}</p>`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadComments);
 </script>
     
   </body>
