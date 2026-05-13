@@ -269,3 +269,16 @@ footer {
   font-weight: bold;
 }
 .nav-buttons a:hover { background-color: #005fa3; }
+
+/* Video Links */
+.video-link {
+  color: #ffd700;          /* Gold for strong contrast on dark background */
+  font-weight: bold;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.video-link:hover {
+  color: #ff4500;          /* OrangeRed on hover for visibility */
+}
+

@@ -5,8 +5,11 @@ exports.handler = async function (event) {
     // Allow dynamic form name via query string, fallback to "reflection-en"
     const formName = event.queryStringParameters.form || "reflection-en";
 
-    // Fetch all forms from Netlify API
-    const response = await fetch("https://api.netlify.com/api/v1/forms", {
+    // Your site ID from Netlify dashboard
+    const siteId = "62f7efea-6606-4d4f-93c0-64877783bd51";
+
+    // Fetch all forms for this site
+    const response = await fetch(`https://api.netlify.com/api/v1/sites/${siteId}/forms`, {
       headers: { Authorization: `Bearer ${process.env.NETLIFY_AUTH_TOKEN}` }
     });
 
@@ -31,7 +34,7 @@ exports.handler = async function (event) {
 
     // Fetch submissions dynamically for the matched form
     const submissionsResponse = await fetch(
-      `https://api.netlify.com/api/v1/forms/${form.id}/submissions`,
+      `https://api.netlify.com/api/v1/sites/${siteId}/forms/${form.id}/submissions`,
       {
         headers: { Authorization: `Bearer ${process.env.NETLIFY_AUTH_TOKEN}` }
       }
