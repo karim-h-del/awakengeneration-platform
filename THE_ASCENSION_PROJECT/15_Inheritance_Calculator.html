@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>15: محرك الإرث التنويري | إصدار البيان الختامي</title>
+    <style>
+        :root { --bg: #03080a; --gold: #ffca28; --blue: #00e5ff; --card: #0a151a; }
+        body { background: var(--bg); color: #e0e0e0; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 20px; text-align: center; }
+        .container { max-width: 850px; margin: auto; background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); box-shadow: 0 0 40px rgba(0, 255, 204, 0.1); }
+        .input-group { margin: 15px 0; text-align: right; }
+        label { display: block; margin-bottom: 8px; color: var(--blue); font-weight: bold; }
+        input, select { width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 8px; font-size: 1rem; }
+        .flex-inputs { display: flex; gap: 15px; margin-bottom: 15px; }
+        .flex-inputs div { flex: 1; text-align: right; }
+        button { width: 100%; padding: 18px; background: var(--gold); color: #000; border: none; border-radius: 8px; font-weight: bold; font-size: 1.3rem; cursor: pointer; transition: 0.4s; margin-top: 20px; }
+        button:hover { background: var(--blue); color: #000; transform: scale(1.02); }
+        .results { margin-top: 30px; padding: 25px; background: rgba(0, 229, 255, 0.05); border-radius: 15px; display: none; text-align: right; }
+        .res-item { border-bottom: 1px solid #222; padding: 12px 0; display: flex; justify-content: space-between; font-size: 1.1rem; }
+        .highlight { color: var(--gold); font-weight: bold; }
+        .logic-explanation { margin-top: 30px; background: #000; padding: 20px; border-radius: 12px; border-right: 5px solid var(--gold); text-align: justify; }
+        .logic-explanation h3 { color: var(--gold); margin-top: 0; font-size: 1.2rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        ul { padding-right: 20px; list-style-type: '⚡ '; }
+        li { margin-bottom: 15px; line-height: 1.7; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1 style="color: var(--gold);">محرك الإرث التنويري</h1>
+            <p>"الميزان الرقمي المحكم - البيان الكامل للحق"</p>
+        </header>
+
+        <div class="input-group">
+            <label>قيمة التركة الإجمالية (رأس الكوم):</label>
+            <input type="number" min="0" id="estate" placeholder="أدخل القيمة المالية">
+        </div>
+
+        <div class="input-group">
+            <label>الزوجية:</label>
+            <select id="spouse">
+                <option value="none">لا يوجد</option>
+                <option value="male">زوج (ذكر)</option>
+                <option value="female">زوجة (أنثى)</option>
+            </select>
+        </div>
+
+        <div class="flex-inputs">
+            <div><label>الام (المربية) او الجدة:</label><select id="mother"><option value="none">غائبة</option><option value="exists">موجودة</option></select></div>
+            <div><label>الاب (المربي) او الجد:</label><select id="father"><option value="none">غائب</option><option value="exists">موجود</option></select></div>
+        </div>
+
+        <div class="flex-inputs">
+            <div><label>أولاد ذكور:</label><input type="number" min="0" id="mC" value="0"></div>
+            <div><label>أولاد إناث:</label><input type="number" min="0" id="fC" value="0"></div>
+        </div>
+
+        <div class="flex-inputs" style="border-top: 1px solid #333; padding-top: 15px;">
+            <div><label>أحفاد يتامى (م):</label><input type="number" min="0" id="mG" value="0"></div>
+            <div><label>أحفاد يتامى (ن):</label><input type="number" min="0" id="fG" value="0"></div>
+        </div>
+
+        <div class="flex-inputs" style="border-top: 1px solid #333; padding-top: 15px;">
+            <div><label>إخوة ذكور:</label><input type="number" min="0" id="mS" value="0"></div>
+            <div><label>إخوة إناث:</label><input type="number" min="0" id="fS" value="0"></div>
+        </div>
+
+        <button onclick="calculateMizan()">تنفيذ الميزان وشرح المنطق</button>
+
+        <div id="resBox" class="results">
+            <div class="res-item"><span>نصيب الزوجية:</span> <span id="r_s" class="highlight">0</span></div>
+            <div class="res-item"><span>نصيب الأم:</span> <span id="r_m" class="highlight">0</span></div>
+            <div class="res-item"><span>نصيب الأب:</span> <span id="r_f" class="highlight">0</span></div>
+            <div class="res-item"><span>نصيب مجموعة الإناث:</span> <span id="r_fg" class="highlight">0</span></div>
+            <div class="res-item"><span>نصيب مجموعة الذكور:</span> <span id="r_mg" class="highlight">0</span></div>
+            <div class="res-item" style="border:none; color: var(--blue); font-size: 0.9rem;"><span>نصيب الفرد الواحد (أنثى):</span> <span id="ind_f">0</span></div>
+            <div class="res-item" style="border:none; color: var(--blue); font-size: 0.9rem;"><span>نصيب الفرد الواحد (ذكر):</span> <span id="ind_m">0</span></div>
+            
+            <div class="logic-explanation">
+                <h3>⚖️ تقرير ميزان الحق (البيان المنطقي)</h3>
+                <div id="explanationText"></div>
+            </div>
+        </div>
+        <div class="logic-explanation" style="border-right-color: var(--blue); margin-top: 15px;">
+    <h3>🛡️ بيان حصانة "البيت الأول" (حق أم اليتامى)</h3>
+    <p>
+        بناءً على قوله تعالى <strong>"غَيْرَ مُضَارٍّ"</strong>، تم تصميم المحرك ليعمل ببروتوكول 
+        <strong>"الفصل المالي"</strong>:
+    </p>
+    <ul>
+        <li>
+            <strong>عقد الرعاية:</strong> دخول "أم اليتامى" (الزوجة الثانية) في ذمة الرجل هو نكاح لغرض 
+            <strong>"الإقساط في اليتامى"</strong>، وهي ذمة مالية مستقلة تماماً بما تملكه من صداق وميراث زوجها الأول.
+        </li>
+        <li>
+            <strong>منع المضارّة:</strong> لا تدخل "أم اليتامى" كوارث (ضرّة) في وعاء الميراث الخاص بالزوجة الأصلية؛ 
+            وذلك لضمان عدم تفتيت حقوق <strong>"النفس الواحدة"</strong> التي أسست البيت الأول.
+        </li>
+        <li>
+            <strong>العدل الرقمي:</strong> العدل المطلوب هو "القسط لليتامى" في الرعاية والنفقة، 
+            أما الميراث فهو "كود" مغلق يحمي الأطراف المؤسسة، وبذلك يتحقق 
+            <strong>"أدنى ألا تعولوا"</strong> (منع تضخم الالتزامات على حساب الحقوق الأصلية).
+        </li>
+    </ul>
+</div>
+    </div>
+
+    <script>
+        function calculateMizan() {
+            const estate = parseFloat(document.getElementById('estate').value) || 0;
+            const spouse = document.getElementById('spouse').value;
+            const hasM = document.getElementById('mother').value === 'exists';
+            const hasF = document.getElementById('father').value === 'exists';
+            const mChild = (parseInt(document.getElementById('mC').value) || 0) + (parseInt(document.getElementById('mG').value) || 0);
+            const fChild = (parseInt(document.getElementById('fC').value) || 0) + (parseInt(document.getElementById('fG').value) || 0);
+            const totalBranch = mChild + fChild;
+            const mSib = parseInt(document.getElementById('mS').value) || 0;
+            const fSib = parseInt(document.getElementById('fS').value) || 0;
+            const totalSib = mSib + fSib;
+
+            let res = { s:0, m:0, f:0, fg:0, mg:0 };
+            let current = estate;
+            let expl = "<ul>";
+
+            if (!estate) {
+                alert("ادخل القيمة الإجمالية");
+                return;
+            }
+            // 1. فحص الانفراد المطلق للزوجية
+            if (spouse !== 'none' && !hasM && !hasF && totalBranch === 0 && totalSib === 0) {
+                res.s = estate;
+                expl += `<li><strong>استيعاب الزوجية:</strong> لعدم وجود أي وارث آخر، استوعب شريك الحياة التركة كاملة إغلاقاً لدائرة "النفس الواحدة".</li>`;
+            } else {
+                // 2. توزيع الزوجية (رأس الكوم)
+                if (spouse !== 'none') {
+                    let rate = (spouse === 'male') ? (totalBranch > 0 ? 0.25 : 0.5) : (totalBranch > 0 ? 0.125 : 0.25);
+                    res.s = estate * rate;
+                    current -= res.s;
+                    expl += `<li><strong>نصيب الزوجية:</strong> تم استقطاع حصة الزوجية أولاً بنسبة ${rate * 100}% من رأس الكوم.</li>`;
+                }
+
+                // 3. الأصول
+                if (hasM || hasF) {
+                    if (totalBranch > 0) {
+                        if (hasM) res.m = current / 6;
+                        if (hasF) res.f = current / 6;
+                        expl += `<li><strong>الأصول بوجود الولد:</strong> لكل حاضر منهما السدس لضمان حماية الرعاية.</li>`;
+                    } else {
+                        if (hasM && hasF) {
+                            res.m = (totalSib > 0) ? current / 6 : current / 3;
+                            res.f = current - res.m;
+                            expl += `<li><strong>توازن الأبوين:</strong> الأم تأخذ ${totalSib > 0 ? 'السدس' : 'الثلث'} والأب يستوعب المتبقي.</li>`;
+                        } else {
+                            if (hasM) res.m = current; else res.f = current;
+                            expl += `<li><strong>استيعاب ولي الأمر:</strong> انفراد أحد الأبوين أدى لاستيعابه ما بقي بعد الزوجية.</li>`;
+                        }
+                    }
+                    current -= (res.m + res.f);
+                }
+
+                // 4. الفروع أو الكلالة
+                if (totalBranch > 0 && current > 0) {
+                    if (mChild > 0 && fChild === 0) { res.mg = current; }
+                    else if (fChild > 0 && mChild === 0) { res.fg = current; }
+                    else {
+                        let ratio = fChild / mChild;
+                        if (ratio > 2) { res.fg = current * (2/3); res.mg = current * (1/3); expl += `<li><strong>سيادة الكتلة:</strong> الثلثان للإناث لتجاوز النسبة حد التوازن.</li>`; }
+                        else { res.fg = current * 0.5; res.mg = current * 0.5; expl += `<li><strong>توازن الكتل:</strong> المناصفة (50/50) لعدم تجاوز النسبة حد السيادة.</li>`; }
+                    }
+                } 
+                else if (totalSib > 0 && current > 0) {
+                    if (spouse !== 'none') { // كلالة أولى
+                        let sibS = (totalSib === 1) ? estate / 6 : estate / 3;
+                        res.fg = (sibS / totalSib) * fSib; res.mg = (sibS / totalSib) * mSib;
+                        res.s += (current - (res.mg + res.fg));
+                        expl += `<li><strong>الكلالة الأولى:</strong> الزوج استوعب الفائض بعد حصة الإخوة المقدرة.</li>`;
+                    } else { // كلالة ثانية
+                        if (totalSib <= 3) { res.mg = current * (mSib/totalSib); res.fg = current * (fSib/totalSib); }
+                        else { let u = (mSib * 2) + fSib; let v = current / u; res.mg = v * 2 * mSib; res.fg = v * fSib; }
+                        expl += `<li><strong>الكلالة الثانية:</strong> تم التقسيم بناءً على ميزان الرؤوس والتفاضل عند الجمع.</li>`;
+                    }
+                }
+            }
+
+            expl += "</ul>";
+            document.getElementById('r_s').innerText = res.s.toFixed(2);
+            document.getElementById('r_m').innerText = res.m.toFixed(2);
+            document.getElementById('r_f').innerText = res.f.toFixed(2);
+            document.getElementById('r_fg').innerText = res.fg.toFixed(2);
+            document.getElementById('r_mg').innerText = res.mg.toFixed(2);
+            
+            // حساب النصيب الفردي
+            let indF = 0, indM = 0;
+            if (fChild > 0) indF = res.fg / fChild;
+            else if (totalBranch === 0 && fSib > 0) indF = res.fg / fSib;
+
+            if (mChild > 0) indM = res.mg / mChild;
+            else if (totalBranch === 0 && mSib > 0) indM = res.mg / mSib;
+
+            document.getElementById('ind_f').innerText = indF.toFixed(2);
+            document.getElementById('ind_m').innerText = indM.toFixed(2);
+            document.getElementById('explanationText').innerHTML = expl;
+            document.getElementById('resBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

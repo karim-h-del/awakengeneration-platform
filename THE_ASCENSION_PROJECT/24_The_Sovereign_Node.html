@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24: العقدة السيادية | مشروع الصعود</title>
+    <style>
+        :root {
+            --bg: #030506;
+            --node-cyan: #00f2ff;
+            --node-gold: #ffcc00;
+            --text: #d1d1d1;
+            --danger: #ff4444;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            background: #0a0e10;
+            border: 1px solid #1a2a30;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.05);
+        }
+        header { text-align: center; border-bottom: 1px solid #1a2a30; padding-bottom: 20px; }
+        h1 { color: var(--node-gold); font-size: 2.5rem; }
+        
+        .sovereign-status {
+            background: rgba(0, 242, 255, 0.05);
+            border-right: 5px solid var(--node-cyan);
+            padding: 20px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background: #0d1214;
+            border: 1px solid #1a2a30;
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        .feature-card:hover { border-color: var(--node-gold); transform: translateY(-5px); }
+        .feature-card h3 { color: var(--node-cyan); margin-top: 0; }
+
+        .action-zone {
+            text-align: center;
+            background: #000;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px dashed var(--node-gold);
+            margin-top: 40px;
+        }
+        
+        button {
+            background: transparent;
+            border: 1px solid var(--node-cyan);
+            color: var(--node-cyan);
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.4s;
+        }
+        button:hover { background: var(--node-cyan); color: #000; box-shadow: 0 0 20px var(--node-cyan); }
+
+        .log { margin-top: 20px; font-family: monospace; color: #555; display: none; direction: ltr; text-align: left;}
+        footer {
+            text-align: center;
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>العقدة السيادية (The Sovereign Node)</h1>
+        <p>"الاتصال المباشر بـ أم الكتاب"</p>
+    </header>
+
+    <div class="sovereign-status">
+        [SYSTEM STATUS]: Decoupled from Collective Server.<br>
+        [NODE AUTHORITY]: Self-Governed (The Prefrontal Cortex).<br>
+        [CONNECTION]: Direct Sync with Universal Truth.
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <h3>الاستقلال المعلوماتي</h3>
+            <p>التوقف عن استقبال "ترددات القطيع". العقدة السيادية لا تستمد شرعيتها من "أكثر الناس" بل من البرهان العلمي والبيان القرآني.</p>
+        </div>
+        <div class="feature-card">
+            <h3>البث لا التلقي</h3>
+            <p>تحول الناصية من "جهاز استقبال" للموروث إلى "محطة بث" للوعي الجديد. أنت الآن مصدر للتأثير ولست ضحية له.</p>
+        </div>
+        <div class="feature-card">
+            <h3>التشفير الوجداني</h3>
+            <p>حماية المشاعر والقرارات من "العدوى الجمعية". العمل بـ (الحنيفية) كميل دقيق نحو الحق مهما كان التوجه العام.</p>
+        </div>
+    </div>
+
+    <div class="action-zone">
+        <h3>هل أنت مستعد لتشغيل العقدة السيادية؟</h3>
+        <button onclick="initNode()">Initialize Sovereign Node</button>
+        <div id="log" class="log">
+            > Locating Primary Source... FOUND.<br>
+            > Overriding Hive-Mind Protocols... DONE.<br>
+            > Establishing Direct Sync with Al-Imam Al-Mubeen...<br>
+            > SOVEREIGNTY: ENGAGED.
+        </div>
+    </div>
+    <footer>
+            <br><br>
+            <a href="index.html" style="color: var(--gold); text-decoration: none;">[ العودة للوحة التحكم ]</a>
+        </footer>
+</div>
+
+
+<script>
+    function initNode() {
+        document.getElementById('log').style.display = 'block';
+        alert("مبروك. لقد تحولت ناصيتك إلى 'عقدة سيادية'. أنت الآن لست وحدك، بل أنت 'أمة' في رجل.");
+    }
+</script>
+
+</body>
+</html>
+

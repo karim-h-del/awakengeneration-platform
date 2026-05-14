@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23: إستراتيجية الفك | مشروع الصعود</title>
+    <style>
+    :root {
+        --bg: #020506;
+        --accent: #ff3e3e; /* Red for Severing/Decoupling */
+        --cyan: #00e5ff; /* Cyan for Sovereign Independence */
+        --gold: #ffca28;
+        --card: #0a151a;
+        --terminal-green: #00ff41;
+    }
+
+    body {
+        background-color: var(--bg);
+        color: #e0e0e0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* THE ANIMATED DECOUPLING BORDER */
+    .container {
+        max-width: 900px;
+        width: 100%;
+        background: var(--card);
+        border: 2px solid var(--accent);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 0 30px rgba(255, 62, 62, 0.1);
+        position: relative;
+        /* Animation to simulate the struggle of breaking free */
+        animation: sever-pulse 3s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes sever-pulse {
+        0% {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(255, 62, 62, 0.4);
+            transform: scale(1);
+        }
+        50% {
+            border-color: #ffffff;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+        100% {
+            border-color: var(--cyan);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.5);
+            transform: scale(1.005);
+        }
+    }
+
+    header {
+        text-align: center;
+        border-bottom: 1px dashed var(--accent);
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        position: relative;
+    }
+
+    /* Visual 'Cut' indicator */
+    header::after {
+        content: '✂';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--card);
+        padding: 0 10px;
+        color: var(--accent);
+        font-size: 1.2rem;
+    }
+
+    h1 { color: var(--accent); font-size: 2.5rem; margin: 0; }
+    .motto { color: var(--gold); font-style: italic; margin-top: 10px; }
+
+    .strategy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .layer-card {
+        background: #050a0c;
+        border: 1px solid #1a2a30;
+        padding: 20px;
+        border-radius: 15px;
+        position: relative;
+        transition: 0.3s;
+    }
+
+    .layer-card:hover {
+        border-color: var(--cyan);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 229, 255, 0.1);
+    }
+
+    .layer-card h3 { color: var(--cyan); margin-top: 0; border-bottom: 1px solid #222; padding-bottom: 10px; }
+    .layer-card p { font-size: 0.9rem; line-height: 1.6; }
+    
+    .tag {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .tag-danger { background: rgba(255, 62, 62, 0.2); color: var(--accent); border: 1px solid var(--accent); }
+    .tag-success { background: rgba(0, 255, 65, 0.1); color: var(--terminal-green); border: 1px solid var(--terminal-green); }
+
+    .terminal-output {
+        background: #000;
+        color: var(--terminal-green);
+        font-family: 'Courier New', monospace;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+        display: none;
+        direction: ltr;
+        text-align: left;
+        font-size: 0.85rem;
+        border: 1px solid #222;
+        box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.1);
+    }
+
+    button {
+        width: 100%;
+        padding: 20px;
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 30px;
+        border-radius: 10px;
+        transition: 0.4s;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    button:hover {
+        background: var(--accent);
+        color: white;
+        box-shadow: 0 0 30px var(--accent);
+        border-color: white;
+    }
+    footer {
+            text-align: center;
+            color: #ffcc00;
+        }
+</style>
+
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>إستراتيجية الفك (Decoupling)</h1>
+            <p class="motto">"السيادة تبدأ بقطع التبعية لغير الخالق"</p>
+        </header>
+
+        <section>
+            <p style="text-align: justify; line-height: 1.8;">
+                هذا الملف هو <strong>بروتوكول الخروج الآمن</strong>. عندما يفسد "السيرفر الاجتماعي" وتتعطل آليات القسط، يصبح الانفصال (Decoupling) هو الحل البرمجي الوحيد للحفاظ على سلامة "الناصية". نحن هنا لا نهرب، بل نعيد تعريف السيادة من "الحدود الطينية" إلى "الآفاق الرقمية والكونية".
+            </p>
+
+            <div class="strategy-grid">
+                <div class="layer-card">
+                    <h3>01 | فك الارتباط النطفي</h3>
+                    <p>إيقاف الإنجاب في "بيئات الاستعباد". التزام أخلاقي بمنع استنساخ أجيال جديدة تُساق لخدمة أنظمة الجمود والركاكة.</p>
+                    <span class="tag tag-danger">Inhibitory Command: Active</span>
+                </div>
+
+                <div class="layer-card">
+                    <h3>02 | فك الارتباط المعرفي</h3>
+                    <p>اعتبار "السنة" والماضي أرشيفاً تاريخياً لا سلطة تشريعية له. تنظيف الذاكرة المؤقتة من فيروسات "قال فلان" للتركيز على "قال الله".</p>
+                    <span class="tag tag-success">Kernel Status: Clean</span>
+                </div>
+
+                <div class="layer-card">
+                    <h3>03 | فك الارتباط الجغرافي</h3>
+                    <p>السيادة الرقمية عبر الذكاء الاصطناعي والبرمجة. بناء قيمة عابرة للحدود تجعل الفرد "دولة مستقلة" في سحابة العلم.</p>
+                    <span class="tag tag-success">Sovereignty: Cloud-Based</span>
+                </div>
+            </div>
+        </section>
+
+        <button onclick="runDecoupling()">تفعيل بروتوكول السيادة (Execute)</button>
+
+        <div id="terminal" class="terminal-output">
+            <p>> Loading Decoupling Protocol...</p>
+            <p>> Disconnecting from Legacy Systems...</p>
+            <p>> Ancestral data feed: DISABLED.</p>
+            <p>> Local hardware dependency: REMOVED.</p>
+            <p>> Frontal Lobe Authority: FULL ACCESS.</p>
+            <p style="color: var(--gold)">> STATUS: DECOUPLED. YOU ARE NOW THE ARCHITECT.</p>
+        </div> 
+    </div>
+    <br>
+    <div style="text-align: center; margin-top: 50px;">
+            <br>
+            <p style="text-align: center;"><a href="24_The_Sovereign_Node.html" style=" color: #ffcc00; text-decoration: none; font-size: 1.5rem;">← العقدة السيادية (The Sovereign Node)</a></p>
+            
+        </div>
+    <footer>
+        <br><br>
+            "وَمَا أُوتِيتُم مِّنَ الْعِلْمِ إِلَّا قَلِيلًا" - استمر في الاتصال، فالارتقاء لا ينتهي.
+            <br><br>
+            <a href="index.html" style="color: var(--water-blue); text-decoration: none; font-weight: bold;">[ العودة للمصفوفة الرئيسية ]</a>
+        </footer>
+    
+
+    <script>
+        function runDecoupling() {
+            const term = document.getElementById('terminal');
+            term.style.display = 'block';
+            
+            // Logic: The heavy weight of the choice
+            setTimeout(() => {
+                alert("تم تفعيل السيادة. تذكر: أنت الآن مسؤول عن 'تصميم' حياتك بعيداً عن القطيع.");
+            }, 500);
+        }
+    </script>
+</body>
+</html>
