@@ -5,3 +5,13 @@
 
 [functions]
   directory = "netlify/functions"
+
+[[redirects]]
+  from = "/ascension/*"
+  to = "/THE_ASCENSION_PROJECT/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/manifesto-project/*"
+  to = "/MANIFESTO-PROJECT/:splat"
+  status = 200
