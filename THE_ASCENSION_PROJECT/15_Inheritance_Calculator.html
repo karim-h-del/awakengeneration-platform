@@ -104,6 +104,11 @@
     </ul>
 </div>
     </div>
+    <footer style="margin-top: 50px; text-align: center; opacity: 0.6;">
+        <br><br>
+        <p style="text-align: center;"><a href="15_B_The_Mizan_Geometry.html" style=" color: #ffcc00; text-decoration: none; font-size: 1.5rem;"> التمثيل الهندسي لمعايرة الكتل (F/M) </a></p>
+        <a href="index.html" style="color: var(--neuron-gold); text-decoration: none;">[ العودة للواجهة الرئيسية ]</a>
+    </footer>
 
     <script>
         function calculateMizan() {
@@ -125,7 +130,7 @@
             if (!estate) {
                 alert("ادخل القيمة الإجمالية");
                 return;
-            }
+            } 
             // 1. فحص الانفراد المطلق للزوجية
             if (spouse !== 'none' && !hasM && !hasF && totalBranch === 0 && totalSib === 0) {
                 res.s = estate;

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16: سرعة الإفلات | مشروع الصعود</title>
+    <style>
+        :root {
+            --bg: #020406;
+            --thrust-red: #ff2a2a;
+            --plasma-cyan: #00f2ff;
+            --gold: #ffca28;
+            --panel: #091013;
+            --text: #b0c2cc;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .propulsion-container {
+            max-width: 900px;
+            width: 100%;
+            background: var(--panel);
+            border: 1px solid rgba(255, 42, 42, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(255, 42, 42, 0.05);
+            box-sizing: border-box;
+            position: relative;
+        }
+        header { text-align: center; border-bottom: 1px solid #142229; padding-bottom: 25px; margin-bottom: 30px; }
+        h1 { color: var(--thrust-red); font-size: 2.3rem; margin: 0; text-shadow: 0 0 12px rgba(255, 42, 42, 0.2); }
+        .motto { color: var(--gold); font-style: italic; margin-top: 10px; }
+
+        .calculator-zone {
+            background: #04080a;
+            border: 1px dashed var(--plasma-cyan);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        .input-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .input-row div { flex: 1; min-width: 200px; }
+        label { display: block; color: var(--plasma-cyan); font-weight: bold; margin-bottom: 8px; font-size: 0.9rem;}
+        input {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid #222;
+            color: #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        
+        .velocity-output {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .flight-insight {
+            background: #000;
+            border-right: 4px solid var(--thrust-red);
+            padding: 20px;
+            margin-top: 30px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        
+        button {
+            width: 100%;
+            padding: 18px;
+            background: transparent;
+            border: 2px solid var(--thrust-red);
+            color: var(--thrust-red);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 25px;
+            transition: 0.3s;
+            letter-spacing: 2px;
+        }
+        button:hover {
+            background: var(--thrust-red);
+            color: #000;
+            box-shadow: 0 0 30px var(--thrust-red);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="propulsion-container">
+        <header>
+            <h1>سرعة الإفلات والنفير المعرفي (The Escape Velocity)</h1>
+            <p class="motto">"انْفُذُوا لَا تَنفُذُونَ إِلَّا بِسُلْطَانٍ - كسر حتمية الجاذبية الطينية"</p>
+        </header>
+
+        <section style="line-height: 1.8; text-align: justify;">
+            النفير العلمي والتقني هو قوة الدفع الوحيدة القادرة على تحرير الوعي من الجمود الموروث. في الفيزياء الكونية، تحتاج الأجسام إلى طاقة حركية تتغلب على طاقة الوضع الجاذبية لتفلت من الكوكب. وفي عالم الوعي، يمثل "السلطان" العلمي سرعة الإفلات الحقيقية التي تمكن جيل الأحرار من النفاذ من أقطار الأرض والتحليق في فضاء الشهادة الكونية قبل تكوير النظام الأرضي.
+        </section>
+
+        <!-- محاكي حساب سرعة الإفلات المعرفي -->
+        <div class="calculator-zone">
+            <h3 style="color: var(--gold); margin-top:0;">🚀 محاكي ميزان النفاذ (Sultan Calculator)</h3>
+            <p style="font-size: 0.85rem; margin:0; color:#718096;">احسب سرعة الإفلات اللازمة لعقلك بناءً على "كتلة القيود المحيطة بك" ونص قطر دائرة انغلاق المجتمع.</p>
+            
+            <div class="input-row">
+                <div>
+                    <label>كثافة قيود الموروث والركاكة الاجتماعية (M):</label>
+                    <input type="number" id="massM" value="100" min="1">
+                </div>
+                <div>
+                    <label>نصف قطر نطاق الانغلاق الجغرافي (R):</label>
+                    <input type="number" id="radiusR" value="10" min="1">
+                </div>
+            </div>
+
+            <button onclick="calculateVelocity()">تشغيل محرك الدفع الحركي (Ignition)</button>
+            
+            <div id="vOut" class="velocity-output" style="display:none;">
+                سرعة الإفلات المطلوبة (Sultan Velocity): <span id="vVal" style="color: var(--plasma-cyan);">0.00</span> وحدة طاقة معرفية
+            </div>
+        </div>
+
+        <section class="flight-insight">
+            <strong style="color: var(--gold);">⚖️ قانون النفاذ بالسلطان:</strong><br>
+            الحنيفية هي الميل المستمر نحو الدقة لاكتشاف القوانين الكونية. عندما تفلت ناصيتك من جاذبية الآبائية، يتحول وعيك إلى نظام مستقل لا يتلقى الأوامر من القطيع (الوعي الجمعي الفاسد)، بل يعالج "الروح" والبيانات لإنتاج الفعل والديزاين الحضاري المستقل.
+        </section>
+    </div>
+
+    <script>
+        function calculateVelocity() {
+            const M = parseFloat(document.getElementById('massM').value) || 0;
+            const R = parseFloat(document.getElementById('radiusR').value) || 0;
+            
+            if (M <= 0 || R <= 0) {
+                alert("الرجاء إدخال قيم موجبة وحقيقية للمعالجة.");
+                return;
+            }
+            
+            // Equation: V_escape = sqrt(2 * G * M / R) | Using a clean scaling constant for visualization
+            const G = 6.674;
+            const vEscape = Math.sqrt((2 * G * M) / R);
+            
+            document.getElementById('vVal').innerText = vEscape.toFixed(2);
+            document.getElementById('vOut').style.display = 'block';
+            
+            console.log("Escape Velocity compiled successfully. Kinetic parameters adjusted.");
+        }
+    </script>
+</body>
+</html>

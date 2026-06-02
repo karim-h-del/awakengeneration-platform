@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-B: هندسة الميزان الرقمي | مشروع الصعود</title>
+    <style>
+        :root {
+            --bg: #020608;
+            --cyan: #00f2ff;
+            --gold: #ffca28;
+            --pink: #ff3e96;
+            --panel: #0a1114;
+            --text: #b0c2cc;
+            --alert-red: #ff3e3e;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .graph-container {
+            max-width: 950px;
+            width: 100%;
+            background: var(--panel);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.05);
+            box-sizing: border-box;
+        }
+        header { text-align: center; border-bottom: 1px solid #142229; padding-bottom: 20px; margin-bottom: 20px; }
+        h1 { color: var(--gold); font-size: 2rem; margin: 0; }
+        .motto { color: var(--cyan); font-style: italic; font-size: 0.95rem; margin-top: 5px; }
+        
+        .display-box {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .info-panel {
+            flex: 1;
+            background: #04080a;
+            border-right: 4px solid var(--cyan);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        canvas {
+            background: #010304;
+            border: 1px solid #142229;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 890px;
+            height: 500px;
+        }
+        footer { margin-top: 25px; text-align: center; font-size: 0.85rem; opacity: 0.6; }
+    </style>
+</head>
+<body>
+
+    <div class="graph-container">
+        <header>
+            <h1>التمثيل الهندسي لمعايرة الكتل (F/M)</h1>
+            <p class="motto">"الضبط الرياضي الدقيق والمماسات الكونية الملتقية عند ذروة الصادات"</p>
+        </header>
+
+        <div class="display-box">
+            <div class="info-panel">
+                <strong style="color: var(--pink);">📐 هندسة المماسات المثلثية العبقرية:</strong><br>
+                المماسان للزاويتين يلتقيان بدقة متناهية عند الذروة المعرفية السيادية <span style="color: var(--gold); font-weight:bold;">Y = 2</span> على محور الصادات.
+            </div>
+            <div class="info-panel" style="border-right-color: var(--gold);">
+                <strong style="color: var(--gold);">🎯 نقاط السقوط الهندسي:</strong><br>
+                مماس الـ <span style="color: var(--alert-red); font-weight:bold;">-45°</span> يسقط تماماً عند بؤرة الضعف <span style="color: var(--alert-red); font-weight:bold;">X = 2</span>. بينما مماس الـ <span style="color: var(--pink); font-weight:bold;">-30°</span> يسقط تماماً عند بؤرة أزمات الحروب <span style="color: var(--pink); font-weight:bold;">X = 4</span>. 
+            </div>
+        </div>
+
+        <canvas id="mizanCanvas" width="1600" height="900"></canvas>
+        <div class="logic-explanation" style="border-right-color: var(--pink); margin-top: 25px; text-align: justify;">
+    <h3>🏛️ بروتوكول التخطيط السيادي للمؤسسات والدول</h3>
+    <p>
+        هذا الرسم البياني ليس مجرد معادلات رياضية، بل هو <strong>"لوحة تحكم استراتيجية" (Executive Dashboard)</strong> لمهندسي السياسات العامة في الدولة. يتيح للمؤسسات الحاكمة والبرلمانات رصد الاختلالات الديموغرافية والاقتصادية قبل حدوثها:
+    </p>
+    <ul>
+        <li><strong>معايرة التوازن الاجتماعي:</strong> تتبع موقع المجتمع الحالي على المنحنى يحدد بدقة متى يجب على الدولة التدخل عبر "المؤسسات الرعائية" عندما تعجز القدرات الفردية للبيوت عن تحقيق القسط (حالة العول).</li>
+        <li><strong>إدارة أموال الأزمات:</strong> السقوط الدقيق للمماسات عند البؤر (2 و 4) يمنح المشرّع دليلاً رقمياً لتوجيه التدفقات المالية وصناديق الاستثمار السيادية لحماية الفئات المستضعفة (اليتامى والربائب) بناءً على الكثافة النسائية الحالية في المجتمع.</li>
+    </ul>
+</div>
+<div class="legend-box" style="
+    margin-top: 20px;
+    background: #04080a;
+    border: 1px solid #142229;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+">
+    <h3 style="color: var(--gold);">📑 خريطة السياسات</h3>
+    <ul style="list-style: none; padding: 0;">
+        <li>⚖️ <strong>X = 2:</strong> تدخل اجتماعي لحماية التوازن الفردي</li>
+        <li>💰 <strong>X = 4:</strong> تفعيل صناديق الأزمات السيادية</li>
+        <li>🏛️ <strong>Y = 2:</strong> بلوغ ذروة السيادة المعرفية</li>
+    </ul>
+</div>
+
+        <footer>
+            مشروع الصعود | المحطة 15-B | معايرة الصانع الحكيم الحنيفي
+            <br><br>
+            <a href="15_Inheritance_Calculator.html" style="color: #ffca28; text-decoration: none;">[ محرك الإرث التنويري ]</a>
+            <br><br>
+            <a href="index.html" style="color: var(--cyan); text-decoration: none;">[ العودة للواجهة الرئيسية ]</a>
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('mizanCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const offsetX = 150;
+        const offsetY = 100;
+        const plotWidth = 1300;
+        const plotHeight = 700;
+        
+        const maxX = 5;
+        const maxY = 2.5;
+        
+        function toPixelX(x) { return offsetX + (x / maxX) * plotWidth; }
+        function toPixelY(y) { return canvas.height - offsetY - (y / maxY) * plotHeight; }
+
+        // شبكة الرصد
+        ctx.strokeStyle = '#0a141d';
+        ctx.lineWidth = 2;
+        ctx.font = '24px Segoe UI, sans-serif';
+        ctx.fillStyle = '#4a5568';
+
+        for(let i=1; i<=maxX; i++) {
+            let px = toPixelX(i);
+            ctx.beginPath(); ctx.moveTo(px, canvas.height - offsetY); ctx.lineTo(px, canvas.height - offsetY - plotHeight); ctx.stroke();
+            ctx.fillText(i, px - 8, canvas.height - offsetY + 40);
+        }
+        for(let j=0.5; j<=maxY; j+=0.5) {
+            let py = toPixelY(j);
+            ctx.beginPath(); ctx.moveTo(offsetX, py); ctx.lineTo(offsetX + plotWidth, py); ctx.stroke();
+            ctx.fillText(j.toFixed(1), offsetX - 60, py + 8);
+        }
+
+        // المحاور
+        ctx.strokeStyle = '#1e293b';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(offsetX, canvas.height - offsetY - plotHeight);
+        ctx.lineTo(offsetX, canvas.height - offsetY);
+        ctx.lineTo(offsetX + plotWidth, canvas.height - offsetY);
+        ctx.stroke();
+
+        // تسمية المحور X
+        ctx.fillStyle = '#00f2ff';
+        ctx.fillText("نسبة الإناث إلى الذكور (X = F/M)", offsetX + plotWidth/2 - 150, canvas.height - 20);
+        
+        // تسمية المحور Y (مقسمة لعدة أسطر)
+        ctx.save();
+        ctx.translate(45, canvas.height/2 + 250);
+        ctx.rotate(-Math.PI/2);
+        ctx.font = '20px Segoe UI, sans-serif';
+        ctx.fillStyle = '#00f2ff';
+        ctx.shadowColor = '#000';
+        ctx.shadowBlur = 4;
+        ctx.fillText("حظ الأنثى (Y)", 0, 0);
+        ctx.fillText("| حظ الذكر =", 0, 40);
+        ctx.fillText("Y × مقلوب الدالة:", 0, 80);
+        ctx.fillText("(X/1) عند X≤2", 0, 120);
+        ctx.fillText("(X/2) عند X>2", 0, 160);
+        ctx.restore();
+
+        // --- 2. رسم مماس الـ 45° (يسقط من الصادات 2 إلى السينات 2) ---
+        ctx.strokeStyle = '#ff3e3e';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(toPixelX(0), toPixelY(2));
+        ctx.lineTo(toPixelX(2), toPixelY(0));
+        ctx.stroke();
+
+        // --- 3. رسم مماس الـ 30° (يسقط من الصادات 2 إلى السينات 4) ---
+        ctx.strokeStyle = '#bc00ff';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(toPixelX(0), toPixelY(2));
+        ctx.lineTo(toPixelX(4), toPixelY(0));
+        ctx.stroke();
+
+        // --- 4. رسم منحنى الدالة الأول: Y = 1/X (0 < X <= 2) ---
+        ctx.strokeStyle = '#00f2ff';
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        for (let x = 0.4; x <= 2; x += 0.01) {
+            let y = 1 / x;
+            if (x === 0.4) ctx.moveTo(toPixelX(x), toPixelY(y));
+            else ctx.lineTo(toPixelX(x), toPixelY(y));
+        }
+        ctx.stroke();
+
+        // --- 5. رسم منحنى الدالة الثاني: Y = 2/X (X > 2) ---
+        ctx.strokeStyle = '#ffca28';
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        for (let x = 2.01; x <= maxX; x += 0.01) {
+            let y = 2 / x;
+            if (x === 2.01) ctx.moveTo(toPixelX(x), toPixelY(y));
+            else ctx.lineTo(toPixelX(x), toPixelY(y));
+        }
+        ctx.stroke();
+        // --- Module 2: Color-Coded Zones ---
+// Shade background regions for stability, caution, and crisis
+
+// Stability Zone: X < 2 (green)
+ctx.fillStyle = 'rgba(0, 255, 0, 0.08)'; // soft transparent green
+ctx.fillRect(toPixelX(0), toPixelY(maxY), toPixelX(2) - toPixelX(0), plotHeight);
+
+// Caution Zone: 2 < X < 4 (yellow)
+ctx.fillStyle = 'rgba(255, 255, 0, 0.08)'; // soft transparent yellow
+ctx.fillRect(toPixelX(2), toPixelY(maxY), toPixelX(4) - toPixelX(2), plotHeight);
+
+// Crisis Zone: X ≥ 4 (red)
+ctx.fillStyle = 'rgba(255, 0, 0, 0.08)'; // soft transparent red
+ctx.fillRect(toPixelX(4), toPixelY(maxY), toPixelX(maxX) - toPixelX(4), plotHeight);
+
+        // رسم خط القفزة العمودية عند العتبة الحرجة X = 2
+        ctx.strokeStyle = '#ff3333';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([8, 8]);
+        ctx.beginPath(); ctx.moveTo(toPixelX(2), toPixelY(0.5)); ctx.lineTo(toPixelX(2), toPixelY(1.0)); ctx.stroke();
+        ctx.setLineDash([]);
+
+        // دوائر الفتح والغلق عند نقطة القفزة السيادية
+        ctx.fillStyle = '#ffca28'; ctx.strokeStyle = '#00f2ff'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.arc(toPixelX(2), toPixelY(0.5), 10, 0, 2*Math.PI); ctx.fill(); ctx.fillStyle = '#ffca28'; ctx.fill();
+        ctx.fillStyle = '#010304'; ctx.beginPath(); ctx.arc(toPixelX(2), toPixelY(1.0), 10, 0, 2*Math.PI); ctx.stroke();
+
+        // --- 6. تمييز وتسمية بؤر الميزان الهندسية والمشتركة بالنقاط والنصوص العريضة ---
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath(); ctx.arc(toPixelX(0), toPixelY(2), 12, 0, 2*Math.PI); ctx.fill(); // نقطة التقاء الصادات الفوقية العليا
+        ctx.beginPath(); ctx.arc(toPixelX(2), toPixelY(0), 10, 0, 2*Math.PI); ctx.fill(); // سقوط مماس 45°
+        ctx.beginPath(); ctx.arc(toPixelX(4), toPixelY(0), 10, 0, 2*Math.PI); ctx.fill(); // سقوط مماس 30°
+        // --- Module 1: Layered Annotations + Icons ---
+// Add clear callouts at critical thresholds
+
+ctx.fillStyle = '#00f2ff';
+ctx.font = '22px Segoe UI, sans-serif';
+
+// Annotation at X=2 (Justice / Social Balance)
+ctx.fillText("⚖️ عند X=2 → تدخل اجتماعي لحماية التوازن", toPixelX(2) + 30, toPixelY(0.5) - 40);
+
+// Annotation at X=4 (Finance / Crisis)
+ctx.fillStyle = '#ffca28';
+ctx.fillText("💰 عند X=4 → تفعيل صناديق الأزمات السيادية", toPixelX(4) - 300, toPixelY(0.5) - 60);
+
+// Annotation at Y=2 (Governance Peak)
+ctx.fillStyle = '#ff3e96';
+ctx.fillText("🏛️ عند Y=2 → ذروة السيادة المعرفية", toPixelX(0.5), toPixelY(2) - 50);
+// --- Module 3: Scenario Markers ---
+// Plot historical, current, and projected data points
+
+// Example data points (replace with real values)
+const scenarioPoints = [
+  {x: 1.5, y: 0.66, label: "📊 تاريخي 1990", color: "#888"},   // past
+  {x: 2.5, y: 0.8, label: "📊 الوضع الحالي 2026", color: "#00f2ff"}, // present
+  {x: 3.5, y: 0.57, label: "📊 توقع 2035", color: "#ffca28"}   // future
+];
+
+ctx.font = '20px Segoe UI, sans-serif';
+scenarioPoints.forEach(p => {
+  ctx.fillStyle = p.color;
+  ctx.beginPath();
+  ctx.arc(toPixelX(p.x), toPixelY(p.y), 8, 0, 2*Math.PI);
+  ctx.fill();
+  ctx.fillText(p.label, toPixelX(p.x) + 15, toPixelY(p.y) - 10);
+});
+
+        // كتابة البيانات النصية التوضيحية بدقة فوق البؤر
+        ctx.fillStyle = '#ffffff'; ctx.fillText("مشكاة الانطلاق المشترك (0،2)", toPixelX(0) + 25, toPixelY(2) + 10);
+        ctx.fillStyle = '#ff3e3e'; ctx.fillText("سقوط مماس 45° عند بؤرة التوازن الفردي X=2", toPixelX(2) + 20, toPixelY(0.2) - 10);
+        ctx.fillStyle = '#bc00ff'; ctx.fillText("سقوط مماس 30° عند بؤرة أزمات الحروب X=4", toPixelX(4) - 480, toPixelY(0.2) - 40);
+        
+        
+    </script>
+</body>
+</html>
+
+
+
