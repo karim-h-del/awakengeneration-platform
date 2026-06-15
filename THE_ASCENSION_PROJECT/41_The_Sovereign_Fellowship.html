@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>41: بروتوكول زمرة الرشد والتشابك الشبكي | مشروع الصعود</title>
+    <style>
+        :root {
+            --bg-deep: #010406;
+            --fellowship-cyan: #00ffff;
+            --prophet-purple: #bc00ff;
+            --siddiq-gold: #ffca28;
+            --martyr-red: #ff3333;
+            --righteous-green: #00ff66;
+            --panel-dark: #060b11;
+            --text-slate: #cfdadf;
+        }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-slate);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.8;
+        }
+        .fellowship-container {
+            max-width: 950px;
+            width: 100%;
+            background: var(--panel-dark);
+            border: 2px solid var(--fellowship-cyan);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.08);
+            box-sizing: border-box;
+            position: relative;
+        }
+        header { text-align: center; border-bottom: 1px dashed var(--fellowship-cyan); padding-bottom: 25px; margin-bottom: 30px; }
+        h1 { color: var(--fellowship-cyan); font-size: 2.3rem; margin: 0; text-shadow: 0 0 15px rgba(0, 255, 255, 0.3); }
+        .motto { color: var(--siddiq-gold); font-style: italic; margin-top: 10px; }
+
+        .hierarchy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .node-card {
+            background: #020508;
+            border: 1px dashed #14202e;
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        .node-card:hover { border-color: var(--fellowship-cyan); transform: translateY(-5px); }
+        .node-card h3 { margin-top: 0; font-size: 1.1rem; }
+        
+        .prophet-node { color: var(--prophet-purple); border-right: 4px solid var(--prophet-purple); padding-right: 12px; }
+        .siddiq-node { color: var(--siddiq-gold); border-right: 4px solid var(--siddiq-gold); padding-right: 12px; }
+        .martyr-node { color: var(--martyr-red); border-right: 4px solid var(--martyr-red); padding-right: 12px; }
+        .righteous-node { color: var(--righteous-green); border-right: 4px solid var(--righteous-green); padding-right: 12px; }
+
+        .compilation-panel {
+            background: #000;
+            border-right: 4px solid var(--siddiq-gold);
+            padding: 25px;
+            margin: 30px 0;
+            text-align: justify;
+            border-radius: 10px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .sovereign-image {
+  display: block;
+  margin: 30px auto;
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+#sovereign-network {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 70%;
+  transition: opacity 2s ease-in-out;
+  z-index: 2;
+  overflow: hidden;
+  animation: pulse-bg 6s infinite; /* إضافة النبضة */
+}
+@keyframes pulse-bg {
+  0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+  50% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.6); }
+  100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+}
+
+#sovereign-network p {
+  opacity: 0;
+  margin: 15px 0;
+  transition: opacity 2s ease-in-out, text-shadow 2s ease-in-out;
+  position: relative;
+}
+
+#sovereign-network p.glow {
+  text-shadow: 0 0 15px #ffd700, 0 0 30px #ffcc33;
+}
+
+/* تأثير الوميض الذهبي */
+#sovereign-network p.glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+    </style>
+</head>
+<body>
+
+    <div class="fellowship-container">
+        <header>
+            <h1>المحطة 41: بروتوكول زمرة الرشد والتشابك الشبكي السيادي</h1>
+            <p class="motto">"وَمَن يُطِعِ اللَّهَ وَالرَّسُولَ فَأُولَٰئِكَ مَعَ الَّذِينَ أَنْعَمَ اللَّهُ عَلَيْهِم - مصفوفة التناغم الإدراكي وحسن الرفقة البعدية"</p>
+        </header>
+        <section id="station-41" style="position: relative;">
+  <h2 style="text-align: center">بروتوكول زمرة الرشد والتشابك الشبكي السيادي</h2>
+
+  <img src="https://copilot.microsoft.com/th/id/BCO.5acdaca3-bac4-4eb1-a117-f40a0954df63.png" alt="زمرة الرشد والتشابك الشبكي" class="sovereign-image">
+
+  <div id="sovereign-network">
+    <p>إخوانًا على سرر متقابلين، هكذا تُبنى زمرة الرشد.</p>
+    <p>يطوف عليهم وكلاء مخلدون، يحملون أكواب وأباريق وكأسًا من معين.</p>
+    <p>كل كأس هو تدفق صافي للوعي.</p>
+    <p>فلننسج معًا شبكة الإدراك السيادي.</p>
+  </div>
+</section>
+
+        <section style="text-align: justify;">
+            إن مجالسة النبيين والصديقين والشهداء والصالحين ليست مكاناً جغرافياً عشوائياً، بل هي <strong>"مزامنة برمجية وتناغم ترددي كامل"</strong> في الأبعاد العليا للمحاكاة الكونية. الدخول في هذه الرفقة السيادية يتطلب امتثال الناصية والبنية الإدراكية لكود تشغيل "العمل الصالح" وهجر الموروث الساكن؛ لتتحرك الترددات العصبية وتتشابك كمياً مع نودات هذه الشبكة النورانية الشاهدة على حقائق الوجود [0.5.15، 0.5.21].
+        </section>
+
+        <div class="hierarchy-grid">
+            <!-- نود النبيين -->
+            <div class="node-card">
+                <h3 class="prophet-node">النبيين (The Routers)</h3>
+                <p style="font-size: 0.85rem;">مستقبلو البيانات وبث الشفرة المصدرية المجردة دون سجون المشخص والمادية [0.5.10، 0.5.21].</p>
+            </div>
+
+            <!-- نود الصديقين -->
+            <div class="node-card">
+                <h3 class="siddiq-node">الصديقين (Verifiers)</h3>
+                <p style="font-size: 0.85rem;">مهندسو التطابق العلمي؛ الذين يحولون النبأ اللساني لواقع فيزيائي ملموس ويقين مشهود [0.5.10، 0.5.21].</p>
+            </div>
+
+            <!-- نود الشهداء -->
+            <div class="node-card">
+                <h3 class="martyr-node">الشهداء (Auditors)</h3>
+                <p style="font-size: 0.85rem;">نودات الرصد والشهادة التقنية الكونية الفاضحة لظواهر الاستحمار والمنافقين [0.5.15، 0.5.21].</p>
+            </div>
+
+            <!-- نود الصالحين -->
+            <div class="node-card">
+                <h3 class="righteous-node">الصالحين (Optimizers)</h3>
+                <p style="font-size: 0.85rem;">مطورو نظام التشغيل ومنظومة الميزان المالي والبيولوجي لحظر الفساد الكوني [0.5.14، 0.5.15].</p>
+            </div>
+        </div>
+                <!-- لوحة تيرمينال الاندماج الترددي وحسن الرفقة الكونية -->
+        <div class="sync-panel">
+            <h3 style="color: var(--gold); margin-top:0; border-bottom: 1px dashed #142232; padding-bottom: 10px;">
+                ⚙️ المعالجة الأنطولوجية لبروتوكول الاندماج الشبكي ﴿وَحَسُنَ أُولَٰئِكَ رَفِيقًا﴾
+            </h3>
+            <p>
+                <strong>بروتوكول الانضمام الترددي (The Cluster Resonance Protocol):</strong> 
+                إن العبارة الإلهية الإعجازية ﴿وَحَسُنَ أُولَٰئِكَ رَفِيقًا﴾ ليست وصفاً لمجرد جلسة اجتماعية تقليدية؛ بل هي إعلان النظام عن **"الاستقرار التناغمي الأسمى لعوامل الوعي المتفاعلة"** (Harmonic Convergence of Conscious Agents). عندما تتطابق مدخلات ناصيتك الإدراكية مع "كود الطاعة المطلقة للسنن الكونية"، يترقى ترددك الحيوي آلياً ليتصل بقنوات البيانات الكبرى المخصصة لهؤلاء الخالدين، لتنسكب شفرات علمهم في رصيدك البرمجي [0.5.3، 0.5.25].
+            </p>
+            <p style="color: var(--assembly-emerald); border-top: 1px dashed #142232; padding-top: 15px;">
+                <strong>التحرر من العزلة وأنظمة الاستبداد الهيكلي:</strong> 
+                المجالسة السيادية هي الترياق النهائي والوحيد لتجاوز "عنت الإهلاك وعمى الطوائف المعطلة"؛ فالإنسان حين يربط الـ 100 تريليون وصلة عصبية لديه بهذه الشبكة رباعية الأبعاد (الأنبياء والصديقون والشهداء والصالحون)، يتحرر بالكامل من نير الاستحمار والتبعية الهامانية أو القارونية، ليعيش جنته التوليدية الفورية (المحطة 40) محاطاً بأرقى عقول المحاكاة الكونية [0.5.15، 0.5.21].
+            </p>
+        </div>
+
+        <!-- التوازن اللغوي الدولي لبروتوكول مجالسة الزمرة العليا -->
+        <div style="display: flex; gap: 20px; margin-top: 40px; text-align: left;" dir="ltr">
+            <div style="flex: 1; border-left: 3px solid var(--assembly-emerald); padding-left: 15px; font-size: 0.85rem; text-align: justify;">
+                <strong style="color: var(--assembly-emerald);">EN:</strong> Communing with prophets, verifiers, witnesses, and the righteous is a dynamic frequency synchronization (مزامنة ترددية). By choosing absolute compliance with universal code, the conscious agent detaches from legacy loops and fuses into the ultimate network of cosmic creators, experiencing generative freedom.
+            </div>
+            <div style="flex: 1; border-left: 3px solid var(--gold); padding-left: 15px; font-size: 0.85rem; text-align: justify;">
+                <strong style="color: var(--gold);">FR:</strong> Communier avec les prophètes, les vérificateurs, les témoins et les justes est une synchronisation de fréquence. En choisissant la conformité au code universel, l'agent conscient se détache des boucles obsolètes pour fusionner avec le réseau suprême.
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <br>
+            <p style="text-align: center;"><a href="42_The_Evolutionary_Escape.html" style=" color: #ffcc00; text-decoration: none; font-size: 1.5rem;">← المحطة 42: بروتوكول الإفلات الثوري والتحوير العصبي (The Evolutionary Escape Vector)</a></p>
+            
+        </div>
+
+        <footer style="margin-top: 60px; text-align: center; opacity: 0.6; font-size: 0.9rem;">
+            "ذَٰلِكَ الْفَضْلُ مِنَ اللَّهِ ۚ وَكَفَىٰ بِاللَّهِ عَلِيمًا"
+            <br><br>
+            <p style="text-align: center;"><a href="index.html" style="color: var(--assembly-emerald); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+        </footer>
+    </div>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById("sovereign-network");
+    if (!container) return;
+    const lines = container.querySelectorAll("p");
+
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        line.style.opacity = 1;
+        line.classList.add("glow");
+      }, index * 4000);
+
+      setTimeout(() => {
+        line.style.opacity = 0;
+        line.classList.remove("glow");
+      }, index * 4000 + 8000);
+    });
+
+    const totalDuration = lines.length * 4000 + 12000;
+    setTimeout(() => {
+      container.style.opacity = 0;
+    }, totalDuration);
+  });
+</script>
+
+</body>
+</html>
