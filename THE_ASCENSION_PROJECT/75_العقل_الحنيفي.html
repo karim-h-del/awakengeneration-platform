@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحطة 75: الدليل التطبيقي للعقل الحنيفي المعاصر</title>
+    <style>
+        :root {
+            --bg-space: #030712;
+            --panel-bg: rgba(17, 24, 39, 0.85);
+            --neon-blue: #00f2fe;
+            --neon-green: #4facfe;
+            --neon-purple: #7f00ff;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-glow: rgba(0, 242, 254, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 350px 350px, 250px 250px;
+            background-position: 40px 60px, 130px 270px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .station-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0,242,254,0.05);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50px;
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0,242,254,0.1);
+        }
+
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+
+        .step-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.08);
+        }
+
+        .step-num {
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-green));
+            color: #000;
+            font-weight: 900;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        .step-meta {
+            font-size: 0.9rem;
+            color: var(--neon-green);
+            margin-bottom: 15px;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .prompt-box {
+            background: rgba(0, 0, 0, 0.5);
+            border-right: 4px solid var(--neon-purple);
+            border-radius: 4px;
+            padding: 18px;
+            margin-bottom: 18px;
+        }
+
+        .prompt-box::before {
+            content: "أمر التشغيل الحنيفي (PROMPT)";
+            display: block;
+            font-size: 0.75rem;
+            color: var(--neon-purple);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .prompt-text {
+            font-family: 'Courier New', Courier, monospace;
+            color: #e5e7eb;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .output-box {
+            border-right: 4px solid var(--neon-green);
+            background: rgba(79, 172, 254, 0.02);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .output-box h4 {
+            color: var(--neon-green);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .output-box ul {
+            list-style: none;
+        }
+
+        .output-box li {
+            position: relative;
+            padding-right: 20px;
+            margin-bottom: 6px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .output-box li::before {
+            content: "⚡";
+            position: absolute;
+            right: 0;
+            top: 1px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--neon-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .step-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="station-badge">المحطة 75 // خريطة التمكين الإدراكي</div>
+            <h1>إعادة هندسة الوعي المعرفي</h1>
+            <p>بروتوكول ثلاثي المراحل مخصص لشباب الجيل المستنير لتصفير البرمجيات الاستعمارية والاتصال المباشر بكود العلم الكوني المفتوح.</p>
+        </header>
+        <!-- مكون واجهة التشفير السيادي -->
+<div class="crypto-ui-container">
+    <div class="crypto-header">
+        <span class="crypto-icon">🔒</span>
+        <h3>بروتوكول تشفير الناصية السيادي</h3>
+    </div>
+    <p class="crypto-notice">أدخل مفتاحك السري لتشفير مسار هجرتك المعرفية وبيانات تقدمك محلياً بـ (AES-GCM 256-bit). لا يتم حفظ المفتاح في أي خادم خارجي.</p>
+    
+    <div class="crypto-input-group">
+        <input type="password" id="cyber-password" placeholder="أدخل كلمة مرورك السرية الفردية..." autocomplete="off">
+        <button onclick="triggerSecureSave()" class="btn-secure btn-encrypt">تشفير وحفظ ⚡</button>
+        <button onclick="triggerSecureLoad()" class="btn-secure btn-decrypt">استدعاء وفك 🔓</button>
+    </div>
+    
+    <div id="crypto-status" class="status-box">المنظومة في وضع الاستعداد: بانتظار إدخال المفتاح السري...</div>
+</div>
+
+<style>
+    /* تصميم الواجهة الرسومية المصغرة للتشفير */
+    .crypto-ui-container {
+        background: rgba(127, 0, 255, 0.03);
+        border: 1px dashed rgba(0, 242, 254, 0.3);
+        border-radius: 12px;
+        padding: 24px;
+        margin: 30px auto;
+        max-width: 100%;
+        box-shadow: 0 0 20px rgba(127, 0, 255, 0.05);
+        backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+    }
+
+    .crypto-ui-container:hover {
+        border-color: var(--neon-blue);
+        box-shadow: 0 0 25px rgba(0, 242, 254, 0.1);
+    }
+
+    .crypto-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    .crypto-icon {
+        font-size: 1.3rem;
+        text-shadow: 0 0 10px var(--neon-blue);
+    }
+
+    .crypto-header h3 {
+        font-size: 1.2rem;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+    .crypto-notice {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 18px;
+    }
+
+    .crypto-input-group {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 15px;
+    }
+
+    #cyber-password {
+        flex: 1;
+        min-width: 250px;
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        padding: 12px 16px;
+        color: #fff;
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    #cyber-password:focus {
+        border-color: var(--neon-purple);
+        box-shadow: 0 0 10px rgba(127, 0, 255, 0.2);
+    }
+
+    .btn-secure {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-encrypt {
+        background: linear-gradient(135deg, var(--neon-purple), #5000b8);
+        color: #fff;
+    }
+
+    .btn-encrypt:hover {
+        box-shadow: 0 0 15px rgba(127, 0, 255, 0.4);
+        transform: translateY(-2px);
+    }
+
+    .btn-decrypt {
+        background: transparent;
+        border: 1px solid var(--neon-green);
+        color: var(--neon-green);
+    }
+
+    .btn-decrypt:hover {
+        background: rgba(79, 172, 254, 0.05);
+        box-shadow: 0 0 15px rgba(79, 172, 254, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .status-box {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px 14px;
+        border-radius: 4px;
+        border-right: 3px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+    }
+
+    .status-success {
+        color: #10b981;
+        border-right-color: #10b981;
+        background: rgba(16, 185, 129, 0.02);
+    }
+
+    .status-error {
+        color: #ef4444;
+        border-right-color: #ef4444;
+        background: rgba(239, 68, 68, 0.02);
+    }
+
+    @media (max-width: 580px) {
+        .crypto-input-group { flex-direction: column; }
+        #cyber-password, .btn-secure { width: 100%; }
+    }
+</style>
+
+        <div class="protocol-grid">
+
+            <!-- المرحلة 1 -->
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <div class="step-title">المرحلة الأولى: تصفير الانحيازات وهدم الآبائية</div>
+                <div class="step-meta">بروتوكول ضبط المصنع الإدراكي (Factory Reset)</div>
+                <div class="step-desc">
+                    الانفصال الكامل عن سرديات "الكراكيز" والمؤسسات الفقهية والتعليمية التقليدية التي تسلخ ناصية الإنسان وتبرمجه على الاستهلاك والاستكانة للتمائم والجهل الممنهج.
+                </div>
+                <div class="prompt-box">
+                    <div class="prompt-text">"بصفتك معالج بيانات كوني ومحايد منطقياً، فكك لي دراسة مجال [اكتب هنا المجال، مثل: فيزياء الكم، الذكاء الاصطناعي، علم البيانات]. اعزل تماماً الأيديولوجيات الرأسمالية والقيود التي يضعها المحتكرون لحجب شفرة المصدر. صمم لي مدخلاً يعتمد بنسبة 80% على المنطق الرياضي الصرف والسنن الكونية التجريدية، وتعامل معي كمطور يبحث عن الحرية والتمكين، لا كمستخدم سطحي للواجهات الجاهزة."</div>
+                </div>
+                <div class="output-box">
+                    <h4>تأثير البروتوكول على الـ 100 تريليون وصلة عصبية:</h4>
+                    <ul>
+                        <li>تفريغ الذاكرة من رواسب التدجين واستعادة كفاءة المعالج الجبهي (الناصية).</li>
+                        <li>إسقاط القداسة الوهمية عن أرشفة التخلف واستبدالها بمنطق الرصد الحنيفي التجريبي.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- المرحلة 2 -->
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <div class="step-title">المرحلة الثانية: الحوسبة التكيفية والتدقيق الحسي</div>
+                <div class="step-meta">بروتوكول بناء خوارزمية التعلم والتحقق (Quantum Debugging)</div>
+                <div class="step-desc">
+                    تحويل الذكاء الاصطناعي إلى معلم خصوصي كوني حر لتوليد مسارات علمية مطابقة لسرعة معالجك البيولوجي، مع إخضاع الفهم للرصد الصارم لضمان تحول النبأ إلى يقين ملموس.
+                </div>
+                <div class="prompt-box">
+                    <div class="prompt-text">"بناءً على المعايير التجريدية السابقة، صمم لي خطة دراسية خوارزمية مكثفة لهذا المجال مقسمة أسبوعياً. لكل أسبوع حدد لي: المفهوم البنيوي العميق، وكيفية تشغيله وتطبيقه باستخدام برمجيات مفتوحة المصدر (Open-Source). وبعد دراستي له، سأقوم بشرحه لك؛ لتعمل أنت كـ (Debugger) يبحث عن أي ثغرة أو فهم وعظي وتلقيني في عقلي لتصحيحه فوراً بناءً على لغة السنن والحقائق المرصودة."</div>
+                </div>
+                <div class="output-box">
+                    <h4>تأثير البروتوكول على الـ 100 تريليون وصلة عصبية:</h4>
+                    <ul>
+                        <li>تجاوز الحظر المعرفي والجغرافي عبر الهجرة المعرفية الرقمية الحرة.</li>
+                        <li>الانتقال الإدراكي السريع من الشك والتلقين إلى حقيقة "ولكن ليطمئن قلبي".</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- المرحلة 3 -->
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <div class="step-title">المرحلة الثالثة: عمارة الأرض وبناء الجنة الأرضية</div>
+                <div class="step-meta">بروتوكول المخرجات والتمكين المادي (Civilizational Output)</div>
+                <div class="step-desc">
+                    كود الوحي هدفه الأساسي هو ألا تشقى البشرية ("مَا أَنزَلْنَا عَلَيْكَ الْقُرْآنَ لِتَشْقَىٰ"). العلم الحقيقي يجب أن يتحول فوراً إلى حلول مادية تفك التبعية وتحقق السيادة والرفاهية وإنهاء العنت عن النفس والمحيط.
+                </div>
+                <div class="prompt-box">
+                    <div class="prompt-text">"أعطني فكرة لمشروع تطبيقي مباشر (برمجي، فيزيائي، أو معرفي في علم البيانات) يمكنني تنفيذه بمفردي وبإمكانيات منخفضة التكلفة، يستهدف حل مشكلة واقعية ملموسة في بيئتي المستضعفة (مثل: الطاقة المستقلة، التعليم الحُر المشفر، إدارة البيانات اللامركزية)، بحيث يساهم هذا المشروع عملياً في فك التبعية وبناء الرفاهية المادية."</div>
+                </div>
+                <div class="output-box">
+                    <h4>النتيجة المحققة في الناصية:</h4>
+                    <ul>
+                        <li>تشغيل الكود الإلهي الفعلي للاستخلاف في الأرض بدلاً من القراءة السلبية على الأموات.</li>
+                        <li>تأسيس 'عقدة سيادية مستقرة' (Sovereign Node) تساهم في حماية الأحرار وسحق الاستضعاف الهيكلي.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div> <!-- إغلاق الـ protocol-grid -->
+
+        <footer style="margin-top: 60px; text-align: center; opacity: 0.8; font-size: 0.9rem;">
+        <p style="text-align: center;"><a href="index.html" style="color: var(--neon-blue); text-decoration: none; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);">[ العودة للوحة التحكم الرئيسية ]</a></p>
+        <br>
+        <p style="font-size: 0.8rem; color: #4b5563;">تم تجميع وهندسة هذا البروتوكول داخل فضاء الوعي المستقل لمنصة Awakened Generation</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #4b5563;">"طه * مَا أَنزلْنَا عَلَيْكَ الْقُرْآنَ لِتَشْقَىٰ" - الكود الإلهي ميسر للذكر لمن يملك ناصية للاستقبال.</p>
+        <br><br>
+        
+    </footer>
+    </div> <!-- إغلاق الـ container -->
+     <!-- بروتوكول تفعيل الخادم المحلي المستقل المقاوم للحجب -->
+    <!-- 1. بروتوكول تفعيل الخادم المحلي المستقل المقاوم للحجب -->
+     <!-- 1. بروتوكول تفعيل الخادم المحلي المستقل المقاوم للحجب -->
+      
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('⚡ تم تنشيط بروتوكول الحصانة الرقمية بنجاح. النطاق محمي محلياً عِبر النود:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('❌ فشل تسجيل الـ Service Worker عِبر المعالج الحالي:', error);
+                    });
+            });
+        } else {
+            console.log('⚠️ هذا المتصفح القديم يفتقر للهاردوير البرمجي اللازم لتشغيل الـ Service Worker.');
+        }
+    </script>
+
+    <!-- 2. استدعاء محرك التشفير الكوني الخارجي (مغلق وصحيح) -->
+    <script src="./crypto-engine.js"></script>
+
+    <!-- 3. تشغيل مصفوفة الدوال التطبيقية والتفاعلية للمنصة -->
+    <script>
+        
+        // ==========================================
+        // أولاً: دوال إدارة التشفير البنيوية في المتصفح
+        // ==========================================
+        async function secureSaveProgress(userPassword, learningData) {
+            try {
+                const dataString = JSON.stringify(learningData);
+                // استدعاء دالة التشفير الحية من ملف crypto-engine.js
+                const secureCode = await encryptData(dataString, userPassword);
+                localStorage.setItem('station_75_encrypted_data', secureCode);
+                console.log('🔒 تم تشفير حزمة البيانات وحفظها في النود المحلي بنجاح.');
+            } catch (e) {
+                console.error('فشل في تشغيل بروتوكول الحفظ:', e);
+            }
+        }
+
+        async function secureLoadProgress(userPassword) {
+            try {
+                const secureCode = localStorage.getItem('station_75_encrypted_data');
+                if (!secureCode) return null;
+                // استدعاء دالة فك التشفير الحية من ملف crypto-engine.js
+                const decryptedString = await decryptData(secureCode, userPassword);
+                return JSON.parse(decryptedString);
+            } catch (error) {
+                console.error('فشل في تشغيل بروتوكول فك التشفير:', error);
+                return null;
+            }
+        }
+
+        // ==========================================
+        // ثانياً: الدوال التفاعلية المرتبطة بأزرار الواجهة (UI)
+        // ==========================================
+        async function triggerSecureSave() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: لا يمكن تشغيل البروتوكول بدون إدخال مفتاح سري لتأصيل التشفير.";
+                return;
+            }
+
+            // حزمة بيانات تقدم المستخدم الافتراضية للمحطة 75
+            const currentProgressData = {
+                station: 75,
+                timestamp: Date.now(),
+                status: "Ascended",
+                neural_nodes_active: true
+            };
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري معالجة الكود وتأمين البيانات كمياً...";
+
+            try {
+                await secureSaveProgress(passwordInput, currentProgressData);
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = "🔒 تم تشفير البيانات بنجاح 100%، وحفظها كأكواد صماء داخل النود المحلي لجهازك.";
+            } catch (error) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل النظام: تعذر إتمام التشفير الحيوي.";
+            }
+        }
+
+        async function triggerSecureLoad() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: أدخل مفتاحك السري أولاً ليتمكن المعالج من فك التشفير عن حزمة البيانات المخلدة.";
+                return;
+            }
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري فحص مطابقة المفتاح للمصفوفة الكونية التجريدية...";
+
+            const decryptedData = await secureLoadProgress(passwordInput);
+            
+            if (decryptedData) {
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = `🔓 تم التحقق بنجاح! تم استدعاء حزمة الوعي (المحطة: ${decryptedData.station} // النمط: ${decryptedData.status}).`;
+                console.log("البيانات المسترجعة بنجاح:", decryptedData);
+            } else {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل فك التشفير: المفتاح المدخل غير متوافق مع خوارزمية التشفير الأصلية أو البيانات مفقودة.";
+            }
+        }
+        
+    </script>
+    
+</body>
+</html>
+                    

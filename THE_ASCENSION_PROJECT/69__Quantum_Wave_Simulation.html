@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>المحطة 69: محاكاة الموجة الكمية الناطقة</title>
+  <style>
+    body {
+      background: #000;
+      color: #ccc;
+      font-family: 'Amiri', serif;
+      margin: 0;
+      padding: 0;
+    }
+    section {
+      margin: 40px auto;
+      padding: 25px;
+      border-radius: 20px;
+      background: #111;
+      box-shadow: 0 0 40px rgba(0,255,102,0.05);
+      max-width: 900px;
+    }
+    h2 {
+      color: #00ff66;
+      text-align: center;
+    }
+    pre {
+      background: #000;
+      color: #0ff;
+      padding: 15px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .note {
+      color: #ffd700;
+      text-align: center;
+      margin-top: 15px;
+      font-style: italic;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #00ff66;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #00cc55;
+    }
+    a.colab-link {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #00ff66;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    a.colab-link:hover {
+      color: #00ccff;
+    }
+  </style>
+</head>
+<body>
+
+<section id="station-69">
+  <h2>المحطة 69: محاكاة الموجة الكمية الناطقة</h2>
+  
+  <p style="text-align:center; font-size:0.9rem;">
+    تجربة مبسطة لتحويل دالة موجية إلى طيف صوتي باستخدام تحويل فورييه، 
+    كخطوة أولى لفهم كيف يمكن للذكاء الاصطناعي أن يترجم الروابط الكمية إلى موجات ناطقة.
+  </p>
+
+  <!-- واجهة الكود -->
+  <pre>
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fftpack import fft
+import sounddevice as sd
+
+Fs = 8000  # معدل أخذ العينات
+T = 1/Fs
+L = 1024
+t = np.linspace(0, L*T, L)
+
+f = 440  # تردد الموجة (Hz)
+signal = np.sin(2*np.pi*f*t)
+
+Y = fft(signal)
+freqs = np.fft.fftfreq(L, T)
+
+plt.plot(freqs[:L//2], np.abs(Y[:L//2]))
+plt.title("Quantum-inspired Wave Spectrum")
+plt.xlabel("Frequency (Hz)")
+plt.ylabel("Amplitude")
+plt.show()
+
+sd.play(signal, Fs)
+sd.wait()
+  </pre>
+
+  <button onclick="copyCode()">📋 انسخ الكود</button>
+
+  <a href="https://colab.research.google.com/" target="_blank" class="colab-link">
+    🚀 افتح الكود على Google Colab
+  </a>
+
+  <p class="note">
+    ✨ عند تشغيل هذا الكود في بيئة بايثون أو Google Colab، سترى الطيف الرياضي وتسمع الموجة الصوتية الناتجة.
+  </p>
+</section>
+<div style="text-align: center; margin-top: 50px;">
+            <br>
+            <p style="text-align: center;"><a href="71_Mizan_Control_Dashboard.html" style=" color: #ffcc00; text-decoration: none; font-size: 1.5rem;">← المحطة 71: لوحة تحكم ميزان الاستخلاف السيادي (المعايرة الشاملة للكلالة)</a></p>
+            
+        </div>
+
+        <footer style="margin-top: 60px; text-align: center; opacity: 0.6; font-size: 0.9rem;">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--maternal-pink); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+
+<script>
+function copyCode() {
+  const codeBlock = document.querySelector("pre").innerText;
+  navigator.clipboard.writeText(codeBlock).then(() => {
+    alert("✅ تم نسخ الكود إلى الحافظة!");
+  });
+}
+</script>
+
+</body>
+</html>

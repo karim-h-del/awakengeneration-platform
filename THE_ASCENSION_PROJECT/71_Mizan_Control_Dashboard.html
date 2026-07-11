@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8"><title>المحطة 71: ميزان الاستخلاف السيادي</title>
+    <style>
+        :root { --bg: #020617; --card: #0b1329; --cyan: #00f2ff; --yellow: #ffca28; --red: #ff3e3e; --text: #f8fafc; --text-s: #94a3b8; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 10px; }
+        header { text-align: center; margin-bottom: 10px; border-bottom: 1px dashed rgba(0,242,255,0.2); padding-bottom: 5px; }
+        header h1 { color: var(--cyan); font-size: 1.4rem; }
+        .dashboard-container { display: grid; grid-template-columns: 350px 1fr; gap: 15px; max-width: 1400px; margin: 0 auto; }
+        @media (max-width: 1000px) { .dashboard-container { grid-template-columns: 1fr; } }
+        .panel-card { background: var(--card); border-radius: 8px; padding: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        h2 { font-size: 1rem; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
+        .form-group { margin-bottom: 8px; }
+        label { display: block; color: var(--text-s); margin-bottom: 3px; font-size: 0.8rem; }
+        input, select { width: 100%; background: #0f172a; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: #fff; font-size: 0.9rem; }
+        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        button { width: 100%; background: #0077b6; color: white; border: none; border-radius: 4px; padding: 10px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-top: 5px; }
+        button:hover { background: var(--cyan); color: #000; box-shadow: 0 0 10px var(--cyan); }
+        .results-box { margin-top: 10px; background: #020617; border-radius: 6px; padding: 10px; display: none; }
+        .result-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; }
+        .result-value { font-weight: bold; color: var(--cyan); }
+        .explanation-text { margin-top: 5px; color: #cbd5e1; font-size: 0.8rem; line-height: 1.4; }
+        canvas { display: block; background: #010304; border-radius: 6px; margin: 0 auto; max-width: 100%; }
+    </style>
+</head>
+<body>
+    <header><h1>المحطة 71: لوحة تحكم ميزان الاستخلاف السيادي (المعايرة الشاملة للكلالة)</h1></header>
+    <div class="dashboard-container">
+        <div class="panel-card">
+            <h2>⚙️ مدخلات الحوسبة المادية والنوعية</h2>
+            <div class="form-group"><label>إجمالي التركة:</label><input type="number" id="estate" min="0"></div>
+            <div class="form-group"><label>شريك الحياة الحاضر (أحادي):</label><select id="spouse"><option value="none">لا يوجد</option><option value="male">زوج</option><option value="female">زوجة</option></select></div>
+            <div class="grid-inputs"><div class="form-group"><label>الأب المربي:</label><select id="father"><option value="none">غير موجود</option><option value="exists">موجود</option></select></div><div class="form-group"><label>الأم المربية:</label><select id="mother"><option value="none">غير موجودة</option><option value="exists">موجودة</option></select></div></div>
+            <div class="grid-inputs"><div class="form-group"><label>الأبناء الذكور:</label><input type="number" id="mC" value="0"></div><div class="form-group"><label>البنات الإناث:</label><input type="number" id="fC" value="0"></div></div>
+            <div class="grid-inputs"><div class="form-group"><label>الأحفاد والربائب الذكور:</label><input type="number" id="mG" value="0"></div><div class="form-group"><label>الحفيدات والربيبات الإناث:</label><input type="number" id="fG" value="0"></div></div>
+            <div class="grid-inputs"><div class="form-group"><label>إخوة ذكور كلالة:</label><input type="number" id="mS" value="0"></div><div class="form-group"><label>أخوات إناث كلالة:</label><input type="number" id="fS" value="0"></div></div>
+            <button onclick="runMizanComputation()">⚡ تنفيذ الميزان والعقد الذكي</button>
+            <div class="results-box" id="resBox">
+                <h2>📊 مخرجات التوزيع السيادي</h2>
+                <div class="result-item"><span>شريك الحياة (الزوجية):</span><span class="result-value" id="r_s">0</span></div>
+                <div class="result-item"><span>الأم الرعائية:</span><span class="result-value" id="r_m">0</span></div>
+                <div class="result-item"><span>الأب الرعائي:</span><span class="result-value" id="r_f">0</span></div>
+                <div class="result-item"><span>كتلة الإناث (بنات/ربيبات/أخوات):</span><span class="result-value" id="r_fg" style="color:var(--yellow)">0</span></div>
+                <div class="result-item"><span>كتلة الذكور (أبناء/ربائب/إخوة):</span><span class="result-value" id="r_mg">0</span></div>
+                <div class="result-item" style="border-top:1px dashed var(--cyan)"><span>حظ الأنثى الفردي (Y المرجعي):</span><span class="result-value" id="ind_f" style="color:var(--yellow)">0</span></div>
+                <div class="result-item"><span>حظ الذكر الفردي (التابع):</span><span class="result-value" id="ind_m">0</span></div>
+                <div class="explanation-text" id="expText"></div>
+            </div>
+        </div>
+        <div><canvas id="mizanCanvas" width="900" height="550"></canvas></div>
+    </div>
+    <div style="text-align: center; margin-top: 50px;">
+            <br>
+            <p style="text-align: center;"><a href="73_Quantum_Erasure_Protocol.html" style=" color: #ffcc00; text-decoration: none; font-size: 1.5rem;">← المحطة 73: لوحة تشغيلية لبروتوكول المحو الكمي</a></p>
+            
+        </div>
+
+        <footer style="margin-top: 60px; text-align: center; opacity: 0.6; font-size: 0.9rem;">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--maternal-pink); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+    <script>
+        const canvas = document.getElementById('mizanCanvas'); const ctx = canvas.getContext('2d');
+        const offsetX = 80, offsetY = 60, plotWidth = 760, plotHeight = 440, maxX = 5, maxY = 2.5;
+        function toPxX(x) { return offsetX + (x / maxX) * plotWidth; }
+        function toPxY(y) { return canvas.height - offsetY - (y / maxY) * plotHeight; }
+
+        function drawMizan(curX = null, isKalalaMode = false, kalalaType = 0, totalSibCount = 0) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // زون الاستقرار، الحذر، الأزمات
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.04)'; ctx.fillRect(toPxX(0), toPxY(maxY), toPxX(2)-toPxX(0), plotHeight);
+            ctx.fillStyle = 'rgba(255, 255, 0, 0.04)'; ctx.fillRect(toPxX(2), toPxY(maxY), toPxX(4)-toPxX(2), plotHeight);
+            ctx.fillStyle = 'rgba(255, 0, 0, 0.04)'; ctx.fillRect(toPxX(4), toPxY(maxY), toPxX(maxX)-toPxX(4), plotHeight);
+            
+            // الشبكة والمحاور
+            ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1; ctx.font = '14px sans-serif'; ctx.fillStyle = '#64748b';
+            for(let i=1; i<=maxX; i++) { ctx.beginPath(); ctx.moveTo(toPxX(i), canvas.height-offsetY); ctx.lineTo(toPxX(i), canvas.height-offsetY-plotHeight); ctx.stroke(); ctx.fillText(i, toPxX(i)-4, canvas.height-offsetY+20); }
+            for(let j=0.5; j<=maxY; j+=0.5) { ctx.beginPath(); ctx.moveTo(offsetX, toPxY(j)); ctx.lineTo(offsetX+plotWidth, toPxY(j)); ctx.stroke(); ctx.fillText(j.toFixed(1), offsetX-35, toPxY(j)+4); }
+            ctx.strokeStyle = '#334155'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(offsetX, canvas.height-offsetY-plotHeight); ctx.lineTo(offsetX, canvas.height-offsetY); ctx.lineTo(offsetX+plotWidth, canvas.height-offsetY); ctx.stroke();
+            
+            // المماسات المشهودة (45 و 30 درجة)
+            ctx.strokeStyle = '#ff3e3e'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(toPxX(0), toPxY(2)); ctx.lineTo(toPxX(2), toPxY(0)); ctx.stroke();
+            ctx.strokeStyle = '#bc00ff'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(toPxX(0), toPxY(2)); ctx.lineTo(toPxX(4), toPxY(0)); ctx.stroke();
+            
+            // المنحنيات الديناميكية الكاشفة للميزان
+            ctx.strokeStyle = '#00f2ff'; ctx.lineWidth = 4; ctx.beginPath(); for(let x=0.2; x<=2; x+=0.02) { ctx.lineTo(toPxX(x), toPxY(1/x)); } ctx.stroke();
+            ctx.strokeStyle = '#ffca28'; ctx.lineWidth = 4; ctx.beginPath(); for(let x=2.01; x<=maxX; x+=0.02) { ctx.lineTo(toPxX(x), toPxY(2/x)); } ctx.stroke();
+            
+            // رسم بؤر الميزان الثابتة ومحور الصادات
+            ctx.fillStyle = '#ffffff';
+            [0, 2, 4].forEach(p => { ctx.beginPath(); ctx.arc(toPxX(p), toPxY(p === 0 ? 2 : 0), 6, 0, 2*Math.PI); ctx.fill(); });
+            ctx.fillStyle = '#00f2ff'; ctx.fillText("مشكاة الصادات Y=2 (المرجع المعرفي)", toPxX(0)+15, toPxY(2)+5);
+            
+            // بؤرة الرصد النشطة التفاعلية مع فرز الدالة والموقع الرياضي الحقيقي
+            if(curX !== null && curX > 0) {
+                let plotX = curX;
+                let cy = 0;
+                let displayText = "";
+                
+                if (isKalalaMode) {
+                    if (kalalaType === 1) {
+                        // الكلالة الأولى: شركة كلية بالتساوي التام والدائم (X=1 و Y=1) بغض النظر عن النسبة والعدد
+                        plotX = 1.0;
+                        cy = 1.0;
+                        displayText = `🎯 كلالة أولى ثابتة (آية 12): شركة بالتساوي المطلق في الثلث X = 1.0 -> Y = 1.0`;
+                    } else {
+                        // الكلالة الثانية المعايرة بناءً على عتبة العدد (3) وفلسفة مرجعية الأنثى
+                        if (totalSibCount <= 3) {
+                            plotX = 1.0; // تثبيت السقوط البياني عند عتبة التساوي المطلق X = 1
+                            cy = 1.0;    // حظ الأنثى المرجعي Y = 1.0
+                            displayText = `🎯 كلالة ثانية متوازنة (العدد <= 3): تثبيت التساوي الاستقراري X = 1.0 -> Y = 1.0`;
+                        } else {
+                            plotX = 2.0; // قفز قسري عند تجاوز العدد 3 ليسقط البياني عند عتبة السيادة والتفاضل X = 2
+                            cy = 0.5;    // حظ الأنثى المرجعي يصبح Y = 0.5
+                            displayText = `🎯 كلالة ثانية فائضة (العدد > 3): قفز لعتبة التفاضل والسيادة X = 2.0 -> Y = 0.5`;
+                        }
+                    }
+                } else {
+                    // دالة الأولاد والفروع الافتراضية المعتادة
+                    cy = curX <= 2 ? 1/curX : 2/curX;
+                    displayText = `🎯 رصد الفروع: X = ${curX.toFixed(2)} -> Y = ${cy.toFixed(2)}`;
+                }
+                
+                ctx.strokeStyle = 'rgba(0,242,255,0.4)'; ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.moveTo(toPxX(plotX), canvas.height-offsetY); ctx.lineTo(toPxX(plotX), toPxY(cy)); ctx.lineTo(offsetX, toPxY(cy)); ctx.stroke();
+                ctx.fillStyle = '#00f2ff'; ctx.beginPath(); ctx.arc(toPxX(plotX), toPxY(cy), 8, 0, 2*Math.PI); ctx.fill();
+                ctx.fillStyle = '#fff'; ctx.fillText(displayText, toPxX(plotX)+12, toPxY(cy)-8);
+            }
+        }
+        drawMizan();
+
+        function runMizanComputation() {
+            const estate = parseFloat(document.getElementById('estate').value) || 0;
+            const spouse = document.getElementById('spouse').value;
+            const hasF = document.getElementById('father').value === 'exists';
+            const hasM = document.getElementById('mother').value === 'exists';
+            const mC = (parseInt(document.getElementById('mC').value) || 0) + (parseInt(document.getElementById('mG').value) || 0);
+            const fC = (parseInt(document.getElementById('fC').value) || 0) + (parseInt(document.getElementById('fG').value) || 0);
+            const mS = parseInt(document.getElementById('mS').value) || 0, fS = parseInt(document.getElementById('fS').value) || 0;
+            const totalBranch = mC + fC, totalSib = mS + fS;
+
+            if(estate <= 0) { alert("أدخل رأس الكوم أولاً."); return; }
+            let res = { s: 0, m: 0, f: 0, fg: 0, mg: 0 }, current = estate, expl = "<ul>";
+
+            // 1. شريك الحياة الأحادي
+            if(spouse !== 'none' && !hasM && !hasF && totalBranch === 0 && totalSib === 0) { res.s = current; current = 0; expl += `<li><strong>استيعاب كامل:</strong> انفراد شريك الحياة الأحادي بالتركة إغلاقاً لدائرة النفس الواحدة.</li>`; }
+            else if(spouse !== 'none') {
+                let rate = (spouse === 'male') ? (totalBranch > 0 ? 0.25 : 0.5) : (totalBranch > 0 ? 0.125 : 0.25);
+                res.s = current * rate; current -= res.s; expl += `<li><strong>حصة شريك الحياة:</strong> استقطاع الزوجية الأحادية بنسبة ${(rate*100)}% من رأس الكوم.</li>`;
+            }
+
+            // 2. الأصول (الأب والأم) مع مغير الحسبة الفوري للإخوة في غياب الأولاد
+            if(hasM || hasF) {
+                if(totalBranch > 0) { if(hasM) res.m = current / 6; if(hasF) res.f = current / 6; expl += `<li><strong>الأصول بوجود الفروع:</strong> السدس لكل حاضر منهما لضمان استمرار الرعاية.</li>`; }
+                else {
+                    if(hasM && hasF) {
+                        res.m = (totalSib > 0) ? current / 6 : current / 3; res.f = current - res.m;
+                        expl += `<li><strong>توازن الأبوين:</strong> الأم تأخذ ${totalSib > 0 ? 'السدس (1/6) لحجب الإخوة لها كـ مغير حسبة' : 'الثلث (1/3)'} والأب يستوعب الباقي وظيفياً.</li>`;
+                    } else { if(hasM) res.m = current; else res.f = current; expl += `<li><strong>استيعاب الأصول:</strong> انفراد ولي الأمر الحاضر بـ المتبقي.</li>`; }
+                }
+                current -= (res.m + res.f);
+            }
+
+            let isKalala = false;
+            let kType = 0; // 1 للكلالة الأولى، 2 للكلالة الثانية
+
+            // 3. الفروع أو الكلالة الصارمة والمحدثة هندسياً
+            if(totalBranch > 0 && current > 0) {
+                if(fC > 0 && mC === 0) { res.fg = current; expl += `<li><strong>انفراد الإناث:</strong> استيعاب كامل المتبقي للبنات والربائب حماية لهن في حجر الأبوة.</li>`; }
+                else if(mC > 0 && fC === 0) { res.mg = current; expl += `<li><strong>انفراد الذكور:</strong> استيعاب كامل المتبقي للأبناء والأيتام.</li>`; }
+                else {
+                    let ratio = fC / mC;
+                    if(ratio > 2) { res.fg = current * (2/3); res.mg = current * (1/3); expl += `<li><strong>سيادة الكتلة المؤنثة (X > 2):</strong> الثلثان للإناث والثلث للذكور لتجاوز حد التوازن الكوني.</li>`; }
+                    else { res.fg = current * 0.5; res.mg = current * 0.5; expl += `<li><strong>اتزان الكتل (X <= 2):</strong> المناصفة (50/50) لعدم تخطي عتبة السيادة الرقمية.</li>`; }
+                }
+            } else if(totalSib > 0 && current > 0) {
+                isKalala = true;
+                if(spouse !== 'none') { 
+                    // كلالة أولى بالتساوي القطعي (آية 12)
+                    kType = 1;
+                    let sibS = (totalSib === 1) ? estate / 6 : estate / 3;
+                    res.fg = (sibS / totalSib) * fS; res.mg = (sibS / totalSib) * mS; res.s += (current - (res.mg + res.fg));
+                    expl += `<li><strong>كلالة أولى (آية 12):</strong> التساوي المطلق والشركة المستقرة في الثلث للأخوات والإخوة؛ حظ الأنثى هو الأصل المرجعي وحظ الذكر مساوٍ لها بشكل دائم وثابت هندسياً.</li>`;
+                } else { 
+                    // كلالة ثانية (آية 176) معدلة بناءً على عتبة الكثافة العددية (3) وفلسفة مرجعية الأنثى
+                    kType = 2;
+                    if(totalSib <= 3) { 
+                        res.mg = current * (mS / totalSib); 
+                        res.fg = current * (fS / totalSib); 
+                        expl += `<li><strong>كلالة ثانية متوازنة (العدد <= 3):</strong> التساوي المطلق بين الذكر والأنثى؛ حظ الأنثى هو المرجع الأساسي وحظ الذكر مساوٍ لها تماماً.</li>`; 
+                    }
+                    else { 
+                        let totalParts = (mS * 2) + fS;
+                                                let partValue = current / totalParts;
+                        res.mg = partValue * 2 * mS; 
+                        res.fg = partValue * fS; 
+                        expl += `<li><strong>كلالة ثانية فائضة (العدد > 3):</strong> قفز النظام لعتبة السيادة X = 2؛ حظ الأنثى المرجعي ينضبط عند (0.5) وحظ الذكر التابع يضاعفها حتمياً بنص الآية ﴿فَلِلذَّكَرِ مِثْلُ حَظِّ الْأُنثَيَيْنِ﴾.</li>`; 
+                    }
+                }
+            }
+
+            // ضخ المخرجات في شاشات لوحة التحكم
+            expl += "</ul>"; 
+            document.getElementById('r_s').innerText = res.s.toFixed(2); document.getElementById('r_m').innerText = res.m.toFixed(2);
+            document.getElementById('r_f').innerText = res.f.toFixed(2); document.getElementById('r_fg').innerText = res.fg.toFixed(2);
+            document.getElementById('r_mg').innerText = res.mg.toFixed(2);
+            
+            let indF = fC > 0 ? res.fg/fC : (totalBranch===0 && fS>0 ? res.fg/fS : 0);
+            let indM = mC > 0 ? res.mg/mC : (totalBranch===0 && mS>0 ? res.mg/mS : 0);
+            document.getElementById('ind_f').innerText = indF.toFixed(2); document.getElementById('ind_m').innerText = indM.toFixed(2);
+            document.getElementById('expText').innerHTML = expl; document.getElementById('resBox').style.display = 'block';
+
+            let dx = mC > 0 ? (fC/mC) : (mC===0 && fC>0 ? 5 : 0);
+            if(totalBranch === 0 && totalSib > 0) dx = mS > 0 ? (fS/mS) : (mS===0 && fS>0 ? 5 : 0);
+            
+            // تمرير المتغيرات لمحرك الرسم لتغيير دالة الرصد والبيان ديناميكياً وثلاثياً
+            drawMizan(dx, isKalala, kType, totalSib);
+        }
+    </script>
+</body>
+</html>

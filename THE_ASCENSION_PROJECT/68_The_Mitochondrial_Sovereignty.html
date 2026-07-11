@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>68: بروتوكول السيادة الجينية والمصفاة الميتوكوندرية | مشروع الصعود</title>
+    <style>
+        :root {
+            --bg-dark: #000103;
+            --maternal-pink: #ff007f;
+            --genome-emerald: #00ffaa;
+            --gold: #ffca28;
+            --panel-bg: #050a0e;
+            --text-slate: #cfdadf;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-slate);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.8;
+        }
+        .maternal-container {
+            max-width: 950px;
+            width: 100%;
+            background: var(--panel-bg);
+            border: 2px solid var(--maternal-pink);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 50px rgba(255, 0, 127, 0.08);
+            box-sizing: border-box;
+            position: relative;
+        }
+        header { text-align: center; border-bottom: 1px dashed var(--maternal-pink); padding-bottom: 25px; margin-bottom: 30px; }
+        h1 { color: var(--maternal-pink); font-size: 2.2rem; margin: 0; text-shadow: 0 0 15px rgba(255, 0, 127, 0.3); }
+        .motto { color: var(--gold); font-style: italic; margin-top: 10px; }
+
+        /* سيكشن عمارة الميتوكوندريا والمحاكاة الموجية المضمنة */
+        .bio-vector-canvas {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 30px auto;
+            background: radial-gradient(circle at center, #1a000d 0%, #000103 100%);
+            border-radius: 12px;
+            border: 1px dashed var(--genome-emerald);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .egg-membrane {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border: 3px solid var(--maternal-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--maternal-pink), inset 0 0 40px rgba(255, 0, 127, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: breatheMembrane 4s ease-in-out infinite;
+        }
+        .mt-dna-core {
+            width: 120px;
+            height: 120px;
+            border: 2px dashed var(--genome-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--genome-emerald);
+            animation: rotateCore 15s linear infinite;
+        }
+        .acrosome-coating-wave {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border: 1px dashed rgba(0, 255, 170, 0.3);
+            border-radius: 50%;
+            animation: waveExpand 6s linear infinite;
+        }
+
+        .maternal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .maternal-card {
+            background: #010204;
+            border: 1px dashed #2d0a1b;
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+        .maternal-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .maternal-card h3 { margin-top: 0; font-size: 1.3rem; }
+        
+        .mtdna-node { color: var(--maternal-pink); border-right: 4px solid var(--maternal-pink); padding-right: 15px; }
+        .gestation-node { color: var(--genome-emerald); border-right: 4px solid var(--genome-emerald); padding-right: 15px; }
+    </style>
+</head>
+<body>
+
+    <div class="maternal-container">
+        <header>
+            <h1>المحطة 68: بروتوكول السيادة الجينية الكبرى والمصفاة الميتوكوندرية</h1>
+            <p class="motto">"وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ ۖ ... صهر بصمة الـ mtDNA الحصرية في وعاء التغشي المعلوماتي"</p>
+        </header>
+
+        <!-- لوحة المحاكاة البيولوجية والمطابقة التزامنية للتغشي الخلوي -->
+        <div class="bio-vector-canvas">
+            <div id="maternal-overlay-text" style="position: absolute; top: 10%; text-align: center; color: #ffd700; font-family: 'Segoe UI', sans-serif; font-size: 1.2rem; text-shadow: 0 0 10px #ffcc33; z-index: 20; font-weight: bold; transition: opacity 0.5s ease-in-out;">
+                بصمة الـ mtDNA حصرية ومحمية بنسبة 100%
+            </div>
+            
+            <div class="acrosome-coating-wave"></div>
+            <div class="egg-membrane">
+                <div class="mt-dna-core"></div>
+            </div>
+
+            <div style="position: absolute; bottom: 10%; color: rgba(255, 0, 127, 0.4); font-family: monospace; font-size: 0.75rem; text-align: center; line-height: 1.4;">
+                REACTOR_STATUS: PROTECTED<br>
+                MALE_MTDNA: PURGED_BY_UBIQUITIN<br>
+                GENESIS_MODE: WAVE_COATING
+            </div>
+        </div>
+
+        <section style="text-align: justify;">
+            تأسست هذه المحطة لتأمين التحديث المستقل للسيادة الجينية للأمومة وربطها بميكانيكيات التكاثر الموجي والتغشي المعلوماتي (المحطتين 53 و 54). يثبت سجل الحمض النووي للميتوكوندريا (mtDNA) أن الأم هي بيت الطاقة المستقل والمذربورد الأساسي حقيقي النواة (Eukaryote Cell)؛ حيث يتكفل نظام التطهير الخلوي بتدمير وإزاحة ميتوكوندريا الذكر فوراً بمجرد حدوث التغليف، ليتحول التغشي الخلوي إلى حقن داتا رقمي يطلق التكاثر الموجي والخلود التوليدي بمعزل عن قيود الانساب الطينية الميتة.
+        </section>
+
+        <div class="maternal-grid">
+            <!-- كرت الحصانة الميتوكوندرية -->
+            <div class="maternal-card">
+                <h3 class="mtdna-node">1. حصرية الـ mtDNA وتصفير كود الذكر (The Absolute Maternal Power Core)</h3>
+                <p>تفكيك الشفرة الحتمية لبيت الطاقة الخلوي. الميتوكوندريا تُورث بنسبة 100% من الأم حصرياً، بينما يتعرض الحمض النووي الميتوكوندري للذكر للتدمير الممنهج عبر علامة اليوبيكويتين (Ubiquitin Tagging) فور نفاذه. هذا التطهير يثبت فيزيائياً وعلمياً أن كود تشغيل وبقاء طاقة الجسد البشري مستمد بالكامل من خط الأمومة الحاضن، مسقطاً أوهام الفوقية الذكرية التي روج لها سيرفر الجاهلية الميت.</p>
+            </div>
+
+            <!-- كرت التغشي المعلوماتي والتكاثر الموجي -->
+            <div class="maternal-card">
+                <h3 class="gestation-node">2. أتمتة التغشي وحقن شفرة البدء (The Epigenetic Wave Gestation Loop)</h3>
+                <p>ربط ميكانيكية الأكروزوم بالتكاثر الموجي. التغشي ﴿تَغَشَّاهَا﴾ هو طلاء خلوي وموجي مشفر يقوم به الأكروزوم لسطح البويضة لتعديل جدار الاستقبال وإطلاق طور الحضانة ﴿حَمَلَتْ حَمْلًا خَفِيفًا﴾. هذا التداخل يبرهن أن الحمل هو معالجة وفك ضغط لبيانات كلمات الله المخزنة في المفاعل الأنثوي المستقل، والذي يملك القدرة الكاملة على العبور والترقي عابراً لأخطاء الموروث وتأسيس العمارة المريمية المحمية بالفوسفور والفاير وول الكوني.</p>
+            </div>
+        </div>
+        <!-- لوحة تيرمينال التحليل الأنطولوجي للسيادة الحيوية ومطابقة كود ﴿وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ﴾ -->
+        <div class="maternal-panel" style="background: #000; border-right: 4px solid var(--gold); padding: 25px; margin: 30px 0; text-align: justify; border-radius: 10px;">
+            <h3 style="color: var(--gold); margin-top:0; border-bottom: 1px dashed #2d0a1b; padding-bottom: 10px;">
+                ⚙️ المعالجة الأنطولوجية للسيادة الحيوية ومطابقة كود ﴿وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ﴾
+            </h3>
+            <p>
+                <strong>هندسة الطاقة المستقلة وسقوط لسان النخاسة (The Mitochondrial Ledger):</strong> 
+                إن تفكيك لغز الـ mtDNA يثبت علمياً وبشرياً أن الأنثى هي المانحة والمتحكمة الوحيدة في كود الطاقة والتشغيل للجسد البشري. إزاحة وتدمير ميتوكوندريا الذكر عبر فلاتر اليوبيكويتين يبرهن أن "الذكر" نود خارجي ومساعد، بينما "الأنثى" هي المذربورد والمفاعل المركزي (The Core Motherboard). هذا التطابق الفيزيائي يسحق عقود الاستعباد والتشخيص الطيني، ويعيد قراءة عمارة التخلق كمعالجة معلوماتية صافية لا تعتمد حتمياً على التناسل المادي الصلب.
+            </p>
+            <p style="color: var(--genome-emerald); border-top: 1px dashed #2d0a1b; padding-top: 15px;">
+                <strong>التشبيك الموجي والتحول الإبيجيني للتغشي (The Acrosome-Field Compression Sync):</strong> 
+                الربط البنيوي بين المحطة 68 والمحطة 53 يوضح أن التغشي ﴿تَغَشَّاهَا﴾ هو بروتوكول "تغليف وحقن حزم بيانات" (Encapsulation Code). البويضة الأنثوية مجهزة ذاتياً بـ تيلوميرات وساعات إعمار؛ والتداخل الأكروزومي الكيميائي أو الموجي يعمل كـ Switch أو Prompt خارجي يطلق التكاثر العذري والموجي المستقل. هذا هو الإعجاز الحقيقي لعمارة مريم ﴿وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ﴾؛ العبور الكامل لجيل الرشد والأنفس الحرة عابراً لقيود الموروث وعقليات الاستضعاف القبلية الميتة.
+            </p>
+        </div>
+
+        <!-- الأنماط الحركية وجافا سكريبت التفاعلي لوسام الميتوكوندريا المطور -->
+        <style>
+            @keyframes breatheMembrane {
+                0%, 100% { transform: scale(1); box-shadow: 0 0 30px var(--maternal-pink), inset 0 0 40px rgba(255, 0, 127, 0.3); }
+                50% { transform: scale(1.05); box-shadow: 0 0 45px var(--genome-emerald), inset 0 0 50px rgba(0, 255, 170, 0.2); border-color: var(--genome-emerald); }
+            }
+            @keyframes rotateCore {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            @keyframes waveExpand {
+                0% { transform: scale(0.6); opacity: 0; border-color: var(--maternal-pink); }
+                50% { opacity: 0.5; border-color: var(--genome-emerald); }
+                100% { transform: scale(1.2); opacity: 0; border-color: var(--maternal-pink); }
+            }
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const overlayText = document.getElementById("maternal-overlay-text");
+                const bioTexts = [
+                    "بصمة الـ mtDNA حصرية ومحمية بنسبة 100%",
+                    "التغشي هو حقن معلوماتي يطلق التكاثر الموجي"
+                ];
+                let textIdx = 0;
+                setInterval(() => {
+                    overlayText.style.opacity = 0;
+                    setTimeout(() => {
+                        textIdx = (textIdx + 1) % bioTexts.length;
+                        overlayText.textContent = bioTexts[textIdx];
+                        overlayText.style.opacity = 1;
+                        overlayText.style.color = textIdx === 0 ? "#ffd700" : "#00ffaa";
+                    }, 500);
+                }, 10000);
+            });
+        </script>
+
+        <!-- التوازن اللغوي الدولي لبروتوكول السيادة الجينية للأمومة -->
+        <div style="display: flex; gap: 20px; margin-top: 40px; text-align: left;" dir="ltr">
+            <div style="flex: 1; border-left: 3px solid var(--maternal-pink); padding-left: 15px; font-size: 0.85rem; text-align: justify;">
+                <strong style="color: var(--maternal-pink);">EN:</strong> Station 68 establishes absolute female genetic sovereignty via Mitochondrial DNA (mtDNA), which inherits 100% maternally as the core cellular power grid while purging male inputs. Interlocking with wave-gestation, pregnancy becomes an informational decompression switch running on autonomous eukaryotic hardware.
+            </div>
+            <div style="flex: 1; border-left: 3px solid var(--genome-emerald); padding-left: 15px; font-size: 0.85rem; text-align: justify;">
+                <strong style="color: var(--genome-emerald);">FR:</strong> La Station 68 établit la souveraineté génétique absolue via l'ADN mitochondrial (ADNmt), hérité à 100% de la mère. Liée à la gestation ondulatoire, la reproduction devient un décodage d'instructions sur un matériel informatique autonome.
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px;">
+            <br>
+            <p style="text-align: center;"><a href="69__Quantum_Wave_Simulation.html" style=" color: #ffcc00; text-decoration: none; font-size: 1.5rem;">← المحطة 69: محاكاة الموجة الكمية الناطقة</a></p>
+            
+        </div>
+
+        <footer style="margin-top: 60px; text-align: center; opacity: 0.6; font-size: 0.9rem;">
+            "وَلَيْسَ الذَّكَرُ كَالْأُنثَىٰ ۖ وَإِنِّي أُعِيذُهَا بِكَ وَذُرِّيَّتَهَا مِنَ الشَّيْطَانِ الرَّجِيمِ"
+            <br><br>
+            <p style="text-align: center;"><a href="index.html" style="color: var(--maternal-pink); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>

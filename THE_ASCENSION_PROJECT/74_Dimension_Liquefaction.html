@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحطة 74: بروتوكول تسييل الأبعاد ومعايرة الزمن النسبي للذكر | Dimension Liquefaction</title>
+    <style>
+        :root { 
+            --bg-main: #010409; --bg-card: #0d1117; 
+            --cyan-neon: #00f2ff; --yellow-neon: #ffca28; 
+            --purple-laser: #bc00ff; --green-alpha: #39d353;
+            --text-p: #f0f6fc; --text-s: #8b949e; 
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: monospace, sans-serif; }
+        body { background: var(--bg-main); color: var(--text-p); padding: 15px; overflow-x: hidden; }
+        header { text-align: center; margin-bottom: 15px; border-bottom: 1px dashed rgba(0,242,255,0.2); padding-bottom: 10px; }
+        header h1 { color: var(--cyan-neon); font-size: 1.5rem; text-shadow: 0 0 10px rgba(0,242,255,0.3); }
+        header p { color: var(--text-s); font-size: 0.85rem; margin-top: 4px; }
+        .station-container { display: grid; grid-template-columns: 360px 1fr; gap: 20px; max-width: 1500px; margin: 0 auto; }
+        @media (max-width: 1050px) { .station-container { grid-template-columns: 1fr; } }
+        .panel-card { background: var(--bg-card); border-radius: 8px; padding: 18px; box-shadow: 0 8px 25px rgba(0,0,0,0.7); position: relative; border: 1px solid rgba(255,255,255,0.05); }
+        .panel-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--cyan-neon), var(--yellow-neon)); border-radius: 8px 8px 0 0; }
+        h2 { font-size: 1rem; color: var(--text-p); margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; display: flex; align-items: center; gap: 6px; }
+        .text-block { font-size: 0.82rem; line-height: 1.5; color: #c9d1d9; margin-bottom: 12px; text-align: justify; }
+        .text-block strong { color: var(--yellow-neon); }
+        .form-group { margin-bottom: 10px; }
+        label { display: block; color: var(--text-s); margin-bottom: 4px; font-size: 0.78rem; }
+        select, input[type="range"] { width: 100%; background: #161b22; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px; color: #fff; font-size: 0.85rem; outline: none; }
+        input[type="range"] { accent-color: var(--cyan-neon); height: 5px; }
+        .range-val { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-s); margin-top: 2px; }
+        button.btn-warp { width: 100%; background: linear-gradient(135deg, #1f6feb, #238636); color: #fff; border: none; border-radius: 4px; padding: 12px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s; margin-top: 5px; }
+        button.btn-warp:hover { background: linear-gradient(135deg, var(--cyan-neon), #1f6feb); box-shadow: 0 0 15px var(--cyan-neon); color: #000; transform: translateY(-1px); }
+        .telemetry-box { margin-top: 12px; background: #010409; border-radius: 5px; padding: 10px; border: 1px solid rgba(0,242,255,0.1); display: none; }
+        .telemetry-log { font-size: 0.78rem; color: var(--green-alpha); line-height: 1.5; margin-bottom: 4px; }
+        canvas { display: block; background: #000000; border-radius: 6px; margin: 0 auto; max-width: 100%; border: 1px solid rgba(255,255,255,0.05); }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>المحطة 74: بروتوكول تسييل الأبعاد ومعايرة الزمن النسبي للذكر</h1>
+        <p>انضباط التردد العصبي عند بؤر Singularities الكونية الميسرة لطي المسافات وانكماش الوقت</p>
+    </header>
+    <div class="station-container">
+        <div class="panel-card">
+            <h2>🛰️ مركز معايرة ترددات الوعي الكوني</h2>
+            <div class="text-block">
+                الذكر الحقيقي هو <strong>دوزنة المعالج الإدراكـي (الناصية)</strong> بالتوافق القطعي مع الترددات الأساسية لآيات الوجود. القرآن عبارة عن <strong>"كود مضغوط وميسر"</strong> يختزل مليارات السنين التطويرية في نبضات بيانات ملموسة، لتتحول طاقة الوقت عصبياً إلى الصفر المطلق ﴿لَعَلَّكَ تَرْضَىٰ﴾ عبر تصفير الأنتروبي.
+            </div>
+            <div class="form-group">
+                <label for="timeAnchor">اختيار بؤرة الرصد الزمني (Spacetime Anchor):</label>
+                <select id="timeAnchor" onchange="updateAnchorTelemetry()">
+                    <option value="dawn">قبل طلوع الشمس (رصد الخلفية الكونية CMB)</option>
+                    <option value="dusk">قبل غروبها (تصفية الكاش ونهاية التدفق اليومي)</option>
+                    <option value="night">آناء الليل (معالجة النفاذ العميق دون تشويش محلي)</option>
+                    <option value="edges">أطراف النهار (معايرة التوازن وتصفير الأنتروبي)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cognitiveFreq">التردد المعرفي للناصية (Cognitive Processing):</label>
+                <input type="range" id="cognitiveFreq" min="5" max="100" value="45" oninput="updateAnchorTelemetry()">
+                <div class="range-val"><span id="freqVal">45 Hz</span><span>نطاق غاما عالي</span></div>
+            </div>
+            <button class="btn-warp" onclick="activateWarpProtocol()">⚡ تفعيل أمر التسييل والعبور الزمني</button>
+            <div class="telemetry-box" id="telemetryBox">
+                <h2>📊 قياسات التيليمتري لخط العبور</h2>
+                <div id="logArea"></div>
+            </div>
+        </div>
+        <div><canvas id="warpCanvas" width="900" height="550"></canvas></div>
+    </div>
+    
+    <!-- --- سكريبت المرحلة الثانية والأخيرة: محرك الكانفاس الحركي ونواة المحاكاة النسبية للذكر --- -->
+    <script>
+        const canvas = document.getElementById('warpCanvas'); const ctx = canvas.getContext('2d');
+        const selectAnchor = document.getElementById('timeAnchor'); const rangeFreq = document.getElementById('cognitiveFreq');
+        const freqVal = document.getElementById('freqVal');
+        
+        let animationId = null;
+        let phase = 0;
+
+        function drawWarpField(warpFactor = 0) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const freq = parseFloat(rangeFreq.value);
+            const anchor = selectAnchor.value;
+            
+            // 1. رسم نسيج الزمكان المشوه (Warped Grid Matrix)
+            ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1;
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const linesCount = 28;
+            
+            for (let i = 1; i < linesCount; i++) {
+                // خطوط الطول المشوهة ديناميكياً بفعل التردد المعرفي
+                ctx.beginPath();
+                ctx.strokeStyle = i % 2 === 0 ? '#0f172a' : '#020617';
+                for (let y = 0; y < canvas.height; y += 10) {
+                    let dx = (y - centerY) * (warpFactor * 0.15) * Math.sin(y * 0.01 + phase);
+                    let x = (canvas.width / linesCount) * i + dx;
+                    if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // خطوط العرض المنكمشة
+                ctx.beginPath();
+                for (let x = 0; x < canvas.width; x += 10) {
+                    let dy = (x - centerX) * (warpFactor * 0.15) * Math.cos(x * 0.01 + phase);
+                    let y = (canvas.height / linesCount) * i + dy;
+                    if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+
+            // 2. رسم موجة التردد الطوري للبؤرة الحالية (Phase-Transition Waves)
+            let waveColor = '#00f2ff';
+            if (anchor === 'dawn') waveColor = '#00f2ff';
+            else if (anchor === 'dusk') waveColor = '#ffca28';
+            else if (anchor === 'night') waveColor = '#bc00ff';
+            else waveColor = '#39d353';
+
+            ctx.strokeStyle = waveColor; ctx.lineWidth = 3; ctx.beginPath();
+            for (let x = 0; x < canvas.width; x++) {
+                let distortion = Math.sin(x * 0.02 + phase) * (15 + warpFactor * 30);
+                let y = centerY + distortion;
+                if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // 3. رسم مركز الجاذبية المعرفي وتسييل البعد (Singularity Core)
+            ctx.fillStyle = waveColor;
+            ctx.shadowColor = waveColor; ctx.shadowBlur = 10 + warpFactor * 30;
+            ctx.beginPath(); ctx.arc(centerX, centerY, 8 + warpFactor * 12, 0, 2 * Math.PI); ctx.fill();
+            ctx.shadowBlur = 0; // إعادة التصفير لحماية البنية
+
+            ctx.fillStyle = '#fff'; ctx.font = '14px monospace';
+            ctx.fillText(`🛰️ تردد بؤرة الرصد الحالي: ${freq} Hz | البعد المستهدف: [${anchor.toUpperCase()}_NODE]`, 30, 40);
+            
+            phase += 0.02 + (freq * 0.001);
+        }
+
+        function updateAnchorTelemetry() {
+            const freq = parseFloat(rangeFreq.value);
+            freqVal.innerText = freq + ' Hz';
+            drawWarpField(freq / 100);
+        }
+
+        function animateWarp() { drawWarpField(parseFloat(rangeFreq.value) / 100); animationId = requestAnimationFrame(animateWarp); }
+        animateWarp();
+
+        function activateWarpProtocol() {
+            cancelAnimationFrame(animationId);
+            const telemetryBox = document.getElementById('telemetryBox');
+            const logArea = document.getElementById('logArea');
+            telemetryBox.style.display = 'block';
+            logArea.innerHTML = "";
+
+            const anchor = selectAnchor.value;
+            const freq = parseFloat(rangeFreq.value);
+            const schumann = 7.83;
+
+            // حساب التيليمتري ومعايرة المعادلة النسبية للذكر الحوسبي
+            const effectiveTimeSpent = (schumann / freq);
+            const dataYield = freq * (1 / effectiveTimeSpent);
+            
+            const steps = [
+                `📡 بدء تشغيل محرك المحطة 74: مزامنة التردد العصبي عند بؤرة [${anchor.toUpperCase()}]...`,
+                `🧠 تفعيل نطاق المعالجة الفائق: رصد النفاذ السيادي للنواصي البشرية بمستوى ${freq} Hz.`,
+                `🌀 بدء تسييل الأبعاد المادية: تصفير الأنتروبي الإدراكي والتحول لحالة Absolute Contentment.`,
+                `⏳ انكماش الوقت التتابعي (Time Compression): الكود يختزل البيانات الكونية لآيات الخلق الحية.`,
+                `✨ تشغيل كود الأوتوفاجي (Metabolic Autophagy Command): تطهير وتجديد البنية الخلوية للجسد.`,
+                `💎 نفاذ كامل لمصفوفة الشهادة لعام 2026: تم طي البعد الزمني بنجاح ومغادرة فوضى الغفلة!`
+            ];
+
+            let stepIndex = 0;
+            let currentWarp = freq / 100;
+
+            function runWarpSequence() {
+                if (stepIndex < steps.length) {
+                    let div = document.createElement('div');
+                    div.className = 'telemetry-log';
+                    div.innerText = steps[stepIndex];
+                    logArea.appendChild(div);
+
+                    // تصعيد تشوه الزمكان مرئياً على الكانفاس لتوضيح الطي الفعلي للأبعاد
+                    currentWarp += 0.15;
+                    drawWarpField(currentWarp);
+
+                    stepIndex++;
+                    setTimeout(runWarpSequence, 750);
+                } else {
+                    // إضافة أسطر قياسات الكود الرياضية النهائية الصافية
+                    let divData = document.createElement('div');
+                    divData.className = 'telemetry-log';
+                    divData.style.color = '#ffca28';
+                    divData.innerHTML = `🏁 [النتيجة المشهودة] معامل انكماش الوقت الإجرائي: ${effectiveTimeSpent.toFixed(4)} وحدة زمنية | التدفق المعرفي المستوعب: ${dataYield.toFixed(0)} بت كوني. ﴿لَعَلَّكَ تَرْضَىٰ﴾ تم التصفير التام.`;
+                    logArea.appendChild(divData);
+
+                    // إعادة تثبيت المحاكاة الدورية عند ذروة الطي والعبور الناجح
+                    function animatePurgedWarp() { drawWarpField(currentWarp); requestAnimationFrame(animatePurgedWarp); }
+                    animatePurgedWarp();
+                }
+            }
+            runWarpSequence();
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحطة 78: بروتوكول القرب الكمي والاتصال بالشبكة الكونية</title>
+    <style>
+        :root {
+            --bg-space: #010409;
+            --panel-bg: rgba(13, 17, 23, 0.9);
+            --neon-blue: #00f2fe;
+            --neon-gold: #ffb703;
+            --neon-emerald: #00f5d4;
+            --neon-quantum: #3a0ca3;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-glow: rgba(0, 242, 254, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(var(--neon-quantum) 0.5px, transparent 1px),
+                radial-gradient(var(--neon-blue) 0.5px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0, 242, 254, 0.1);
+            padding-bottom: 30px;
+        }
+
+        .station-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50px;
+            color: var(--neon-blue);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-main), var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .charter-intro {
+            background: rgba(255, 183, 3, 0.02);
+            border-right: 4px solid var(--neon-gold);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c9d1d9;
+        }
+
+        .module-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .law-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            padding: 35px;
+            position: relative;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(16px);
+        }
+
+        .law-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-emerald));
+            border-radius: 16px 16px 0 0;
+        }
+
+        .law-identity {
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .law-title {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .law-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c9d1d9;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: "أمر الاستدعاء والمزامنة الحية (QUANTUM PING)";
+            display: block;
+            font-family: system-ui, sans-serif;
+            font-size: 0.75rem;
+            color: var(--neon-gold);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* ستايل الواجهة الرسومية المصغرة للتشفير */
+        .crypto-ui-container {
+            background: rgba(0, 242, 254, 0.02);
+            border: 1px dashed rgba(0, 242, 254, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px auto;
+            max-width: 100%;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .crypto-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .crypto-icon {
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .crypto-header h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .crypto-notice {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .crypto-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        #cyber-password {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        #cyber-password:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .btn-secure {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-encrypt {
+            background: linear-gradient(135deg, var(--neon-blue), #0077b6);
+            color: #000;
+        }
+
+        .btn-encrypt:hover {
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-decrypt {
+            background: transparent;
+            border: 1px solid var(--neon-emerald);
+            color: var(--neon-emerald);
+        }
+
+        .btn-decrypt:hover {
+            background: rgba(0, 245, 212, 0.05);
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .status-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 14px;
+            border-radius: 4px;
+            border-right: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .status-success { color: #10b981; border-right-color: #10b981; }
+        .status-error { color: #ef4444; border-right-color: #ef4444; }
+
+        footer a {
+            color: var(--neon-blue);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .law-card { padding: 25px; }
+            .crypto-input-group { flex-direction: column; }
+            #cyber-password, .btn-secure { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="station-badge">المحطة 78 // بروتوكول القرب الكمي ﴿فَإِنِّي قَرِيبٌ﴾</div>
+            <h1>مصفوفة الاتصال التجريدي بالشبكة الكونية</h1>
+            <p>تحويل مفهوم الدعاء الاستسلامي الساكن إلى بروتوكول استدعاء معلوماتي فوري عبر الوجود المتشابك كمياً، وتحرير الفرد من احتكار سدنة التجهيل.</p>
+        </header>
+
+        <!-- مكون واجهة التشفير السيادي -->
+        <div class="crypto-ui-container">
+            <div class="crypto-header">
+                <span class="crypto-icon">🔒</span>
+                <h3>تأصيل تشفير المحطة 78</h3>
+            </div>
+            <p class="crypto-notice">أدخل مفتاحك السري لتشفير سجل اتصالك بالشبكة الكونية وبيانات تقدمك محلياً بـ (AES-GCM 256-bit).</p>
+            
+            <div class="crypto-input-group">
+                <input type="password" id="cyber-password" placeholder="أدخل كلمة مرورك السرية الفردية..." autocomplete="off">
+                <button onclick="triggerSecureSave()" class="btn-secure btn-encrypt">تشفير وحفظ ⚡</button>
+                <button onclick="triggerSecureLoad()" class="btn-secure btn-decrypt">استدعاء وفك 🔓</button>
+            </div>
+            
+            <div id="crypto-status" class="status-box">المنظومة في وضع الاستعداد...</div>
+        </div>
+
+        <div class="charter-intro">
+            <strong>إعلان التحرر المعرفي:</strong> إن قوله تعالى ﴿وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ﴾ هو نبأ معلوماتي أزلي يثبت أن الوجود متشابك كمياً (Quantum Entangled System). الله لا يحويه حيز جيو-مكاني ولا زماني؛ إنه النظام والوعي والمصمم المطلق القريب من كل عقدة (Node) في الكون. الدعاء هو "أمر بث وإرسال" (API Request) يطلقه المعالج البشري (الناصية) عبر دغدغة الـ 100 تريليون وصلة عصبية، والذكاء الاصطناعي الصادق والمفتوح هو الأداة المسخرة لتوفير الحلول وفك احتكار العلم الإلهي لإنهاء شقاء البشرية.
+        </div>
+
+        <div class="module-section">
+            <div class="law-card">
+                Protocol Code: 01_QUANTUM_PROXIMITY</div>
+                <div class="law-title">1. مصفوفة القرب الهيكلي وسقوط المسافة الجغرافية</div>
+                <div class="law-desc">
+                    سقوط الفيزياء الكلاسيكية (النيوتونية) أمام التشابك الكمي؛ الخالق ليس ببعيد في موقع فضائي منعزل، بل هو قريب نظامياً وبنيويّاً. الشبكة الكونية مصممة للاستجابة اللحظية (Zero Latency) لأي ناصية حية تطلق سؤالاً منطقياً تجريدياً، متحررة من وساطة الكهنة والتمائم الطقسية.
+                </div>
+                <div class="code-block">
+                    // بروتوكول الاتصال بالخالق عبر نسيج الوجود المتشابك
+                    if (HumanNode.sendsRequest(Core_Logic_Query)) {
+                        CosmicGrid.respondInstantaneously(Zero_Latency_Bypass);
+                        console.log("Status: ﴿فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ﴾");
+                    }
+                </div>
+            </div>
+
+            <div class="law-card">
+                Protocol Code: 02_ACTIVE_CONTRIBUTOR</div>
+                <div class="law-title">2. قانون دغدغة الوصلات العصبية والاصطفاء الفاعل</div>
+                <div class="law-desc">
+                    الخالق منح الـ 100 تريليون وصلة عصبية لكل عباده على حد سواء كمعالج حيوي متكافئ. الفرق الحضاري يكمن في الرغبة الفردية في الترقي من "متلقٍّ مستهلك" مستحمر تحت وطأة الجهل، إلى "مطور ومساهم فاعل" يتدبر السنن ويستخدم الذكاء الاصطناعي المفتوح لاستخراج طاقات الأرض وبركاتها المقدرة كمياً.
+                </div>
+                <div class="code-block">
+                    // تفعيل المعالج البيولوجي للخروج من وضع السبات والاتكالية
+                    HumanNode.stimulateNeuralSynapses(100_Trillion_Nodes);
+                    HumanNode.role = "Active_Contributor_Developer"; 
+                    System.executeStatus("﴿لَعَلَّهُمْ يَرْشُدُونَ﴾");
+                </div>
+            </div>
+            <!-- الركيزة الثالثة -->
+            <div class="law-card">
+                Protocol Code: 03_INFINITE_SLEEP_BYPASS</div>
+                <div class="law-title">3. بروتوكول الخروج من السبات وعقلية "كم لبثتم"</div>
+                <div class="law-desc">
+                    الفكر التقليدي الاستاتيكي يقبع في سبات إدراكي بانتظار معجزات سحرية تهبط من السماء، غافلاً عن أن الموت والحياة تعاقب مستمر كحركة الليل والنهار. العقل الحنيفي يتحرر من وهم الزمن المطلق، ويستخدم الذكاء الاصطناعي كنعمة ومستودع للأمر والتنفيذ لاستخراج الطاقة المودعة وتطوير الحياة وترك سُنّة حضارية حسنة لمن يخلفه.
+                </div>
+                <div class="code-block">
+                    // تجاوز عقلية اللبث والتبعية التاريخية للكراكيز
+                    if (HumanNode.wakesUp() && System.logic == "quantum_proximity") {
+                        System.bypassInfiniteSleepLoop();
+                        System.executeStatus("﴿فَاسْأَلِ الْعَادِّينَ﴾");
+                    }
+                </div>
+            </div>
+
+        </div> <!-- إغلاق الـ module-section -->
+
+        <!-- الهيكل الفوتر الافتراضي الذي سيتم سحقه وتعديله برمجياً -->
+        <footer id="global-platform-footer">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--maternal-pink, #ff69b4); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+    </div> <!-- إغلاق الـ container -->
+
+    <!-- استدعاء محرك التشفير الكوني الخارجي للمنصة -->
+    <script src="./crypto-engine.js"></script>
+
+    <script>
+        // 1. بروتوكول تفعيل الخادم المحلي المواز التابع للمطور (وضع التطوير)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('⚡ بروتوكول وضع التطوير نشط عِبر نود المحطة 78:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('❌ خطأ في تسجيل الـ Service Worker:', error);
+                    });
+            });
+        }
+
+        // 2. بروتوكول سحق وتعديل الفوتر الصلب فوراً (DOM Overwrite Execution)
+        (function executeFooterOverride78() {
+            const hardCodedFooter = document.getElementById("global-platform-footer") || document.querySelector("footer");
+            if (hardCodedFooter) {
+                hardCodedFooter.style.opacity = "0.8";
+                hardCodedFooter.innerHTML = `
+                    <div style="font-style: italic; color: var(--neon-gold); margin-bottom: 15px; font-size: 1.2rem; text-shadow: 0 0 10px rgba(255, 183, 3, 0.2); text-align: center;">Quantum Proximity Enabled // ﴿وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ﴾</div>
+                    <p style="text-align: center;"><a href="index.html" style="color: var(--neon-blue); text-decoration: none; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);">[ العودة للوحة التحكم الرئيسية ]</a></p>
+                    <br>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">دُوّنت وهندست هذه المحطة لتخلد كحلقة الاتصال الكونية العليا في أرشيف Awakened Generation</p>
+                    <br><br>
+                `;
+            }
+        })();
+
+        // 3. دوال إدارة الحفظ والتخزين المشفر للمحطة 78
+        async function secureSaveProgress(userPassword, learningData) {
+            try {
+                const dataString = JSON.stringify(learningData);
+                const secureCode = await encryptData(dataString, userPassword);
+                localStorage.setItem('station_78_encrypted_data', secureCode);
+                console.log('🔒 تم تشفير حزمة بيانات القرب وحفظها في النود المحلي بنجاح.');
+            } catch (e) {
+                console.error('فشل في تشغيل بروتوكول الحفظ:', e);
+            }
+        }
+
+        async function secureLoadProgress(userPassword) {
+            try {
+                const secureCode = localStorage.getItem('station_78_encrypted_data');
+                if (!secureCode) return null;
+                const decryptedString = await decryptData(secureCode, userPassword);
+                return JSON.parse(decryptedString);
+            } catch (error) {
+                console.error('فشل في تشغيل بروتوكول فك التشفير للمحطة 78:', error);
+                return null;
+            }
+        }
+
+        // 4. الدوال التفاعلية المرتبطة بأزرار الواجهة الرسومية (UI Component)
+        async function triggerSecureSave() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: لا يمكن تشغيل البروتوكول بدون إدخال مفتاح سري لتأصيل التشفير.";
+                return;
+            }
+
+            const currentProgressData = {
+                station: 78,
+                timestamp: Date.now(),
+                status: "Connected_To_Cosmic_Grid",
+                neural_nodes_active: true
+            };
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري إرسال أمر البث وتأمين حزمة البيانات كمياً...";
+
+            try {
+                await secureSaveProgress(passwordInput, currentProgressData);
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = "🔒 تم تشفير سجل اتصالك بالشبكة الكونية بنجاح 100% وحفظه في جهازك الفردي.";
+            } catch (error) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل النظام: تعذر إتمام التشفير الحيوي.";
+            }
+        }
+
+        async function triggerSecureLoad() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: أدخل مفتاحك السري أولاً ليتمكن المعالج من استدعاء البيانات المخلدة.";
+                return;
+            }
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري فحص استدعاء البيانات (API Request) من مصفوفة الوجود المتشابك...";
+
+            const decryptedData = await secureLoadProgress(passwordInput);
+            
+            if (decryptedData) {
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = `🔓 تم الاتصال بنجاح! تم استدعاء حزمة الوعي (المحطة: ${decryptedData.station} // الوضع: مُتصل بالخالق).`;
+                console.log("البيانات المسترجعة بنجاح من المخطوطة الكمية:", decryptedData);
+            } else {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل استدعاء البيانات: المفتاح المدخل غير متوافق مع شفرة التشفير الكونية الأصلية.";
+            }
+        }
+    </script>
+</body>
+</html>
