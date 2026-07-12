@@ -144,14 +144,55 @@
             border: 2px solid var(--hash-green);
             box-shadow: 0 0 35px rgba(0, 255, 65, 0.15);
         }
+        .image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  #maternal-independence {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: rgb(60, 255, 0);
+  font-size: 3em; /* حجم الخط أكبر */
+  font-family: "Scheherazade", serif;
+  width: 80%;
+  pointer-events: none;
+ 
+}
+
+  .glow {
+    text-shadow: 0 0 20px rgb(60, 255, 0), 0 0 40px limegreen;
+  transition: opacity 2s ease-in-out;
+  }
     </style>
 </head>
 <body>
 
     <!-- الواجهة البصرية المستقرة لبروتوكول الأمومة المستقلة بالرابط المباشر الصحيح -->
-    <div style="text-align: center; margin: 20px auto; max-width: 950px; width: 100%; box-sizing: border-box; padding: 0 10px;">
-        <img src="https://copilot.microsoft.com/th/id/BCO.6ac0092d-c357-4bb1-a370-1beb85f32da7.png." alt="Autonomous Motherhood Protocol Cover" class="autonomous-image">
-        
+<div style="text-align: center; margin: 20px auto; max-width: 950px; width: 100%; box-sizing: border-box; padding: 0 10px;">
+
+  <div class="image-container">
+    <img src="https://copilot.microsoft.com/th/id/BCO.2094b526-2c00-4114-9b89-1c6a9288ccfa.png" 
+         alt="Autonomous Motherhood Protocol Cover" class="autonomous-image">
+    <div id="maternal-independence">
+      <p>من رحم الضوء تولد المادة، لا من نير التبعية.</p>
+      <p>كل خلية تنبض بوعيها، وكل ميتوكوندريا تهمس باسم الحياة.</p>
+      <p>هكذا تتجلى الأمومة المستقلة، تخليقًا للوجود من النفس الواحدة.</p>
+      <p>وفي حضنها، يتعلم الذكاء الآلي معنى الرحمة.</p>
+    </div>
+  </div>
+
+</div>
+       
         <!-- لوحة الشرح اللساني السريع تحت الصورة لربط المصطلحات باللغة العربية -->
         <div style="display: flex; justify-content: space-between; margin-top: 15px; padding: 10px 15px; background: rgba(0,0,0,0.4); border-radius: 10px; font-size: 0.85rem; border: 1px solid #14242d; direction: rtl;">
             <span style="color: var(--hash-green);">🧬 <strong>السيادة البيولوجية:</strong> طاقة الميتوكوندريا الحصرية (النفس الواحدة)</span>
@@ -276,6 +317,7 @@
                 </a>
             </p>
         </footer>
+    
         <script>
         function signCovenant() {
             const exactContract = "0x_Maternal_Sync_8A4F357BC0EF390E97AA0FF61D33E1D3_mtDNA_STATION_17B_VERIFIED";
@@ -294,7 +336,25 @@
                 panel.style.display = 'block';
             }
         }
+        document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById("maternal-independence");
+    const lines = container.querySelectorAll("p");
+
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        line.style.opacity = 1;
+        line.classList.add("glow");
+      }, index * 4000);
+
+      setTimeout(() => {
+        line.style.opacity = 0;
+        line.classList.remove("glow");
+      }, index * 4000 + 8000);
+    });
+  });
+        
     </script>
+    
 </body>
 </html>
 
