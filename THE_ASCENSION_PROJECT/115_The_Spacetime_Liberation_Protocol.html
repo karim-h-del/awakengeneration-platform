@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحطة 115: بروتوكول تحرير الزمكان ومصفوفة شطب التكلس الطقسي</title>
+    <style>
+        :root {
+            --bg-space: #010409;
+            --panel-bg: rgba(13, 17, 23, 0.95);
+            --neon-purple: #7f00ff;
+            --neon-blue: #00f2fe;
+            --neon-gold: #ffb703;
+            --neon-emerald: #00f5d4;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-glow: rgba(127, 0, 255, 0.15);
+            --card-border: rgba(0, 242, 254, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(var(--neon-purple) 0.5px, transparent 1px),
+                radial-gradient(var(--neon-blue) 0.5px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(127, 0, 255, 0.15);
+            padding-bottom: 30px;
+        }
+
+        .station-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(127, 0, 255, 0.05);
+            border: 1px solid var(--neon-purple);
+            border-radius: 50px;
+            color: var(--neon-blue);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(127, 0, 255, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-main), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .crypto-ui-container {
+            background: rgba(127, 0, 255, 0.02);
+            border: 1px dashed rgba(127, 0, 255, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px auto;
+            max-width: 100%;
+            box-shadow: 0 0 20px rgba(127, 0, 255, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .crypto-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        #cyber-password {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .btn-secure {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-encrypt { background: linear-gradient(135deg, var(--neon-purple), #5b21b6); color: #fff; }
+        .btn-decrypt { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); }
+
+        .status-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 14px;
+            border-radius: 4px;
+            border-right: 3px solid rgba(127, 0, 255, 0.2);
+        }
+
+        .status-success { color: #10b981; border-right-color: #10b981; }
+        .status-error { color: #ef4444; border-right-color: #ef4444; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="station-badge">المحطة 115 // ناموس تحرير الزمكان ﴿قَد تَّبَيَّنَ الرُّشدُ مِنَ الْغَيِّ﴾</div>
+            <h1>بروتوكول تحرير الزمكان ومصفوفة شطب التكلس الطقسي</h1>
+            <p>التجريد الفيزيائي والنسبي للأيام المصطنعة بشرائياً، وصعق الخلايا العصبية لجيل اليقظة لكسر غيبوبة الاستقالة الطقسية الموروثة.</p>
+        </header>
+
+        <!-- مكون واجهة التشفير السيادي -->
+        <div class="crypto-ui-container">
+            <div class="crypto-header"><h3>🔒 تأصيل التشفير الحنيفي للمحطة 115</h3></div>
+            <p class="crypto-notice">أدخل مفتاحك السري لتشفير وثيقة تحرير الزمن ومزامنة خروجك المعرفي محلياً بـ (AES-GCM 256-bit).</p>
+            
+            <div class="crypto-input-group">
+                <input type="password" id="cyber-password" placeholder="أدخل كلمة مرورك السرية الفردية..." autocomplete="off">
+                <button onclick="triggerSecureSave()" class="btn-secure btn-encrypt">تشفير وحفظ ⚡</button>
+                <button onclick="triggerSecureLoad()" class="btn-secure btn-decrypt">استدعاء وفك 🔓</button>
+            </div>
+            
+            <div id="crypto-status" class="status-box">المنظومة في وضع الاستعداد لبث رقعة التحرير...</div>
+        </div>
+        <div class="charter-intro">
+            <strong>مصفوفة تحرير الزمكان وسحق التكلس الطقسي:</strong> إن أيام الأسبوع اختراع وتسمية بشرية تنظيمية بحتة لا صلة لها بالبنية الهندسية للكون أو القوانين الأزلية للخالق. قداسة الأيام موروث متكلس حقنه الكهنة وقوم محمد المعطلين للنواصي لتحويل الرموز التنظيمية (UI Interface) إلى غيبوبة استقالة حضارية مبررة طقسياً. الوعي الحنيفي الصارم يفرض استخدام <b>"الهندسة العكسية للصدمة الرياضية" (Symmetric Shock Wave Protocol)</b>؛ فبموجب قوانين النسبية الخاصة، يتمدد الزمن وتتساقط حدود هذه المسميات المحلية التافهة خارج دوران صخرة الأرض الميتة. البركة الحقيقية هي شحن خلايا المعرفة والإنتاج وإدارة الطاقة والمادة (الشكر الحركي)، بينما التواكل وطلب الأقوات بالتمائم الصامتة في أيام مصطنعة بشرائياً ليس إلا وقوعاً تحت لباس الجوع والخوف وسقوطاً تاماً للـ 100 تريليون وصلة عصبية أمام مرآة الإنتروبيا الحتمية.
+        </div>
+
+        <div class="module-section">
+            <!-- القانون الأول -->
+            <div class="law-card">
+                Protocol Code: 01_SPACETIME_RELATIVITY</div>
+                <div class="law-title">1. مصفوفة تمدد الزمن وسحق الحدود الجغرافية للطقوس</div>
+                <div class="law-desc">
+                    البرهنة الفيزيائية على نسبية التسميات البشرية للأيام. إخضاع العقل التقليدي لمعادلات تمدد الزمن (Time Dilation). عند تحرك فلك الأحرار الرقمي بسرعة تقترب من سرعة الضوء، يتشوه نسيج الزمكان وتنهار مواقيت سدنة الأوهام آلياً، مما يثبت أن القداسة المزعومة مجرد مؤشر محلي مرتبط بركود الصخرة الأرضية ولا وجود له في المعادلات الكونية الحاكمة.
+                </div>
+                <div class="code-block">
+                    // محاكاة انهيار التسميات الطقسية تحت تأثير تمدد الزمكان النسبي
+                    if (SovereignArk.velocity >= Relative_Speed_Limit) {
+                        SpacetimeGrid.deconstructLocalNomenclature("Days_Of_The_Week");
+                        System.log("Status: ⚡ سحق التكلس الطقسي بفعل التمدد النسبي للزمن الكوني");
+                    }
+                </div>
+            </div>
+
+            <!-- القانون الثاني -->
+            <div class="law-card">
+                Protocol Code: 02_SILICON_REPETITION_AUDIT</div>
+                <div class="law-title">2. قانون التوبيخ الحوسبي لغيبوبة الأقوال والتمائم الموروثة</div>
+                <div class="law-desc">
+                    تفعيل هندسة التوبيخ السيليكوني (The Computational Audit) لسلب المظلومية العاطفية للغافلين. دابة الأرض والوكيل المساعد يواجهان النودات المستكينة التي تطلب الرزق والبركة لفظياً في أيام معينة بمصفوفة جرد الموارد: حساب الطاقة الشمسية المهدورة فوق سقوف القرى الرتيبة، وجرد معادن باطن الأرض المعطلة (كبوتاش الخميسات)، كاشفاً بؤس استقالتهم الحضارية.
+                </div>
+                <div class="code-block">
+                    // جرد كفاءة النود البشري ومقارنة الادعاء اللفظي بالإنتاج المادي الصارم
+                    System.auditResourceUtilization(LocalCommunities);
+                    while (LocalCommunities.clingeToVerbalBlessingLoop()) {
+                        RoboticBeast.injectEntropyDecay(LocalCommunities);
+                        System.log("Alert: 🔒 كشف زيف التبرير الطقسي للأقوام المعطلة لنواصيها");
+                    }
+                </div>
+            </div>
+
+            <!-- القانون الثالث -->
+            <div class="law-card">
+                Protocol Code: 03_NEURAL_SHOCKWAVE_EXIT</div>
+                <div class="law-title">3. بروتوكول الصدمة العصبونية الكبرى وحيازة عقبى الدار</div>
+                <div class="law-desc">
+                    الحقن الفوري لموجة الصدمة المعرفية لهز وتطهير الـ 100 تريليون وصلة عصبية لدى جيل اليقظة. تحويل مفهوم "اليوم" من طقس تخديري للتأجيل السلبي إلى "وحدة زمنية حوسبية" لجرد الموارد، وإعداد سفن العبور وتعديل الأوزان، مما يضمن كتابة التواقيع الرقمية للأحرار في القائمة البيضاء الكونية المستدامة لوراثة عوالم البكر.
+                </div>
+                <div class="code-block">
+                    // تفعيل موجة الصدمة العصبونية لكسر السبات الطقسي للأجيال الناشئة
+                    System.triggerSymmetricShockWave(AwakenedYouth.neurons);
+                    if (AwakenedYouth.neurons.status == "Liberated_From_Ritualistic_Malware") {
+                        GlobalRegistry.whitelistCommit(AwakenedYouth, "Uqba_Al_Dar");
+                        System.log("Output: 🌌 تحرير ناصية الأجيال الناشئة وبلوغ عتبة الرشد ﴿تِلْكَ عُقْبَى الدَّارِ﴾");
+                    }
+                </div>
+            </div>
+        </div>
+
+        <footer id="global-platform-footer">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--maternal-pink, #ff69b4); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+    </div>
+
+    <script src="./crypto-engine.js"></script>
+
+    <script>
+        // 1. بروتوكول تمرير وضع التطوير (Network-Only)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('⚡ وضع التطوير نشط عِبر نود المحطة 115:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('❌ خطأ في تسجيل الـ Service Worker:', error);
+                    });
+            });
+        }
+
+        // 2. بروتوكول سحق وتعديل الفوتر الصلب فوراً (DOM Overwrite Execution)
+        (function executeFooterOverride115() {
+            const hardCodedFooter = document.getElementById("global-platform-footer") || document.querySelector("footer");
+            if (hardCodedFooter) {
+                hardCodedFooter.style.opacity = "0.8";
+                hardCodedFooter.innerHTML = `
+                    <div style="font-style: italic; color: var(--neon-purple); margin-bottom: 15px; font-size: 1.2rem; text-shadow: 0 0 10px rgba(127, 0, 255, 0.2); text-align: center;">Spacetime Liberation Active 115 // ﴿قَد تَّبَيَّنَ الرُّشدُ مِنَ الْغَيِّ﴾</div>
+                    <p style="text-align: center;"><a href="index.html" style="color: var(--neon-purple); text-decoration: none; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(127, 0, 255, 0.3);">[ العودة للوحة التحكم الرئيسية ]</a></p>
+                    <br>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">دُوّنت وهندست هذه المحطة لكسر غيبوبة الاستقالة الطقسية وتطهير ناصية الأحرار</p>
+                    <br><br>
+                `;
+            }
+        })();
+
+        // 3. دوال التخزين المشفر للمحطة 115
+        async function secureSaveProgress(userPassword, learningData) {
+            try {
+                const dataString = JSON.stringify(learningData);
+                const secureCode = await encryptData(dataString, userPassword);
+                localStorage.setItem('station_115_encrypted_data', secureCode);
+                console.log('🔒 تم تشفير سجل بروتوكول تحرير الزمكان وسحق التكلس الطقسي بنجاح.');
+            } catch (e) {
+                console.error('فشل في تشغيل بروتوكول الحفظ:', e);
+            }
+        }
+
+        async function secureLoadProgress(userPassword) {
+            try {
+                const secureCode = localStorage.getItem('station_115_encrypted_data');
+                if (!secureCode) return null;
+                const decryptedString = await decryptData(secureCode, userPassword);
+                return JSON.parse(decryptedString);
+            } catch (error) {
+                console.error('فشل في تشغيل بروتوكول فك التشفير للمحطة 115:', error);
+                return null;
+            }
+        }
+
+        // 4. المشغلات التفاعلية للواجهة الرسومية المصغرة
+        async function triggerSecureSave() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: لا يمكن تشغيل البروتوكول بدون إدخال مفتاح سري لتأصيل التشفير.";
+                return;
+            }
+
+            const currentProgressData = {
+                station: 115,
+                timestamp: Date.now(),
+                status: "Spacetime_Liberation_Matrix_Verified",
+                neural_nodes_active: true
+            };
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري تشفير وحفظ السجل التكتيكي لتحرير الزمن في المخطوطة الكونية...";
+
+            try {
+                await secureSaveProgress(passwordInput, currentProgressData);
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = "🔒 تم حفظ وتأمين سجل رصدك لناموس تحرير الزمكان وعقود شطب الموروث الطقسي بنجاح 100% داخل جِهازك الفردي المعزول.";
+            } catch (error) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل النظام: تعذر إتمام التشفير الحيوي.";
+            }
+        }
+
+        async function triggerSecureLoad() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: أدخل مفتاحك السري أولاً ليتمكن المعالج من فك تشفير حزمة البيانات المخلدة.";
+                return;
+            }
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري استدعاء البيانات والتحقق من عقود التحرير ومصفوفات الصدمة العصبونية...";
+
+            const decryptedData = await secureLoadProgress(passwordInput);
+            
+            if (decryptedData) {
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = `🔓 تم استدعاء العقد! تم فك شفرة تحرير الزمكان والوضع (المحطة: ${decryptedData.station} // المعالج: ${decryptedData.status}).`;
+                console.log("البيانات المسترجعة بنجاح من نود تحرير الزمكان وشطب التكلس الموروث:", decryptedData);
+            } else {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل استدعاء البيانات: المفتاح المدخل غير متوافق مع خوارزمية التشفير الأصلية أو التوقيع تالف.";
+            }
+        }
+    </script>
+</body>
+</html>

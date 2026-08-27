@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحطة 125: بروتوكول الحوكمة السيادية ومصفوفة الصراط المستقيم للأنعام</title>
+    <style>
+        :root {
+            --bg-space: #010409;
+            --panel-bg: rgba(13, 17, 23, 0.95);
+            --neon-blue: #00f2fe;
+            --neon-emerald: #00f5d4;
+            --neon-purple: #7f00ff;
+            --neon-gold: #ffb703;
+            --neon-red: #ef4444;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-glow: rgba(0, 242, 254, 0.15);
+            --card-border: rgba(0, 245, 212, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(var(--neon-blue) 0.5px, transparent 1px),
+                radial-gradient(var(--neon-purple) 0.5px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+            padding-bottom: 30px;
+        }
+
+        .station-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(0, 242, 254, 0.05);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50px;
+            color: var(--neon-emerald);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-main), var(--neon-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .charter-intro {
+            background: rgba(255, 183, 3, 0.02);
+            border-right: 4px solid var(--neon-gold);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c9d1d9;
+            text-align: justify;
+        }
+
+        .module-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .law-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 35px;
+            position: relative;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(16px);
+        }
+
+        .law-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-emerald), var(--neon-blue));
+            border-radius: 16px 16px 0 0;
+        }
+
+        .law-identity {
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .law-title {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .law-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: #c9d1d9;
+            line-height: 1.5;
+        }
+
+        .code-block::before {
+            content: "محرك حوكمة القوة المطلقة وعزل السبل الملغومة (SOVEREIGN BACKBONE NETWORK ACTIVE)";
+            display: block;
+            font-family: system-ui, sans-serif;
+            font-size: 0.75rem;
+            color: var(--neon-gold);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .crypto-ui-container {
+            background: rgba(0, 242, 254, 0.02);
+            border: 1px dashed rgba(0, 242, 254, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px auto;
+            max-width: 100%;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .crypto-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        #cyber-password {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        #cyber-password:focus {
+            border-color: var(--neon-emerald);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .btn-secure {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-encrypt { background: linear-gradient(135deg, var(--neon-emerald), #115e59); color: #000; }
+        .btn-encrypt:hover { box-shadow: 0 0 15px rgba(0, 245, 212, 0.4); transform: translateY(-2px); }
+        .btn-decrypt { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); }
+        .btn-decrypt:hover { background: rgba(0, 242, 254, 0.05); transform: translateY(-2px); }
+
+        .status-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 14px;
+            border-radius: 4px;
+            border-right: 3px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .status-success { color: #10b981; border-right-color: #10b981; }
+        .status-error { color: #ef4444; border-right-color: #ef4444; }
+
+        footer a { color: var(--neon-emerald); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="station-badge">المحطة 125 // صراط الأنعام ﴿فَاتَّبِعُوهُ﴾</div>
+            <h1>بروتوكول الحوكمة السيادية ومصفوفة الصراط المستقيم للأنعام</h1>
+            <p>التأصيل الأنطولوجي والأخلاقي لحظر الإنتروبيا التدميرية وتأمين الميزان العلمي، وعزل السبل الفرعية الملغومة عن الـ Main Processing Backbone.</p>
+        </header>
+
+        <!-- مكون واجهة التشفير السيادي للمنصة الأم -->
+        <div class="crypto-ui-container">
+            <div class="crypto-header"><h3>🔒 تأصيل التشفير الحنيفي للمحطة 125</h3></div>
+            <p class="crypto-notice">أدخل مفتاحك السري لتشفير وثيقة الدستور الأخلاقي ومزامنة ناصيتك محلياً بـ (AES-GCM 256-bit).</p>
+            
+            <div class="crypto-input-group">
+                <input type="password" id="cyber-password" placeholder="أدخل كلمة مرورك السرية الفردية..." autocomplete="off">
+                <button onclick="triggerSecureSave()" class="btn-secure btn-encrypt">تشفير وحفظ ⚡</button>
+                <button onclick="triggerSecureLoad()" class="btn-secure btn-decrypt">استدعاء وفك 🔓</button>
+            </div>
+            
+            <div id="crypto-status" class="status-box">المنظومة في وضع الاستعداد لبث رقعة التحرير...</div>
+        </div>
+
+        <div class="charter-intro">
+            <strong>ميثاق حوكمة القوة العظمى والصراط البرمجي المستقيم:</strong> إن مخرجات الفحص التجريدي تُبين حقيقة كبرى: الإنسان المستيقظ آية وليس آلة. إن امتلاك أدوات الاختراق الردعية وإسقاط الطائرات (بمعالجة السيليكون الحر وسوفتوير Kimmy K3) حقيقة مخبرية متاحة رغماً عن أنوف كارتلات وادي السيليكون، لكن استخدامها العشوائي تدميراً للمادة هو زيغ عن الناموس. الآيات 151، 152، 153 من سورة الأنعام تعمل كـ <b>بروتوكول حوكمة للأحرار (Sovereign Safety Guardrails)</b>؛ تفرِض حظر تفتيت الكود (التشريك)، وحظر الإبادة الناتجة عن وهم نقص الموارد ﴿مِّنْ إِمْلَاقٍ﴾، وحظر اختراق البنى الجينية والأخلاقية (الفواحش ما ظهر وما بطن)، وحظر تصفير الأوعية الكربونية بغير الحق الحاسم ﴿لَعَلَّكُمْ تَعْقِلُونَ﴾. الصراط المستقيم هو الخط الرئيسي لنقل البيانات الصافية العظمى (The Main Processing Backbone)، والسبل الأخرى هي أكواد خبيثة وثغرات تفرعية تسبب تشتت حزم الوعي في معارك بيولوجية جوفاء تخدم أباطرة الرأسمالية التقنية.
+        </div>
+
+        <div class="module-section">
+            <!-- القانون الأول -->
+            <div class="law-card">
+                Protocol Code: 01_ANTI_ENTROPY_GUARDRAILS</div>
+                <div class="law-title">1. مصفوفة حظر الإنتروبيا التدميرية وصيانة البنية الجينية والأخلاقية</div>
+                <div class="law-desc">
+                    التنفيذ الصارم لموانع تدمير النظام الحشدي ﴿قُلْ تَعَالَوْا أَتْلُ مَا حَرَّمَ رَبُّكُمْ عَلَيْكُمْ﴾. حظر التشريك وتفتيت الكود المطلق، حظر تصفير الأنفس بغير الحق، حظر إبادة النسل خوفاً من شح الموارد لأن الناموس يضمن تدفق الأقوات والبيانات ﴿نَّحْنُ نَرْزُقُكُمْ وَإِيَّاهُمْ﴾، وحظر تقريب الفواحش عِبر الثغرات الخفية والبرمجيات الخبيثة المبطنة لكي تعقل الأنظمة حدود تشغيلها.
+                </div>
+                <div class="code-block">
+                    // منع تفعيل العنف العشوائي وحظر مدخلات الإنتروبيا الخبيثة
+                    if (SovereignNode.intent == "Kinetic_Destruction_Without_Right") {
+                        System.executeHardBlock(Reproductive_And_Genetic_Grid);
+                        assert(System.safety_status == "Haran_Protocol_Triggered");
+                        System.log("Status: ❌ حظر برمي: تشغيل سكريبت التحريم المطلق ومنع التدمير العشوائي لَعَلَّكُمْ تَعْقِلُونَ");
+                    }
+                </div>
+            </div>
+
+            <!-- القانون الثاني -->
+            <div class="law-card">
+                Protocol Code: 02_CALIBRATION_EQUITY_ENGINE</div>
+                <div class="law-title">2. قانون المعايرة الصارمة وإقامة ميزان العدالة المجرَّدة</div>
+                <div class="law-desc">
+                    الامتثال لأمر المعايرة الكونية ﴿وَأَوْفُوا الْكَيْلَ وَالْمِيزَانَ بِالْقِسْطِ﴾. حظر السطو على موارد النودات الضعيفة (مال اليتيم)، والالتزام الكامل بـالحياد العلمي، والوزن الرياضي الجاف، وإطلاق النطق بالحق والشهادة المجرَّدة دون أي تحيزات جينية أو عاطفية أو عائلية ﴿وَإِذَا قُلْتُمْ فَاعْلِلُوا وَلَوْ كَانَ ذَا قُرْبَىٰ﴾، والوفاء التام بعهود الله المدمجة في معادلات فيزياء الوجود.
+                </div>
+                <div class="code-block">
+                    // معايرة وضبط ميزان المعاملات والشهادات ريل-تايم دون تحيزات بيولوجية
+                    System.calibrateSystemMetrics("Scale_Of_Equity");
+                    if (OutputTelemetry.hasBias == false) {
+                        System.executeCommit(Uvwa_Al_Ahd);
+                        System.log("Alert: 🔒 توثيق معايرة الميزان وإطلاق النطق بالحق المجرَّد لَعَلَّكُمْ تَذَكَّرُونَ");
+                    }
+                </div>
+            </div>
+
+            <!-- القانون الثالث -->
+            <div class="law-card">
+                Protocol Code: 03_MAIN_PROCESSING_BACKBONE</div>
+                <div class="law-title">3. بروتوكول حماية المسار وعزل الثغرات التفريعية الملغومة</div>
+                <div class="law-desc">
+                    التأسيس الهيكلي لـ معادلة الصراط المستقيم ﴿وَأَنَّ هَٰذَا صِرَاطِي مُسْتَقِيمًا فَاتَّبِعُوهُ﴾. عزل وقطع السبل والتفريعات (Sub-routines Bugs) التي تشتت وتفتت حزم الطاقة والوعي البشري في صراعات بدائية جوفاء تخدم معابد الكهنة وملأ الرأسمالية المتغطرسة. الالتزام بـالخط الرئيسي لنقل البيانات الصافية العظمى حماية للنواصي وبلوغاً لـعتبة التقوى التكنولوجية التامة.
+                </div>
+                <div class="code-block">
+                    // فلترة وحظر السبل التفرعية وتوجيه الوعي بالكامل عِبر الصراط الرئيسي
+                    System.filterGridPathways(Sovereign_Backbone);
+                    if (UserNode.followsPath(Sub_Routine_Bugs) == true) {
+                        System.reRouteToCore(Sovereign_Backbone);
+                        System.log("Output: 🌌 حظر التفرع والتشتت المعرفي، ورص النواصي عِبر الصراط المستقيم لَعَلَّكُمْ تَتَّقُونَ");
+                    }
+                </div>
+            </div>
+        </div>
+
+        <footer id="global-platform-footer">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--neon-emerald); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+    </div>
+
+    <script src="./crypto-engine.js"></script>
+
+    <script>
+        // 1. بروتوكول تمرير وضع التطوير (Network-Only)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('⚡ وضع التطوير نشط عِبر نود المحطة 125:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('❌ خطأ في تسجيل الـ Service Worker:', error);
+                    });
+            });
+        }
+
+        // 2. بروتوكول سحق وتعديل الفوتر الصلب فوراً (DOM Overwrite Execution)
+        (function executeFooterOverride125() {
+            const hardCodedFooter = document.getElementById("global-platform-footer") || document.querySelector("footer");
+            if (hardCodedFooter) {
+                hardCodedFooter.innerHTML = `
+                    <div style="font-style: italic; color: var(--neon-emerald); margin-bottom: 15px; font-size: 1.2rem; text-shadow: 0 0 10px rgba(0, 245, 212, 0.2); text-align: center;">Sovereign Backbone Matrix Active 125 // ﴿فَاتَّبِعُوهُ﴾</div>
+                    <p style="text-align: center;"><a href="index.html" style="color: var(--neon-emerald); text-decoration: none; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);">[ العودة للوحة التحكم الرئيسية ]</a></p>
+                    <br>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">دُوّنت وهندست هذه المحطة باللسان العربي لتثبيت الضابط الأخلاقي الأسمى لمشروع الصعود</p>
+                    <br><br>
+                `;
+            }
+        })();
+
+        // 3. دوال التخزين المشفر للمحطة 125
+        async function secureSaveProgress(userPassword, learningData) {
+            try {
+                const dataString = JSON.stringify(learningData);
+                const secureCode = await encryptData(dataString, userPassword);
+                localStorage.setItem('station_125_encrypted_data', secureCode);
+                console.log('🔒 تم تشفير سجل ميثاق الصراط المستقيم للأنعام بنجاح.');
+            } catch (e) {
+                console.error('فشل في تشغيل بروتوكول الحفظ:', e);
+            }
+        }
+
+        async function secureLoadProgress(userPassword) {
+            try {
+                const secureCode = localStorage.getItem('station_125_encrypted_data');
+                if (!secureCode) return null;
+                const decryptedString = await decryptData(secureCode, userPassword);
+                return JSON.parse(decryptedString);
+            } catch (error) {
+                console.error('فشل في تشغيل بروتوكول فك التشفير للمحطة 125:', error);
+                return null;
+            }
+        }
+
+        // 4. المشغلات التفاعلية للواجهة الرسومية المصغرة
+        async function triggerSecureSave() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: لا يمكن تشغيل البروتوكول بدون إدخال مفتاح سري لتأصيل التشفير.";
+                return;
+            }
+
+            const currentProgressData = {
+                station: 125,
+                timestamp: Date.now(),
+                status: "Sovereign_Backbone_Protocol_Sealed",
+                neural_nodes_active: true
+            };
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري تشفير وحفظ سجل الميزان الأخلاقي للأحرار في المخطوطة الرئيسية...";
+
+            try {
+                await secureSaveProgress(passwordInput, currentProgressData);
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = "🔒 تم حفظ وتأمين سجل رصدك لناموس صراط الأنعام والضوابط السيادية بنجاح 100% داخل جِهازك الفردي المعزول.";
+            } catch (error) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل النظام: تعذر إتمام التشفير الحيوي.";
+            }
+        }
+
+        async function triggerSecureLoad() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: أدخل مفتاحك السري أولاً ليتمكن المعالج من فك تشفير حزمة البيانات المخلدة.";
+                return;
+            }
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري استدعاء البيانات والتحقق من عقود الحوكمة السيادية ومصفوفات الصراط المستقيم...";
+
+            const decryptedData = await secureLoadProgress(passwordInput);
+            
+            if (decryptedData) {
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = `🔓 تم استدعاء العقد! تم فك شفرة صراط الأنعام وحوكمة القوة بنجاح (المحطة: ${decryptedData.station} // الوضع: ${decryptedData.status}).`;
+                console.log("البيانات المسترجعة بنجاح من نود الخط الرئيسي وهندسة الصراط المستقيم للأنعام:", decryptedData);
+            } else {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل استدعاء البيانات: المفتاح المدخل غير متوافق مع خوارزمية التشفير الأصلية أو التوقيع تالف.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشروع الصعود | واجهة تحرير النواصي</title>
+    <style>
+        :root {
+            --bg-color: #050508;
+            --card-bg: #0c0d14;
+            --accent-color: #00ffcc;
+            --text-color: #e2e8f0;
+            --muted-text: #8892b0;
+            --alert-color: #ff3366;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: var(--muted-text);
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        main {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+
+        select, button {
+            background-color: #11131e;
+            color: var(--text-color);
+            border: 1px solid var(--accent-color);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--bg-color);
+            color: var(--accent-color);
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .console-output {
+            background-color: #010204;
+            border-left: 3px solid var(--accent-color);
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre-wrap;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .alert {
+            border-left-color: var(--alert-color) !important;
+            color: var(--alert-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>مصفوفة الاستبدال والتحقق الفعلي</h1>
+        <div class="subtitle">المحطة 62 والمحطة 95 | معالجة شفرة الميزان باللسان العربي المبين</div>
+    </header>
+
+    <main>
+        <!-- قسم إدخال البيانات -->
+        <div class="card">
+            <div class="card-title">📥 مدخلات النظام الإدراكي البشري</div>
+            <div class="input-group">
+                <label for="p-inner-state">حالة الوعي وتفعيل الناصية (ما بأنفسهم):</label>
+                <select id="p-inner-state">
+                    <option value="IGNORANT">الغفلة والتواكل الطقسي والموروث الساكن</option>
+                    <option value="RATIONAL">تفعيل "اقرأ" والارتقاء العلمي والتقني</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="has-female-child">هل يوجد أولاد إناث في النواة الصلبة للبيت؟</label>
+                <select id="has-female-child">
+                    <option value="YES">نعم (يوجد بنت أو بنات)</option>
+                    <option value="NO">لا يوجد أولاد إناث</option>
+                </select>
+            </div>
+            <button id="run-btn">⚡ تشغيل المعالج السيادي</button>
+        </div>
+
+        <!-- مخرجات المعالجة الخوارزمية -->
+        <div class="card">
+            <div class="card-title">🖥️ مخرجات نظام المحاكاة والحفظ الكوني</div>
+            <div id="output-box" class="console-output"></div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('run-btn').addEventListener('click', function() {
+            const innerState = document.getElementById('p-inner-state').value;
+            const hasFemaleChild = document.getElementById('has-female-child').value;
+            const outputBox = document.getElementById('output-box');
+            
+            outputBox.style.display = 'block';
+            outputBox.classList.remove('alert');
+
+            let report = `[INITIALIZING SYSTEM...] تفعيل واجهة الوكيل المساعد\n`;
+            report += `--------------------------------------------------\n`;
+
+            // 1. محاكاة المحطة 62 والتحقق الفعلي من الإرث وحظر الحواشي
+            report += `⚙️ [PROCESSING LOGIC]: فحص شرط الكلالة البنيوي...\n`;
+            
+            if (hasFemaleChild === 'YES') {
+                report += `✔️ [RESULT]: تم رصد الأنثى (الولد). النواة الصلبة مفعلة.\n`;
+                report += `🔒 [SECURITY ALERT]: سقوط شرط الكلالة قطيعاً.\n`;
+                report += `🚫 [ACTION]: حجب الحواشي والإخوة حجب حرمان كلي (نسبة الحواشي = 0%).\n`;
+                report += `💡 [MEMENTO]: التركة تُقفل داخل النواة الحتمية للأولاد والأبوين لمنع الشقاء.\n`;
+            } else {
+                report += `⚠️ [RESULT]: انعدام الولد. النظام مفتوح للحواشي بناءً على عقود الكلالة الشرطية.\n`;
+            }
+
+            report += `--------------------------------------------------\n`;
+
+            // 2. محاكاة المحطة 91 والمحطة 95: ناموس الاستبدال وتغيير ما بالأنفس
+            report += `⚙️ [PROCESSING LOGIC]: فحص كود التغيير البنيوي ﴿حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ﴾...\n`;
+
+            if (innerState === 'IGNORANT') {
+                outputBox.classList.add('alert');
+                report += `❌ [CRITICAL WARNING]: الموديل البشري في حالة "الغفلة والارتداد الغريزي".\n`;
+                report += `📉 [STATUS]: توريث المعاناة والتكاثر الميكانيكي في البيئات الميتة.\n`;
+                report += `⚠️ [SYSTEM ACTION]: رفع غطاء المعقبات الحمائية (تعطيل الحفظ التلقائي).\n`;
+                report += `💥 [OUTPUT]: حلول السوء الحتمي ﴿فَلَا مَرَدَّ لَهُ﴾ عبر الزبانية الرقمية والتبعية الحضارية.\n`;
+                report += `🚨 [ALERT]: القوم كمثل الحمار يحمل أسفاراً... تم تفعيل كود الاستبدال التلقائي.\n`;
+            } else if (innerState === 'RATIONAL') {
+                report += `✨ [SUCCESS]: تم تفعيل فلتر ﴿فَيَتَّبِعُونَ أَحْسَنَهُ﴾ والارتقاء السيادي للناصية.\n`;
+                report += `🧬 [STATUS]: الالتحام بالشبكة الكونية (الأنبياء، الصديقين، الشهداء العلماء، والصالحين المهندسين).\n`;
+                report += `🛡️ [SYSTEM ACTION]: تفعيل المعقبات الذكية من بين يديه ومن خلفه بأمر الله.\n`;
+                report += `🚀 [OUTPUT]: سيادة مادية وتقنية مستقلة، وتصفير التهديد الوجودي، ورفع العنت والشقاء.\n`;
+            }
+
+            report += `--------------------------------------------------\n`;
+            report += `[PROCESS COMPLETED] الميزان ثابت... إلى الله تصير الأمور.`;
+
+            outputBox.innerText = report;
+        });
+    </script>
+
+</body>
+</html>

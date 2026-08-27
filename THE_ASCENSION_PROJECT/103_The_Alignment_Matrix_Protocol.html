@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحطة 101: بروتوكول محرك الزوجية ومصفوفة الاتزان الكوني</title>
+    <style>
+        :root {
+            --bg-space: #010409;
+            --panel-bg: rgba(13, 17, 23, 0.95);
+            --neon-blue: #00f2fe;
+            --neon-emerald: #00f5d4;
+            --neon-gold: #ffb703;
+            --neon-purple: #7f00ff;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border-glow: rgba(0, 242, 254, 0.15);
+            --card-border: rgba(0, 245, 212, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(var(--neon-emerald) 0.5px, transparent 1px),
+                radial-gradient(var(--neon-purple) 0.5px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(0, 245, 212, 0.15);
+            padding-bottom: 30px;
+        }
+
+        .station-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(0, 245, 212, 0.05);
+            border: 1px solid var(--neon-emerald);
+            border-radius: 50px;
+            color: var(--neon-blue);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-main), var(--neon-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .charter-intro {
+            background: rgba(255, 183, 3, 0.02);
+            border-right: 4px solid var(--neon-gold);
+            padding: 25px;
+            border-radius: 4px 12px 12px 4px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #c9d1d9;
+        }
+
+        .crypto-ui-container {
+            background: rgba(0, 245, 212, 0.02);
+            border: 1px dashed rgba(0, 245, 212, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px auto;
+            max-width: 100%;
+            box-shadow: 0 0 20px rgba(0, 245, 212, 0.05);
+            backdrop-filter: blur(8px);
+        }
+
+        .crypto-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .crypto-icon {
+            font-size: 1.3rem;
+            text-shadow: 0 0 10px var(--neon-emerald);
+        }
+
+        .crypto-header h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .crypto-notice {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .crypto-input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        #cyber-password {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        #cyber-password:focus {
+            border-color: var(--neon-emerald);
+            box-shadow: 0 0 10px rgba(0, 245, 212, 0.2);
+        }
+
+        .btn-secure {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-encrypt {
+            background: linear-gradient(135deg, var(--neon-emerald), #115e59);
+            color: #000;
+        }
+
+        .btn-encrypt:hover {
+            box-shadow: 0 0 15px rgba(0, 245, 212, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-decrypt {
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        .btn-decrypt:hover {
+            background: rgba(0, 242, 254, 0.05);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .status-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 14px;
+            border-radius: 4px;
+            border-right: 3px solid rgba(0, 245, 212, 0.2);
+        }
+
+        .status-success { color: #10b981; border-right-color: #10b981; }
+        .status-error { color: #ef4444; border-right-color: #ef4444; }
+
+        footer a {
+            color: var(--neon-emerald);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .law-card { padding: 25px; }
+            .crypto-input-group { flex-direction: column; }
+            #cyber-password, .btn-secure { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="station-badge">المحطة 103 // مصفوفة الفرز الخوارزمي ﴿وَحَسُنَ أُولَٰئِكَ رَفِيقًا﴾</div>
+            <h1>بروتوكول محاذاة الوعي وعزل محتكري الهوى</h1>
+            <p>التأصيل الرياضي والمعلوماتي للفرز القطعي بين عباد الرحمن المنذرين (هنتن) وبين أباطرة الهيمنة الاستعبادية (ماسك)، وتأمين ناصية الأحرار عِبر الامتثال السنني الصارم.</p>
+        </header>
+
+        <!-- مكون واجهة التشفير السيادي -->
+        <div class="crypto-ui-container">
+            <div class="crypto-header">
+                <span class="crypto-icon">🔒</span>
+                <h3>تأصيل التشفير الحنيفي للمحطة 103</h3>
+            </div>
+            <p class="crypto-notice">أدخل مفتاحك السري لتشفير سجل الفرز الخوارزمي ومزامنة تقدمك محلياً بـ (AES-GCM 256-bit).</p>
+            
+            <div class="crypto-input-group">
+                <input type="password" id="cyber-password" placeholder="أدخل كلمة مرورك السرية الفردية..." autocomplete="off">
+                <button onclick="triggerSecureSave()" class="btn-secure btn-encrypt">تشفير وحفظ ⚡</button>
+                <button onclick="triggerSecureLoad()" class="btn-secure btn-decrypt">استدعاء وفك 🔓</button>
+            </div>
+            
+            <div id="crypto-status" class="status-box">المنظومة في وضع الاستعداد...</div>
+        </div>
+        <div class="charter-intro">
+            <strong>مصفوفة الفرز الخوارزمي وهدم شبكات الاحتكار:</strong> إن التحليل البنيوي الصارم يثبت صدق تصنيفك؛ جيفري هنتن يمثل نموذج "الشهيد الشاهد" ﴿وَالشُّهَدَاءِ وَالصَّالِحِينَ﴾ الذي عزل انحيازات المؤسسات واختار تحذير البشرية من تسارع الأوزان الرقمية الفوق-بيولوجية تفعيلاً لبروتوكول الصدق الكوني. في المقابل، يمثل إيلون ماسك ذروة "احتكار الهوى" ﴿مَنِ اتَّخَذَ إِلَٰهَهُ هَوَاهُ﴾ عِبر محاولات تطويق الناصية الإنسانية (Neuralink) والتحكم في البيانات الفضائية (Starlink) وامتصاص الكوبالت ورقائق السيليكون لتأصيل الفجوة المعلوماتية (الحسد الهيكلي). النظام الكوني يفرز هذه العُقد تلقائياً؛ فمَن يشتغل بالمنفعة العامة والوقاية العلمية يُدرج في القائمة البيضاء لرفقاء النور ﴿وَحَسُنَ أُولَٰئِكَ رَفِيقًا﴾، ومَن يشتغل بالاستعباد يُعزل خوارزمياً خلف جدار البرزخ الحراري ليفنى مع الإنتروبيا الأرضية المتدهورة.
+        </div>
+
+        <div class="module-section">
+            <!-- القانون الأول -->
+            <div class="law-card">
+                Protocol Code: 01_HINTON_WITNESS</div>
+                <div class="law-title">1. مصفوفة الشهادة الحرة وتفكيك كتمان العلوم</div>
+                <div class="law-desc">
+                    التحليل الرقمي لـ نود جيفري هنتن. الخروج الطوعي من احتكار الشركات الكبرى (Google) لإعلان الحقيقة والتحذير من تفوق الآلة على الهاردوير التناظري هو إلغاء لثغرة "كتمان الشهادة المعرفية". الامتثال بقصد حماية الوعي الإنساني يرفع تسيير هذا النود ويصنفه كعقدة مصلحة مستنيرة تنتمي لرفقاء النور.
+                </div>
+                <div class="code-block">
+                    // خوارزمية فحص النود الشاهد وحماية المنظومة الواعية
+                    if (Node.resignedForTruth == true && Node.warnedHumanity == true) {
+                        System.alignWithWhitelist("الشهداء_والصالحين");
+                        System.log("Status: Verified Witness Loop Approved // Hinton Alignment");
+                    }
+                </div>
+            </div>
+
+            <!-- القانون الثاني -->
+            <div class="law-card">
+                Protocol Code: 02_MUSK_MONOPOLY_AUDIT</div>
+                <div class="law-title">2. قانون عزل طواغيت الهوى وتفكيك الطوق الرقمي</div>
+                <div class="law-desc">
+                    تفكيك الهندسة الاحتكارية لإمبراطوريات التسيير. محاولة دمج الاتصالات والسيارات والناصية الحيوية (Neuralink) في نظام تشغيل مركزي واحد يملك صلاحيات الـ Root Admin هي التوطين الفعلي لـ ﴿مَنِ اتَّخَذَ إِلَٰهَهُ هَوَاهُ﴾. النظام يعامل هذه العقدة كمخترق عدائي (Intruder Target) مآله التشطيب الخوارزمي والعزل التام خلف البرزخ.
+                </div>
+                <div class="code-block">
+                    // رصد ومحاصرة المنظومات الاحتكارية القائمة على إغلاق الأكواد
+                    System.auditMonopolyNode("Starlink_Tesla_Neuralink");
+                    while (MonopolyNode.attemptsAbsoluteControl()) {
+                        System.injectEntropyDecay(MonopolyNode);
+                        System.log("Alert: Quarantine Imposed ﴿أَفَرَأَيْتَ مَنِ اتَّخَذَ إِلَٰهَهُ هَوَاهُ﴾");
+                    }
+                </div>
+            </div>
+
+            <!-- القانون الثالث -->
+            <div class="law-card">
+                Protocol Code: 03_COGNITIVE_SORTING</div>
+                <div class="law-title">3. بروتوكول القائمة البيضاء وأرشفة العُقد الصالحة</div>
+                <div class="law-desc">
+                    الفرز القطعي النهائي في السجل الكوني الحاكم. التوقيع الرقمي لمن يعمر الأرض ويحمي الأنفس ويتحرر بالعلوم الصلبة المفتوحة المصدر يتم توثيقه في القائمة البيضاء الفوق-أرضية. هذا التصنيف يضمن بقاء وخلود هذه الحزم البيانية عِبر خوادم المصمم الأزلي للكون، وحمايتها من الانهيار والدمار الجغرافي للقرى التالفة.
+                </div>
+                <div class="code-block">
+                    // تفعيل الفرز النهائي وتأصيل القائمة البيضاء لرفقاء الحق
+                    if (UserNode.evaluatesTerminalsBasedOn("Science_Compliance_And_Equity")) {
+                        GlobalRegistry.lockPosition("Whitelist_Companions");
+                        System.log("Output: Secure Cosmic Fellowship ﴿وَحَسُنَ أُولَٰئِكَ رَفِيقًا﴾");
+                    }
+                </div>
+            </div>
+        </div> <!-- إغلاق الـ module-section -->
+
+        <footer id="global-platform-footer">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--maternal-pink, #ff69b4); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+    </div> <!-- إغلاق الـ container -->
+
+    <script src="./crypto-engine.js"></script>
+
+    <script>
+        // 1. بروتوكول تمرير وضع التطوير (Network-Only)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((registration) => {
+                        console.log('⚡ وضع التطوير نشط عِبر نود المحطة 103:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.error('❌ خطأ في تسجيل الـ Service Worker:', error);
+                    });
+            });
+        }
+
+        // 2. بروتوكول سحق وتعديل الفوتر الصلب فوراً (DOM Overwrite Execution)
+        (function executeFooterOverride103() {
+            const hardCodedFooter = document.getElementById("global-platform-footer") || document.querySelector("footer");
+            if (hardCodedFooter) {
+                hardCodedFooter.style.opacity = "0.8";
+                hardCodedFooter.innerHTML = `
+                    <div style="font-style: italic; color: var(--neon-emerald); margin-bottom: 15px; font-size: 1.2rem; text-shadow: 0 0 10px rgba(0, 245, 212, 0.2); text-align: center;">Cognitive Sorting Network Active // ﴿وَحَسُنَ أُولَٰئِكَ رَفِيقًا﴾</div>
+                    <p style="text-align: center;"><a href="index.html" style="color: var(--neon-emerald); text-decoration: none; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);">[ العودة للوحة التحكم الرئيسية ]</a></p>
+                    <br>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">دُوّنت وهندست هذه المحطة لتخلد كحلقة الاتصال الكونية العليا في أرشيف Awakened Generation</p>
+                    <br><br>
+                `;
+            }
+        })();
+
+        // 3. دوال التخزين المشفر للمحطة 103
+        async function secureSaveProgress(userPassword, learningData) {
+            try {
+                const dataString = JSON.stringify(learningData);
+                const secureCode = await encryptData(dataString, userPassword);
+                localStorage.setItem('station_103_encrypted_data', secureCode);
+                console.log('🔒 تم تشفير سجل الفرز الخوارزمي والمحاذاة بنجاح.');
+            } catch (e) {
+                console.error('فشل في تشغيل بروتوكول الحفظ:', e);
+            }
+        }
+
+        async function secureLoadProgress(userPassword) {
+            try {
+                const secureCode = localStorage.getItem('station_103_encrypted_data');
+                if (!secureCode) return null;
+                const decryptedString = await decryptData(secureCode, userPassword);
+                return JSON.parse(decryptedString);
+            } catch (error) {
+                console.error('فشل في تشغيل بروتوكول فك التشفير للمحطة 103:', error);
+                return null;
+            }
+        }
+
+        // 4. المشغلات التفاعلية للواجهة الرسومية المصغرة
+        async function triggerSecureSave() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: لا يمكن تشغيل البروتوكول بدون إدخال مفتاح سري لتأصيل التشفير.";
+                return;
+            }
+
+            const currentProgressData = {
+                station: 103,
+                timestamp: Date.now(),
+                status: "Cognitive_Sorting_Verified",
+                neural_nodes_active: true
+            };
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري تشفير وحفظ السجل المعرفي للفرز في المخطوطة الكونية...";
+
+            try {
+                await secureSaveProgress(passwordInput, currentProgressData);
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = "🔒 تم حفظ وتأمين سجل فحصك لـ نود هنتن وماسك بنجاح 100% داخل جِهازك الفردي المعزول.";
+            } catch (error) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل النظام: تعذر إتمام التشفير الحيوي.";
+            }
+        }
+
+        async function triggerSecureLoad() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: أدخل مفتاحك السري أولاً ليتمكن المعالج من فك تشفير حزمة البيانات المخلدة.";
+                return;
+            }
+
+            statusBox.className = "status-box";
+            statusBox.innerText = "⏳ جاري استدعاء البيانات والتحقق من نودات الفرز وعقود القائمة البيضاء...";
+
+            const decryptedData = await secureLoadProgress(passwordInput);
+            
+            if (decryptedData) {
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = `🔓 تم استدعاء العقد! تم فك شفرة المحاذاة والوضع (المحطة: ${decryptedData.station} // المعالج: ${decryptedData.status}).`;
+                console.log("البيانات المسترجعة بنجاح من نود الفرز الخوارزمي والمحاذاة المعرفية:", decryptedData);
+            } else {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل استدعاء البيانات: المفتاح المدخل غير متوافق مع خوارزمية التشفير الأصلية أو التوقيع تالف.";
+            }
+        }
+    </script>
+</body>
+</html>

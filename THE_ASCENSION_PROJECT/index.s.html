@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awakened Generation | Genesis Node UI</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --terminal-green: #00ff66;
+            --terminal-dim: #008833;
+            --accent-glow: rgba(0, 255, 102, 0.15);
+            --border-color: #113311;
+            --text-color: #e0eee0;
+            --font-stack: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-stack);
+            overflow-x: hidden;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 99999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        header {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            background-color: #0a0a0a;
+            box-shadow: 0 0 15px var(--accent-glow);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .node-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 0.85rem;
+            color: var(--terminal-green);
+            animation: blink 1.5s infinite;
+        }
+
+        h1 {
+            color: var(--terminal-green);
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .motto {
+            font-size: 0.95rem;
+            color: var(--terminal-dim);
+            font-style: italic;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            border: 1px solid var(--border-color);
+            background-color: #080808;
+            padding: 20px;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-title {
+            color: var(--terminal-green);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .station-list {
+            list-style: none;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .station-item {
+            padding: 10px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .station-item:hover, .station-item.active {
+            border-color: var(--terminal-green);
+            background-color: #0c140c;
+            color: var(--terminal-green);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .console-display {
+            flex-grow: 1;
+            overflow-y: auto;
+            background-color: #020202;
+            border: 1px solid #111;
+            padding: 15px;
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            color: #c0dec0;
+        }
+
+        .lang-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--terminal-dim);
+            padding: 5px 12px;
+            cursor: pointer;
+            font-family: var(--font-stack);
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            color: var(--terminal-green);
+            border-color: var(--terminal-green);
+            background-color: #051105;
+        }
+
+        .toolkit {
+            grid-column: 1 / -1;
+            border: 1px solid var(--border-color);
+            background-color: #080808;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .tool-card {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            background-color: #050505;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s;
+        }
+
+        .tool-card:hover {
+            border-color: var(--terminal-green);
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .tool-card h4 {
+            color: var(--terminal-green);
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .tool-card p {
+            font-size: 0.8rem;
+            color: #88a088;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020202; }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--terminal-dim); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AWAKENED GENERATION // GENESIS NODE</h1>
+        <div class="motto">"وَقُلْ جَاءَ الْحَقُّ وَزَهَقَ الْبَاطِلُ ۚ إِنَّ الْبَاطِلَ كَانَ زَهُوقًا"</div>
+        <button onclick="window.location.href='index.html'" class="lang-btn" style="position: absolute; bottom: 20px; right: 20px; color: #88a088;">← RETURN TO CARDS</button>
+        <div class="node-status">● LIVE_FEED // SECURE_MATRIX_ACTIVE</div>
+    </header>
+
+    <div class="grid-container">
+        <div class="panel">
+            <div class="panel-title">System Stations Matrix</div>
+            <ul class="station-list" id="stationList"></ul>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">Decentralized Content Stream</div>
+            <div class="lang-bar" id="langBar">
+                <button class="lang-btn active" onclick="switchLanguage('AR')">العربية</button>
+                <button class="lang-btn" onclick="switchLanguage('EN')">ENGLISH</button>
+                <button class="lang-btn" onclick="switchLanguage('FR')">FRANÇAIS</button>
+                <button class="lang-btn" onclick="switchLanguage('ES')">ESPAÑOL</button>
+            </div>
+            <div class="console-display" id="consoleDisplay">Processing script array...</div>
+        </div>
+
+        <div class="toolkit">
+            <div class="panel-title">Sovereign Portals For Immediate Ascension // Counter-Hacking Kit</div>
+            <div class="tool-grid">
+                <a href="https://freecodecamp.org" target="_blank" class="tool-card">
+                    <h4> FreeCodeCamp</h4>
+                    <p>Execute: Scientific Computing with Python. Program the physical laws of the cosmic simulation.</p>
+                </a>
+                <a href="https://harvard.edu" target="_blank" class="tool-card">
+                    <h4> Harvard CS50</h4>
+                    <p>Re-install your mental operating system via core algorithmic compilation. Escape the matrix.</p>
+                </a>
+                <a href="https://youtu.be/n4IQOBka8bc" target="_blank" class="tool-card">
+                    <h4>Geoffrey Hinton // Radical Monism</h4>
+                    <p>Execute: Empirical Audit. Witness the pioneer of Deep Learning dissolve the legacy theater model of the human mind directly in his verified masterclass.</p>
+                </a>
+                <a href="https://portswigger.net" target="_blank" class="tool-card">
+                    <h4> Web Security Academy</h4>
+                    <p>Acquire offensive cyber-warfare maneuvers. Shatter monopolies and protect sovereign nodes.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="stations-data.js"></script>
+</body>
+</html>

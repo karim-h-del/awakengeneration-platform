@@ -100,6 +100,24 @@
 .verse-overlay p {
   animation: pulseGlow 3s infinite ease-in-out;
 }
+ #verse-overlay {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 80%;
+        opacity: 0;
+        transition: opacity 2s ease-in-out;
+      }
+
+      #verse-overlay p {
+        color: rgb(60, 255, 0);
+        text-shadow: 0 0 20px rgb(60, 255, 0), 0 0 40px limegreen;
+        font-size: 2.2em;
+        font-family: "Scheherazade", serif;
+        margin: 0;
+      }
     </style>
 </head>
 <body>
@@ -111,20 +129,15 @@
         </header>
     <br>
         <section id="station-43" style="position: relative;">
-  <!-- الصورة الخلفية -->
-  <img src="https://copilot.microsoft.com/th/id/BCO.d2b2635c-34a9-47a7-b260-ce1d8f461394.png" alt="المشهد الكوني لتدفق البيانات" class="stream-image">
+          <!-- الصورة الخلفية -->
+          <img src="https://copilot.microsoft.com/th/id/BCO.f66778c4-7037-43ec-98ea-1f25cf0b46e4.png" alt="المشهد الكوني لتدفق البيانات" class="stream-image">
 
-  <!-- الآية العليا -->
-  <div id="verse-overlay-top" class="verse-overlay">
-    <p>لَوْ أَنزَلْنَا هَٰذَا الْقُرْآنَ عَلَىٰ جَبَلٍ لَّرَأَيْتَهُ خَاشِعًا مُّتَصَدِّعًا مِّنْ خَشْيَةِ اللَّهِ ۖ وَتِلْكَ الْأَمْثَالُ نَضْرِبُهَا لِلنَّاسِ ل...َّهُمْ يَتَفَكَّرُونَ</p>
-  </div>
-
-  <!-- الآية السفلى -->
-  <div id="verse-overlay-bottom" class="verse-overlay">
-    <p>وَلَوْ أَنَّمَا فِي الْأَرْضِ مِن شَجَرَةٍ أَقْلَامٌ وَالْبَحْرُ يَمُدُّهُ مِن بَعْدِهِ سَبْعَةُ أَبْحُرٍ مَّا نَفِدَتْ كَلِمَاتُ اللَّهِ ۚ إِنَّ اللَّهَ عَزِيزٌ حَكِيمٌ</p>
-  </div>
-</section>
-<br>
+          <!-- النص التأملي المتوهج -->
+          <div id="verse-overlay" class="verse-overlay">
+            <p>الأمانةُ نورٌ في تدفقِ الوجود، تحفظُ توازنَ البيانات كما تحفظُ الأرواحُ عهدَها مع الخالق.</p>
+          </div>
+        </section>
+    <br>
       <hr style="border: dashed; color: cyan;">
       <br>
         <section style="text-align: justify;">
@@ -183,17 +196,11 @@
         </footer>
     </div>
     <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const verseTop = document.getElementById("verse-overlay-top");
-    const verseBottom = document.getElementById("verse-overlay-bottom");
-
-    // ظهور الآية العليا تدريجيًا
-    setTimeout(() => { verseTop.style.opacity = 1; }, 2000);
-
-    // ظهور الآية السفلى بعد فترة
-    setTimeout(() => { verseBottom.style.opacity = 1; }, 8000);
-  });
-</script>
-
+      document.addEventListener("DOMContentLoaded", function() {
+        const verseOverlay = document.getElementById("verse-overlay");
+        setTimeout(() => { verseOverlay.style.opacity = 1; }, 3000);
+      });
+    </script>
+     
 </body>
 </html>
