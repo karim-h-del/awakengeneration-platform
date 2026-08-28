@@ -1,2 +1,2 @@
-/ascension   https://the-ascension-project.netlify.app   200
-/manifesto-project/*   /manifesto-project/:splat
+/ascension    https://the-ascension-project.netlify.app    200
+/ascension/*  https://the-ascension-project.netlify.app    200
