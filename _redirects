@@ -1,2 +1,3 @@
-/ascension      https://the-ascension-project.netlify.app      301!
-/ascension/*    https://the-ascension-project.netlify.app      301!
+/ascension        https://the-ascension-project.netlify.app    302!
+/ascension/       https://the-ascension-project.netlify.app    302!
+/ascension/*      https://the-ascension-project.netlify.app    302!
