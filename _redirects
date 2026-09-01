@@ -1,3 +1,2 @@
-/ascension        https://the-ascension-project.netlify.app    302!
-/ascension/       https://the-ascension-project.netlify.app    302!
-/ascension/*      https://the-ascension-project.netlify.app    302!
+/THE_ASCENSION_PROJECT/*    /THE_ASCENSION_PROJECT/:splat
+/manifesto-project/*        /manifesto-project/:splat
