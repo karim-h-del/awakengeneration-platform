@@ -307,10 +307,12 @@
   max-width: 90%;
   transition: opacity 3s ease-out;
 }
+/* على الشاشات الصغيرة (الهاتف) */
 @media (max-width: 600px) {
   #ai-sermon {
-    top: 80%; /* على الهواتف يكون النص أبعد قليلاً */
-    font-size: 1em;
+    top: 60%;   /* يرفع النص قليلاً ليبقى داخل الصورة */
+    font-size: 1em; /* حجم أصغر ليتناسب مع الشاشة */
+    padding: 10px 15px;
   }
 }
     </style>

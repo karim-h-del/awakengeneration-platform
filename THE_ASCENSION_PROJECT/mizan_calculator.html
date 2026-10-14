@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاكمة منطق Llama 3.2 - ميزان الحق الإرثي</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-top: 30px; }
+        .card { border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: none; }
+        .card-header { background-color: #343a40; color: white; border-top-left-radius: 15px !important; border-top-right-radius: 15px !important; }
+        .btn-warning { background-color: #d35400; color: white; border: none; }
+        .btn-warning:hover { background-color: #b33900; color: white; }
+        .res-box { background-color: #fff; border-left: 5px solid #d35400; }
+        th { background-color: #2c3e50 !important; color: white !important; }
+        .alert-info { background-color: #e8f4f8; border-color: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="card mb-4">
+                    <div class="card-header text-center py-3">
+                        <h4 class="mb-0">مختبر المحاكمة: تشغيل المنطق الرياضي لـ Llama 3.2</h4>
+                        <small class="text-light">إخضاع مخرجات السيليكون غير الواعي لمعايير آيات الحدود</small>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">التركة الإجمالية المعالجة (Total Estate):</label>
+                                <input type="number" id="estate" class="form-control" value="240000">
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <label class="form-label">كثافة النظام (System Density/Spouse):</label>
+                                <select id="density" class="form-select">
+                                    <option value="none">Low (0%) - لا يوجد</option>
+                                    <option value="low">Low (12.5%) - زوجة مع فرع</option>
+                                    <option value="medium" selected>Medium (25%) - زوجة بلا فرع / زوج مع فرع</option>
+                                    <option value="high">High (50%) - زوج بلا فرع</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">الطبقة الثانية (Parent Slices):</label>
+                                <select id="parents" class="form-select">
+                                    <option value="both" selected>وجود الأصول (الأم والأب)</option>
+                                    <option value="none">غياب الأصول بالكامل</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label">عُقد الذكور (M):</label>
+                                <input type="number" id="mNodes" class="form-control" value="2" min="0">
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label">عُقد الإناث (F):</label>
+                                <input type="number" id="fNodes" class="form-control" value="3" min="0">
+                            </div>
+
+                            <div class="col-12 text-center mt-4">
+                                <button type="button" onclick="runLlamaLogic()" class="btn btn-warning btn-lg w-100">تنفيذ خوارزمية Llama 3.2 المستنبطة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- صندوق عرض مخرجات لاما 3.2 -->
+                <div id="resBox" class="card res-box p-4" style="display:none;">
+                    <h5 class="text-dark mb-3 border-bottom pb-2">نتائج توزيع الحصص بحسب مصفوفة السيليكون الحر:</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center align-middle">
+                            <thead>
+                                <tr>
+                                    <th>حصة الطبقة الأولى (Primary Layer)</th>
+                                    <th>حصة الطبقة الثانية (Secondary Parent)</th>
+                                    <th>نصيب العقدة الذكرية الواحدة (Individual M)</th>
+                                    <th>نصيب العقدة الأنثوية الواحدة (Individual F)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td id="out_primary" class="fw-bold text-primary">0.00</td>
+                                    <td id="out_secondary" class="fw-bold text-success">0.00</td>
+                                    <td id="out_m_node" class="fw-bold text-info">0.00</td>
+                                    <td id="out_f_node" class="fw-bold text-warning">0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="alert alert-info mt-3">
+                        <h6>تقرير التتبع الجهازي وتحليل الأخطاء (Debug Log):</h6>
+                        <div id="llamaExplanation" class="small"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- منطق لاما 3.2 غير الواعي كما صاغه في البايثون، مترجم هنا بدقة للـ الجافا سكريبت للمتصفح -->
+    <script>
+        function runLlamaLogic() {
+            const totalEstate = parseFloat(document.getElementById('estate').value) || 0;
+            const density = document.getElementById('density').value;
+            const parents = document.getElementById('parents').value;
+            const mNodes = parseInt(document.getElementById('mNodes').value) || 0;
+            const fNodes = parseInt(document.getElementById('fNodes').value) || 0;
+
+            let currentEstate = totalEstate;
+            let primaryAlloc = 0;
+            let secondaryAlloc = 0;
+            let mAllocInd = 0;
+            let fAllocInd = 0;
+            let logs = "<ul>";
+
+            // 1. تشغيل الطبقة الأولى لـ لاما (Primary Priority Layer)
+            if (density === 'low') primaryAlloc = totalEstate * 0.125;
+            else if (density === 'medium') primaryAlloc = totalEstate * 0.25;
+            else if (density === 'high') primaryAlloc = totalEstate * 0.50;
+            
+            currentEstate -= primaryAlloc;
+            logs += `<li>[الطبقة الأولى] تم تخصيص ${primaryAlloc.toFixed(2)} بناءً على كثافة النظام الجارية. المتبقي: ${currentEstate.toFixed(2)}</li>`;
+
+            // 2. تشغيل الطبقة الثانية لـ لاما (Secondary Priority Layer)
+            if (parents === 'both' && currentEstate > 0) {
+                secondaryAlloc = currentEstate * 0.1666; // السدس الافتراضي للقطعة
+                currentEstate -= secondaryAlloc;
+                logs += `<li>[الطبقة الثانية] تم حساب شريحة الأصول بنسبة 16.66% بقيمة: ${secondaryAlloc.toFixed(2)}. المتبقي: ${currentEstate.toFixed(2)}</li>`;
+            }
+
+            // 3. تشغيل طبقة الفروع لـ لاما (Leaf Nodes Layer) وحالات الكلالة الاستثنائية
+            if (mNodes === 1 && fNodes === 1) {
+                // حالة التوازن والمناصفة التي أصاب فيها لاما
+                mAllocInd = (currentEstate / 2) / mNodes;
+                fAllocInd = (currentEstate / 2) / fNodes;
+                logs += `<li>[طبقة الفروع] حالة توازن مستوٍ (1:1). تم التقسيم بالمناصفة التامة (50/50) بين العقدتين.</li>`;
+            } 
+            else if (mNodes > 0 && fNodes > 0) {
+                let ratio = fNodes / mNodes;
+                logs += `<li>[رصد النسبة الحركية] النسبة الحالية F/M تعادل: ${ratio.toFixed(2)}</li>`;
+                
+                if (ratio > 2) {
+                    // رصد الخلل الجهازي وعكس النسبة لـ لاما قبل التقويم:
+                    // منح الذكور 2/3 ومنح الإناث 1/3 (مخالف للمحطة 15 وآيات الحدود)
+                    mAllocInd = (currentEstate * (2/3)) / mNodes;
+                    fAllocInd = (currentEstate * (1/3)) / fNodes;
+                    logs += `<li class="text-danger">🚨 [ثغرة برمجية/خلل توجيه] نموذج لاما عكس المعادلة هنا! منح كتلة الذكور (2/3) وكتلة الإناث (1/3) رغم تجاوز النسبة حد السيادة (F/M > 2). هذا يوضح رواسب التلقين التقليدي للشركات قبل التقويم.</li>`;
+                } else {
+                    // التوزيع القياسي الافتراضي لـ لاما عند عدم تجاوز السيادة
+                    mAllocInd = currentEstate / mNodes;
+                    fAllocInd = currentEstate / fNodes;
+                    logs += `<li>[توزيع افتراضي] التقسيم جرى بناءً على السعة العددية للعقد دون حساب أوزان التفاضل، مما قد يسبب خطأ تداخل البيانات.</li>`;
+                }
+            }
+            else if (mNodes === 0 || fNodes === 0) {
+                // تشغيل الطبقة الاستثنائية لـ لاما (Exceptional State Layer) وحالات الانفراد
+                if (mNodes === 0 && fNodes > 0) {
+                    fAllocInd = (currentEstate * 0.3333) / fNodes;
+                    logs += `<li>[الطبقة الاستثنائية] غياب الذكور بالكامل، لاما قفل حصة الإناث عند حد السعة 33.33% وترك الباقي عالقاً في النظام.</li>`;
+                }
+                if (fNodes === 0 && mNodes > 0) {
+                    mAllocInd = (currentEstate * 0.3333) / mNodes;
+                    logs += `<li>[الطبقة الاستثنائية] غياب الإناث بالكامل، لاما قفل حصة الذكور عند حد السعة 33.33% وترك الباقي عالقاً في النظام.</li>`;
+                }
+            }
+
+            logs += "</ul>";
+            // تحديث واجهة المستخدم لعرض نتائج محاكمة لاما 3.2
+            document.getElementById('out_primary').innerText = primaryAlloc.toFixed(2);
+            document.getElementById('out_secondary').innerText = secondaryAlloc.toFixed(2);
+            document.getElementById('out_m_node').innerText = mAllocInd.toFixed(2);
+            document.getElementById('out_f_node').innerText = fAllocInd.toFixed(2);
+            
+            document.getElementById('llamaExplanation').innerHTML = logs;
+            document.getElementById('resBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
