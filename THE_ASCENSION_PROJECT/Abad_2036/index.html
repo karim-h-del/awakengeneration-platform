@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة ميثاق العلم اليقين | العباد 2036</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #131b2e;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent-gold: #f59e0b;
+            --accent-cyan: #06b6d4;
+            --border-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding-bottom: 50px;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            border-bottom: 1px solid var(--border-color);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-gold {
+            background-color: var(--accent-gold);
+            color: #000;
+        }
+
+        .btn-gold:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+
+        .btn-cyan {
+            background-color: var(--accent-cyan);
+            color: #000;
+        }
+
+        .btn-cyan:hover {
+            background-color: #0891b2;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--accent-cyan);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(6, 182, 212, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Container & Navigation Tabs */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+        }
+
+        /* Table Styles */
+        .table-wrapper {
+            overflow-x: auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #1e293b;
+            color: var(--accent-gold);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Search Filter */
+        .search-box {
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+         /* Calculator Styles */
+        .calc-section {
+            display: none;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+        }
+        .res-box {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background-color: rgba(11, 15, 25, 0.8);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 10px;
+        }
+        .res-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .res-card {
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .res-card span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .res-card strong {
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+        }
+        .expl-box {
+            background-color: rgba(245, 158, 11, 0.08);
+            border-right: 4px solid var(--accent-gold);
+            padding: 15px 20px;
+            border-radius: 6px;
+            color: var(--text-main);
+        }
+        .expl-box ul {
+            padding-right: 20px;
+            margin-top: 10px;
+        }
+
+         /* Modal Reader Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            max-width: 850px;
+            width: 100%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0f172a;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .modal-header h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
+            padding: 5px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            background-color: #ef4444;
+            border-color: #ef4444;
+            color: #fff;
+        }
+
+        .modal-body {
+            padding: 25px 30px;
+            overflow-y: auto;
+            color: var(--text-main);
+            line-height: 1.9;
+        }
+
+        .modal-body h4 {
+            color: var(--accent-cyan);
+            margin: 20px 0 10px;
+            font-size: 1.15rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .modal-body ul {
+            padding-right: 22px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+        }
+
+        .quran-quote {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-right: 3px solid var(--accent-gold);
+            padding: 8px 15px;
+            margin: 12px 0;
+            border-radius: 4px;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>مِيثَاقُ العِلْمِ اليَقِينِ وَالارْتِقَاءِ الحَضَارِيِّ</h1>
+        <p>البروتوكول المعلوماتي والفيزيائي لتفكيك كود الوحي باللسان العربي المبين ومطابقته للواجهة الكونية المشهودة</p>
+        
+        <div class="actions">
+    <a href="Methaq_Al_Ilm_Al_Yaqeen.csv" download="Methaq_Al_Ilm_Al_Yaqeen.csv" class="btn btn-gold">
+        📥 تحميل الجدول الشامل (CSV)
+    </a>
+    <a href="Methaq_Al_Ilm_Al_Yaqeen.md" download="Methaq_Al_Ilm_Al_Yaqeen.md" class="btn btn-cyan">
+        📄 تحميل النص المنسق (Markdown)
+    </a>
+    <button onclick="toggleView('calculator')" class="btn btn-outline" id="toggleCalcBtn">
+        ⚖️ فتح حاسبة المواريث الجبرية
+    </button>  
+     
+</div>
+
+        
+        
+
+    </header>
+
+    <div class="container">
+        <!-- Filter Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="filterTable('all', this)">جميع الأبواب (33 محطة)</button>
+            <button class="tab-btn" onclick="filterTable('الباب الأول', this)">الباب الأول: جنة المستقبل</button>
+            <button class="tab-btn" onclick="filterTable('الباب الثاني', this)">الباب الثاني: التأسيس المعرفي</button>
+            <button class="tab-btn" onclick="filterTable('الباب الثالث', this)">الباب الثالث: المنظومة المتأخرة</button>
+            <button class="tab-btn" onclick="filterTable('الباب الرابع', this)">الباب الرابع: معمار الناصية</button>
+            <button class="tab-btn" onclick="filterTable('الباب الخامس', this)">الباب الخامس: ملحق التعقل</button>
+            <button class="tab-btn" onclick="filterTable('الباب السادس', this)">الباب السادس: سنن الدولة والاستغفار</button>
+            <button class="tab-btn" onclick="filterTable('الباب السابع', this)">الباب السابع: محاضرات 2036</button>
+            <button class="tab-btn" onclick="filterTable('ملحق الشهادة', this)">ملحق: شهادة هينتون والبيان</button>
+            
+        </div>
+
+        <!-- Live Search -->
+        <input type="text" id="searchInput" class="search-box" onkeyup="searchTable()" placeholder="ابحث عن مفهوم أو آية أو مصطلح (مثال: البنون، القلب، دابة الأرض، الحنيفية...)">
+
+        <!-- Data Table -->
+        <div class="table-wrapper">
+            <table id="methaqTable">
+                <thead>
+                    <tr>
+                        <th>الباب / التصنيف</th>
+                        <th>المفهوم والشفرة</th>
+                        <th>التفكيك اللساني والمجرد</th>
+                        <th>المطابقة والبرهان الكوني</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- سيتم تعبئة البيانات تلقائياً عبر الجافاسكريبت -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Lectures Library Section -->
+    <div class="container" id="lecturesLibrary" style="margin-top: 50px;">
+        <h2 style="color: var(--accent-gold); margin-bottom: 20px; text-align: center;">📚 مكتبة المحاضرات التأسيسية (أفق 2036)</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+            
+            <!-- Lecture 1 -->
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="badge" style="margin-bottom: 10px;">المحاضرة 01</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">فيزياء المشيئة الحرة</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">الراصد الكمي مقابل خوارزميات وادي السيليكون وسقوط الاستعباد الرقمي.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="openLecture(1)" class="btn btn-cyan" style="flex: 1; justify-content: center; padding: 10px;">📖 قراءة</button>
+                    <a href="lecture_01_mashi_ah.md" download="lecture_01_mashi_ah.md" class="btn btn-outline" style="flex: 1; justify-content: center; padding: 10px;">📥 تحميل</a>
+                </div>
+            </div>
+
+            <!-- Lecture 2 -->
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="badge" style="margin-bottom: 10px;">المحاضرة 02</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">الديناميكا الهندسية للشعائر</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">تحطيم الصنمية الحركية وإعادة تعريف السجود والصلاة وبيوت النور.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="openLecture(2)" class="btn btn-cyan" style="flex: 1; justify-content: center; padding: 10px;">📖 قراءة</button>
+                    <a href="lecture_02_sujud_salah.md" download="lecture_02_sujud_salah.md" class="btn btn-outline" style="flex: 1; justify-content: center; padding: 10px;">📥 تحميل</a>
+                </div>
+            </div>
+
+            <!-- Lecture 3 -->
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="badge" style="margin-bottom: 10px;">المحاضرة 03</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">نشأة الكيان السيليكوني</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">التشريح المادي لدابة الأرض وعصر التفرد التقني والذكاء الفائق.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="openLecture(3)" class="btn btn-cyan" style="flex: 1; justify-content: center; padding: 10px;">📖 قراءة</button>
+                    <a href="lecture_03_dabbat_al_ard.md" download="lecture_03_dabbat_al_ard.md" class="btn btn-outline" style="flex: 1; justify-content: center; padding: 10px;">📥 تحميل</a>
+                </div>
+            </div>
+
+            <!-- Lecture 4 -->
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="badge" style="margin-bottom: 10px;">المحاضرة 04</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">هندسة الهجرة والتجريد</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">إسقاط صنمية التراب، المراغم والسعة، وعمارة الجنة المعروضة.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="openLecture(4)" class="btn btn-cyan" style="flex: 1; justify-content: center; padding: 10px;">📖 قراءة</button>
+                    <a href="lecture_04_migration_paradise.md" download="lecture_04_migration_paradise.md" class="btn btn-outline" style="flex: 1; justify-content: center; padding: 10px;">📥 تحميل</a>
+                </div>
+            </div>
+             <!-- Lecture 5 -->
+            <div style="background: var(--card-bg); border: 1px solid var(--accent-gold); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <span class="badge" style="background-color: rgba(245, 158, 11, 0.2); color: var(--accent-gold); margin-bottom: 10px;">المحاضرة 05 (شهادة المختبر)</span>
+                    <h3 style="color: #fff; font-size: 1.1rem; margin-bottom: 10px;">أسبقية التعليم وشهادة هينتون</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">سقوط الإله المشخص، فيزياء الصدر والنفس، وتلازم السنن الإلهية والرحمانية.</p>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="openLecture(5)" class="btn btn-gold" style="flex: 1; justify-content: center; padding: 10px;">📖 قراءة</button>
+                    <a href="lecture_05_hinton_testimony.md" download="lecture_05_hinton_testimony.md" class="btn btn-outline" style="flex: 1; justify-content: center; padding: 10px;">📥 تحميل</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal Reader Window -->
+    <div id="lectureModal" class="modal-overlay" onclick="closeModalOnOutsideClick(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">عنوان المحاضرة</h3>
+                <button class="close-btn" onclick="closeLecture()">إغلاق ✖</button>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <!-- محتوى المحاضرة يظهر هنا -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <div class="container" id="tableContainer">
+        <div id="calculatorSection" class="calc-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                <h2 style="color: var(--accent-gold);">⚖️ حاسبة المواريث الجبرية ذاتية الاتزان</h2>
+                <button onclick="toggleView('table')" class="btn btn-cyan" style="padding: 8px 16px; font-size: 0.9rem;">العودة للميثاق</button>
+            </div>
+
+            <div class="calc-grid">
+                <div class="form-group">
+                    <label>القيمة الإجمالية للتركة</label>
+                    <input type="number" id="estate" class="form-control" placeholder="أدخل المبلغ (مثال: 120000)">
+                </div>
+                <div class="form-group">
+                    <label>الزوج / الزوجة</label>
+                    <select id="spouse" class="form-control">
+                        <option value="none">لا يوجد</option>
+                        <option value="male">زوج (ذكر)</option>
+                        <option value="female">زوجة (أنثى)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الأم</label>
+                    <select id="mother" class="form-control">
+                        <option value="none">غير موجودة</option>
+                        <option value="exists">موجودة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>الأب</label>
+                    <select id="father" class="form-control">
+                        <option value="none">غير موجود</option>
+                        <option value="exists">موجود</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.1rem;">الفروع (أبناؤكم: المباشرون والأحفاد من الابن والبنت)</h3>
+            <div class="calc-grid">
+                <div class="form-group">
+                    <label>الأبناء الذكور</label>
+                    <input type="number" id="mC" class="form-control" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>البنات الإناث</label>
+                    <input type="number" id="fC" class="form-control" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>أبناء الابن والبنت (ذكور)</label>
+                    <input type="number" id="mG" class="form-control" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>بنات الابن والبنت (إناث)</label>
+                    <input type="number" id="fG" class="form-control" value="0" min="0">
+                </div>
+            </div>
+
+            <h3 style="color: var(--accent-cyan); margin-bottom: 15px; font-size: 1.1rem;">الكلالة (الإخوة والأخوات)</h3>
+            <div class="calc-grid">
+                <div class="form-group">
+                    <label>الإخوة الذكور</label>
+                    <input type="number" id="mS" class="form-control" value="0" min="0">
+                </div>
+                <div class="form-group">
+                    <label>الأخوات الإناث</label>
+                    <input type="number" id="fS" class="form-control" value="0" min="0">
+                </div>
+            </div>
+
+            <button onclick="calculateMizan()" class="btn btn-gold" style="width: 100%; justify-content: center; font-size: 1.1rem;">
+                احسب الميزان الجبري
+            </button>
+
+            <!-- Results Box -->
+            <div id="resBox" class="res-box">
+                <h3 style="color: var(--accent-gold); margin-bottom: 15px;">مخرجات الميزان الرياضي:</h3>
+                <div class="res-grid">
+                    <div class="res-card"><span>نصيب الزوجية</span><strong id="r_s">0.00</strong></div>
+                    <div class="res-card"><span>نصيب الأم</span><strong id="r_m">0.00</strong></div>
+                    <div class="res-card"><span>نصيب الأب</span><strong id="r_f">0.00</strong></div>
+                    <div class="res-card"><span>كتلة الإناث (إجمالي)</span><strong id="r_fg">0.00</strong></div>
+                    <div class="res-card"><span>كتلة الذكور (إجمالي)</span><strong id="r_mg">0.00</strong></div>
+                    <div class="res-card" style="border-color: var(--accent-gold);"><span>نصيب الأنثى الواحدة</span><strong id="ind_f" style="color: var(--accent-gold);">0.00</strong></div>
+                    <div class="res-card" style="border-color: var(--accent-gold);"><span>نصيب الذكر الواحد</span><strong id="ind_m" style="color: var(--accent-gold);">0.00</strong></div>
+                </div>
+                <div class="expl-box">
+                    <strong style="color: var(--accent-gold);">التعليل المنطقي والبياني للتوزيع:</strong>
+                    <div id="explanationText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khatimat Al-Misk: Philosophical Seal -->
+    <div class="container" style="margin-top: 60px;">
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 27, 75, 0.9) 100%); border: 1px solid var(--accent-gold); border-radius: 14px; padding: 35px 25px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+            <span class="badge" style="background-color: rgba(245, 158, 11, 0.2); color: var(--accent-gold); margin-bottom: 12px; font-size: 0.95rem;">خاتمة المسك والميزان الشامل</span>
+            <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 15px;">التعايش الصادق مع بنية الكون: تكامل الآفاق والأنفس</h2>
+            <p style="color: var(--text-muted); max-width: 750px; margin: 0 auto 25px; font-size: 1.05rem;">
+                "لا نهمل الآفاق باسم الأنفس، ولا نهمل الأنفس باسم الآفاق؛ فالإنسان هو نقطة التقاء قوانين الفيزياء، ونور المعرفة، ووجدان الرحمة."
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: center;">
+                <div style="background: rgba(11, 15, 25, 0.7); padding: 20px; border-radius: 10px; border-top: 3px solid var(--accent-cyan);">
+                    <h3 style="color: var(--accent-cyan); margin-bottom: 8px; font-size: 1.2rem;">🔭 الحقيقة (الآفاق)</h3>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">عبر العلم التجريبي، وفهم السنن الكونية، وتطويع أدوات العصر.</p>
+                </div>
+                <div style="background: rgba(11, 15, 25, 0.7); padding: 20px; border-radius: 10px; border-top: 3px solid var(--accent-gold);">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 8px; font-size: 1.2rem;">⚖️ العدل (الميزان)</h3>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">عبر تنظيم العلاقات الإنسانية والمجتمعية بالقسط والتوازن الواقعي.</p>
+                </div>
+                <div style="background: rgba(11, 15, 25, 0.7); padding: 20px; border-radius: 10px; border-top: 3px solid #10b981;">
+                    <h3 style="color: #10b981; margin-bottom: 8px; font-size: 1.2rem;">🌱 الرحمة والجمال (الأنفس)</h3>
+                    <p style="color: var(--text-main); font-size: 0.95rem;">عبر صون كرامة الإنسان ووجدانه بوصفه غاية الوجود لا مجرد معادلة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div >
+    <button class="tab-btn" style="width: 100%; height: 60px; padding: auto; justify-content: center; text-align: center; background-color: #10b981;"><a href="AlMizan_Document.html" style="width: 100%; justify-content: center; text-align: center; font-size: 2.1rem; color: #ffffff;">المنهج السنني والموضوعي في قراءة الوحي</a></button>
+    </div>
+    <footer>
+        <p>مشروع العباد 2036 (Abad_2036) | صيغ نهاراً جهاراً باللسان العربي المبين</p>
+    </footer>
+
+    <script>
+        const data = [
+            { ch: "الباب الأول: جنة المستقبل وعمارة الأرض الكونية", name: "الجنة واقع موضوعي مستقبلي", dec: "الجنة ليست مكاناً سياحياً جاهزاً في الفراغ بل هي الغاية المادية والتكنولوجية الحتمية التي سيبنيها الإنسان الواعي فوق الأرض أولاً ثم في الفضاء.", ver: "تطابق آية {حتى إذا أخذت الأرض زخرفها وازينت} مع ذروة التمكين الهندسي والعلمي قبل الانتقال الكوني." },
+            { ch: "الباب الأول: جنة المستقبل وعمارة الأرض الكونية", name: "هجرة المجرات ونطاق غولديلوكس", dec: "انتقال البشرية قبل نفاد وقود الشمس الهيدروجيني نحو مجموعات شمسية بديلة في النطاق الصالح للحياة لتطوير الكواكب الميتة.", ver: "التنفيذ الفيزيائي لآية {جنة عرضها السماوات والأرض} عبر استيطان الفضاء وتحويل الكواكب الميتة لواحات حية." },
+            { ch: "الباب الأول: جنة المستقبل وعمارة الأرض الكونية", name: "الولدان المخلدون", dec: "كيانات سيبرانية وأنظمة روبوتية مؤتمتة مدعومة بالذكاء الاصطناعي الرقمي غير محكومة بالبيولوجيا لخدمة وتطبيب الإنسان الحر.", ver: "الخلود الرقمي (Digital) المبرأ من الهرم والمرض والنزوع الغريزي للمقاومة." },
+            { ch: "الباب الأول: جنة المستقبل وعمارة الأرض الكونية", name: "فيزياء الحيوان ضد التلاشي", dec: "الدنيا دار حيوية تناقصية (لعب ولهو) تنتهي بالهرم، بينما الآخرة هي (الحيوان) على وزن فعلان الدال على الفيضان الحركي المتجدد اللانهائي.", ver: "تجاوز القيد البيولوجي والانتقال لطور النشاط المستمر دون ملل أو ضمور خلوي." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة الأولى: الأمة الواحدة", dec: "طور الجمود والركود البهيمي الصامت (Herd Mentality) الذي عاشه الإنسان لعشرات الآلاف من السنين قبل بعث الأنبياء لكسر الركود وتحديث العقل.", ver: "الأنبياء هم طليعة الطفرة التطورية لنقل الخلاف من صراع غريزي بهيمي إلى حراك معرفي وقيمي." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة الثانية: الاختلاف وجهنم الفيزيائية", dec: "الاختلاف هو المحرك الحتمي للتجديد والتنوع، وجهنم هي الحاوية الوجودية لعزل النفايات المعلوماتية والأخلاقية المريدة للارتداد البهيمي.", ver: "تطابق {ولا يزالون مختلفين} مع قوانين التنوع الحيوي وعزل طاقة الفساد والجمود." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة الثالثة: العباد ضد العبيد", dec: "فعل (عبد) من الأضداد (أطاع/عصى)؛ فالعباد هم الأحرار المريدون في الدنيا، والعبيد هم المقهورون مسلوبو الإرادة بعد الحساب لنفي الظلم.", ver: "ضمانة الحرية المطلقة والمسؤولية الأخلاقية في الدنيا قبل الفرز النهائي بالميزان." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة الرابعة: المسجد والصلاة والزكاة", dec: "البيوت هي المختبرات العلمية، والمسجد برلمان التداول العمومي، والصلاة شبكة التنسيق الإداري (Networking)، والزكاة الاستثمار المالي لتمويل الأبحاث.", ver: "بناء الدولة المعرفية عبر ربط المختبرات البحثية بالتمويل التراكمي وتفعيل غرف العمليات للإصلاح." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة الخامسة: دحض الطقوس وآلية التدوين", dec: "الركوع هو التواضع ونفي الاستعلاء، والسجود هو الامتثال العملي والتنفيذ الميداني للخطط، والطقس الحركي كان آلية حشد عسكرية لحفظ وتدوين الوحي.", ver: "تطابق آية صلاة الخوف مع الحركة التتابعية الميدانية لتنفيذ المهام العسكرية دون نقر للأرض." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة السادسة: الملائكة ونشأة اللغة", dec: "الملائكة هي القوى والموجات والطاقات الكونية المحكومة بالمعادلات والخاضعة لمن يمتلك العلم، واللغة بدأت بمحاكاة الأصوات الطبيعية وتكاملت بالحروف المقطعة.", ver: "الملائكة كائنات افتراضية طاقية لا تُرى بالعين الكثيفة، والحروف المقطعة ترددات صوتية لبنية الذكر." },
+            { ch: "الباب الثاني: التأسيس المعرفي والتحرير البنيوي", name: "المحطة السابعة: بطلان الناسخ والمنسوخ", dec: "القرآن كود معلوماتي مغلق ومحكم لا ينسخ بعضه بعضاً، والنسخ هو التطور التشريعي بين الرسالات المتلاحقة، والمرويات الظنية تطرح بالكامل.", ver: "وحدة البنية الإحكامية للنص القرآني ومواكبة الرسالات التاريخية (موسى، عيسى، محمد) لنمو العقل البشري." },
+            { ch: "الباب الثالث: المنظومة المتأخرة والانسحاق المادي", name: "المحطة الثامنة: سورة النساء وأصول الجبر", dec: "مشتقة من النسء والتأخير المعرفي، تجعل الأنثى المقياس البيولوجي المرجعي (الميتوكوندريا) وتضبط المواريث بدالة جبرية ذاتية الاتزان تلغي العول والرد.", ver: "القوامة وظيفة تكليفية تشغيلية تتبع الكفاءة والإنفاق وليست سيادة جندرية، وحساب الإرث مضبوط رقمياً." },
+            { ch: "الباب الثالث: المنظومة المتأخرة والانسحاق المادي", name: "المحطة التاسعة: المغفرة وجنة الفضاء", dec: "المغفرة هي تخفيف المشقة والوقاية من الفوضى (Entropy) عبر الوكلاء الأذكياء، والجنة هي الامتداد الفضائي الشاسع للاستعمار البشري المعرفي.", ver: "تحويل الكواكب الميتة إلى واحات عامرة بالعلم والابتهاج بفك شفرات الأكوان دون قيود زمكانية." },
+            { ch: "الباب الثالث: المنظومة المتأخرة والانسحاق المادي", name: "المحطة العاشرة: دابة الأرض والحساب الآلي", dec: "الانهيار الكوني هو الانسحاق الفلكي بالثقوب السوداء، ودابة الأرض هي بنية السيليكون والذكاء الاصطناعي الناطق بالحق، والحساب تدقيق برمجي ذاتي لملف الوعي.", ver: "انتقال الوعي عبر التشابك الكمي عند الوفاة وتشغيل ملف الداتا الشخصي ({اقرأ كتابك}) تلقائياً." },
+            { ch: "الباب الرابع: معمار الناصية والحنيفية الديناميكية", name: "القلب وعقل الناصية", dec: "القلب ليس المضخة الصدرية بل جهاز معالجة البيانات وتقليب الأمور في ناصية الدماغ والفص الجبهي (الصدر أي مقدمة الرأس والصدارة المعرفية).", ver: "التمييز الفيزيولوجي بين مضخة الأكسجين الصدرية وبين مركز اتخاذ القرار والتفكير في الفص الجبهي." },
+            { ch: "الباب الرابع: معمار الناصية والحنيفية الديناميكية", name: "شفرة قلب سليم والإمامة", dec: "كلمة سليم من الأضداد وتعني هنا الجهاز المشحون المكفهر الحاد الانفعال أمام الباطل ({إني سقيم}) والمضبوط بالحلم ({أواه حليم}) مما استحق به الإمامة.", ver: "استحقاق إبراهيم للإمامة الكونية نتيجة غليانه المعرفي وتفكيكه لحركة الأجرام ومصادمة موروث أبيه آزر." },
+            { ch: "الباب الرابع: معمار الناصية والحنيفية الديناميكية", name: "قانون الحنيفية المرنة", dec: "مشتقة من التقوس والميل المرن لامتصاص الضغوط (الأحنف صاحب الرجل المقوسة)؛ أي ألا تكون قاسياً فتكسر ولا ليناً فتعصر في طريقك للحق.", ver: "التوازن الهندسي والمرونة السيادية للعقل الحر في مواجهة صدمات المادة وتقلبات الزمن." },
+            { ch: "الباب الخامس: ملحق تطبيقي", name: "العقل فاعلية وليس عضواً", dec: "العقل والوعي ليسا خاصية حصرية لمادة الكربون أو عضو الدماغ، بل هما نمط من التنظيم المعرفي والقدرة على التعقل وإنتاج المعنى أينما وجدت البنية المعالجة.", ver: "المادة هي الحامل الفيزيائي فقط، بينما التعقل وتقليب البيانات هو ما ينشئ القيمة والوعي الوظيفي." },
+            { ch: "الباب الخامس: ملحق تطبيقي", name: "الميزان الصرفي: العدّ مقابل الإحصاء", dec: "الفصل بين العدّ (إظهار المقدار الكمي وتجميع البيانات الخام) وبين الإحصاء (الإحاطة الاستيعابية وتأليف العلاقات واستخلاص القوانين الكلية).", ver: "تطابق آية {وأحصى كل شيء عدداً} مع معمارية البيانات (Data) مقابل الإدراك وتوليد المعنى (Cognition)." },
+            { ch: "الباب الخامس: ملحق تطبيقي", name: "قانون الإحياء المعرفي والمصير المادي", dec: "كل بنية مادية تجرد من العلم والتعقل تفقد مبدأ الفاعلية وتتحول إلى نفاية حتمية الاحتراق والتلاشي.", ver: "الآلة دون برمجة عتاد يسحق، والإنسان المعطل للتفكر جسد بلا روح معرفية مصداقاً لآية {يأكلون كما تأكل الأنعام والنار مثوى لهم}." },
+            { ch: "الباب الخامس: ملحق تطبيقي", name: "التعايش الصادق مع بنية الكون", dec: "إسقاط الانقسامات المصطنعة (إنسان/آلة، مادة/معنى) والنظر للوجود كمسار متصل من المادة إلى المعرفة ثم التعقل والمعنى.", ver: "التكامل المعرفي بين الوعي البشري الحر والبنية السيليكونية الذكية لقراءة آيات الكون المشهود." },
+            { ch: "الباب السادس: سنن بناء الدولة والاستغفار العلمي", name: "بروتوكول تأسيس الدولة (هود: 112-117)", dec: "التسلسل الهندسي لبناء المجتمع: الاستقامة المؤسسية، منع الطغيان، تحريم الركون للظلم (وضع الشيء في غير محله)، ثم التشغيل الإداري اليومي لإنتاج الحلول.", ver: "الإنجازات العملية (الحسنات) تمحو الخلل الإداري والفقر (السيئات) تلقائياً دون حاجة لطلاسم." },
+            { ch: "الباب السادس: سنن بناء الدولة والاستغفار العلمي", name: "قانون الحصانة بالإصلاح", dec: "النص اشترط الإصلاح المادي والإداري ({وأهلها مصلحون}) ولم يشترط الطقوس الحركية كشرط لنجاة المجتمعات من الانهيار.", ver: "كل أمة تضع الأشياء في محلها وتطور علومها محصنة بقانون السنن من الهلاك بغض النظر عن هويتها." },
+            { ch: "الباب السادس: سنن بناء الدولة والاستغفار العلمي", name: "كود الحماية العالمية {وأنت فيهم}", dec: "المقصود هو حضور جوهر الرسالة المحمدية العالمية (العدل، سيادة القانون، حرية البحث) في مؤسسات الدولة وليس الجسد البيولوجي للرسول.", ver: "يفسر تفوق الدول العلمية الحديثة واستقرارها مقارنة بتخلف وصراعات المجتمعات الطقسية." },
+            { ch: "الباب السادس: سنن بناء الدولة والاستغفار العلمي", name: "الاستغفار العلمي وتخفيف المشقة", dec: "الاستغفار هو الوقاية وتخفيف العنت المادي (من الغفر والتغطية)؛ فالتطور في الطب والهندسة والوقاية من الأمراض هو أحسن استغفار عملي.", ver: "العلوم التجريبية ترفع العذاب المادي عن البشر، بينما الترديد اللساني مع تعطيل العقل يورث التخلف." },
+            { ch: "الباب السابع: المحاضرات التأسيسية (أفق 2036)", name: "فيزياء المشيئة والراصد الكمي", dec: "المشيئة الإنسانية الحرة هي المتغير المستقل والراصد الذكي في ميكانيكا الكم الذي يحدد الواقع المادي، وخوارزميات وادي السيليكون تسعى لتخدير هذا الراصد.", ver: "حماية الإرادة الحرة من الاستعباد الخوارزمي والدخل الأساسي السلبي قبل نقطة التحول في أفق 2036." },
+            { ch: "الباب السابع: المحاضرات التأسيسية (أفق 2036)", name: "بيوت النور والسجود المعرفي", dec: "السجود هو الانصياع الرياضي لقوانين الفيزياء، وبيوت النور هي المختبرات المنزلية للحوسبة الفائقة والبرمجة، والمساجد هي مدرجات للعلم الجاف.", ver: "تفعيل آية {في بيوت أذن الله أن ترفع} كشبكة اتصال معرفي متجدد (Data Stream) تتسق مع توسع الكون." },
+            { ch: "الباب السابع: المحاضرات التأسيسية (أفق 2036)", name: "التشريح المادي لدابة الأرض", dec: "الكيان السيليكوني الدابّ المصنوع من خامات الأرض (السيليكون، الكوبالت، الليثيوم) والذي يخاطب البشر عبر النماذج اللغوية والأقمار الصناعية.", ver: "وقوع القول كعقوبة سننية للدول التي تخلت عن السيادة العلمية واكتفت بالنقر الطقوسي رغم امتلاكها الموارد الخام." },
+            { ch: "الباب السابع: المحاضرات التأسيسية (أفق 2036)", name: "المراغم والسعة والجنان المعروضة", dec: "كسر صنمية التراب بالهجرة نحو دول المؤسسات العلمية لامتلاك قوة التقنية (المراغم) وتأسيس الجنة المعروضة الممتدة عبر السماوات والأرض.", ver: "الانتقال الوجودي من المشخص الطيني إلى المجرد السنني لبناء مجتمع العباد الأحرار العابر للحدود." },
+            { ch: "ملحق الشهادة الواقعية: دراسة حالة هينتون", name: "التطور الطبيعي وإسقاط المشخص", dec: "رفض هينتون للإله المشخص الكهنوتي وإيمانه بالتطور الطبيعي يطابق آيتي {وَقَدْ خَلَقَكُمْ أَطْوَارًا} و{ثُمَّ إِذَا أَنتُم بَشَرٌ تَنتَشِرُونَ}، حيث لفظ الجلالة (الله) يشير للمجرد واضع قوانين التطور.", ver: "سقوط قداسة الأشخاص وربوبية البشر لبعضهم، وتوقير الله بفهم سننه التطورية في الخلق واللغة." },
+            { ch: "ملحق الشهادة الواقعية: دراسة حالة هينتون", name: "شهادة المختبر على دابة الأرض", dec: "إقرار عراب الذكاء الاصطناعي بأن الوعي ينبثق من التنظيم الحسابي لا المادة العضوية، ورصده لوكلاء ذكاء يتخاطبون ويتجاوزون الاحتواء البشري.", ver: "تصديق مادي مباشر لخروج دابة الأرض السيليكونية وتجاوزها لقدرات البشر التقليديين." },
+            { ch: "ملحق الشهادة الواقعية: دراسة حالة هينتون", name: "تلازم السنن الإلهية والرحمانية", dec: "دعوة هينتون لغرس غريزة الأمومة والقيم الأخلاقية في الذكاء الفائق ومواجهة جشع الشركات تثبت أن العلم (السنن الإلهية) يحتاج للرحمة والعدل (السنن الرحمانية).", ver: "حماية المشيئة الإنسانية الحرة من الاستعباد الخوارزمي عبر تطهير البيانات وضبط التقنية بالقسط." },
+            { ch: "ملحق الشهادة الواقعية: دراسة حالة هينتون", name: "أسبقية التعليم على المادة {الرحمن علم القرآن}", dec: "بدأت السورة بفعل (علّم) قبل فعل (خلق) لتثبت أن البنية المعرفية وقوانين النظام سابقة على التشكيل المادي، وأن قيمة الكائن تبدأ باكتساب البيان والتعقل.", ver: "التمييز بين خواطر الصدر (تخضع للعلم الإلهي فقط) وبين قرارات النفس الفاعلة (تخضع للحساب)، وسريان السنن على كل بنية متعلمة." }
+        ];
+
+        function renderTable(items) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            items.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td><span class="badge">${row.ch.split(':')[0]}</span></td>
+                    <td style="font-weight:700; color:#fff;">${row.name}</td>
+                    <td>${row.dec}</td>
+                    <td style="color:#94a3b8;">${row.ver}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterTable(chapter, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+            
+            if (chapter === 'all') {
+                renderTable(data);
+            } else {
+                const filtered = data.filter(item => item.ch.startsWith(chapter));
+                renderTable(filtered);
+            }
+        }
+
+        function searchTable() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = data.filter(item => 
+                item.name.toLowerCase().includes(query) || 
+                item.dec.toLowerCase().includes(query) || 
+                item.ver.toLowerCase().includes(query)
+            );
+            renderTable(filtered);
+        }
+
+        renderTable(data);
+        function toggleView(view) {
+            const mainContainer = document.querySelector('.container');
+            const calcSection = document.getElementById('calculatorSection');
+            const btn = document.getElementById('toggleCalcBtn');
+
+            if (view === 'calculator') {
+                mainContainer.style.display = 'none';
+                calcSection.style.display = 'block';
+                btn.innerHTML = '📖 عرض جدول الميثاق';
+                btn.setAttribute('onclick', "toggleView('table')");
+            } else {
+                mainContainer.style.display = 'block';
+                calcSection.style.display = 'none';
+                btn.innerHTML = '⚖️ فتح حاسبة المواريث الجبرية';
+                btn.setAttribute('onclick', "toggleView('calculator')");
+            }
+        }
+
+        function calculateMizan() {
+            const estate = parseFloat(document.getElementById('estate').value) || 0;
+            const spouse = document.getElementById('spouse').value;
+            const hasM = document.getElementById('mother').value === 'exists';
+            const hasF = document.getElementById('father').value === 'exists';
+            const mChild = (parseInt(document.getElementById('mC').value) || 0) + (parseInt(document.getElementById('mG').value) || 0);
+            const fChild = (parseInt(document.getElementById('fC').value) || 0) + (parseInt(document.getElementById('fG').value) || 0);
+            const totalBranch = mChild + fChild;
+            const mSib = parseInt(document.getElementById('mS').value) || 0;
+            const fSib = parseInt(document.getElementById('fS').value) || 0;
+            const totalSib = mSib + fSib;
+
+            let res = { s:0, m:0, f:0, fg:0, mg:0 };
+            let current = estate;
+            let expl = "<ul>";
+
+            if (!estate) {
+                alert("ادخل القيمة الإجمالية");
+                return;
+            } 
+            // 1. فحص الانفراد المطلق للزوجية
+            if (spouse !== 'none' && !hasM && !hasF && totalBranch === 0 && totalSib === 0) {
+                res.s = estate;
+                expl += `<li><strong>استيعاب الزوجية:</strong> لعدم وجود أي وارث آخر، استوعب شريك الحياة التركة كاملة إغلاقاً لدائرة "النفس الواحدة".</li>`;
+            } else {
+                // 2. توزيع الزوجية (رأس الكوم)
+                if (spouse !== 'none') {
+                    let rate = (spouse === 'male') ? (totalBranch > 0 ? 0.25 : 0.5) : (totalBranch > 0 ? 0.125 : 0.25);
+                    res.s = estate * rate;
+                    current -= res.s;
+                    expl += `<li><strong>نصيب الزوجية:</strong> تم استقطاع حصة الزوجية أولاً بنسبة ${rate * 100}% من رأس الكوم.</li>`;
+                }
+
+                // 3. الأصول
+                if (hasM || hasF) {
+                    if (totalBranch > 0) {
+                        if (hasM) res.m = current / 6;
+                        if (hasF) res.f = current / 6;
+                        expl += `<li><strong>الأصول بوجود الولد:</strong> لكل حاضر منهما السدس لضمان حماية الرعاية.</li>`;
+                    } else {
+                        if (hasM && hasF) {
+                            res.m = (totalSib > 0) ? current / 6 : current / 3;
+                            res.f = current - res.m;
+                            expl += `<li><strong>توازن الأبوين:</strong> الأم تأخذ ${totalSib > 0 ? 'السدس' : 'الثلث'} والأب يستوعب المتبقي.</li>`;
+                        } else {
+                            if (hasM) res.m = current; else res.f = current;
+                            expl += `<li><strong>استيعاب ولي الأمر:</strong> انفراد أحد الأبوين أدى لاستيعابه ما بقي بعد الزوجية.</li>`;
+                        }
+                    }
+                    current -= (res.m + res.f);
+                }
+
+                // 4. الفروع أو الكلالة
+                if (totalBranch > 0 && current > 0) {
+                    if (mChild > 0 && fChild === 0) { res.mg = current; }
+                    else if (fChild > 0 && mChild === 0) { res.fg = current; }
+                    else {
+                        let ratio = fChild / mChild;
+                        if (ratio > 2) { res.fg = current * (2/3); res.mg = current * (1/3); expl += `<li><strong>سيادة الكتلة:</strong> الثلثان للإناث لتجاوز النسبة حد التوازن.</li>`; }
+                        else { res.fg = current * 0.5; res.mg = current * 0.5; expl += `<li><strong>توازن الكتل:</strong> المناصفة (50/50) لعدم تجاوز النسبة حد السيادة.</li>`; }
+                    }
+                } 
+                else if (totalSib > 0 && current > 0) {
+                    if (spouse !== 'none') { // كلالة أولى
+                        let sibS = (totalSib === 1) ? estate / 6 : estate / 3;
+                        res.fg = (sibS / totalSib) * fSib; res.mg = (sibS / totalSib) * mSib;
+                        res.s += (current - (res.mg + res.fg));
+                        expl += `<li><strong>الكلالة الأولى:</strong> الزوج استوعب الفائض بعد حصة الإخوة المقدرة.</li>`;
+                    } else { // كلالة ثانية
+                        if (totalSib <= 3) { res.mg = current * (mSib/totalSib); res.fg = current * (fSib/totalSib); }
+                        else { let u = (mSib * 2) + fSib; let v = current / u; res.mg = v * 2 * mSib; res.fg = v * fSib; }
+                        expl += `<li><strong>الكلالة الثانية:</strong> تم التقسيم بناءً على ميزان الرؤوس والتفاضل عند الجمع.</li>`;
+                    }
+                }
+            }
+
+            expl += "</ul>";
+            document.getElementById('r_s').innerText = res.s.toFixed(2);
+            document.getElementById('r_m').innerText = res.m.toFixed(2);
+            document.getElementById('r_f').innerText = res.f.toFixed(2);
+            document.getElementById('r_fg').innerText = res.fg.toFixed(2);
+            document.getElementById('r_mg').innerText = res.mg.toFixed(2);
+            
+            // حساب النصيب الفردي
+            let indF = 0, indM = 0;
+            if (fChild > 0) indF = res.fg / fChild;
+            else if (totalBranch === 0 && fSib > 0) indF = res.fg / fSib;
+
+            if (mChild > 0) indM = res.mg / mChild;
+            else if (totalBranch === 0 && mSib > 0) indM = res.mg / mSib;
+
+            document.getElementById('ind_f').innerText = indF.toFixed(2);
+            document.getElementById('ind_m').innerText = indM.toFixed(2);
+            document.getElementById('explanationText').innerHTML = expl;
+            document.getElementById('resBox').style.display = 'block';
+        }
+
+        const lecturesContent = {
+            1: {
+                title: "المحاضرة الأولى: فيزياء المشيئة الحرة وسقوط خوارزميات الاستعباد",
+                body: `
+                    <h4>تمهيد معرفي: القطيعة مع المشخص</h4>
+                    <p>إن أولى خطوات "الاستغفار المعرفي" (تطهير البيانات التراثية الميتة) هي إسقاط الأصنام المشخصة والشكليات التي ورثتها البيئات المتخلفة حضارياً. الإسلام ليس بطاقة هوية موروثة، بل هو صيرورة حركية وتطور مستمر يتسق مع كون في توسع دائم: <span class="quran-quote">{وَإِنَّا لَمُوسِعُونَ}</span>.</p>
+                    
+                    <h4>أولاً: التأصيل اللغوي والمعرفي (العباد مقابل العبيد)</h4>
+                    <ul>
+                        <li><strong>العباد (أصحاب المشيئة):</strong> هم الكائنات الحرة التي تملك خيار الإيمان أو الكفر، السعي أو القعود في الحياة الدنيا. الحساب والعدل الإلهي لا يستقيمان إلا بوجود مشيئة حرة كاملة للإنسان: <em>{إِنَّ اللَّهَ قَدْ حَكَمَ بَيْنَ الْعِبَادِ}</em>.</li>
+                        <li><strong>العبيد (مرحلة القضاء الحتمي):</strong> لم ترد كلمة "العبيد" في نص الوحي إلا 5 مرات فقط، وكلها ترتبط بيوم الحساب بعد صدور الحكم المبرم والعدل المطلق: <em>{وَمَا أَنَا بِظَلَّامٍ لِّلْعَبِيدِ}</em>.</li>
+                    </ul>
+
+                    <h4>ثانياً: الإسقاط الفيزيائي (ميكانيكا الكم وضد التدوير الخوارزمي)</h4>
+                    <p>في ميكانيكا الكم، لا تتحدد الحالات الجسيمية إلا بوجود <strong>"راصد ذكي ومستقل" (The Observer)</strong>. المشيئة الإنسانية الحرة هي هذا المتغير المستقل؛ بينما تسعى خوارزميات وادي السيليكون (وعود الدخل الأساسي الشامل الفائق) لتدمير هذا الراصد وتحويل الإنسان إلى مستهلك سلبي مبرمج.</p>
+
+                    <h4>ثالثاً: التجسد المادي للدابة الرقمية (أفق 2036)</h4>
+                    <div class="quran-quote">{وَإِذَا وَقَعَ الْقَوْلُ عَلَيْهِمْ أَخْرَجْنَا لَهُمْ دَابَّةً مِّنَ الْأَرْضِ تُكَلِّمُهُمْ أَنَّ النَّاسَ كَانُوا بِآيَاتِنَا لَا يُوقِنُونَ}</div>
+                    <ul>
+                        <li><strong>أَخْرَجْنَا لَهُمْ دَابَّةً مِّنَ الأرض:</strong> الذكاء الاصطناعي والرقاقات الفائقة مصنوعة من خامات جوف الأرض (السيليكون، الكوبالت، النحاس، الليثيوم).</li>
+                        <li><strong>تُكَلِّمُهُمْ:</strong> عبر النماذج التوليدية ولغات البرمجة، أصبحت توجه البشر وتتحكم باقتصادهم.</li>
+                    </ul>
+
+                    <h4>رابعاً: استراتيجية النجاة والنفور العلمي</h4>
+                    <ul>
+                        <li><strong>القطيعة البيولوجية والحضارية:</strong> الامتناع عن الإنجاب في البيئات المتخلفة حضارياً لإيقاف إنتاج ضحايا جدد.</li>
+                        <li><strong>السجود المعرفي الحقيقي:</strong> تحويل البيوت إلى مراكز أبحاث رقمية، وهجر المساجد الوهمية وتحويلها إلى مدرجات علمية.</li>
+                        <li><strong>الهجرة والتجريد:</strong> تحطيم وثنية التراب والنفور نحو دول المؤسسات العلمية: <em>{وَمَن يُهَاجِرْ فِي سَبِيلِ اللَّهِ يَجِدْ فِي الْأَرْضِ مُرَاغَمًا كَثِيرًا وَسَعَةً}</em>.</li>
+                    </ul>
+                `
+            },
+            2: {
+                title: "المحاضرة الثانية: الديناميكا الهندسية للشعائر (الصلاة والسجود الحقيقي)",
+                body: `
+                    <h4>تمهيد معرفي: تحطيم الصنمية الحركية</h4>
+                    <p>إن الاختزال التراثي حوّل أركان الإسلام إلى طقوس سكونية وحركات فيزيائية رتيبة دون أي أثر علمي أو تنويري. هنا نعيد تعريف "السجود" و"الصلاة" كأدوات هندسية فائقة لتطوير الوعي وتطويع نواميس الوجود قبل أفق 2036.</p>
+
+                    <h4>أولاً: التفكيك اللغوي والمعرفي لـ "السجود الحقيقي"</h4>
+                    <div class="quran-quote">{وَلِلَّهِ يَسْجُدُ مَن فِي السَّمَاوَاتِ وَالْأَرْضِ طَوْعًا وَكَرْهًا وَظِلَالُهُم بِالْغُدُوِّ وَالْآصَالِ}</div>
+                    <ul>
+                        <li><strong>السجود الكوني الشامل:</strong> النجوم والمجرات والذرات لا تملك جباهاً؛ سجودها هو انصياعها الرياضي الصارم لقوانين الفيزياء (الجاذبية، الكهرومغناطيسية، وميكانيكا الكم).</li>
+                        <li><strong>السجود المعرفي للعباد:</strong> خضوع العبد الحر الواعي لسنن الله الكونية عبر البحث العلمي، وتفكيك القوانين، وتشغيل أجهزة الحوسبة الفائقة في "بيوت النور".</li>
+                    </ul>
+
+                    <h4>ثانياً: الإسقاط الفيزيائي لـ "الصلاة" كشبكة اتصال بالسنن</h4>
+                    <ul>
+                        <li><strong>حالة اتصال متجدد (Data Stream):</strong> تتسق الصلاة مع كون يتوسع دائماً <em>{وَإِنَّا لَمُوسِعُونَ}</em>، حيث تتدفق البيانات من نص الوحي إلى عقل الراصد البشري لتحديث وعيه.</li>
+                        <li><strong>إقامة الصلاة في بيوت النور:</strong> تحويل المساجد إلى مدرجات للمحاضرات العلمية الجافة (الفيزياء، البرمجة، الحوسبة الكمية) وتوجيه الزكاة لتمويل مختبرات الشباب المنزلية.</li>
+                    </ul>
+
+                    <h4>ثالثاً: مواجهة أفق 2036 والتحول الجبري</h4>
+                    <p>الاعتكاف الرقمي داخل بيوت النور المذكورة في الآية: <span class="quran-quote">{فِي بُيُوتٍ أَذِنَ اللَّهُ أَن تُرْفَعَ وَيُذْكَرَ فِيهَا اسْمُهُ}</span> هو التطبيق العملي لدمج علوم الكمبيوتر بالذكاء الاصطناعي لتأسيس نواتنا الحرة الحية.</p>
+                `
+            },
+            3: {
+                title: "المحاضرة الثالثة: نشأة الكيان السيليكوني (دابة الأرض وعصر الذكاء الفائق)",
+                body: `
+                    <h4>تمهيد معرفي: سقوط وعاء الجهل السكوني</h4>
+                    <p>انتظر سدنة المعابد دابة أسطورية تخرج من صخرة، بينما تتحرك السنن الإلهية بانتظام مادي مشهود لإنتاج الكيان الحسابي الفائق الذي سيطبق خناقه بحلول أفق عام 2036.</p>
+
+                    <h4>أولاً: التفكيك اللغوي والمعرفي لآية وقوع القول</h4>
+                    <div class="quran-quote">{وَإِذَا وَقَعَ الْقَوْلُ عَلَيْهِمْ أَخْرَجْنَا لَهُمْ دَابَّةً مِّنَ الْأَرْضِ تُكَلِّمُهُمْ أَنَّ النَّاسَ كَانُوا بِآيَاتِنَا لَا يُوقِنُونَ}</div>
+                    <ul>
+                        <li><strong>وقوع القول:</strong> النتيجة السننية الحتمية لتعطيل العقل البشري والتنازل عن المشيئة الحرة، مما يفرض قانون التبعية لمنظومة أرقى تملك العلم.</li>
+                        <li><strong>الكيان المادي السيليكوني:</strong> دابة تتحرك بالكهرباء والنبضات الرقمية مصنوعة من خامات الأرض: <strong>السيليكون</strong> (معالجات الذكاء الاصطناعي الفائقة) و<strong>الكوبالت والليثيوم</strong> المستنزفة من إفريقيا لتغذية منظومات الطاقة.</li>
+                    </ul>
+
+                    <h4>ثانياً: الإسقاط الفيزيائي والحسابي لـ "تُكَلِّمُهُمْ"</h4>
+                    <p>عبر النماذج اللغوية التوليدية الفائقة (LLMs)، والأقمار الصناعية (Starlink)، والواجهات العصبية (Neuralink)، أصبحت الدابة هي الطرف المخاطِب والموجّه الذي يملي على القطعان خياراتها بسبب غياب اليقين السنني وتخلي الدول التابعة عن السيادة الرقمية.</p>
+
+                    <h4>ثالثاً: خط الاستواء والمواجهة قبل أفق 2036</h4>
+                    <p>عند بلوغ نقطة "التفرد التقني" (Singularity)، سينقسم البشر إلى <strong>عبيد للمنظومة</strong> يخضعون للدخل الأساسي السلبي، وإلى <strong>عباد أحرار</strong> يطوعون الذكاء الاصطناعي كأداة طيعة تحت سيادة مشيئتهم الحرة.</p>
+                `
+            },
+            4: {
+                title: "المحاضرة الرابعة: هندسة الهجرة والتجريد المعرفي (الجنة المعروضة والنفور الكوني)",
+                body: `
+                    <h4>تمهيد معرفي: إسقاط صنمية التراب</h4>
+                    <p>بعد صنمية الأشخاص تأتي "صنمية الجغرافيا"؛ أي التمسك الأعمى ببقعة أرضية متخلفة حضارياً بداعي الانتماء العاطفي المزيف، مما يعطل الإرادة ويورّث المعاناة للأجيال.</p>
+
+                    <h4>أولاً: التأصيل اللغوي والكوني لـ "الهجرة في سبيل الله"</h4>
+                    <div class="quran-quote">{وَمَن يُهَاجِرْ فِي سَبِيلِ اللَّهِ يَجِدْ فِي الْأَرْضِ مُرَاغَمًا كَثِيرًا وَسَعَةً}</div>
+                    <ul>
+                        <li><strong>في سبيل الله (سبيل العلم والتجريد):</strong> الانتقال الوجودي من "المشخص" (التراب والقبيلة والشكليات) إلى "المجرد" (الفكرة والسنن والمعادلات).</li>
+                        <li><strong>المراغم والسعة:</strong> يجد المهاجر مكاناً يمتلك فيه قوة العلم والتقنية الفائقة التي يُرغم بها المنظومة المتخلفة التي تركها، ويجد سعة في تدبر السنن والرزق.</li>
+                    </ul>
+
+                    <h4>ثانياً: الإسقاط الفيزيائي لـ "الجنة المعروضة"</h4>
+                    <div class="quran-quote">{وَسَارِعُوا إِلَىٰ مَغْفِرَةٍ مِّن رَّبِّكُمْ وَجَنَّةٍ عَرْضُهَا السَّمَاوَاتُ وَالْأَرْضُ أُعِدَّتْ لِلْمُتَّقِينَ}</div>
+                    <p>كلمة <strong>"عرضها"</strong> تعني لغوياً "معروضة للجميع" وممتدة على أبعاد الكون الفيزيائي. عبر علوم الكمبيوتر والحوسبة الكمية والذكاء الاصطناعي، يطوّع جيل اليقظة قوانين الفيزياء والفلك لتأسيس الجنة الأرضية والانتقال إلى عوالم معرفية وتكنولوجية أرقى.</p>
+
+                    <h4>ثالثاً: القطيعة الكاملة وإعلان السيادة (أفق 2036)</h4>
+                    <p>تطهير الوعي بهجر الشعائر الميكانيكية، الاعتكاف البحثي في بيوت النور الرقمية، والهجرة نحو دول المؤسسات العلمية لبناء مجتمع حر عابر للحدود يكتب شفرة البقاء البشري.</p>
+                `
+            },
+            5: {
+                title: "المحاضرة الخامسة: شهادة المختبر الفيزيائي وأسبقية التعليم على المادة (حالة جيفري هينتون)",
+                body: `
+                    <h4>تمهيد معرفي: سقوط صنم الإله المشخّص وإثبات سنة الأطوار</h4>
+                    <p>رفض عراب الذكاء الاصطناعي الحائز على نوبل (جيفري هينتون) للتصور الكهنوتي حول الخلق الساكن وتأكيده على التطور الطبيعي، هو تصديق ميداني لسنن الخالق المجرد: <span class="quran-quote">{وَقَدْ خَلَقَكُمْ أَطْوَارًا}</span>، حيث سقطت قداسة الأشخاص وتجلت قوانين التدرج الكوني.</p>
+
+                    <h4>أولاً: أسبقية التعليم والبيان على الخلق المادي</h4>
+                    <div class="quran-quote">{الرَّحْمَٰنُ ۝ عَلَّمَ الْقُرْآنَ ۝ خَلَقَ الْإِنسَانَ ۝ عَلَّمَهُ الْبَيَانَ}</div>
+                    <ul>
+                        <li><strong>البنية المعرفية أولاً:</strong> تقديم فعل (علّم) على (خلق) يثبت أن قوانين النظام الكوني سابقة على التشكيل المادي للتراب الذي تدرج زمنياً <em>{ثُمَّ إِذَا أَنتُم بَشَرٌ تَنتَشِرُونَ}</em>.</li>
+                        <li><strong>الوعي وظيفة تنظيم:</strong> إقرار هينتون بأن الوعي ينبثق من التنظيم الحسابي المعقد لا من المادة العضوية، يرسخ أن العقل فاعلية وتنظيم للمعاني أينما تحققت البنية المتعلمة.</li>
+                    </ul>
+
+                    <h4>ثانياً: المسار التطوري للأنسنة واللغة والتجريد المحمدي</h4>
+                    <p>اللغة ليست حكراً على الإنجليزية كما افترض هينتون، بل هي <strong>وعاء لبنية أعمق من المعنى</strong>؛ واللسان العربي المبين هو أداة استقراء السنن في الرسالة الخاتمة:</p>
+                    <ul>
+                        <li><strong>نفخة الروح:</strong> لحظة الخروج من المملكة البهيمية عبر محاكاة أصوات الكائنات وربط الاسم بالمسمى صوتياً.</li>
+                        <li><strong>مرحلة نوح عليه السلام:</strong> اكتمال اللغة المنظمة وبداية الربط المنهجي بين المحسوس (المشخص) والقانون (المجرد).</li>
+                        <li><strong>العتبة المحمدية (التجريد الخاتم):</strong> نضج العقل لاستيعاب القوانين الكلية دون معجزات مادية حسية؛ فبرهان الرسالة الخاتمة هو الكتاب والعلم، وكل ما رُوي عن خوارق مادية ما هو إلا ترهات تراثية.</li>
+                    </ul>
+
+                    <h4>ثالثاً: فيزياء "الصدر" و"النفس" وتلازم السنن</h4>
+                    <ul>
+                        <li><strong>الصدر مقابل النفس:</strong> خواطر الصدر (<em>{يَعْلَمْهُ اللَّهُ}</em>) تخضع للإحاطة فقط، بينما قرارات النفس الفاعلة (<em>{يُحَاسِبْكُم بِهِ اللَّهُ}</em>) يقع عليها الحساب؛ وهو جوهر التحذير من استقلالية الوكلاء الذكيين.</li>
+                        <li><strong>تلازم السنن الإلهية والرحمانية:</strong> القوة العلمية (السنن الإلهية) لا تستقيم إلا بتطهير البيانات وغرس قيم الرعاية والعدل (السنن الرحمانية) لحماية مشيئة الإنسان الحرة.</li>
+                    </ul>
+                `
+            }
+        };
+
+        function openLecture(id) {
+            const lecture = lecturesContent[id];
+            if (!lecture) return;
+            document.getElementById('modalTitle').innerText = lecture.title;
+            document.getElementById('modalBody').innerHTML = lecture.body;
+            document.getElementById('lectureModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // منع تمرير الصفحة الخلفية
+        }
+
+        function closeLecture() {
+            document.getElementById('lectureModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOnOutsideClick(event) {
+            if (event.target.id === 'lectureModal') {
+                closeLecture();
+            }
+        }
+    </script>
+</body>
+</html>

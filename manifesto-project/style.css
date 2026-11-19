@@ -1,0 +1,483 @@
+/**
+ * mobile-app/style.css
+ * Mobile-First Design Tokens & Touch-Target Architecture
+ */
+
+/* 1. Global System Tokens */
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --accent-glow: #38bdf8;
+  --accent-success: #4ade80;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  --header-height: 60px;
+  --navbar-height: 72px;
+  --touch-target-min: 48px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow: hidden; /* Main window lock; scroll handles live inside inner-views */
+  line-height: 1.5;
+}
+
+/* 2. Structured Layout Containers */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  background-color: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bg-tertiary);
+  z-index: 100;
+  padding: 0 16px;
+}
+
+.header-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.brand-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-main);
+}
+
+.date-badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--bg-tertiary);
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: var(--accent-glow);
+}
+
+#app-viewport {
+  position: absolute;
+  top: var(--header-height);
+  bottom: var(--navbar-height);
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 3. Mobile View Switcher States */
+.app-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+}
+
+.app-view.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.view-scroll-content {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 16px;
+  padding-bottom: 40px; /* View-bottom buffer */
+}
+
+.view-title-block {
+  margin-bottom: 24px;
+}
+
+.view-title-block h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+/* 4. Thumb-Optimized Controls & Touch Components */
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--bg-tertiary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom); /* iOS Notch / Gesture bar compensation */
+}
+
+.nav-tab {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-weight: 500;
+  height: 100%;
+  min-height: var(--touch-target-min);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.nav-tab.active {
+  color: var(--accent-glow);
+}
+
+.nav-icon {
+  font-size: 1.4rem;
+  margin-bottom: 2px;
+}
+
+.nav-label {
+  font-size: 0.75rem;
+}
+
+/* 5. Mobile Forms & Interface Blocks */
+.mobile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--bg-secondary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--bg-tertiary);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-row-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input, select {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--bg-tertiary);
+  color: var(--text-main);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-size: 1rem;
+  height: var(--touch-target-min); /* 48px min height for precise layout touch targets */
+  outline: none;
+  width: 100%;
+}
+
+input:focus, select:focus {
+  border-color: var(--accent-glow);
+}
+
+/* Buttons System */
+.btn-primary-touch, .btn-secondary-touch {
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+  height: var(--touch-target-min);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.15s ease;
+}
+
+.btn-primary-touch {
+  background-color: var(--accent-glow);
+  color: var(--bg-primary);
+}
+
+.btn-secondary-touch {
+  background-color: var(--bg-tertiary);
+  color: var(--text-main);
+}
+
+.btn-primary-touch:active, .btn-secondary-touch:active {
+  opacity: 0.8;
+}
+
+/* 6. Dynamic Content Cards & Stack Slots */
+.routine-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.margin-top {
+  margin-top: 24px;
+}
+
+.ai-insight-banner {
+  background: linear-gradient(135deg, #1e1b4b 0%, #1e293b 100%);
+  border: 1px solid #4338ca;
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.banner-header {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #c7d2fe;
+  margin-bottom: 8px;
+}
+
+.insight-text {
+  font-size: 0.9rem;
+  color: #93c5fd;
+  margin-bottom: 14px;
+}
+
+/* 7. Linter Extraction Class Rules */
+.empty-state-card {
+  text-align: center;
+  padding: 32px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  color: var(--text-muted);
+}
+
+.metrics-overview-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metrics-card-text h3 {
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.metrics-card-subtext {
+  font-size: 0.85rem;
+  color: var(--accent-glow);
+  font-weight: 600;
+}
+
+.progress-ring-badge {
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--accent-success);
+  border: 2px solid var(--accent-success);
+}
+
+.workout-card-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.workout-card-details h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.workout-card-badge {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  background: var(--bg-primary);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.btn-check-toggle {
+  background: var(--bg-tertiary);
+  border: none;
+  font-size: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.empty-preview-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.split-board-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--accent-glow);
+}
+
+.day-group-block {
+  margin-bottom: 16px;
+}
+
+.day-group-header {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.day-exercises-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.planner-exercise-row {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--bg-tertiary);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.exercise-row-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.exercise-row-vol {
+  font-size: 0.8rem;
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.metrics-dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.stat-card-total {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.stat-card-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.stat-card-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--accent-success);
+  margin-top: 4px;
+}
+
+.bar-chart-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--bg-tertiary);
+  padding: 16px;
+  border-radius: var(--radius-lg);
+}
+
+.chart-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chart-row-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.chart-track {
+  background: var(--bg-primary);
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.chart-fill {
+  background: var(--accent-glow);
+  height: 100%;
+}

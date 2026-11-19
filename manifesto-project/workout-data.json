@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "day": "monday",
+    "name": "Dumbbell Bench Press",
+    "sets": 4,
+    "reps": 10
+  },
+  {
+    "id": "2",
+    "day": "wednesday",
+    "name": "Barbell Pendlay Rows",
+    "sets": 4,
+    "reps": 8
+  },
+  {
+    "id": "3",
+    "day": "friday",
+    "name": "Barbell Back Squats",
+    "sets": 3,
+    "reps": 12
+  }
+]

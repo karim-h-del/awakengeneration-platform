@@ -1,0 +1,127 @@
+<!-- mobile-app/index.m.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FitPulse // Mobile Workout Planner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Header Grid -->
+  <header class="app-header">
+    <div class="header-status">
+      <span class="brand-logo">⚡ FitPulse</span>
+      <div class="header-actions" style="display: flex; gap: 8px; align-items: center;">
+        <span id="current-date-badge" class="date-badge">Oct 26, 2026</span>
+        <button id="macro-reset-btn" class="btn-reset-macro" title="Reset Planner Data" style="background: none; border: none; font-size: 1.1rem; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center;">🔄</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Viewport Target Container -->
+  <main id="app-viewport">
+    
+    <!-- View 1: Today's Dashboard (Active by Default) -->
+    <section id="view-dashboard" class="app-view active">
+      <div class="view-scroll-content">
+        <header class="view-title-block">
+          <h1>Today's Routine</h1>
+          <p class="subtitle">Complete your targets for today</p>
+        </header>
+
+        <!-- Completion Progress Ring Component Holder -->
+        <div id="progress-card-slot"></div>
+
+        <!-- Dynamic Workout Routine Card Target -->
+        <div id="today-routine-list" class="routine-stack">
+          <!-- Populated dynamically via templates.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- View 2: Program Planner -->
+    <section id="view-planner" class="app-view">
+      <div class="view-scroll-content">
+        <header class="view-title-block">
+          <h1>Workout Builder</h1>
+          <p class="subtitle">Design or edit muscle group splits</p>
+        </header>
+
+        <!-- Exercise Append Form Interface -->
+        <form id="workout-builder-form" class="mobile-form">
+          <div class="form-group">
+            <label for="routine-day">Target Day</label>
+            <select id="routine-day" name="day" required>
+              <option value="monday">Monday (Push)</option>
+              <option value="wednesday">Wednesday (Pull)</option>
+              <option value="friday">Friday (Legs)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exercise-name">Exercise Name</label>
+            <input type="text" id="exercise-name" name="exerciseName" placeholder="e.g., Dumbbell Bench Press" required>
+          </div>
+          <div class="form-row-split">
+            <div class="form-group">
+              <label for="exercise-sets">Sets</label>
+              <input type="number" id="exercise-sets" name="sets" min="1" max="10" value="4" required>
+            </div>
+            <div class="form-group">
+              <label for="exercise-reps">Reps</label>
+              <input type="number" id="exercise-reps" name="reps" min="1" max="100" value="10" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary-touch">Add to Split Matrix</button>
+        </form>
+
+        <div id="saved-splits-preview" class="routine-stack margin-top"></div>
+      </div>
+    </section>
+
+    <!-- View 3: Metrics & Insights Engine -->
+    <section id="view-metrics" class="app-view">
+      <div class="view-scroll-content">
+        <header class="view-title-block">
+          <h1>Performance Data</h1>
+          <p class="subtitle">Volume & intensity tracking profiles</p>
+        </header>
+        
+        <!-- Live AI Recommendations Container -->
+        <div class="ai-insight-banner">
+          <div class="banner-header">
+            <span>✨ AI Workout Optimization Insights</span>
+          </div>
+          <p id="ai-response-display" class="insight-text">Tap the query engine below to check training optimization pathways via free model inference...</p>
+          <button id="trigger-free-inference-btn" class="btn-secondary-touch">Analyze Split Balance</button>
+        </div>
+
+        <div id="volume-metrics-display"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Thumb-Optimized Sticky Bottom Navigation Menu Grid -->
+  <nav class="bottom-nav-bar">
+    <button class="nav-tab active" data-target="view-dashboard">
+      <span class="nav-icon">📅</span>
+      <span class="nav-label">Today</span>
+    </button>
+    <button class="nav-tab" data-target="view-planner">
+      <span class="nav-icon">🏋️</span>
+      <span class="nav-label">Builder</span>
+    </button>
+    <button class="nav-tab" data-target="view-metrics">
+      <span class="nav-icon">📈</span>
+      <span class="nav-label">Metrics</span>
+    </button>
+  </nav>
+
+  <!-- Core Execution Modules Matrix injection -->
+  <script src="free-agent.js"></script>
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

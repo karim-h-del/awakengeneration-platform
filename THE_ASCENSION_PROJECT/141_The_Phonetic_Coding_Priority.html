@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تريبل-ألفا | المحطة 141: الأسبقية البرمجية للكود الصوتي والامتداد الرسالي</title>
+    <style>
+        :root {
+            --bg-space: #010409;
+            --panel-bg: rgba(13, 17, 23, 0.96);
+            --neon-purple: #7f00ff;
+            --neon-blue: #00f2fe;
+            --neon-gold: #ffb703;
+            --neon-emerald: #00f5d4;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glow-color: rgba(0, 245, 212, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-space);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(var(--neon-emerald) 0.5px, transparent 1px),
+                radial-gradient(var(--neon-purple) 0.5px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+            padding-bottom: 30px;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(0, 245, 212, 0.05);
+            border: 1px solid var(--neon-emerald);
+            border-radius: 50px;
+            color: var(--neon-blue);
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--text-main), var(--neon-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .module-section {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .law-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .law-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--neon-emerald), var(--neon-blue));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .law-identity {
+            font-family: 'Courier New', monospace;
+            color: var(--neon-blue);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .law-title {
+            font-size: 1.55rem;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .law-desc {
+            color: var(--text-main);
+            font-size: 1.1rem;
+            line-height: 1.85;
+            text-align: justify;
+        }
+
+        .law-desc ul {
+            margin-top: 15px;
+            margin-right: 20px;
+            list-style-type: square;
+        }
+
+        .law-desc li {
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+
+        .law-desc strong {
+            color: var(--neon-gold);
+            font-weight: bold;
+        }
+
+        .crypto-ui-container {
+            background: rgba(0, 245, 212, 0.02);
+            border: 1px dashed rgba(0, 245, 212, 0.3);
+            border-radius: 14px;
+            padding: 26px;
+            margin: 35px auto;
+            max-width: 100%;
+            box-shadow: 0 0 25px rgba(0, 245, 212, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .crypto-input-group {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        #cyber-password {
+            flex: 1;
+            min-width: 260px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 14px 18px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        #cyber-password:focus {
+            border-color: var(--neon-emerald);
+            box-shadow: 0 0 12px rgba(0, 245, 212, 0.25);
+        }
+
+        .btn-secure {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .btn-encrypt { background: linear-gradient(135deg, var(--neon-emerald), #115e59); color: #000; }
+        .btn-encrypt:hover { box-shadow: 0 0 18px rgba(0, 245, 212, 0.4); transform: translateY(-2px); }
+        .btn-decrypt { background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); }
+        .btn-decrypt:hover { background: rgba(0, 242, 254, 0.05); transform: translateY(-2px); }
+
+        .status-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 16px;
+            border-radius: 6px;
+            border-right: 4px solid var(--neon-emerald);
+        }
+
+        .status-success { color: #10b981; border-right-color: #10b981; }
+        .status-error { color: #ef4444; border-right-color: #ef4444; }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="platform-badge">TRIPLE-ALPHA DATA MATRIX // CONTROL HUB 141</div>
+            <h1>الأسبقية البرمجية للكود الصوتي والامتداد الرسالي (Phonetic Coding Priority)</h1>
+            <p>التوثيق النصي المعياري الحاصن لخوارزميات البث الترددي، وشفرات الاتصال العابرة للأجيال الحركية.</p>
+        </header>
+
+        <!-- مكون واجهة التشفير السيادي للمنصة -->
+        <div class="crypto-ui-container">
+            <div class="crypto-header"><h3>🔒 تأصيل التشفير الحنيفي للمحطة 141</h3></div>
+            <p class="crypto-notice">أدخل مفتاحك السري لتشفير وثيقة الأسبقية الصوتية ومزامنة ناصيتك محلياً بـ (AES-GCM 256-bit).</p>
+            
+            <div class="crypto-input-group">
+                <input type="password" id="cyber-password" placeholder="أدخل مفتاحك السري الفردي المعزول..." autocomplete="off">
+                <button onclick="triggerSecureSave()" class="btn-secure btn-encrypt">تشفير وحفظ ⚡</button>
+                <button onclick="triggerSecureLoad()" class="btn-secure btn-decrypt">استدعاء وفك 🔓</button>
+            </div>
+            
+            <div id="crypto-status" class="status-box">المنظومة في وضع الاستعداد لبث رقعة التحرير اللساني...</div>
+        </div>
+
+        <div class="module-section">
+
+            <!-- 1️⃣ -->
+            <div class="law-card">
+                PHONETIC_CORE_01</div>
+                <div class="law-title">1️⃣ خوارزمية التقديم المعماري للخبر (Data Stream Deployment)</div>
+                <div class="law-desc">
+                    <ul>
+                        <li><strong>القانون البنيوي:</strong> في هندسة اللسان العربي المبين، يخرق النص الترتيب التناظري المعتاد بتقديم الخبر <strong>{حم * عسق * كَذَٰلِكَ يُوحِي}</strong> على الفاعل والمبتدأ المؤخر <strong>{اللَّهُ الْعَزِيزُ الْحَكِيمُ}</strong>.</li>
+                        <li><strong>الغاية التقنية:</strong> إعلان الأولوية البرمجية القصوى لـ "كود البث وقناة المزامنة الترددية". يجب أولاً تهيئة الجينات والجهاز العصبي البشري (الناصية) عبر حقن الشيفرة الصوتية المقطعة المكونة من صوتين وثلاثة أصوات، لفتح واجهة الاستقبال (Interface) وضبط "المعالج" قبل استقبال تدفق البيانات السيادية الكبرى الصادرة من أم الكتاب واللوح المحفوظ.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2️⃣ -->
+            <div class="law-card">
+                PHONETIC_CORE_02</div>
+                <div class="law-title">2️⃣ شفرة نوح والاتصال الشبكي العابر للزمن</div>
+                <div class="law-desc">
+                    <ul>
+                        <li><strong>عتبة التطور اللساني الكربوني:</strong> بدأ نزول الوحي المنطوق والمكتوب تاريخياً عندما ارتقى الكائن الآدمي وخرج لغويّاً من محاكاة الأصوات الطبيعية البدائية (مرحلة آدم)، وتشكل الكلام الإنساني المركب من مقاطع صوتية ثنائية وثلاثية، لتبلغ سقفها الرياضي عند عتبة الـ 11 صوتاً الأساسية للسبع المثاني.</li>
+                        <li><strong>بروتوكول {مِنْ قَبْلِكَ}:</strong> يُعتبر نوح عليه السلام أول نبي ورسول بشري يستقبل وحياً هندسياً فيزيائياً صارماً (بناء الفلك) مبرمجاً بنفس هذه الأوزان الكودية الترددية الحاكمة للذكر. فالآية تؤكد أن <strong>(حم عسق)</strong> هي الشيفرة المشتركة والبروتوكول الشبكي الحتمي الممتد عابراً العصور والأجيال البيولوجية منذ بداية الحضارة الوعيية لـ "بني آدم".</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3️⃣ -->
+            <div class="law-card">
+                PHONETIC_CORE_03</div>
+                <div class="law-title">3️⃣ النتيجة الموضوعية ضد الركود الطائفي</div>
+                <div class="law-desc">
+                    بهذا التوثيق المعرفي، يتحرر الوحي تماماً من التفسيرات الغيبية السطحية ومنظومات "عبدة الأفتار"؛ ليصبح علمًا رياضيًا ولسانيًا كوانتيًا محكومًا بثوابت النسيج الكوني (π و e). الأنباء تؤول حتماً إلى حقائق موضوعية مشهودة، يقف سدنة المعابد عاجزين أمام أسرارها الجبرية والصوتية، بينما يفك شفرتها "الشهداء والصالحون" لتتحول على أيديهم وبمحاذاة الذكاء الاصطناعي الفائق إلى واقع ملموس للتمكين المادي وتخفيف المشقة عن البشرية.
+                </div>
+            </div>
+
+        </div>
+
+        <footer id="global-platform-footer">
+            <p style="text-align: center;"><a href="index.html" style="color: var(--neon-emerald); text-decoration: none; font-size: 1.3rem; font-weight: bold;">[ العودة للوحة التحكم الرئيسية ]</a></p>
+            <br><br>
+        </footer>
+    </div>
+
+    <script>
+        // 1. بروتوكول الخدمة (Service Worker Pass-Through)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then((reg) => console.log('⚡ وضع الخدمة نشط عِبر المحطة 141 المحدثة:', reg.scope))
+                    .catch((err) => console.error('❌ خطأ في تسجيل الـ Service Worker:', err));
+            });
+        }
+
+        // 2. بروتوكول سحق وتعديل الفوتر الصلب فوراً (DOM Overwrite Execution)
+        (function executeFooterOverride141() {
+            const hardCodedFooter = document.getElementById("global-platform-footer") || document.querySelector("footer");
+            if (hardCodedFooter) {
+                hardCodedFooter.innerHTML = `
+                    <div style="font-style: italic; color: var(--neon-emerald); margin-bottom: 15px; font-size: 1.2rem; text-shadow: 0 0 10px rgba(0, 245, 212, 0.2); text-align: center;">Phonetic Coding Priority Active 141 // ﴿كَذَٰلِكَ يُوحِي﴾</div>
+                    <p style="text-align: center;"><a href="index.html" style="color: var(--neon-emerald); text-decoration: none; font-size: 1.3rem; font-weight: bold; text-shadow: 0 0 10px rgba(0, 245, 212, 0.3);">[ العودة للوحة التحكم الرئيسية ]</a></p>
+                    <br>
+                    <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">دُوّنت وهندست هذه المحطة باللسان العربي لحفظ المتن النصي المحدث للكود الصوتي</p>
+                    <br><br>
+                `;
+            }
+        })();
+
+        // 3. دوال التخزين المشفر للمحطة 141 Progress Vault
+        async function secureSaveProgress(userPassword, learningData) {
+            try {
+                const dataString = JSON.stringify(learningData);
+                const secureCode = await encryptData(dataString, userPassword);
+                localStorage.setItem('triple_alpha_station_141_encrypted_data', secureCode);
+                console.log('🔒 تم تشفير سجل مصفوفة الكود الصوتي بنجاح.');
+            } catch (e) { console.error('فشل في تشغيل بروتوكول الحفظ:', e); }
+        }
+
+        async function secureLoadProgress(userPassword) {
+            try {
+                const secureCode = localStorage.getItem('triple_alpha_station_141_encrypted_data');
+                if (!secureCode) return null;
+                const decryptedString = await decryptData(secureCode, userPassword);
+                return JSON.parse(decryptedString);
+            } catch (error) { console.error('فشل في فك تشفير المحطة 141:', error); return null; }
+        }
+
+        async function triggerSecureSave() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: لا يمكن تشغيل البروتوكول بدون إدخال مفتاح سري لتأصيل التشفير.";
+                return;
+            }
+
+            const currentProgressData = { station: 141, timestamp: Date.now(), status: "Phonetic_Coding_Priority_Sealed" };
+            statusBox.className = "status-box"; statusBox.innerText = "⏳ جاري تشفير وحفظ ميثاق الأسبقية الصوتية...";
+
+            try {
+                await secureSaveProgress(passwordInput, currentProgressData);
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = "🔒 تم حفظ وتأمين سجل دراستك النصية الأصلية بنجاح 100% داخل جِهازك الفردي المعزول أوفلاين.";
+            } catch (error) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل النظام: تعذر إتمام التشفير الحيوي.";
+            }
+        }
+
+        async function triggerSecureLoad() {
+            const passwordInput = document.getElementById('cyber-password').value;
+            const statusBox = document.getElementById('crypto-status');
+            
+            if (!passwordInput) {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ خطأ برمي: أدخل مفتاحك السري أولاً ليتمكن المعالج من فك تشفير حزمة البيانات المخلدة.";
+                return;
+            }
+
+            statusBox.className = "status-box"; statusBox.innerText = "⏳ جاري استدعاء البيانات والتحقق من عقود التنزيل الفعلي ومصفوفات البث الترددي...";
+            const decryptedData = await secureLoadProgress(passwordInput);
+            
+            if (decryptedData) {
+                statusBox.className = "status-box status-success";
+                statusBox.innerText = `🔓 تم استدعاء العقد! تم فك شفرة مصفوفة تريبل-ألفا (المحطة: ${decryptedData.station} // الوضع: ${decryptedData.status}).`;
+            } else {
+                statusBox.className = "status-box status-error";
+                statusBox.innerText = "❌ فشل استدعاء البيانات: المفتاح غير متوافق مع خوارزمية التشفير.";
+            }
+        }
+    </script>
+</body>
+</html>
